@@ -1,4 +1,5 @@
 <?php
+require_once('./config/configuration.php');
 
 if (isset($_GET['page'])) {
     $page = htmlspecialchars($_GET['page']);
@@ -6,7 +7,7 @@ if (isset($_GET['page'])) {
         $page = '404'; //the page do not exist
     }
 } else
-    $page = 'connexion';
+    $page = 'connection';
 
 
 

@@ -1,1 +1,1 @@
-<?php require_once(PATH_VIEWS . 'v_connection.php');
+<?php require_once(PATH_VIEWS . 'connection.php');
