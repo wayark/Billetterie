@@ -12,9 +12,9 @@
 <body>
     <header>
         <img src="<?= PATH_IMAGES ?>logoWatiGold.png" alt="logo" class="logo">
-        <div>
-            <button class="myAccount">Mon compte</button>
-            <button>
+        <div class="header-right-button">
+            <button class="headerButton accountButton">Mon compte</button>
+            <button class="headerButton cartButton">
                 <img src="<?= PATH_IMAGES ?>panier.png" alt="cart" class="cart">
             </button>
         </div>
