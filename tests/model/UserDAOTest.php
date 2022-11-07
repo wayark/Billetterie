@@ -1,5 +1,10 @@
 <?php
 
+namespace model;
+
+use PHPUnit\Framework\TestCase;
+use src\model\database\Connection;
+
 class UserDAOTest extends TestCase
 {
     private static $con;
@@ -8,6 +13,7 @@ class UserDAOTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
+        // TO FIX : Connection can't be reached
         UserDAOTest::$con = Connection::getInstance();
         self::$bdd = self::$con->getBdd();
     }
@@ -16,7 +22,7 @@ class UserDAOTest extends TestCase
     {
         $this->userDAO = new UserDAO();
         self::$bdd->exec("INSERT INTO utilisateur(id, nom, prenom, dateNaissance, modeDePayementFavori, adresse, mail, role, hash_password)
-VALUES (-1, 'TestLastName', 'TestFirstName', '2003-03-18', 'Card', '1 rue de la Tech', 'test@bot.com', 1,'aa00ce8b38d75c80bcaae1b8c33a89ab')");
+VALUES (-1, 'TestLastName', 'TestFirstName', '2003-03-18', 'Card', '1 rue de la Tech', 'tests@bot.com', 1,'aa00ce8b38d75c80bcaae1b8c33a89ab')");
         self::$bdd->exec("INSERT INTO utilisateur(id, nom, prenom, dateNaissance, modeDePayementFavori, adresse, mail, role, hash_password)
 VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', null, '1 rue de la Tech', 'tes2t@bot.com', 1,'1b761a9f2db00bdccfaccdec050cc732')");
     }
@@ -27,7 +33,7 @@ VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', null, '1 rue de la 
     }
 
     public function testGetUserByEmail_shouldReturnTheUser_whenUserExistInBase() {
-        $user = $this->userDAO->getUserByEmail("test@bot.com", "aa00ce8b38d75c80bcaae1b8c33a89ab");
+        $user = $this->userDAO->getUserByEmail("tests@bot.com", "aa00ce8b38d75c80bcaae1b8c33a89ab");
 
         self::assertNotFalse($user);
 
