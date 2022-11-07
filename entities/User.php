@@ -6,6 +6,7 @@
         private $_birthDate;
         private $_address;
         private $_password;
+        private $_favoriteMethod;
 
         private function __construct($nom, $prenom, $MDP,$mail,$date,$adr){
             $this->_lastName = $nom;
@@ -54,6 +55,14 @@
 
         public function setAddress($adr){
             $this->_address = $adr;
+        }
+
+        public function setFavoriteMethod($method) {
+            $this->_favoriteMethod = $method;
+        }
+
+        public function getFavoriteMethod() {
+            return $this->_favoriteMethod;
         }
     }
     ?>
