@@ -1,57 +1,59 @@
 <?php
-    class utilisateur extends DAO{
-        private $_Nom;
-        private $_Prenom;
-        private $_Mail;
-        private $_DateNaissance;
-        private $_Adresse;
+    class User {
+        private $_lastName;
+        private $_firstName;
+        private $_mail;
+        private $_birthDate;
+        private $_address;
+        private $_password;
 
-        private function __construct($nom,$MDP,$mail,$date,$adr){
-            $this->_Nom = $nom;
-            $this->_Prenom = $prenom;
-            $this->_Mail = $mail;
-            $this->_DateNaissance = $date;
-            $this->_Adresse = $adr;
+        private function __construct($nom, $prenom, $MDP,$mail,$date,$adr){
+            $this->_lastName = $nom;
+            $this->_firstName = $prenom;
+            $this->_password = $MDP;
+            $this->_mail = $mail;
+            $this->_birthDate = $date;
+            $this->_address = $adr;
         }
 
-        public getNom(){
-            return $this-> $_Nom;
+        public function getLastName(){
+            return $this-> $_lastName;
         }
 
-        public getPrenom(){
-            return $this-> $_Prenom;
+        public function getFirstName(){
+            return $this-> $_firstName;
         }
 
-        public getMail(){
-            return $this-> $_Mail;
+        public function getMail(){
+            return $this-> $_mail;
         }
 
-        public getDatenaissance(){
-            return $this-> $_DateNaissance;
+        public function getBirthDate(){
+            return $this-> $_birthDate;
         }
 
-        public getAdresse(){
-            return $this-> $_Adresse;
+        public function getAddress(){
+            return $this-> $_address;
         }
 
-        public setNom($nom){
-            $this->_Nom = $nom;
+        public function setLastName($nom){
+            $this->_lastName = $nom;
         }
 
-        public setPrenom($prenom){
-            $this->_Prenom = $prenom;
+        public function setFirstName($prenom){
+            $this->_firstName = $prenom;
         }
 
-        public setMail($mail){
-            $this->_Mail = $mail;
+        public function setMail($mail){
+            $this->_mail = $mail;
         }
 
-        public setDateNaissance($date){
-            $this->_DateNaissance = $date;      
+        public function setBirthDate($date){
+            $this->_birthDate = $date;
         }
 
-        public setAdresse(){
-            $this->_Adresse = $adr;
+        public function setAddress($adr){
+            $this->_address = $adr;
         }
     }
     ?>
