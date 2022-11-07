@@ -11,6 +11,7 @@ const AUTEUR = '';
 
 //dossiers racines du site
 define('PATH_CONTROLLERS', './controller/c_');
+define('PATH_ENTITES','./entities/');
 define('PATH_MODELS', './model/m_');
 define('PATH_VIEWS', './view/v_');
 define('PATH_ASSETS', './asset/');

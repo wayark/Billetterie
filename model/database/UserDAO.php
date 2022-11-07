@@ -1,6 +1,6 @@
 <?php
 require_once (PATH_MODELS . 'database/DAO.php');
-require_once (PATH_MODELS . 'User.php');
+require_once (PATH_ENTITES . 'User.php');
 
 class UserDAO extends DAO
 {
@@ -14,7 +14,9 @@ class UserDAO extends DAO
         $sql = 'SELECT * FROM User WHERE mail = ? AND password = ?';
         $user = $this->queryRow($sql, [$email, $hash_pass]);
         if ($user) {
-            return new User($user['id'], $user['firstname'], $user['lastname'], $user['birthDate'], $user['favoriteMethod'], $user['adress'], $user['mail']);
+            $tmp = new User($user['id'], $user['lastname'], $user['firstname'], $hash_pass, $user['mail'], $user['birthDate'], $user['adress']);
+            $tmp->setFavoriteMethod($user['favoriteMethod']);
+            return $tmp;
         } else {
             return false;
         }

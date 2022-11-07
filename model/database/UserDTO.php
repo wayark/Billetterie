@@ -1,5 +1,5 @@
 <?php
-require_once (PATH_MODELS . 'User.php');
+require_once (PATH_ENTITES . 'User.php');
 
 class UserDTO extends DTO
 {
@@ -13,9 +13,9 @@ class UserDTO extends DTO
             $userToAdd->getLastname(),
             $userToAdd->getBirthDate(),
             $userToAdd->getFavoriteMethod(),
-            $userToAdd->getAdress(),
+            $userToAdd->getAddress(),
             $userToAdd->getMail(),
-            $userToAdd->getHashPass()];
+            $userToAdd->getPassword()];
         $this->insertQuery('User', $fields, $values);
     }
 

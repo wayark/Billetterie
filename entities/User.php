@@ -1,5 +1,6 @@
 <?php
     class User {
+        private $_id;
         private $_lastName;
         private $_firstName;
         private $_mail;
@@ -8,7 +9,8 @@
         private $_password;
         private $_favoriteMethod;
 
-        private function __construct($nom, $prenom, $MDP,$mail,$date,$adr){
+        public function __construct($id, $nom, $prenom, $MDP,$mail,$date,$adr){
+            $this->_id = $id;
             $this->_lastName = $nom;
             $this->_firstName = $prenom;
             $this->_password = $MDP;
@@ -35,6 +37,18 @@
 
         public function getAddress(){
             return $this-> $_address;
+        }
+
+        public function getId() {
+            return $this->_id;
+        }
+
+        public function getPassword() {
+            return $this->_password;
+        }
+
+        public function setPassword() {
+            return $this->_password;
         }
 
         public function setLastName($nom){
