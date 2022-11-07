@@ -1,5 +1,7 @@
 <?php
 
+namespace src\model\database;
+
 class Connection
 {
     private static $_bdd = null;

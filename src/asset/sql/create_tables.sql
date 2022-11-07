@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS `artiste`
     `idArtisrte` int(11)      NOT NULL,
     `Biographie` varchar(500) NOT NULL,
     PRIMARY KEY (`idArtisrte`)
-    ) ENGINE = MyISAM
-    DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------------
 --
 -- Structure de la table `evenement`
@@ -60,8 +60,8 @@ CREATE
     KEY `idPhoto` (`idPhoto`),
     KEY `idPhoto_2` (`idPhoto`),
     KEY `idtypeEvenement` (`idtypeEvenement`)
-    ) ENGINE = MyISAM
-    DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------------
 --
 -- Structure de la table `lieu`
@@ -75,8 +75,8 @@ CREATE
     `adresse`  varchar(50) NOT NULL,
     `nomSalle` varchar(50) NOT NULL,
     PRIMARY KEY (`idLieu`)
-    ) ENGINE = MyISAM
-    DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------------
 --
 -- Structure de la table `photo`
@@ -88,8 +88,8 @@ CREATE TABLE IF NOT EXISTS `photo`
     `nomPhoto`         varchar(50)  NOT NULL,
     `descriptionPhoto` varchar(100) NOT NULL,
     PRIMARY KEY (`idPhoto`)
-    ) ENGINE = MyISAM
-    DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------------
 --
 -- Structure de la table `ticket`
@@ -100,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `ticket`
     `idTicket`  int(11)     NOT NULL,
     `typePlace` varchar(50) NOT NULL,
     PRIMARY KEY (`idTicket`)
-    ) ENGINE = MyISAM
-    DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------------
 --
 -- Structure de la table `typeevennement`
@@ -112,8 +112,8 @@ CREATE TABLE IF NOT EXISTS `typeevennement`
     `idType`  int(11)     NOT NULL,
     `nomtype` varchar(50) NOT NULL,
     PRIMARY KEY (`idType`)
-    ) ENGINE = MyISAM
-    DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------------
 --
 -- Structure de la table `typerole`
@@ -124,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `typerole`
     `idRole`  int(11)     NOT NULL,
     `nomRole` varchar(30) NOT NULL,
     PRIMARY KEY (`idRole`)
-    ) ENGINE = MyISAM
-    DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------------
 --
 -- Structure de la table `typeticket`
@@ -136,8 +136,8 @@ CREATE TABLE IF NOT EXISTS `typeticket`
     `IdTypeTicket`  int(11)     NOT NULL,
     `NomTypeTicket` varchar(50) NOT NULL,
     PRIMARY KEY (`IdTypeTicket`)
-    ) ENGINE = MyISAM
-    DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 -- --------------------------------------------------------
 --
 -- Structure de la table `utilisateur`
@@ -149,12 +149,15 @@ CREATE TABLE IF NOT EXISTS `utilisateur`
     `nom`                  int(11)     NOT NULL,
     `prenom`               varchar(50) NOT NULL,
     `dateNaissance`        date        NOT NULL,
-    `modeDePayementFavori` varchar(50) NOT NULL,
+    `modeDePayementFavori` varchar(50),
     `adresse`              varchar(50) NOT NULL,
     `mail`                 varchar(50) NOT NULL,
     `role`                 int(11)     NOT NULL,
-    PRIMARY KEY (`id`)
-    ) ENGINE = MyISAM
+    `hash_password`        varchar(50) NOT NULL,
+
+    PRIMARY KEY (id)
+)
+    ENGINE = MyISAM
     DEFAULT CHARSET = utf8;
 COMMIT;
 

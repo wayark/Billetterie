@@ -1,6 +1,6 @@
 <?php
 
-use model\User;
+namespace src\model\database;
 
 require_once (PATH_MODELS . 'database/DAO.php');
 require_once (PATH_MODELS . 'User.php');
@@ -14,7 +14,7 @@ class UserDAO extends DAO
      */
     public function getUserByEmail($email, $hash_pass)
     {
-        $sql = 'SELECT * FROM User WHERE mail = ? AND password = ?';
+        $sql = 'SELECT * FROM utilisateur WHERE mail = ? AND hash_password = ?';
         $user = $this->queryRow($sql, [$email, $hash_pass]);
         if ($user) {
             $tmp = new User($user['id'], $user['lastname'], $user['firstname'], $hash_pass, $user['mail'], $user['birthDate'], $user['adress']);

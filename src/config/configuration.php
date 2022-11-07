@@ -5,11 +5,11 @@ const BD_DBNAME = '';
 const BD_USER = 'root';
 const BD_PWD = 'root';
 
-define('PATH_CONTROLLERS', './controller/c_');
-define('PATH_MODELS', './model/');
-define('PATH_VIEWS', './view/v_');
-define('PATH_ASSETS', './asset/');
-define('PATH_LIB', './lib/');
+define('PATH_CONTROLLERS', './src/controller/c_');
+define('PATH_MODELS', './src/model/');
+define('PATH_VIEWS', './src/view/v_');
+define('PATH_ASSETS', './src/asset/');
+define('PATH_LIB', './src/lib/');
 
 define('PATH_CSS', PATH_ASSETS . 'css/');
 define('PATH_IMAGES', PATH_ASSETS . 'image/');
