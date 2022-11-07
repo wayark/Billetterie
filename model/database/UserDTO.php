@@ -1,5 +1,8 @@
 <?php
-require_once (PATH_ENTITES . 'User.php');
+
+use model\User;
+
+require_once (PATH_MODELS . 'User.php');
 
 class UserDTO extends DTO
 {

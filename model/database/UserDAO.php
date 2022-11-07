@@ -1,6 +1,9 @@
 <?php
+
+use model\User;
+
 require_once (PATH_MODELS . 'database/DAO.php');
-require_once (PATH_ENTITES . 'User.php');
+require_once (PATH_MODELS . 'User.php');
 
 class UserDAO extends DAO
 {
