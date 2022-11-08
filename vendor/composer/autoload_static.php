@@ -29,16 +29,6 @@ class ComposerStaticInitfe4d8d986c917523ec9ed168a33b101f
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'U' => 
-        array (
-            'UnitTestFiles' => 
-            array (
-                0 => __DIR__ . '/../..' . '/',
-            ),
-        ),
-    );
-
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
@@ -633,7 +623,6 @@ class ComposerStaticInitfe4d8d986c917523ec9ed168a33b101f
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitfe4d8d986c917523ec9ed168a33b101f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitfe4d8d986c917523ec9ed168a33b101f::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitfe4d8d986c917523ec9ed168a33b101f::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitfe4d8d986c917523ec9ed168a33b101f::$classMap;
 
         }, null, ClassLoader::class);

@@ -1,6 +1,7 @@
 <?php
 
-namespace model;
+namespace src\model;
+
 class User
 {
     private $_id;
@@ -11,6 +12,23 @@ class User
     private $_address;
     private $_password;
     private $_favoriteMethod;
+    private $_role;
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->_role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role): void
+    {
+        $this->_role = $role;
+    }
 
     public function __construct($id, $nom, $prenom, $MDP, $mail, $date, $adr)
     {
