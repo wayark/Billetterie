@@ -1,5 +1,7 @@
 <?php
 
+namespace src\config;
+
 const BD_HOST = 'localhost';
 const BD_DBNAME = '';
 const BD_USER = 'root';

@@ -2,6 +2,14 @@
 
 namespace src\model\database;
 
+use PDO;
+use const src\config\BD_DBNAME;
+use const src\config\BD_HOST;
+use const src\config\BD_PWD;
+use const src\config\BD_USER;
+
+require ('../../src/config/configuration.php');
+
 class Connection
 {
     private static $_bdd = null;

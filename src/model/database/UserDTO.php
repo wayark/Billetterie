@@ -1,8 +1,7 @@
 <?php
+namespace src\model\database;
 
-use model\User;
-
-require_once (PATH_MODELS . 'User.php');
+use src\model\User;
 
 class UserDTO extends DTO
 {

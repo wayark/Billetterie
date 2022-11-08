@@ -4,6 +4,10 @@ namespace model;
 
 use PHPUnit\Framework\TestCase;
 use src\model\database\Connection;
+use src\model\database\UserDAO;
+
+require('../../src/model/database/Connection.php');
+require('../../src/model/database/UserDAO.php');
 
 class UserDAOTest extends TestCase
 {

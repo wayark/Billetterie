@@ -2,14 +2,15 @@
 
 namespace src\model\database;
 
-require_once (PATH_MODELS . 'database/DAO.php');
-require_once (PATH_MODELS . 'User.php');
+use src\model\User;
+
+require ('DAO.php');
 
 class UserDAO extends DAO
 {
     /**
      * @param $email string : The email of the user to retrieve.
-     * @param $password string : The hashed password of the user to retrieve.
+     * @param $hash_pass string : The hashed password of the user to retrieve.
      * @return false|User : Returns the user, false otherwise.
      */
     public function getUserByEmail($email, $hash_pass)

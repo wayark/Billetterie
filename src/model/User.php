@@ -1,6 +1,7 @@
 <?php
 
 namespace src\model;
+
 class User
 {
     private $_id;

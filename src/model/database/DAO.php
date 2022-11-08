@@ -1,5 +1,5 @@
 <?php
-require_once(PATH_MODELS . 'Connection.php');
+namespace src\model\database;
 
 /**
  * This class represents an abstract Data Acess Object allows to query the database
