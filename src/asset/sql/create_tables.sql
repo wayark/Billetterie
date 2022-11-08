@@ -1,125 +1,125 @@
 --
--- Base de données : `sae_billeterie`
+-- Database : `sae_billeterie`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `artiste`
+-- Table structure `Artist`
 --
 
-DROP TABLE IF EXISTS `artiste`;
-CREATE TABLE IF NOT EXISTS `artiste` (
-    `Nom` varchar(50) NOT NULL,
-    `Prenom` varchar(50) NOT NULL,
-    `NomDeScene` varchar(50) NOT NULL,
-    `idArtisrte` int(11) NOT NULL,
-    `Biographie` varchar(500) NOT NULL,
-    PRIMARY KEY (`idArtisrte`)
+DROP TABLE IF EXISTS `Artist`;
+CREATE TABLE IF NOT EXISTS `Artist` (
+    `ArtistLastName` varchar(50) NOT NULL,
+    `ArtistFirstName` varchar(50) NOT NULL,
+    `StageName` varchar(50) NOT NULL,
+    `IdArtist` int(11) NOT NULL,
+    `Biography` varchar(500) NOT NULL,
+    PRIMARY KEY (`IdArtist`)
     );
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement`
+-- Table structure `event`
 --
 
-DROP TABLE IF EXISTS `evenement`;
-CREATE TABLE IF NOT EXISTS `evenement` (
-    `idEvenement` int(11) NOT NULL,
-    `nom` varchar(50) NOT NULL,
-    `pays` varchar(50) NOT NULL,
-    `ville` varchar(50) NOT NULL,
-    `salle` varchar(50) NOT NULL,
-    `date` date NOT NULL,
-    `idtypeEvenement` int(11) NOT NULL,
-    `idPhoto` int(11) NOT NULL,
-    `IdOrganisateur` int(11) NOT NULL,
-    `nbPlacesFosse` int(11) NOT NULL,
-    `nbPlacesGradin` int(11) NOT NULL,
-    `idArtiste` int(11) NOT NULL,
-    PRIMARY KEY (`idEvenement`),
-    KEY `idArtiste` (`idArtiste`),
-    KEY `idPhoto` (`idPhoto`),
-    KEY `idPhoto_2` (`idPhoto`),
-    KEY `idtypeEvenement` (`idtypeEvenement`)
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE IF NOT EXISTS `event` (
+    `IdEvent` int(11) NOT NULL,
+    `EventName` varchar(50) NOT NULL,
+    `Country` varchar(50) NOT NULL,
+    `City` varchar(50) NOT NULL,
+    `Hall` varchar(50) NOT NULL,
+    `Date` date NOT NULL,
+    `idtypeEvent` int(11) NOT NULL,
+    `idPicture` int(11) NOT NULL,
+    `OrganizerId` int(11) NOT NULL,
+    `NbPlacesPit` int(11) NOT NULL,
+    `NbSeatsStaircase` int(11) NOT NULL,
+    `IdArtist` int(11) NOT NULL,
+    PRIMARY KEY (`IdEvent`),
+    KEY `IdArtist` (`IdArtist`),
+    KEY `IdPicture` (`IdPicture`),
+    KEY `IdPicture2` (`idPhoto`),
+    KEY `IdTypeEvent` (`IdTypeEvent`)
     );
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `lieu`
+-- Table structure `Place`
 --
 
-DROP TABLE IF EXISTS `lieu`;
-CREATE TABLE IF NOT EXISTS `lieu` (
-    `idLieu` int(11) NOT NULL,
-    `adresse` varchar(50) NOT NULL,
-    `nomSalle` varchar(50) NOT NULL,
-    PRIMARY KEY (`idLieu`)
+DROP TABLE IF EXISTS `Place`;
+CREATE TABLE IF NOT EXISTS `Place` (
+    `IdPlace` int(11) NOT NULL,
+    `Address` varchar(50) NOT NULL,
+    `RoomName` varchar(50) NOT NULL,
+    PRIMARY KEY (`IdPlace`)
     );
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `photo`
+-- Table structure `Picture`
 --
 
-DROP TABLE IF EXISTS `photo`;
-CREATE TABLE IF NOT EXISTS `photo` (
-    `idPhoto` int(11) NOT NULL,
-    `nomPhoto` varchar(50) NOT NULL,
-    `descriptionPhoto` varchar(100) NOT NULL,
-    PRIMARY KEY (`idPhoto`)
+DROP TABLE IF EXISTS `Picture`;
+CREATE TABLE IF NOT EXISTS `Picture` (
+    `IdPicture` int(11) NOT NULL,
+    `NamePicture` varchar(50) NOT NULL,
+    `descriptionPicture` varchar(100) NOT NULL,
+    PRIMARY KEY (`Idpicture`)
     );
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ticket`
+-- Table structure `Ticket`
 --
 
-DROP TABLE IF EXISTS `ticket`;
-CREATE TABLE IF NOT EXISTS `ticket` (
-    `idTicket` int(11) NOT NULL,
-    `typePlace` varchar(50) NOT NULL,
-    PRIMARY KEY (`idTicket`)
+DROP TABLE IF EXISTS `Ticket`;
+CREATE TABLE IF NOT EXISTS `Ticket` (
+    `IdTicket` int(11) NOT NULL,
+    `TypePlace` varchar(50) NOT NULL,
+    PRIMARY KEY (`IdTicket`)
     );
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `typeevennement`
+-- Table structure `TypeEvent`
 --
 
-DROP TABLE IF EXISTS `typeevennement`;
-CREATE TABLE IF NOT EXISTS `typeevennement` (
-    `idType` int(11) NOT NULL,
-    `nomtype` varchar(50) NOT NULL,
-    PRIMARY KEY (`idType`)
+DROP TABLE IF EXISTS `TypeEvent`;
+CREATE TABLE IF NOT EXISTS `TypeEvent` (
+    `IdType` int(11) NOT NULL,
+    `TypeName` varchar(50) NOT NULL,
+    PRIMARY KEY (`IdType`)
     );
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `typerole`
+-- Table structure `RoleType`
 --
 
-DROP TABLE IF EXISTS `typerole`;
-CREATE TABLE IF NOT EXISTS `typerole` (
-    `idRole` int(11) NOT NULL,
-    `nomRole` varchar(30) NOT NULL,
-    PRIMARY KEY (`idRole`)
+DROP TABLE IF EXISTS `RoleType`;
+CREATE TABLE IF NOT EXISTS `RoleType` (
+    `IdRole` int(11) NOT NULL,
+    `RoleName` varchar(30) NOT NULL,
+    PRIMARY KEY (`IdRole`)
     );
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `typeticket`
+-- Table structure `TypeTicket`
 --
 
-DROP TABLE IF EXISTS `typeticket`;
-CREATE TABLE IF NOT EXISTS `typeticket` (
+DROP TABLE IF EXISTS `TypeTicket`;
+CREATE TABLE IF NOT EXISTS `TypeTicket` (
     `IdTypeTicket` int(11) NOT NULL,
     `NomTypeTicket` varchar(50) NOT NULL,
     PRIMARY KEY (`IdTypeTicket`)
@@ -128,19 +128,19 @@ CREATE TABLE IF NOT EXISTS `typeticket` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Table structure `User`
 --
 
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
-    `id` int(11) NOT NULL,
-    `nom` int(11) NOT NULL,
-    `prenom` varchar(50) NOT NULL,
-    `dateNaissance` date NOT NULL,
-    `modeDePayementFavori` varchar(50) NOT NULL,
-    `adresse` varchar(50) NOT NULL,
-    `mail` varchar(50) NOT NULL,
-    `role` int(11) NOT NULL,
+DROP TABLE IF EXISTS `User`;
+CREATE TABLE IF NOT EXISTS `User` (
+    `IdUser` int(11) NOT NULL,
+    `UserLastName` int(11) NOT NULL,
+    `UserFirstName` varchar(50) NOT NULL,
+    `DateOfBirth` date NOT NULL,
+    `FavoritePaymentMode` varchar(50) NOT NULL,
+    `UserAdress` varchar(50) NOT NULL,
+    `Mail` varchar(50) NOT NULL,
+    `Role` int(11) NOT NULL,
     PRIMARY KEY (`id`)
     );
 COMMIT;
