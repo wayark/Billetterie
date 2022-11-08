@@ -3,9 +3,9 @@
 namespace src\config;
 
 const BD_HOST = 'localhost';
-const BD_DBNAME = '';
+const BD_DBNAME = 'billeterie';
 const BD_USER = 'root';
-const BD_PWD = 'root';
+const BD_PWD = '';
 
 define('PATH_CONTROLLERS', './src/controller/c_');
 define('PATH_MODELS', './src/model/');

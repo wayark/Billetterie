@@ -146,7 +146,7 @@ DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur`
 (
     `id`                   int(11)     NOT NULL,
-    `nom`                  int(11)     NOT NULL,
+    `nom`                  varchar(50) NOT NULL,
     `prenom`               varchar(50) NOT NULL,
     `dateNaissance`        date        NOT NULL,
     `modeDePayementFavori` varchar(50),

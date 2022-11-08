@@ -8,7 +8,7 @@ use const src\config\BD_HOST;
 use const src\config\BD_PWD;
 use const src\config\BD_USER;
 
-require ('../../src/config/configuration.php');
+require ('./src/config/configuration.php');
 
 class Connection
 {
@@ -16,8 +16,8 @@ class Connection
     private static $instance = null;
 
     private function __construct() {
-        $this->_bdd = new PDO('mysql:host='.BD_HOST.'; dbname='.BD_DBNAME.'; charset=utf8', BD_USER, BD_PWD);
-        $this->_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        self::$_bdd = new PDO('mysql:host='.BD_HOST.'; dbname='.BD_DBNAME.'; charset=utf8', BD_USER, BD_PWD);
+        self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public static function getInstance() {

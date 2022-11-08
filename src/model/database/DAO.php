@@ -1,6 +1,9 @@
 <?php
 namespace src\model\database;
 
+use PDOException;
+use PDOStatement;
+
 /**
  * This class represents an abstract Data Acess Object allows to query the database
  */
@@ -25,13 +28,13 @@ abstract class DAO
      * @param ...$args array : Has at least one argument if the query is prepared statement.
      * @return PDOStatement : Returns the PDO statement
      */
-    private function _sendQuery($sql, ...$args)
+    private function _sendQuery($sql, $args)
     {
         if (count($args) == 0) {
             $pdos = Connection::getInstance()->getBdd()->query($sql);
         } else {
             $pdos = Connection::getInstance()->getBdd()->prepare($sql);
-            $pdos->execute($args);
+            $pdos->execute($args[0]);
         }
         return $pdos;
     }
@@ -44,9 +47,9 @@ abstract class DAO
     public function queryRow($sql, ...$args)
     {
         try {
-            $pdos = $this->_sendQuery($sql, $args);
-            $res = $pdos->fetch();
-            $pdos->closeCursor();
+            $pdo = $this->_sendQuery($sql, $args);
+            $res = $pdo->fetch();
+            $pdo->closeCursor();
         } catch (PDOException $e) {
             $this->_error = 'query';
             $res = false;
