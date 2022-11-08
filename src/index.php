@@ -1,5 +1,5 @@
 <?php
-require_once('./src/config/configuration.php');
+require_once('./config/configuration.php');
 
 if (isset($_GET['page'])) {
     $page = htmlspecialchars($_GET['page']);

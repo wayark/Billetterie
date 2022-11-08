@@ -3,7 +3,7 @@
 
 <section class="connectionPage">
     <div class="connection-register-frame">
-        <form action="get" class="connectionForm">
+        <form method="post" action="./index.php?page=connection" class="connectionForm">
             <p>Connexion</p>
             <input type="text" class="emailC" placeholder="E-mail...">
             <input type="text" class="passwordC" placeholder="Mot de passe...">
@@ -12,7 +12,7 @@
 
         <div class="line"></div>
 
-        <form action="get" class="connectionForm">
+        <form method="post" action="./index.php?page=connection" class="connectionForm">
             <p>Inscription</p>
             <div>
                 <input type="text" class="surname" placeholder="Prénom...">
