@@ -41,27 +41,27 @@ class User
 
     public function getLastName()
     {
-        return $this->$_lastName;
+        return $this->_lastName;
     }
 
     public function getFirstName()
     {
-        return $this->$_firstName;
+        return $this->_firstName;
     }
 
     public function getMail()
     {
-        return $this->$_mail;
+        return $this->_mail;
     }
 
     public function getBirthDate()
     {
-        return $this->$_birthDate;
+        return $this->_birthDate;
     }
 
     public function getAddress()
     {
-        return $this->$_address;
+        return $this->_address;
     }
 
     public function getId()

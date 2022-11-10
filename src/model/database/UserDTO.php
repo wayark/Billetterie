@@ -6,7 +6,6 @@ class UserDTO extends DTO
 {
     /**
      * @param $userToAdd User : The user to add to the database.
-     * @return void : Adds the user to the database.
      */
     public function addUser($userToAdd) {
         $fields = ['firstname', 'lastname', 'birthDate', 'favoriteMethod', 'adress', 'mail', 'password'];

@@ -25,22 +25,34 @@ class UserDTOTest extends TestCase
     public function tearDown(): void
     {
         self::$bdd->exec("DELETE FROM utilisateur WHERE id IN (-1, -2)");
-        self::$bdd->exec("DELETE FROM typerole WHERE idRole IN (-1)");
     }
 
-    public function test_addUser_shouldAddUserToDB_whenEmailOfUserNotInBase() {
+    public function test_addUser_shouldAddUserToDB_whenEmailOfUserNotInBase()
+    {
+        // ARRANGE
+        $userToAdd = new User(-1, "TestName", "Test", "hashed_password", "test@mail.org", "2002-03-01", "16 la street");
+
+        // TEST
+        $this->userDTO->addUser($userToAdd);
+
+        // EXPECT
+        $statement = self::$bdd->query("SELECT * FROM utilisateur WHERE id = -1");
+
+        assertEquals(1, $statement->rowCount());
+    }
+
+    public function test_addUser_shouldThrowError_whenEmailOfUserInBase()
+    {
         // TODO : Unit test UserDTO
     }
 
-    public function test_addUser_shouldThrowError_whenEmailOfUserInBase() {
-        // TODO : Unit test UserDTO
-    }
-
-    public function test_deleteUser_shouldRemoveUserFromDB_whenUserInBase() {
+    public function test_deleteUser_shouldRemoveUserFromDB_whenUserInBase()
+    {
         // TODO : Unit test
     }
 
-    public function test_deleteUser_shouldThrowError_whenUserNotInBase() {
+    public function test_deleteUser_shouldThrowError_whenUserNotInBase()
+    {
         // TODO : Unit test
     }
 }
