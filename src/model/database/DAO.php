@@ -1,8 +1,4 @@
 <?php
-namespace src\model\database;
-
-use PDOException;
-use PDOStatement;
 
 /**
  * This class represents an abstract Data Acess Object allows to query the database

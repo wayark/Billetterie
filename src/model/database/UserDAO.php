@@ -1,9 +1,5 @@
 <?php
 
-namespace src\model\database;
-
-use src\model\User;
-
 require ('./src/model/User.php');
 require ('DAO.php');
 

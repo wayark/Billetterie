@@ -1,14 +1,9 @@
 <?php
 
-namespace model;
-
 use PHPUnit\Framework\TestCase;
-use src\model\database\Connection;
-use src\model\database\UserDAO;
-use src\model\User;
 
-require('./src/model/database/Connection.php');
-require('./src/model/database/UserDAO.php');
+require_once('./src/model/database/Connection.php');
+require_once('./src/model/database/UserDAO.php');
 
 class UserDAOTest extends TestCase
 {
@@ -37,7 +32,7 @@ VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', null, '1 rue de la 
         self::$bdd->exec("DELETE FROM utilisateur WHERE id IN (-1, -2)");
         self::$bdd->exec("DELETE FROM typerole WHERE idRole IN (-1)");
     }
-    public function testGetUserByEmail_shouldReturnTheUser_whenUserExistInBase()
+    public function test_GetUserByEmail_shouldReturnTheUser_whenUserExistInBase()
     {
         $user = $this->userDAO->getUserByEmail("tests@bot.com", "aa00ce8b38d75c80bcaae1b8c33a89ab");
 
@@ -52,7 +47,7 @@ VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', null, '1 rue de la 
         $this->assertEquals($expectedUser, $user);
     }
 
-    public function testGetUserByEmail_shouldReturnFalse_whenUserNotInBase() {
+    public function test_GetUserByEmail_shouldReturnFalse_whenUserNotInBase() {
         $user = $this->userDAO->getUserByEmail("", "1234");
         $this->assertFalse($user);
     }

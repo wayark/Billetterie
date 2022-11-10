@@ -1,7 +1,5 @@
 <?php
 
-namespace src\model\database;
-
 abstract class DTO
 {
     /**
