@@ -1,34 +1,72 @@
 <?php
 
+require_once ('./src/model/Role.php');
+
 class User
 {
-    private $_id;
-    private $_lastName;
-    private $_firstName;
-    private $_mail;
-    private $_birthDate;
-    private $_address;
-    private $_password;
-    private $_favoriteMethod;
-    private $_role;
+    /**
+     * @var int $id The id of the user
+     */
+    private int $_id;
+    /**
+     * @var string $_lastName Last name of the user
+     */
+    private string $_lastName;
+    /**
+     * @var string $_firstName First name of the user
+     */
+    private string $_firstName;
+    /**
+     * @var string $_mail The mail of the user
+     */
+    private string $_mail;
+    /**
+     * @var string $_birthDate Date with format YYYY-MM-DD
+     */
+    private string $_birthDate;
+    /**
+     * @var string $_address :
+     */
+    private string $_address;
+    /**
+     * @var string $_password Hashed password of the user
+     */
+    private string $_password;
+    /**
+     * @var string $_favoriteMethod Favorite payment method of the user
+     */
+    private string $_favoriteMethod;
+    /**
+     * @var Role $_role Role of the user
+     */
+    private Role $_role;
 
     /**
-     * @return mixed
+     * @return Role : The role of the user.
      */
-    public function getRole()
+    public function getRole() : Role
     {
         return $this->_role;
     }
 
     /**
-     * @param mixed $role
+     * @param Role $role : The role of the user.
      */
-    public function setRole($role): void
+    public function setRole(Role $role): void
     {
         $this->_role = $role;
     }
 
-    public function __construct($id, $nom, $prenom, $MDP, $mail, $date, $adr)
+    /**
+     * @param $id int : The id of the user.
+     * @param $nom string : The last name of the user.
+     * @param $prenom string : The first name of the user.
+     * @param $MDP string : The hashed password of the user.
+     * @param $mail string : The mail of the user.
+     * @param $date string : The birth date of the user with format YYYY-MM-DD.
+     * @param $adr string : The address of the user.
+     */
+    public function __construct(int $id, string $nom, string $prenom, string $MDP, string $mail, string $date, string $adr)
     {
         $this->_id = $id;
         $this->_lastName = $nom;
@@ -39,80 +77,146 @@ class User
         $this->_address = $adr;
     }
 
-    public function getLastName()
+    /**
+     * @return string The last name of the user.
+     */
+    public function getLastName() : string
     {
         return $this->_lastName;
     }
 
-    public function getFirstName()
+    /**
+     * @return string The first name of the user.
+     */
+    public function getFirstName() : string
     {
         return $this->_firstName;
     }
 
-    public function getMail()
+    /**
+     * @return string The mail of the user.
+     */
+    public function getMail() : string
     {
         return $this->_mail;
     }
 
-    public function getBirthDate()
+    /**
+     * @return string The birth date of the user with format YYYY-MM-DD.
+     */
+    public function getBirthDate() : string
     {
         return $this->_birthDate;
     }
 
-    public function getAddress()
+    /**
+     * @return string The address of the user.
+     */
+    public function getAddress() : string
     {
         return $this->_address;
     }
 
-    public function getId()
+    /**
+     * @return int The id of the user.
+     */
+    public function getId() : int
     {
         return $this->_id;
     }
 
-    public function getPassword()
+    /**
+     * @return string The hashed password of the user.
+     */
+    public function getPassword() : string
     {
         return $this->_password;
     }
 
-    public function setPassword()
+    /**
+     * @param string $password The hashed password of the user.
+     * @return void Change the password of the user.
+     */
+    public function setPassword(string $password): void
     {
-        return $this->_password;
+        $this->_password = $password;
     }
 
-    public function setLastName($nom)
+    /**
+     * @param string $nom The last name of the user.
+     * @return void Change the last name of the user.
+     */
+    public function setLastName(string $nom) : void
     {
         $this->_lastName = $nom;
     }
 
-    public function setFirstName($prenom)
+    /**
+     * @param string $prenom The first name of the user.
+     * @return void Change the first name of the user.
+     */
+    public function setFirstName(string $prenom) : void
     {
         $this->_firstName = $prenom;
     }
 
-    public function setMail($mail)
+    /**
+     * @param string $mail The mail of the user.
+     * @return void Change the mail of the user.
+     */
+    public function setMail(string $mail) : void
     {
         $this->_mail = $mail;
     }
 
-    public function setBirthDate($date)
+    /**
+     * @param string $date The birthdate of the user with format YYYY-MM-DD.
+     * @return void Change the birthdate of the user.
+     */
+    public function setBirthDate(string $date) : void
     {
         $this->_birthDate = $date;
     }
 
-    public function setAddress($adr)
+    /**
+     * @param string $adr The address of the user.
+     * @return void Change the address of the user.
+     */
+    public function setAddress(string $adr) : void
     {
         $this->_address = $adr;
     }
 
-    public function setFavoriteMethod($method)
+    /**
+     * @param string $method The favorite payment method of the user.
+     * @return void Change the favorite payment method of the user.
+     */
+    public function setFavoriteMethod(string $method) : void
     {
         $this->_favoriteMethod = $method;
     }
 
-    public function getFavoriteMethod()
+    /**
+     * @return string The favorite payment method of the user.
+     */
+    public function getFavoriteMethod() : string
     {
         return $this->_favoriteMethod;
     }
-}
 
-?>
+    /**
+     * @return string The string representation of the user.
+     */
+    public function __toString() {
+        $repr = "User n°$this->_id : \n";
+        $repr .= "\tName : " . $this->_firstName . ' ' . $this->_lastName . "\n";
+        $repr .= "\tBirthdate : " . $this->_birthDate . "\n";
+        $repr .= "\tPayment method : " . $this->_favoriteMethod . '\n';
+        $repr .= "\tAdress : " . $this->_address . "\n";
+        $repr .= "\tMail : " . $this->_mail . "\n";
+        $repr .= "\tRole : " . $this->_role->getId() . " : " . $this->getRole()->getName() . "\n";
+
+        return $repr;
+    }
+
+}

@@ -5,25 +5,38 @@ require_once ('DTO.php');
 class UserDTO extends DTO
 {
     /**
-     * @param $userToAdd User : The user to add to the database.
+     * @param User $userToAdd The user to add to the database.
      */
     public function addUser($userToAdd) {
-        $fields = ['firstname', 'lastname', 'birthDate', 'favoriteMethod', 'adress', 'mail', 'password'];
-        $values = [$userToAdd->getFirstname(),
-            $userToAdd->getLastname(),
+        $fields = ['id', 'nom', 'prenom', 'dateNaissance', 'modeDePayementFavori', 'adresse', 'mail', 'role', 'hash_password'];
+        $values = [
+            $userToAdd->getId(),
+            $userToAdd->getLastName(),
+            $userToAdd->getFirstName(),
             $userToAdd->getBirthDate(),
             $userToAdd->getFavoriteMethod(),
             $userToAdd->getAddress(),
             $userToAdd->getMail(),
-            $userToAdd->getPassword()];
-        $this->insertQuery('User', $fields, $values);
+            $userToAdd->getRole()->getId(),
+            $userToAdd->getPassword()
+        ];
+
+        for ($i = 0; $i < count($values); $i++) {
+            if (is_string($values[$i])) {
+                $values[$i] = "'" . $values[$i] . "'";
+            } else if (is_null($values[$i])) {
+                $values[$i] = "NULL";
+            }
+        }
+
+        $this->insertQuery('utilisateur', $fields, $values);
     }
 
     /**
-     * @param $userToDelete User : The user to delete from the database.
-     * @return void : Deletes the user from the database.
+     * @param User $userToDelete The user to delete from the database.
+     * @return void Deletes the user from the database.
      */
-    public function deleteUser($userToDelete) {
-        $this->deleteQuery('User', 'mail', $userToDelete->getMail());
+    public function deleteUser(User $userToDelete) {
+        $this->deleteQuery('utilisateur', 'mail', $userToDelete->getMail());
     }
 }

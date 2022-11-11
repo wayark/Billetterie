@@ -6,41 +6,41 @@
 abstract class DAO
 {
     /**
-     * @var $_error : Used to store a PDO error
+     * @var $_error Used to store a PDO error
      */
-    private $_error = null;
+    private ?string $_error = null;
 
     /**
      * Sends the error type, null otherwise.
      * @return string | null
      */
-    public function getError()
+    public function getError() : string
     {
         return $this->_error;
     }
 
     /**
-     * @param $sql string : Sends the query to the database.
-     * @param ...$args array : Has at least one argument if the query is prepared statement.
-     * @return PDOStatement : Returns the PDO statement
+     * @param string $sql  Sends the query to the database.
+     * @param array $args  Has at least one argument if the query is prepared statement.
+     * @return PDOStatement Returns the PDO statement
      */
-    private function _sendQuery($sql, $args)
+    private function _sendQuery(string $sql, array $args) : PDOStatement
     {
         if (count($args) == 0) {
             $pdos = Connection::getInstance()->getBdd()->query($sql);
         } else {
             $pdos = Connection::getInstance()->getBdd()->prepare($sql);
-            $pdos->execute($args[0]);
+            $pdos->execute($args);
         }
         return $pdos;
     }
 
     /**
-     * @param $sql string : The query to send to the database, must query a single row.
-     * @param ...$args array : Has at least one argument if the query is prepared statement.
-     * @return false|mixed : Returns the row as an associative array, false otherwise.
+     * @param string $sql  The query to send to the database, must query a single row.
+     * @param array $args  Has at least one argument if the query is prepared statement.
+     * @return false|mixed Returns the row as an associative array, false otherwise.
      */
-    public function queryRow($sql, ...$args)
+    public function queryRow(string $sql, array $args)
     {
         try {
             $pdo = $this->_sendQuery($sql, $args);
@@ -54,11 +54,11 @@ abstract class DAO
     }
 
 /**
-     * @param $sql string : The query to send to the database, can query multiple rows.
-     * @param ...$args array : Has at least one argument if the query is prepared statement.
-     * @return false|array : Returns the rows as an associative 2D-array, false otherwise.
+     * @param string $sql  The query to send to the database, can query multiple rows.
+     * @param ?array $args  Has at least one argument if the query is prepared statement.
+     * @return false|array Returns the rows as an associative 2D-array, false otherwise.
      */
-    public function queryAll($sql, $args = null)
+    public function queryAll(string $sql, ?array $args = null)
     {
         try {
             $pdos = $this->_sendQuery($sql, $args);

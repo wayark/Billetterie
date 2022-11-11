@@ -1,16 +1,16 @@
 <?php
 
-require ('./src/model/User.php');
-require ('DAO.php');
+require_once ('./src/model/User.php');
+require_once ('DAO.php');
 
 class UserDAO extends DAO
 {
     /**
-     * @param $email string : The email of the user to retrieve.
-     * @param $hash_pass string : The hashed password of the user to retrieve.
-     * @return false|User : Returns the user, false otherwise.
+     * @param $email string The email of the user to retrieve.
+     * @param $hash_pass string The hashed password of the user to retrieve.
+     * @return ?User Returns the user, null otherwise.
      */
-    public function getUserByEmail($email, $hash_pass)
+    public function getUserByEmail(string $email, string $hash_pass) : ?User
     {
         $sql = 'SELECT * FROM utilisateur WHERE mail = ? AND hash_password = ?';
         $user = $this->queryRow($sql, [$email, $hash_pass]);
@@ -18,13 +18,13 @@ class UserDAO extends DAO
             $tmp = new User($user[0], $user[1], $user[2], $hash_pass, $user[6], $user[3], $user[5]);
             $tmp->setFavoriteMethod($user[4]);
 
-            $roleArray = $this->queryRow("SELECT * FROM typerole WHERE idRole = ?", [-1]);
+            $roleArray = $this->queryRow("SELECT * FROM typerole WHERE idRole = ?", [$user[7]]);
 
-            $tmp->setRole($roleArray[1]);
+            $tmp->setRole(new Role($roleArray[0], $roleArray[1]));
 
             return $tmp;
         } else {
-            return false;
+            return null;
         }
     }
 
