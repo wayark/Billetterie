@@ -31,7 +31,6 @@ class UserDTO extends DTO
         try {
             $this->insertQuery('utilisateur', $fields, $values);
         } catch (PDOException $e) {
-            echo $e->getMessage();
             if ($e->getCode() == 23000) {
                 throw new UserAlreadyInBaseException();
             }

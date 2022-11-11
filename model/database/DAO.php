@@ -50,7 +50,6 @@ abstract class DAO
             $pdo->closeCursor();
         } catch (PDOException $e) {
             $this->_error = 'query';
-            echo $e->getMessage();
             $res = false;
         }
         return $res;

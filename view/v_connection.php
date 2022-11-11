@@ -1,7 +1,7 @@
 <?php
 require_once(PATH_VIEWS . 'header.php'); //header of the page
 /**
- * @var $resultDisplay array    Exist if register button has been clicked
+ * @var $resultDisplayRegister array    Exist if register button has been clicked
  *                              Contains the text and display type to show
  */
 ?>
@@ -35,16 +35,16 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
                     <button name="signUp" class="connectionButton">Inscription</button>
                 </form>
                 <?php
-                if (isset($resultDisplay)) {
+                if (isset($resultDisplayRegister)) {
                     $firstDiv = "<div class='registerDisplay' style='background: ";
-                    if ($resultDisplay['type'] == 'success') {
+                    if ($resultDisplayRegister['type'] == 'success') {
                         $firstDiv .= "lightgreen'>";
                     } else {
                         $firstDiv .= "lightcoral'>";
                     }
                     echo $firstDiv;
 
-                    echo $resultDisplay['message'];
+                    echo $resultDisplayRegister['message'];
 
                     echo "</div>";
                 }

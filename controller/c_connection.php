@@ -4,6 +4,15 @@ require_once PATH_MODELS . 'database/UserDAO.php';
 require_once PATH_MODELS . 'exception/UserAlreadyInBaseException.php';
 
 if (isset($_POST['signUp'])) {
+    $resultDisplayRegister = handle_signUp();
+} else if (isset($_POST['signIn'])) {
+    // TODO : Connection
+}
+
+require_once(PATH_VIEWS . 'connection.php');
+
+function handle_signUp() : array
+{
     $firstname = htmlspecialchars($_POST['firstnameR']);
     $lastname = htmlspecialchars($_POST['lastnameR']);
     $email = htmlspecialchars($_POST['emailR']);
@@ -44,10 +53,5 @@ if (isset($_POST['signUp'])) {
         $resultDisplay['message'] .= "Tous les champs doivent être complétés" . "<br>";
         $resultDisplay['type'] = "error";
     }
-
-} else if (isset($_POST['signIn'])) {
-    // TODO : Connection
+    return $resultDisplay;
 }
-
-require_once(PATH_VIEWS . 'connection.php');
-
