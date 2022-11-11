@@ -1,13 +1,10 @@
 <?php
 
-require_once ('./src/model/Role.php');
+require_once('Role.php');
+require_once('database/RoleDAO.php');
 
 class User
 {
-    /**
-     * @var int $id The id of the user
-     */
-    private int $_id;
     /**
      * @var string $_lastName Last name of the user
      */
@@ -37,12 +34,38 @@ class User
      */
     private string $_favoriteMethod;
     /**
-     * @var Role $_role Role of the user
+     * @var ?Role $_role Role of the user
      */
-    private Role $_role;
+    private ?Role $_role;
 
     /**
-     * @return Role : The role of the user.
+     * @param $lastname string The last name of the user.
+     * @param $firstname string The first name of the user.
+     * @param $password string The hashed password of the user.
+     * @param $mail string The mail of the user.
+     * @param $date string The birthdate of the user with format YYYY-MM-DD.
+     * @param $adr string The address of the user.
+     */
+    public function __construct(string $lastname, string $firstname,string $mail, string $password, string $date = "", string $adr = "")
+    {
+        $this->_lastName = $lastname;
+        $this->_firstName = $firstname;
+        $this->_password = $password;
+        $this->_mail = $mail;
+        $this->_birthDate = $date;
+        $this->_address = $adr;
+        $this->_favoriteMethod = "";
+
+        $roleDAO = new RoleDAO();
+
+        $this->_role = $roleDAO->getRoleByName('Client');
+        if ($this->_role == null) {
+            $this->_role = new Role(0, 'Client');
+        }
+    }
+
+    /**
+     * @return Role The role of the user.
      */
     public function getRole() : Role
     {
@@ -50,31 +73,11 @@ class User
     }
 
     /**
-     * @param Role $role : The role of the user.
+     * @param Role $role The role of the user.
      */
     public function setRole(Role $role): void
     {
         $this->_role = $role;
-    }
-
-    /**
-     * @param $id int : The id of the user.
-     * @param $nom string : The last name of the user.
-     * @param $prenom string : The first name of the user.
-     * @param $MDP string : The hashed password of the user.
-     * @param $mail string : The mail of the user.
-     * @param $date string : The birth date of the user with format YYYY-MM-DD.
-     * @param $adr string : The address of the user.
-     */
-    public function __construct(int $id, string $nom, string $prenom, string $MDP, string $mail, string $date, string $adr)
-    {
-        $this->_id = $id;
-        $this->_lastName = $nom;
-        $this->_firstName = $prenom;
-        $this->_password = $MDP;
-        $this->_mail = $mail;
-        $this->_birthDate = $date;
-        $this->_address = $adr;
     }
 
     /**
@@ -102,7 +105,7 @@ class User
     }
 
     /**
-     * @return string The birth date of the user with format YYYY-MM-DD.
+     * @return string The birthdate of the user with format YYYY-MM-DD.
      */
     public function getBirthDate() : string
     {
@@ -115,14 +118,6 @@ class User
     public function getAddress() : string
     {
         return $this->_address;
-    }
-
-    /**
-     * @return int The id of the user.
-     */
-    public function getId() : int
-    {
-        return $this->_id;
     }
 
     /**
@@ -208,13 +203,13 @@ class User
      * @return string The string representation of the user.
      */
     public function __toString() {
-        $repr = "User n°$this->_id : \n";
+        $repr = "User : \n";
         $repr .= "\tName : " . $this->_firstName . ' ' . $this->_lastName . "\n";
         $repr .= "\tBirthdate : " . $this->_birthDate . "\n";
-        $repr .= "\tPayment method : " . $this->_favoriteMethod . '\n';
-        $repr .= "\tAdress : " . $this->_address . "\n";
+        $repr .= "\tPayment method : " . $this->_favoriteMethod . "\n";
+        $repr .= "\tAddress : " . $this->_address . "\n";
         $repr .= "\tMail : " . $this->_mail . "\n";
-        $repr .= "\tRole : " . $this->_role->getId() . " : " . $this->getRole()->getName() . "\n";
+        $repr .= "\tRole n°" . $this->_role->getId() . " : " . $this->getRole()->getName() . "\n";
 
         return $repr;
     }

@@ -3,7 +3,7 @@
 abstract class DTO
 {
     /**
-     * @var $_error Used to store a PDO error
+     * @var string $_error Used to store a PDO error
      */
     private $_error = null;
 
@@ -18,18 +18,18 @@ abstract class DTO
 
     /**
      * @param string $sql Sends the query to the database.
-     * @param array ...$args  Has at least one argument if the query is prepared statement.
+     * @param array $args  Has at least one argument if the query is prepared statement.
      * @return PDOStatement Returns the PDO statement
      */
-    private function _sendQuery(string $sql, array ...$args) : PDOStatement
+    protected function _sendQuery(string $sql, array $args) : PDOStatement
     {
         if (count($args) == 0) {
-            $pdos = Connection::getInstance()->getBdd()->query($sql);
+            $pdo = Connection::getInstance()->getBdd()->query($sql);
         } else {
-            $pdos = Connection::getInstance()->getBdd()->prepare($sql);
-            $pdos->execute($args);
+            $pdo = Connection::getInstance()->getBdd()->prepare($sql);
+            $pdo->execute($args);
         }
-        return $pdos;
+        return $pdo;
     }
 
     /**
@@ -38,16 +38,20 @@ abstract class DTO
      * @param $values array The values to insert into the fields.
      * @return PDOStatement Returns the PDO statement
      */
-    public function insertQuery(string $table, array $fields, $values)
+    public function insertQuery(string $table, array $fields, array $values)
     {
         $sql = "INSERT INTO $table";
         $sql .= " (";
         $sql .= implode(", ", $fields);
-        $sql .= ") VALUES (";
-        $sql .= implode(", ", $values);
+        $sql .= ") VALUES ( ? ";
+
+        for ($i = 1; $i < count($values); $i++) {
+            $sql .= ", ? ";
+        }
+
         $sql .= ")";
 
-        return $this->_sendQuery($sql);
+        return $this->_sendQuery($sql, $values);
     }
 
     /**
@@ -56,7 +60,7 @@ abstract class DTO
      * @param string $value The value to identify the row to update.
      * @return PDOStatement Returns the PDO statement
      */
-    public function deleteQuery(string $table, string $field, string $value) {
+    public function deleteQuery(string $table, string $field, string $value) : PDOStatement {
         $sql = "DELETE FROM ";
         $sql .= $table;
         $sql .= " WHERE ";
@@ -64,7 +68,7 @@ abstract class DTO
         $sql .= " = ";
         $sql .= "'".$value."'";
 
-        $pdos = $this->_sendQuery($sql);
-        return $pdos;
+        return $this->_sendQuery($sql, []);
     }
+
 }

@@ -1,7 +1,7 @@
 <?php
 
-require_once ('./src/model/User.php');
-require_once ('DAO.php');
+require_once ('./model/User.php');
+require_once('DAO.php');
 
 class UserDAO extends DAO
 {
@@ -14,14 +14,16 @@ class UserDAO extends DAO
     {
         $sql = 'SELECT * FROM utilisateur WHERE mail = ? AND hash_password = ?';
         $user = $this->queryRow($sql, [$email, $hash_pass]);
-        if ($user) {
-            $tmp = new User($user[0], $user[1], $user[2], $hash_pass, $user[6], $user[3], $user[5]);
-            $tmp->setFavoriteMethod($user[4]);
 
-            $roleArray = $this->queryRow("SELECT * FROM typerole WHERE idRole = ?", [$user[7]]);
+        if ($user) {
+            $tmp = new User($user[0], $user[1], $user[5], $hash_pass, $user[2], $user[4]);
+            $tmp->setFavoriteMethod($user[3]);
+
+            print_r($user);
+
+            $roleArray = $this->queryRow("SELECT * FROM typerole WHERE idRole = ?", [$user[6]]);
 
             $tmp->setRole(new Role($roleArray[0], $roleArray[1]));
-
             return $tmp;
         } else {
             return null;

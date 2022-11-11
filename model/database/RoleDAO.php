@@ -1,7 +1,7 @@
 <?php
 
-require_once ('DAO.php');
-require_once ('./src/model/Role.php');
+require_once('DAO.php');
+require_once ('./model/Role.php');
 
 class RoleDAO extends DAO
 {

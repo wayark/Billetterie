@@ -1,25 +1,24 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
     font-family: 'Arial';
 }
 
-body{
+body {
     background-color: #383737;
 }
 
 /*--------------Header---------------*/
 
 
-
-header{
+header {
     background-color: #2D2D2D;
     display: flex;
     justify-content: space-between;
-    
+
 }
 
-.logo{
+.logo {
     width: 20vw;
     min-width: 90px;
     min-height: 32px;
@@ -27,15 +26,18 @@ header{
     align-self: center;
     margin: 1vh;
 }
-.headerButton{   
+
+.headerButton {
     height: 6vh;
 }
-.accountButton{
+
+.accountButton {
     background-color: #5F5F5F;
     border-radius: 40;
 
 }
-.cart{
+
+.cart {
     width: 2vw;
     height: 2vw;
 }
@@ -43,75 +45,76 @@ header{
 
 /*------------Connection-------------*/
 
-.connectionPage{
-    display:flex;
-    justify-content:center;
+.connectionPage {
+    display: flex;
+    justify-content: center;
 }
 
-.connection-register-frame{
+.connection-register-frame {
     background-color: #2D2D2D;
     margin-top: 10vh;
     min-width: 400px;
-    min-height:230px;
+    min-height: 230px;
     width: 50vw;
     height: 30vw;
     padding-top: 3vw;
     display: flex;
     justify-content: space-evenly;
-    border-radius:10px;
-    
+    border-radius: 10px;
+
 }
 
-.connectionForm{
+.connectionForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #E7D9AB;
-    width:20vw;
+    width: 20vw;
 }
 
-.connectionForm>p{
-    font-size:calc(12px + 2.3vw);
-    margin-bottom:3vh;
-    
+.connectionForm > p {
+    font-size: calc(12px + 2.3vw);
+    margin-bottom: 3vh;
+
 }
 
-::placeholder{
+::placeholder {
     color: #E7D9AB;
-    opacity:0.69;
-    font-size:calc(5px + 0.8vw);
-    text-align:center;
+    opacity: 0.69;
+    font-size: calc(5px + 0.8vw);
+    text-align: center;
 }
 
-input{
+input {
     background-color: #454545;
-    border:none;
-    height:2vw;
-    border-radius:10px;
+    border: none;
+    height: 2vw;
+    border-radius: 10px;
     color: #E7D9AB;
+    text-align: center;
 }
 
-.name, .surname{
+.name, .surname {
     width: 8vw;
-    margin-bottom:2vh;
+    margin-bottom: 2vh;
     min-width: 50px;
 }
 
-.connectionForm>input{
+.connectionForm > input {
     width: 16.5vw;
     min-width: 130px;
-    margin-bottom:2vh;
+    margin-bottom: 2vh;
 
 }
 
-.line{
-    width:3px ;
+.line {
+    width: 3px;
     height: 25vw;
-    min-height:210px;
+    min-height: 210px;
     background-color: #E7D9AB;
 }
 
-.connectionButton{
+.connectionButton {
     background-color: #5F5F5F;
     color: #E7D9AB;
     border: none;
@@ -120,6 +123,13 @@ input{
     border-radius: 20px;
 }
 
-.connectionButton:hover{
+.connectionButton:hover {
     background-color: #767575;
+}
+
+.registerDisplay {
+    text-align: center;
+    padding: 1vw;
+    margin-top: 2vh;
+    border-radius: 20px;
 }

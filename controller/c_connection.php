@@ -1,8 +1,9 @@
 <?php
 require_once PATH_MODELS . 'database/UserDTO.php';
 require_once PATH_MODELS . 'database/UserDAO.php';
+require_once PATH_MODELS . 'exception/UserAlreadyInBaseException.php';
 
-if (isset($_POST['registerButton'])) {
+if (isset($_POST['signUp'])) {
     $firstname = htmlspecialchars($_POST['firstnameR']);
     $lastname = htmlspecialchars($_POST['lastnameR']);
     $email = htmlspecialchars($_POST['emailR']);
@@ -17,27 +18,34 @@ if (isset($_POST['registerButton'])) {
                 $userDTO = new UserDTO();
                 $userDAO = new UserDAO();
 
-                $user = new User($userDAO->getLastId()+1, $lastname, $firstname, $password);
+                $user = new User($lastname, $firstname, $email,
+                    password_hash($password, PASSWORD_DEFAULT));
 
+                try {
+                    $userDTO->addUser($user);
+
+                    $resultDisplay['message'] = "Le compte a bien été créé";
+                    $resultDisplay['type'] = "success";
+
+                } catch (UserAlreadyInBaseException $e) {
+                    $resultDisplay['message'] = "L'adresse email est déjà utilisée";
+                    $resultDisplay['type'] = 'error';
+                }
 
             } else {
                 $resultDisplay['message'] .=  "Les mots de passe ne correspondent pas" . "<br>";
+                $resultDisplay['type'] = "error";
             }
         } else {
             $resultDisplay['message'] .= "L'adresse mail n'est pas valide" . "<br>";
+            $resultDisplay['type'] = "error";
         }
     } else {
         $resultDisplay['message'] .= "Tous les champs doivent être complétés" . "<br>";
-    }
-
-    if (empty($resultDisplay)) {
-        $resultDisplay['message'] = "Le compte a bien été créé";
-        $resultDisplay['type'] = "success";
-    } else {
         $resultDisplay['type'] = "error";
     }
 
-} else if (isset($_POST['connectionButton'])) {
+} else if (isset($_POST['signIn'])) {
     // TODO : Connection
 }
 

@@ -145,7 +145,6 @@ CREATE TABLE IF NOT EXISTS `typeticket`
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur`
 (
-    `id`                   int(11)     NOT NULL,
     `nom`                  varchar(50) NOT NULL,
     `prenom`               varchar(50) NOT NULL,
     `dateNaissance`        date        NOT NULL,
@@ -153,9 +152,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur`
     `adresse`              varchar(50) NOT NULL,
     `mail`                 varchar(50) NOT NULL,
     `role`                 int(11)     NOT NULL,
-    `hash_password`        varchar(50) NOT NULL,
+    `hash_password`        varchar(300) NOT NULL,
 
-    PRIMARY KEY (id)
+    PRIMARY KEY (mail)
 )
     ENGINE = MyISAM
     DEFAULT CHARSET = utf8;

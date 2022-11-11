@@ -1,8 +1,8 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once ('./src/model/database/Connection.php');
-require_once ('./src/model/database/RoleDAO.php');
+require_once('./model/database/Connection.php');
+require_once('./model/database/RoleDAO.php');
 
 class RoleDAOTest extends TestCase
 {

@@ -1,5 +1,7 @@
 <?php
 
+require_once('Connection.php');
+
 /**
  * This class represents an abstract Data Acess Object allows to query the database
  */
@@ -48,6 +50,7 @@ abstract class DAO
             $pdo->closeCursor();
         } catch (PDOException $e) {
             $this->_error = 'query';
+            echo $e->getMessage();
             $res = false;
         }
         return $res;
