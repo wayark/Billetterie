@@ -28,8 +28,8 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
 
                     <input name="emailR" type="text" class="emailR" placeholder="E-mail...">
 
-                    <input name="passwordR" type="text" class="passwordR" placeholder="Mot de passe...">
-                    <input name="confirmPasswordR" type="text" class="confirmPasswordR"
+                    <input name="passwordR" type="password" class="passwordR" placeholder="Mot de passe...">
+                    <input name="confirmPasswordR" type="password" class="confirmPasswordR"
                            placeholder="Confirmer mot de passe">
 
                     <button name="signUp" class="connectionButton">Inscription</button>
