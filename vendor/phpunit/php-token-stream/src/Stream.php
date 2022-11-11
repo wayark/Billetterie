@@ -218,7 +218,7 @@ class PHP_Token_Stream implements ArrayAccess, Countable, SeekableIterator
 
     /**
      * Gets the names of all files that have been included
-     * using include(), include_once(), require() or require_once().
+     * using include(), include_once(), require_once() or require_once().
      *
      * Parameter $categorize set to TRUE causing this function to return a
      * multi-dimensional array with categories in the keys of the first dimension

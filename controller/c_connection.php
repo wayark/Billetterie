@@ -1,0 +1,53 @@
+<?php
+require_once PATH_MODELS . 'database/UserDTO.php';
+require_once PATH_MODELS . 'database/UserDAO.php';
+require_once PATH_MODELS . 'exception/UserAlreadyInBaseException.php';
+
+if (isset($_POST['signUp'])) {
+    $firstname = htmlspecialchars($_POST['firstnameR']);
+    $lastname = htmlspecialchars($_POST['lastnameR']);
+    $email = htmlspecialchars($_POST['emailR']);
+    $password = htmlspecialchars($_POST['passwordR']);
+    $confirmPassword = htmlspecialchars($_POST['confirmPasswordR']);
+
+    $resultDisplay = ['message' => '', 'type' => ''];
+
+    if (!empty($firstname) && !empty($lastname) && !empty($email) && !empty($password) && !empty($confirmPassword)) {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            if ($password == $confirmPassword) {
+                $userDTO = new UserDTO();
+                $userDAO = new UserDAO();
+
+                $user = new User($lastname, $firstname, $email,
+                    password_hash($password, PASSWORD_DEFAULT));
+
+                try {
+                    $userDTO->addUser($user);
+
+                    $resultDisplay['message'] = "Le compte a bien été créé";
+                    $resultDisplay['type'] = "success";
+
+                } catch (UserAlreadyInBaseException $e) {
+                    $resultDisplay['message'] = "L'adresse email est déjà utilisée";
+                    $resultDisplay['type'] = 'error';
+                }
+
+            } else {
+                $resultDisplay['message'] .=  "Les mots de passe ne correspondent pas" . "<br>";
+                $resultDisplay['type'] = "error";
+            }
+        } else {
+            $resultDisplay['message'] .= "L'adresse mail n'est pas valide" . "<br>";
+            $resultDisplay['type'] = "error";
+        }
+    } else {
+        $resultDisplay['message'] .= "Tous les champs doivent être complétés" . "<br>";
+        $resultDisplay['type'] = "error";
+    }
+
+} else if (isset($_POST['signIn'])) {
+    // TODO : Connection
+}
+
+require_once(PATH_VIEWS . 'connection.php');
+
