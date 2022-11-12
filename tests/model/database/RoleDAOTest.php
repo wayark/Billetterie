@@ -19,12 +19,12 @@ class RoleDAOTest extends TestCase
     public function setUp(): void
     {
         $this->roleDAO = new RoleDAO();
-        self::$bdd->exec("INSERT INTO typerole VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO roletype VALUES (-1, 'Client')");
     }
 
     public function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM typerole WHERE idRole = -1");
+        self::$bdd->exec("DELETE FROM roletype WHERE idRole = -1");
     }
 
     public function test_getRoleById_shouldReturnTheRole_whenRoleExistInBase()

@@ -37,4 +37,12 @@ class Role
     {
         return $this->_name;
     }
+
+    /**
+     * @return string The name of the role
+     */
+    public function __toString() : string
+    {
+        return "Role n°".$this->_id." : ".$this->_name;
+    }
 }

@@ -6,6 +6,11 @@ require_once('database/RoleDAO.php');
 class User
 {
     /**
+     * @var int $id The id of the user
+     */
+    private int $_id;
+
+    /**
      * @var string $_lastName Last name of the user
      */
     private string $_lastName;
@@ -46,8 +51,9 @@ class User
      * @param $date string The birthdate of the user with format YYYY-MM-DD.
      * @param $adr string The address of the user.
      */
-    public function __construct(string $lastname, string $firstname,string $mail, string $password, string $date = "", string $adr = "")
+    public function __construct(int $id, string $lastname, string $firstname,string $mail, string $password, string $date = "", string $adr = "")
     {
+        $this->_id = $id;
         $this->_lastName = $lastname;
         $this->_firstName = $firstname;
         $this->_password = $password;
@@ -62,6 +68,23 @@ class User
         if ($this->_role == null) {
             $this->_role = new Role(0, 'Client');
         }
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->_id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->_id = $id;
     }
 
     /**

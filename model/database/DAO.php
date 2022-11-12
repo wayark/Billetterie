@@ -22,9 +22,10 @@ abstract class DAO
     }
 
     /**
-     * @param string $sql  Sends the query to the database.
-     * @param array $args  Has at least one argument if the query is prepared statement.
+     * @param string $sql Sends the query to the database.
+     * @param array $args Has at least one argument if the query is prepared statement.
      * @return PDOStatement Returns the PDO statement
+     * @throws NoDatabaseException
      */
     private function _sendQuery(string $sql, array $args) : PDOStatement
     {

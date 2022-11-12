@@ -133,14 +133,15 @@ CREATE TABLE IF NOT EXISTS `TypeTicket` (
 
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE IF NOT EXISTS `User` (
-    `UserLastName` int(11) NOT NULL,
+    `IdUser` int(11) NOT NULL,
+    `UserLastName` varchar(50) NOT NULL,
     `UserFirstName` varchar(50) NOT NULL,
     `DateOfBirth` date NOT NULL,
     `FavoritePaymentMode` varchar(50) NOT NULL,
     `UserAdress` varchar(50) NOT NULL,
-    `Mail` varchar(50) NOT NULL,
+    `Mail` varchar(50) NOT NULL UNIQUE ,
     `Role` int(11) NOT NULL,
     `h_Password` varchar(250) NOT NULL,
-    PRIMARY KEY (`Mail`)
+    PRIMARY KEY (`IdUser`)
     );
 COMMIT;

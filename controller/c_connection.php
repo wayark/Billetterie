@@ -11,7 +11,7 @@ if (isset($_POST['signUp'])) {
 
 require_once(PATH_VIEWS . 'connection.php');
 
-function handle_signUp() : array
+function handle_signUp(): array
 {
     $firstname = htmlspecialchars($_POST['firstnameR']);
     $lastname = htmlspecialchars($_POST['lastnameR']);
@@ -24,13 +24,14 @@ function handle_signUp() : array
     if (!empty($firstname) && !empty($lastname) && !empty($email) && !empty($password) && !empty($confirmPassword)) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             if ($password == $confirmPassword) {
-                $userDTO = new UserDTO();
-                $userDAO = new UserDAO();
-
-                $user = new User($lastname, $firstname, $email,
-                    password_hash($password, PASSWORD_DEFAULT));
-
                 try {
+                    $userDTO = new UserDTO();
+                    $userDAO = new UserDAO();
+
+                    $user = new User($userDAO->getLastId(), $lastname, $firstname, $email,
+                        password_hash($password, PASSWORD_DEFAULT));
+
+
                     $userDTO->addUser($user);
 
                     $resultDisplay['message'] = "Le compte a bien été créé";
@@ -39,10 +40,16 @@ function handle_signUp() : array
                 } catch (UserAlreadyInBaseException $e) {
                     $resultDisplay['message'] = "L'adresse email est déjà utilisée";
                     $resultDisplay['type'] = 'error';
+                } catch (NoDatabaseException $e) {
+                    $resultDisplay['message'] = "La base de données n'est pas disponible";
+                    $resultDisplay['type'] = 'error';
+                } catch (Exception $e) {
+                    $resultDisplay['message'] = "Une erreur est survenue";
+                    $resultDisplay['type'] = 'error';
                 }
 
             } else {
-                $resultDisplay['message'] .=  "Les mots de passe ne correspondent pas" . "<br>";
+                $resultDisplay['message'] .= "Les mots de passe ne correspondent pas" . "<br>";
                 $resultDisplay['type'] = "error";
             }
         } else {

@@ -1,6 +1,7 @@
 <?php
 
 require_once ('./config/configuration.php');
+require_once (PATH_MODELS.'exception/NoDatabaseException.php');
 
 class Connection
 {
@@ -14,11 +15,18 @@ class Connection
 
     /**
      * @return Connection|null The instance of the connection
+     * @throws NoDatabaseException
      */
     public static function getInstance() : Connection
     {
         if (is_null(self::$instance)) {
-            self::$instance = new Connection();
+            try {
+                self::$instance = new Connection();
+            } catch (PDOException $e) {
+                if ($e->getCode() == 2002) {
+                    throw new NoDatabaseException();
+                }
+            }
         }
         return self::$instance;
     }

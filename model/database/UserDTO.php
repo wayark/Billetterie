@@ -10,8 +10,9 @@ class UserDTO extends DTO
      */
     public function addUser(User $userToAdd)
     {
-        $fields = ['nom', 'prenom', 'dateNaissance', 'modeDePayementFavori', 'adresse', 'mail', 'role', 'hash_password'];
+        $fields = ['idUser', 'UserLastName', 'UserFirstName', 'DateOfBirth', 'FavoritePaymentMode', 'UserAdress', 'Mail', 'Role', 'h_password'];
         $values = [
+            $userToAdd->getId(),
             $userToAdd->getLastName(),
             $userToAdd->getFirstName(),
             $userToAdd->getBirthDate(),
@@ -29,7 +30,7 @@ class UserDTO extends DTO
         }
 
         try {
-            $this->insertQuery('utilisateur', $fields, $values);
+            $this->insertQuery('user', $fields, $values);
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) {
                 throw new UserAlreadyInBaseException();
@@ -43,7 +44,7 @@ class UserDTO extends DTO
      */
     public function deleteUser(User $userToDelete)
     {
-        $this->deleteQuery('utilisateur', 'mail', $userToDelete->getMail());
+        $this->deleteQuery('user', 'mail', $userToDelete->getMail());
     }
 
     /**
@@ -52,14 +53,16 @@ class UserDTO extends DTO
      */
     public function updateUser(User $userToUpdate)
     {
-        $fields = ['nom', 'prenom', 'dateNaissance', 'modeDePayementFavori', 'adresse', 'role'];
+        $fields = ['UserLastName', 'UserFirstName', 'DateOfBirth', 'FavoritePaymentMode', 'UserAdress', 'Mail', 'Role', 'h_password'];
         $values = [
             $userToUpdate->getLastName(),
             $userToUpdate->getFirstName(),
             $userToUpdate->getBirthDate(),
             $userToUpdate->getFavoriteMethod(),
             $userToUpdate->getAddress(),
-            $userToUpdate->getRole()->getId()
+            $userToUpdate->getMail(),
+            $userToUpdate->getRole()->getId(),
+            $userToUpdate->getPassword()
         ];
 
         for ($i = 0; $i < count($fields); $i++) {
@@ -67,8 +70,8 @@ class UserDTO extends DTO
                 $values[$i] = "NULL";
             }
 
-            $this->_sendQuery("UPDATE utilisateur SET $fields[$i] = ? WHERE mail = ?",
-                [$values[$i], $userToUpdate->getMail()]);
+            $this->_sendQuery("UPDATE user SET $fields[$i] = ? WHERE IdUser = ?",
+                [$values[$i], $userToUpdate->getId()]);
         }
     }
 }
