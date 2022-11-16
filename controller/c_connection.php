@@ -28,7 +28,7 @@ function handle_signUp(): array
                     $userDTO = new UserDTO();
                     $userDAO = new UserDAO();
 
-                    $user = new User($userDAO->getLastId(), $lastname, $firstname, $email,
+                    $user = new User($userDAO->getLastId()+1, $lastname, $firstname, $email,
                         password_hash($password, PASSWORD_DEFAULT));
 
 
@@ -38,6 +38,7 @@ function handle_signUp(): array
                     $resultDisplay['type'] = "success";
 
                 } catch (UserAlreadyInBaseException $e) {
+                    echo $e->getMessage();
                     $resultDisplay['message'] = "L'adresse email est déjà utilisée";
                     $resultDisplay['type'] = 'error';
                 } catch (NoDatabaseException $e) {

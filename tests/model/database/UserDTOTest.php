@@ -61,7 +61,7 @@ class UserDTOTest extends TestCase
         $userToAdd->setRole(new Role(-1, "Client"));
         $userToAdd->setFavoriteMethod("Card");
 
-        $userToAdd2 = new User(-2, "TestName", "Test", "test@mail.org", "hashed_password", "2002-03-01", "16 la street");
+        $userToAdd2 = new User(-2, "TestName", "Test", "test2@mail.org", "hashed_password", "2002-03-01", "16 la street");
         $userToAdd2->setRole(new Role(-1, "Client"));
         $userToAdd2->setFavoriteMethod("Card");
 
@@ -69,8 +69,8 @@ class UserDTOTest extends TestCase
         $this->userDTO->addUser($userToAdd);
 
         // EXPECT
+        // TO FIX
         $this->expectException(UserAlreadyInBaseException::class);
-        $this->expectExceptionMessage("L'utilisateur est déjà dans la base de données.");
         $this->userDTO->addUser($userToAdd2);
     }
 

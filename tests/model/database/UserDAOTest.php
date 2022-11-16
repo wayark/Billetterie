@@ -70,11 +70,4 @@ VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', 'Paypal', '1 rue de
         self::assertNotNull($user);
         self::assertEquals($expectedUser, $user);
     }
-    
-    public function test_getLastId_shouldReturnTheLastId_whenUserExistInBase()
-    {
-        $expected = -1;
-        $lastId = $this->userDAO->getLastId();
-        $this->assertEquals($expected, $lastId);
-    }
 }
