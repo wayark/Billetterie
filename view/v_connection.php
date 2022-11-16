@@ -26,7 +26,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
                     </div>
 
 
-                    <input name="emailR" type="text" class="emailR" placeholder="E-mail...">
+                    <input name="emailR" type="email" class="emailR" placeholder="E-mail...">
 
                     <input name="passwordR" type="password" class="passwordR" placeholder="Mot de passe...">
                     <input name="confirmPasswordR" type="password" class="confirmPasswordR"
