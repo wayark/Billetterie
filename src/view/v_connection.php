@@ -1,6 +1,8 @@
 <?php require_once(PATH_VIEWS . 'header.php'); //header of the page 
 ?>
 
+<link href="<?= PATH_CSS ?>connection.css" rel="stylesheet">
+
 <section class="connectionPage">
     <div class="connection-register-frame">
         <form method="post" action="./index.php?page=connection" class="connectionForm">

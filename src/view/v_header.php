@@ -20,3 +20,14 @@
         </div>
 
     </header>
+    <nav>
+        <div class="concert-nav">
+            <p>Concert</p>
+        </div>
+        <div class="search-nav">
+            <p>Recherche</p>
+        </div>
+        <div class="contact-nav">
+            <p>Contact</p>
+        </div>
+    </nav>
