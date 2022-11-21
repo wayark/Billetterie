@@ -1,13 +1,12 @@
 <head>
     <link rel="stylesheet" href="../asset/css/reception.css">
 </head>
+<body>
+<?php
+require_once PATH_VIEWS . 'header.php';
+?>
 
 <section id="container">
-    <ul id="options">
-        <li><a href="">Concert</a></li>
-        <li><a href="">Recherche</a></li>
-        <li><a href="">Contact</a></li>
-    </ul>
     <div id="eventsimages">
         <div class="tendancies t2">
             <img src="../.ressources/branches.png" alt="">
@@ -28,7 +27,7 @@
         </div>
         <input type="text" placeholder="Rechercher un concert...">
     </div>
-    <article id="events-container">   
+    <article id="events-container">
         <div class=events id="event1">
             <div class="eventimg">
                 <img src="../.ressources/branches.png" alt="">
@@ -65,3 +64,8 @@
         </div>
     </article>
 </section>
+
+<?php
+require_once PATH_VIEWS . 'footer.php';
+?>
+</body>

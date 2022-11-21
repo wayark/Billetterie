@@ -12,12 +12,18 @@
 
 <body>
     <header>
-        <img src="<?= PATH_IMAGES ?>logoWatiGold.png" alt="logo" class="logo">
+        <a href="./index.php">
+            <img src="<?= PATH_IMAGES ?>logoWatiGold.png" alt="logo" class="logo">
+        </a>
         <div class="header-right-button">
-            <button class="headerButton accountButton">Mon compte</button>
-            <button class="headerButton cartButton">
-                <img src="<?= PATH_IMAGES ?>panier.png" alt="cart" class="cart">
-            </button>
+            <a href="./index.php?page=connection">
+                <button class="headerButton accountButton">Mon compte</button>
+            </a>
+            <a href="TODO">
+                <button class="headerButton cartButton">
+                    <img src="<?= PATH_IMAGES ?>panier.png" alt="cart" class="cart">
+                </button>
+            </a>
         </div>
 
     </header>
