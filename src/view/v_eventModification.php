@@ -12,27 +12,39 @@
             </div>
 
         </div>
-        <div class="event-modification-summary">
-            <h2>Résumé</h2>
-            <input type="text">
-            <button class="modify">Modifier</button>
-        </div>
-        <div class="event-modification-information">
-            <div class="event-modification-place">
 
+        <form action="Post">
+            <div class="event-modification-summary">
+                <h2>Résumé</h2>
+                <textarea name="" id="" cols="30" rows="10" maxlength="1000"></textarea>
             </div>
 
-            <div class="event-modification-date">
+            <div class="event-modification-information">
+                <h2>Informations</h2>
 
-            </div>
-
-            <div class="event-modification-ticket">
-                <div class="event-modification-ticket-number">
-
+                <div class="event-modification-place">
+                    <h3>Lieu</h3>
+                    <input type="text" class="textPlace">
                 </div>
-                <div class="event-modification-ticket-price"></div>
+
+                <div class="event-modification-ticket">
+                    <div>
+                        <h3>Date</h3>
+                        <input type="date" class="textDate">
+                    </div>
+                    <div>
+                        <h3>Nombre de ticket</h3>
+                        <input type="number">
+                    </div>
+                    <div>
+                        <h3>Prix des tickets</h3>
+                        <input type="number">
+                    </div>
+                </div>
+                <button class="modify">Modifier</button>
             </div>
-        </div>
+        </form>
+
     </div>
 
 </section>
