@@ -7,6 +7,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 #options {
@@ -41,7 +42,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 97vw;
     height: 50px;
     background-color: #424141;
 }
@@ -165,4 +166,37 @@ body{
     font-size: 17px;
     text-align: end;
     color: #8a8a8a;
+}
+
+#eventsimages{
+    width : 100%;
+    height : 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tendancies{
+    position : absolute;
+}
+
+.tendancies img {
+    border-radius: 20px;
+    border : 3px solid black;
+}
+
+.t1{
+}
+
+.t2 {
+    margin-right : 650px;
+    margin-top : 100px;
+    transform: scale(0.85);
+}
+
+.t3{
+    margin-left : 600px;
+    margin-top : 100px;
+    transform: scale(0.8);
 }
