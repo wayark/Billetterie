@@ -7,7 +7,7 @@ if (isset($_GET['page'])) {
         $page = '404'; //the page do not exist
     }
 } else
-    $page = 'connection';
+    $page = 'reception';
 
 
 
