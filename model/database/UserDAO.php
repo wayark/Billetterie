@@ -16,7 +16,6 @@ class UserDAO extends DAO
         $user = $this->queryRow($sql, [$email]);
 
         if ($user) {
-            print_r($user);
             $tmp = new User($user[0], $user[1], $user[2], $user[6], $user['h_Password'], $user[3], $user[5]);
 
             if (password_verify($raw_pass, $tmp->getPassword())) {
