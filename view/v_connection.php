@@ -11,7 +11,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
             <form method="post" action="./index.php?page=connection" class="connectionForm">
                 <p>Connexion</p>
                 <input name="emailC" type="text" class="emailC" placeholder="E-mail...">
-                <input name="passwordC" type="text" class="passwordC" placeholder="Mot de passe...">
+                <input name="passwordC" type="password" class="passwordC" placeholder="Mot de passe...">
                 <button name="signIn" class="connectionButton">Connexion</button>
             </form>
 

@@ -9,13 +9,13 @@ require_once PATH_VIEWS . 'header.php';
 <section id="container">
     <div id="eventsimages">
         <div class="tendancies t2">
-            <img src="../.ressources/branches.png" alt="">
+            <img src="<?= PATH_IMAGES . "branches.png"?>" alt="">
         </div>
         <div class="tendancies t1">
-            <img src="../.ressources/branches.png" alt="">
+            <img src="<?= PATH_IMAGES . "branches.png"?>" alt="">
         </div>
         <div class="tendancies t3">
-            <img src="../.ressources/branches.png" alt="">
+            <img src="<?= PATH_IMAGES . "branches.png"?>" alt="">
         </div>
     </div>
     <div id="titlepage">
@@ -30,7 +30,7 @@ require_once PATH_VIEWS . 'header.php';
     <article id="events-container">
         <div class=events id="event1">
             <div class="eventimg">
-                <img src="../.ressources/branches.png" alt="">
+                <img src="<?= PATH_IMAGES . "branches.png"?>" alt="">
             </div>
             <div class="eventtext-container">
                 <div id="containertextleft">
@@ -47,7 +47,8 @@ require_once PATH_VIEWS . 'header.php';
         </div>
         <div class=events id="event2">
             <div class="eventimg">
-                <img src="../.ressources/branches.png" alt="">
+                <img src="<?= PATH_IMAGES . "branches.png"?>" alt="">
+                
             </div>
             <div class="eventtext-container">
                 <div id="containertextleft">
