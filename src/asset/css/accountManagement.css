@@ -27,7 +27,7 @@ div>div{
     display: flex;
     flex-direction: initial;
 }
-img{
+div>img{
     align-self: flex-end;
     width: 30%;
     height: 30%;
@@ -49,4 +49,8 @@ button{
     margin-top: 5%;
     margin-left: 25%;
     margin-right: 25%;
+    color: #E7D9AB;
+    background-color: #5F5F5F;
+    border: none;
+    border-radius: 20px;
 }
