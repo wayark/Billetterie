@@ -6,7 +6,7 @@ require_once PATH_MODELS . 'exception/UserAlreadyInBaseException.php';
 if (isset($_POST['signUp'])) {
     $resultDisplayRegister = handle_signUp();
 } else if (isset($_POST['signIn'])) {
-    // TODO : Connection
+    $registerDisplayLogIn = handle_signIn();
 }
 
 require_once(PATH_VIEWS . 'connection.php');
@@ -61,4 +61,24 @@ function handle_signUp(): array
         $resultDisplay['type'] = "error";
     }
     return $resultDisplay;
+}
+
+function handle_signIn(): array {
+    $mail = htmlspecialchars($_POST['emailC']);
+    $password = htmlspecialchars($_POST['passwordC']);
+
+    $userDAO = new UserDAO();
+    $user = $userDAO->getUserByEmail($mail, $password);
+    if ($user) {
+        $_SESSION['user'] = $user;
+
+        $resultDisplay['message'] = "Connexion réussie";
+        $resultDisplay['type'] = 'success';
+
+    } else {
+        $resultDisplay['message'] = "L'adresse mail ou le mot de passe est incorrect";
+        $resultDisplay['type'] = 'error';
+    }
+    return $resultDisplay;
+
 }

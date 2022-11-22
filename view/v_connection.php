@@ -3,18 +3,37 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
 /**
  * @var $resultDisplayRegister array    Exist if register button has been clicked
  *                              Contains the text and display type to show
+ * @var $resultDisplayLogIn array       Exist if login button has been clicked
  */
 ?>
     <link rel="stylesheet" href=<?= PATH_CSS . "connection.css" ?>>
 
     <section class="connectionPage">
         <div class="connection-register-frame">
-            <form method="post" action="./index.php?page=connection" class="connectionForm">
-                <p>Connexion</p>
-                <input name="emailC" type="text" class="emailC" placeholder="E-mail...">
-                <input name="passwordC" type="password" class="passwordC" placeholder="Mot de passe...">
-                <button name="signIn" class="connectionButton">Connexion</button>
-            </form>
+            <div>
+                <form method="post" action="./index.php?page=connection" class="connectionForm">
+                    <p>Connexion</p>
+                    <input name="emailC" type="text" class="emailC" placeholder="E-mail...">
+                    <input name="passwordC" type="password" class="passwordC" placeholder="Mot de passe...">
+                    <button name="signIn" class="connectionButton">Connexion</button>
+                </form>
+
+                <?php
+                if (isset($registerDisplayLogIn)) {
+                    $firstDiv = "<div class='registerDisplay' style='background: ";
+                    if ($registerDisplayLogIn['type'] == 'success') {
+                        $firstDiv .= "lightgreen'>";
+                    } else {
+                        $firstDiv .= "lightcoral'>";
+                    }
+                    echo $firstDiv;
+
+                    echo $registerDisplayLogIn['message'];
+
+                    echo "</div>";
+                }
+                ?>
+            </div>
 
             <div class="line"></div>
 
