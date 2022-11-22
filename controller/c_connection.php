@@ -38,7 +38,6 @@ function handle_signUp(): array
                     $resultDisplay['type'] = "success";
 
                 } catch (UserAlreadyInBaseException $e) {
-                    echo $e->getMessage();
                     $resultDisplay['message'] = "L'adresse email est déjà utilisée";
                     $resultDisplay['type'] = 'error';
                 } catch (NoDatabaseException $e) {

@@ -40,13 +40,14 @@
     text-align:center;
 }
 
-input{
+input {
     background-color: #454545;
     border:none;
     height:2vw;
     min-height: 10px;
     border-radius:10px;
     color: #E7D9AB;
+    text-align: center;
 }
 
 .name, .surname{
@@ -81,3 +82,4 @@ input{
 .connectionButton:hover{
     background-color: #767575;
 }
+

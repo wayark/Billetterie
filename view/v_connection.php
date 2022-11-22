@@ -5,6 +5,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
  *                              Contains the text and display type to show
  */
 ?>
+    <link rel="stylesheet" href=<?= PATH_CSS . "connection.css" ?>>
 
     <section class="connectionPage">
         <div class="connection-register-frame">
