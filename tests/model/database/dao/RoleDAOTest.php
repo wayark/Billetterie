@@ -1,5 +1,11 @@
 <?php
+
+namespace model\database\dao;
+
+use Connection;
 use PHPUnit\Framework\TestCase;
+use Role;
+use RoleDAO;
 
 require_once('./model/database/Connection.php');
 require_once('./model/database/RoleDAO.php');
@@ -7,7 +13,7 @@ require_once('./model/database/RoleDAO.php');
 class RoleDAOTest extends TestCase
 {
     private static Connection $con;
-    private static  PDO $bdd;
+    private static PDO $bdd;
     private RoleDAO $roleDAO;
 
     public static function setUpBeforeClass(): void

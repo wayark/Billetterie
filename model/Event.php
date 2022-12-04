@@ -3,6 +3,7 @@
 require_once 'components/EventInfo.php';
 require_once 'components/EventPlace.php';
 require_once 'User.php';
+require_once 'Artist.php';
 
 class Event
 {
@@ -10,13 +11,13 @@ class Event
     private EventInfo $_eventInfo;
     private EventPlace $_eventPlace;
     private User $organizer;
-    private string $artist;
+    private Artist $artist;
 
     public function __construct(int        $idEvent = -1,
                                 EventInfo  $eventInfo = null,
                                 EventPlace $eventPlace = null,
                                 User       $organizer = null,
-                                string     $artist = "")
+                                Artist     $artist = null)
     {
         if ($eventInfo == null) {
             $eventInfo = new EventInfo();
@@ -26,6 +27,10 @@ class Event
         }
         if ($organizer == null) {
             $organizer = new User(-1, "", "", "", "", "", "");
+        }
+
+        if ($artist == null) {
+            $artist = new Artist(-1, "", "", "", "");
         }
 
         $this->idEvent = $idEvent;

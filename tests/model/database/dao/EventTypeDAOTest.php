@@ -1,9 +1,16 @@
 <?php
+
+namespace model\database\dao;
+
+use Connection;
+use EventType;
+use EventTypeDAO;
+use NoDatabaseException;
 use PHPUnit\Framework\TestCase;
 
-require_once ('./model/database/Connection.php');
-require_once ('./model/database/EventTypeDAO.php');
-require_once ('./model/components/EventType.php');
+require_once('./model/database/Connection.php');
+require_once('./model/database/EventTypeDAO.php');
+require_once('./model/components/EventType.php');
 
 class EventTypeDAOTest extends TestCase
 {

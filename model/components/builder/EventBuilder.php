@@ -54,7 +54,7 @@ class EventBuilder
         return $this;
     }
 
-    public function withTypeEvent(int $typeEvent): EventBuilder
+    public function withTypeEvent(EventType $typeEvent): EventBuilder
     {
         $this->_event->getEventInfo()->setEventType($typeEvent);
         return $this;
@@ -73,15 +73,15 @@ class EventBuilder
         return $this;
     }
 
-    public function withArtiste(int $artiste): EventBuilder
+    public function withArtist(int $artiste): EventBuilder
     {
         $this->_event->setArtist($artiste);
         return $this;
     }
 
-    public function withPhoto(int $photo): EventBuilder
+    public function withPhoto(Picture $photo): EventBuilder
     {
-        $this->_event->getEventInfo()->setPicturePath($photo);
+        $this->_event->getEventInfo()->setPicture($photo);
         return $this;
     }
 

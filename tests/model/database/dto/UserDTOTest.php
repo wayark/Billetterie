@@ -1,6 +1,14 @@
 <?php
 
+namespace model\database\dto;
+
+use Connection;
 use PHPUnit\Framework\TestCase;
+use Role;
+use User;
+use UserAlreadyInBaseException;
+use UserDAO;
+use UserDTO;
 
 require_once('./model/database/Connection.php');
 require_once('./model/database/UserDTO.php');

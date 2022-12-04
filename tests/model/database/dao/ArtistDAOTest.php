@@ -1,5 +1,11 @@
 <?php
 
+namespace model\database\dao;
+
+use Artist;
+use ArtistDAO;
+use Connection;
+use NoDatabaseException;
 use PHPUnit\Framework\TestCase;
 
 require_once './model/database/Connection.php';

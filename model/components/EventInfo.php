@@ -1,21 +1,32 @@
 <?php
 
+require_once 'Picture.php';
+require_once 'EventPlace.php';
+
 class EventInfo
 {
     private string $eventDate;
-    private string $eventType;
-    private string $picturePath;
+    private EventType $eventType;
+    private Picture $picture;
     private string $eventName;
 
-    public function __construct(string $eventName = "",
-                                string $eventDate = "",
-                                string $eventType = "",
-                                string $picturePath = "")
+    public function __construct(string  $eventName = "",
+                                string  $eventDate = "",
+                                EventType  $eventType = null,
+                                Picture $picture = null)
     {
+        if ($picture == null) {
+            $picture = new Picture();
+        }
+
+        if ($eventType == null) {
+            $eventType = new EventType(-1, "");
+        }
+
         $this->eventName = $eventName;
         $this->eventDate = $eventDate;
         $this->eventType = $eventType;
-        $this->picturePath = $picturePath;
+        $this->picture = $picture;
     }
 
     /**
@@ -51,34 +62,34 @@ class EventInfo
     }
 
     /**
-     * @return string
+     * @return EventType
      */
-    public function getEventType(): string
+    public function getEventType(): EventType
     {
         return $this->eventType;
     }
 
     /**
-     * @param string $eventType
+     * @param EventType $eventType
      */
-    public function setEventType(string $eventType): void
+    public function setEventType(EventType $eventType): void
     {
         $this->eventType = $eventType;
     }
 
     /**
-     * @return string
+     * @return Picture
      */
-    public function getPicturePath(): string
+    public function getPicture() : Picture
     {
-        return $this->picturePath;
+        return $this->picture;
     }
 
     /**
-     * @param string $picturePath
+     * @param Picture $picture
      */
-    public function setPicturePath(string $picturePath): void
+    public function setPicture(Picture $picture): void
     {
-        $this->picturePath = $picturePath;
+        $this->picture = $picture;
     }
 }
