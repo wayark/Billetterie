@@ -38,7 +38,7 @@ abstract class DTO
      * @param $values array The values to insert into the fields.
      * @return PDOStatement Returns the PDO statement
      */
-    public function insertQuery(string $table, array $fields, array $values)
+    public function insertQuery(string $table, array $fields, array $values): PDOStatement
     {
         $sql = "INSERT INTO $table";
         $sql .= " (";
@@ -69,6 +69,10 @@ abstract class DTO
         $sql .= "'".$value."'";
 
         return $this->_sendQuery($sql, []);
+    }
+
+    public function updateQuery(string $table, array $fields, array $values) {
+
     }
 
 }

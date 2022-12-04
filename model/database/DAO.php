@@ -8,7 +8,7 @@ require_once('Connection.php');
 abstract class DAO
 {
     /**
-     * @var $_error Used to store a PDO error
+     * @var string | null $_error Used to store a PDO error
      */
     private ?string $_error = null;
 
@@ -16,7 +16,7 @@ abstract class DAO
      * Sends the error type, null otherwise.
      * @return string | null
      */
-    public function getError() : string
+    public function getError(): string
     {
         return $this->_error;
     }
@@ -27,7 +27,7 @@ abstract class DAO
      * @return PDOStatement Returns the PDO statement
      * @throws NoDatabaseException
      */
-    private function _sendQuery(string $sql, array $args) : PDOStatement
+    private function _sendQuery(string $sql, array $args): PDOStatement
     {
         if (count($args) == 0) {
             $pdos = Connection::getInstance()->getBdd()->query($sql);
@@ -39,8 +39,8 @@ abstract class DAO
     }
 
     /**
-     * @param string $sql  The query to send to the database, must query a single row.
-     * @param array $args  Has at least one argument if the query is prepared statement.
+     * @param string $sql The query to send to the database, must query a single row.
+     * @param array $args Has at least one argument if the query is prepared statement.
      * @return false|mixed Returns the row as an associative array, false otherwise.
      */
     public function queryRow(string $sql, array $args)
@@ -56,9 +56,9 @@ abstract class DAO
         return $res;
     }
 
-/**
-     * @param string $sql  The query to send to the database, can query multiple rows.
-     * @param ?array $args  Has at least one argument if the query is prepared statement.
+    /**
+     * @param string $sql The query to send to the database, can query multiple rows.
+     * @param ?array $args Has at least one argument if the query is prepared statement.
      * @return false|array Returns the rows as an associative 2D-array, false otherwise.
      */
     public function queryAll(string $sql, ?array $args = null)
