@@ -23,13 +23,13 @@ abstract class DAO
 
     /**
      * @param string $sql Sends the query to the database.
-     * @param array $args Has at least one argument if the query is prepared statement.
+     * @param array|null $args Has at least one argument if the query is prepared statement.
      * @return PDOStatement Returns the PDO statement
      * @throws NoDatabaseException
      */
-    private function _sendQuery(string $sql, array $args): PDOStatement
+    private function _sendQuery(string $sql, ?array $args): PDOStatement
     {
-        if (count($args) == 0) {
+        if ($args == null) {
             $pdos = Connection::getInstance()->getBdd()->query($sql);
         } else {
             $pdos = Connection::getInstance()->getBdd()->prepare($sql);
@@ -69,6 +69,9 @@ abstract class DAO
             $pdos->closeCursor();
         } catch (PDOException $e) {
             $this->_error = 'query';
+            $res = false;
+        } catch (NoDatabaseException $e) {
+            $this->_error = 'database';
             $res = false;
         }
         return $res;
