@@ -1,6 +1,6 @@
 <?php
-require_once PATH_MODELS . 'database/UserDTO.php';
-require_once PATH_MODELS . 'database/UserDAO.php';
+require_once PATH_MODELS . 'database/dto/UserDTO.php';
+require_once PATH_MODELS . 'database/dao/UserDAO.php';
 require_once PATH_MODELS . 'exception/UserAlreadyInBaseException.php';
 
 if (isset($_POST['signUp'])) {

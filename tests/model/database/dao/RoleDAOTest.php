@@ -1,14 +1,8 @@
 <?php
-
-namespace model\database\dao;
-
-use Connection;
 use PHPUnit\Framework\TestCase;
-use Role;
-use RoleDAO;
 
 require_once('./model/database/Connection.php');
-require_once('./model/database/RoleDAO.php');
+require_once('./model/database/dao/RoleDAO.php');
 
 class RoleDAOTest extends TestCase
 {

@@ -1,7 +1,7 @@
 <?php
 
 require_once('Role.php');
-require_once('database/RoleDAO.php');
+require_once('database/dao/RoleDAO.php');
 require_once('components/PersonInfo.php');
 
 class User

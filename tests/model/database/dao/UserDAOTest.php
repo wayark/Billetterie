@@ -1,16 +1,9 @@
 <?php
-
-namespace model\database\dao;
-
-use Connection;
-use NoDatabaseException;
 use PHPUnit\Framework\TestCase;
-use Role;
-use User;
-use UserDAO;
+
 
 require_once('./model/database/Connection.php');
-require_once('./model/database/UserDAO.php');
+require_once('./model/database/dao/UserDAO.php');
 
 class UserDAOTest extends TestCase
 {

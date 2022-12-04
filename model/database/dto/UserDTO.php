@@ -1,6 +1,6 @@
 <?php
 
-require_once('../DTO.php');
+require_once('./model/database/DTO.php');
 
 class UserDTO extends DTO
 {

@@ -1,15 +1,8 @@
 <?php
-
-namespace model\database\dao;
-
-use Artist;
-use ArtistDAO;
-use Connection;
-use NoDatabaseException;
 use PHPUnit\Framework\TestCase;
 
 require_once './model/database/Connection.php';
-require_once './model/database/ArtistDAO.php';
+require_once './model/database/dao/ArtistDAO.php';
 require_once './model/Artist.php';
 
 class ArtistDAOTest extends TestCase
