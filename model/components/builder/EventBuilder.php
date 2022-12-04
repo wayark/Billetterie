@@ -1,8 +1,8 @@
 <?php
 
-require_once '../../Event.php';
-require_once '../EventPlace.php';
-require_once '../EventInfo.php';
+require_once './model/Event.php';
+require_once './model/components/EventPlace.php';
+require_once './model/components/EventInfo.php';
 
 class EventBuilder
 {
@@ -73,7 +73,7 @@ class EventBuilder
         return $this;
     }
 
-    public function withArtist(int $artiste): EventBuilder
+    public function withArtist(Artist $artiste): EventBuilder
     {
         $this->_event->setArtist($artiste);
         return $this;

@@ -105,17 +105,17 @@ class Event
     }
 
     /**
-     * @return string
+     * @return Artist
      */
-    public function getArtist(): string
+    public function getArtist(): Artist
     {
         return $this->artist;
     }
 
     /**
-     * @param string $artist
+     * @param Artist $artist
      */
-    public function setArtist(string $artist): void
+    public function setArtist(Artist $artist): void
     {
         $this->artist = $artist;
     }
