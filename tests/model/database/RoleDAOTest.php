@@ -7,7 +7,7 @@ require_once('./model/database/RoleDAO.php');
 class RoleDAOTest extends TestCase
 {
     private static Connection $con;
-    private static  $bdd;
+    private static  PDO $bdd;
     private RoleDAO $roleDAO;
 
     public static function setUpBeforeClass(): void
