@@ -44,7 +44,9 @@ class EventDAO extends DAO
             ->withCountry($row['Country'])
             ->withCity($row['City'])
             ->withHall($row['Hall'])
+            ->withStreet($row['street'])
             ->withDate($row['Date'])
+            ->withDescription($row['description'])
             ->withNbPlaces(intval($row['NbPlacesPit']), intval($row['NbSeatsStaircase']));
 
         // Missing : TypeEvent, Picture, Organizer, Artist

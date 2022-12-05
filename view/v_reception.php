@@ -39,7 +39,9 @@ require_once PATH_VIEWS . 'header.php';
             $event = $allEvents[$i];
             echo '<div class=events>';
             echo    '<div class=eventimg>';
+            echo    '<a href="index.php?page=event&&event=' . $event->getIdEvent() . '">';
             echo    '<img src="'.$event->getEventInfo()->getPicture()->getPicturePath().'" alt="'.$event->getEventInfo()->getPicture()->getPictureName().'">';
+            echo    '</a>';
             echo    '</div>';
             echo '<div class="eventtext-container">';
             echo '<div id="containertextleft">

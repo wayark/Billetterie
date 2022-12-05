@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `event` (
     `Country` varchar(50) NOT NULL,
     `City` varchar(50) NOT NULL,
     `Hall` varchar(50) NOT NULL,
+    `street` varchar(200) NOT NULL,
     `Date` date NOT NULL,
     `idtypeEvent` int(11) NOT NULL,
     `idPicture` int(11) NOT NULL,
