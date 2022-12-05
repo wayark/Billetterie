@@ -63,3 +63,4 @@ require_once PATH_VIEWS . 'header.php';
 require_once PATH_VIEWS . 'footer.php';
 ?>
 </body>
+>>>>>>> Dev:view/v_reception.php
