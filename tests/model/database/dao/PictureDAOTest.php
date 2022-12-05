@@ -22,16 +22,16 @@ class PictureDAOTest extends TestCase
     public function setUp(): void
     {
         $this->pictureDAO = new PictureDAO();
-        self::$pdo->exec("INSERT INTO picture (idpicture, namepicture, descriptionpicture ) 
+        self::$pdo->exec("INSERT INTO Picture (idpicture, namepicture, descriptionpicture ) 
                                         VALUES (-1, 'test', 'First test')");
-        self::$pdo->exec("INSERT INTO picture (idpicture, namepicture, descriptionpicture ) 
+        self::$pdo->exec("INSERT INTO Picture (idpicture, namepicture, descriptionpicture ) 
                                         VALUES (-2, 'test', 'Second test')");
     }
 
     public function tearDown(): void
     {
-        self::$pdo->exec("DELETE FROM picture WHERE idpicture = -1");
-        self::$pdo->exec("DELETE FROM picture WHERE idpicture = -2");
+        self::$pdo->exec("DELETE FROM Picture WHERE idpicture = -1");
+        self::$pdo->exec("DELETE FROM Picture WHERE idpicture = -2");
     }
 
     public function test_GetPictureById_whenPictureExistInBase()

@@ -22,12 +22,12 @@ class EventDAOTest extends TestCase
     public function setUp(): void
     {
         $this->eventDAO = new EventDAO();
-        self::$pdo->exec("INSERT INTO typeevent (IdType, typeName) VALUES (-1, 'Soirée')");
-        self::$pdo->exec("INSERT INTO picture(IdPicture, NamePicture, descriptionPicture) VALUES (-1, 'test', 'test')");
-        self::$pdo->exec("INSERT INTO roletype (IdRole, roleName) VALUES (-1, 'Organisateur')");
-        self::$pdo->exec("INSERT INTO user (iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password) 
-                                        VALUES (-1, 'test', 'test', 'test', 'test', 'test', 'test@mail.com', -1, 'PASS')");
-        self::$pdo->exec("INSERT INTO artist (IdArtist, ArtistFirstName, ArtistLastName, StageName, Biography) 
+        self::$pdo->exec("INSERT INTO TypeEvent (IdType, typeName) VALUES (-1, 'Soirée')");
+        self::$pdo->exec("INSERT INTO Picture(IdPicture, NamePicture, descriptionPicture) VALUES (-1, 'test', 'test')");
+        self::$pdo->exec("INSERT INTO RoleType (IdRole, roleName) VALUES (-1, 'Organisateur')");
+        self::$pdo->exec("INSERT INTO User (iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password) 
+                                        VALUES (-1, 'test', 'test', '0000-00-00', 'test', 'test', 'test@mail.com', -1, 'PASS')");
+        self::$pdo->exec("INSERT INTO Artist (IdArtist, ArtistFirstName, ArtistLastName, StageName, Biography) 
                                         VALUES (-1, 'testFirst', 'testSecond', 'The best test', 'Let me write your bio')");
 
         self::$pdo->exec("INSERT INTO event(idevent, eventname, country, city, hall, date, idtypeevent, idpicture, organizerid, nbplacespit, nbseatsstaircase, idartist) 
@@ -37,11 +37,11 @@ class EventDAOTest extends TestCase
     public function tearDown(): void
     {
         self::$pdo->exec("DELETE FROM event WHERE idevent = -1");
-        self::$pdo->exec("DELETE FROM artist WHERE IdArtist = -1");
-        self::$pdo->exec("DELETE FROM user WHERE iduser = -1");
-        self::$pdo->exec("DELETE FROM roletype WHERE IdRole = -1");
-        self::$pdo->exec("DELETE FROM picture WHERE idpicture = -1");
-        self::$pdo->exec("DELETE FROM typeevent WHERE IdType = -1");
+        self::$pdo->exec("DELETE FROM Artist WHERE IdArtist = -1");
+        self::$pdo->exec("DELETE FROM User WHERE iduser = -1");
+        self::$pdo->exec("DELETE FROM RoleType WHERE IdRole = -1");
+        self::$pdo->exec("DELETE FROM Picture WHERE idpicture = -1");
+        self::$pdo->exec("DELETE FROM TypeEvent WHERE IdType = -1");
     }
 
     /**

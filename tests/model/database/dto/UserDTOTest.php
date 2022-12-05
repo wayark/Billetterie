@@ -28,13 +28,13 @@ class UserDTOTest extends TestCase
     {
         $this->userDTO = new UserDTO();
         $this->userDAO = new UserDAO();
-        self::$bdd->exec("INSERT INTO roletype VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO RoleType VALUES (-1, 'Client')");
     }
 
     public function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM user WHERE IdUser IN (-1, -2)");
-        self::$bdd->exec("DELETE FROM roletype WHERE idRole = -1");
+        self::$bdd->exec("DELETE FROM User WHERE IdUser IN (-1, -2)");
+        self::$bdd->exec("DELETE FROM RoleType WHERE idRole = -1");
     }
 
     /**
@@ -53,6 +53,7 @@ class UserDTOTest extends TestCase
         // EXPECT
         $addedUser = $this->userDAO->getUserByEmail("test@mail.org", "test");
 
+        $this->assertNotNull($addedUser);
         $this->assertEquals($userToAdd, $addedUser);
     }
 
@@ -72,13 +73,13 @@ class UserDTOTest extends TestCase
         $this->userDTO->deleteUser($userToAdd);
 
         // EXPECT
-        $statement = self::$bdd->query("SELECT * FROM user WHERE IdUser = -1");
+        $statement = self::$bdd->query("SELECT * FROM User WHERE IdUser = -1");
 
         $this->assertEquals(0, $statement->rowCount());
     }
 
     /**
-     * @throws UserAlreadyInBaseException
+     * @throws UserAlreadyInBaseException|NoDatabaseException
      */
     public function test_updateUser_shouldUpdateUserInDB_whenUserInBase()
     {

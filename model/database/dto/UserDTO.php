@@ -30,7 +30,7 @@ class UserDTO extends DTO
         }
 
         try {
-            $this->insertQuery('user', $fields, $values);
+            $this->insertQuery('User', $fields, $values);
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) {
                 throw new UserAlreadyInBaseException($e->getMessage());
@@ -44,12 +44,13 @@ class UserDTO extends DTO
      */
     public function deleteUser(User $userToDelete)
     {
-        $this->deleteQuery('user', 'mail', $userToDelete->getMail());
+        $this->deleteQuery('User', 'mail', $userToDelete->getMail());
     }
 
     /**
      * @param User $userToUpdate The user to update in the database.
      * @return void Updates the user in the database.
+     * @throws NoDatabaseException
      */
     public function updateUser(User $userToUpdate)
     {
@@ -70,7 +71,7 @@ class UserDTO extends DTO
                 $values[$i] = "NULL";
             }
 
-            $this->_sendQuery("UPDATE user SET $fields[$i] = ? WHERE IdUser = ?",
+            $this->_sendQuery("UPDATE User SET $fields[$i] = ? WHERE IdUser = ?",
                 [$values[$i], $userToUpdate->getId()]);
         }
     }

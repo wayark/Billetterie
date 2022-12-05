@@ -146,4 +146,4 @@ CREATE TABLE IF NOT EXISTS `User` (
     );
 COMMIT;
 
-INSERT INTO roletype(IdRole, RoleName) VALUE (0, 'Client');
+INSERT INTO RoleType(IdRole, RoleName) VALUE (0, 'Client');
