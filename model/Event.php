@@ -1,125 +1,122 @@
 <?php
-    class event extends DAO{
-        private $_IdEvent;
-        private $_Name;
-        private $_Country;
-        private $_City;
-        private $_Hall;
-        private $_Date;
-        private $_idTypeEvent;
-        private $_NbPlaces;
-        private $_idOrganisater;
-        private $_idArtiste;
-        private $_idPhotos;
 
+require_once 'components/EventInfo.php';
+require_once 'components/EventPlace.php';
+require_once 'User.php';
+require_once 'Artist.php';
 
-        private function __construct($id,$name,$country,$city,$hall,$date,$type,$nbplace,$organizer,$artiste,$photo){
-            $this->_IdEvent = $id;
-            $this->_Name = $name;
-            $this->_Country = $country;
-            $this->_City = $city;
-            $this->_Hall = $hall;
-            $this->_Date = $date;
-            $this->_idTypeEvent = $type;
-            $this->_NbPlaces = $nbplace;
-            $this->_idOrganizer = $organizer;
-            $this->_idArtiste = $artiste;
-            $this->_idPhotos = $photo;
+class Event
+{
+    private int $idEvent;
+    private EventInfo $_eventInfo;
+    private EventPlace $_eventPlace;
+    private User $organizer;
+    private Artist $artist;
+
+    public function __construct(int        $idEvent = -1,
+                                EventInfo  $eventInfo = null,
+                                EventPlace $eventPlace = null,
+                                User       $organizer = null,
+                                Artist     $artist = null)
+    {
+        if ($eventInfo == null) {
+            $eventInfo = new EventInfo();
         }
-
-
-        /*Getters Event*/
-
-
-        public function getIdEvent(){
-            return $this-> $_IdEvent;
+        if ($eventPlace == null) {
+            $eventPlace = new EventPlace();
+        }
+        if ($organizer == null) {
+            $organizer = new User(-1, "", "", "", "", "", "");
         }
 
-        public function getName(){
-            return $this-> $_Name;
+        if ($artist == null) {
+            $artist = new Artist(-1, "", "", "", "");
         }
 
-        public function getCountry(){
-            return $this-> $_Country;
-        }
-
-        public function getCity(){
-            return $this-> $_City;
-        }
-
-        public function getHall(){
-            return $this-> $_Hall;
-        }
-        
-        public function getDate(){
-            return $this-> $_Date;
-        }
-        
-        public function getTypeEvent(){
-            return $this-> $_idTypeEvent;
-        }
-        
-        public function getNbplace(){
-            return $this-> $_NbPlaces;
-        }
-        
-        public function getOrganizer(){
-            return $this-> $_idOrganisater;
-        }
-        
-        public function getArtiste(){
-            return $this-> $_idArtiste;
-        }
-
-        public function getPhoto(){
-            return $this-> $_idPhotos;
-        }
-
-
-        /*Setters Event*/
-
-
-        public function setIdEvent($id){
-            $this->_IdEvent = $id;
-        }
-
-        public function setName($name){
-            $this->_Name = $name;
-        }
-
-        public function setCountry($country){
-            $this->_Country = $country;
-        }
-
-        public function setCity($city){
-            $this->_City = $city;
-        }
-
-        public function setHall($hall){
-            $this->_Hall = $hall;
-        }
-        
-        public function setDate($date){
-            $this->_Date = $date;
-        }
-        
-        public function setTypeEvent($type){
-            $this->_idTypeEvent = $type;
-        }
-        
-        public function setNbplace($nbplace){
-            $this->_NbPlaces = $nbplace;
-        }
-        
-        public function setOrganizer($organizer){
-            $this->_idOrganizer = $organizer;
-        }
-        
-        public function setArtiste($artiste){
-            $this->_idArtiste = $artiste;
-        }
-
-        public function setPhoto($photo){
-            $this->_idPhotos = $photo;
-        }
+        $this->idEvent = $idEvent;
+        $this->_eventInfo = $eventInfo;
+        $this->_eventPlace = $eventPlace;
+        $this->organizer = $organizer;
+        $this->artist = $artist;
     }
+
+    /**
+     * @return int
+     */
+    public function getIdEvent(): int
+    {
+        return $this->idEvent;
+    }
+
+    /**
+     * @param int $idEvent
+     */
+    public function setIdEvent(int $idEvent): void
+    {
+        $this->idEvent = $idEvent;
+    }
+
+    /**
+     * @return EventInfo
+     */
+    public function getEventInfo(): EventInfo
+    {
+        return $this->_eventInfo;
+    }
+
+    /**
+     * @param EventInfo $eventInfo
+     */
+    public function setEventInfo(EventInfo $eventInfo): void
+    {
+        $this->_eventInfo = $eventInfo;
+    }
+
+    /**
+     * @return EventPlace
+     */
+    public function getEventPlace(): EventPlace
+    {
+        return $this->_eventPlace;
+    }
+
+    /**
+     * @param EventPlace $eventPlace
+     */
+    public function setEventPlace(EventPlace $eventPlace): void
+    {
+        $this->_eventPlace = $eventPlace;
+    }
+
+    /**
+     * @return User
+     */
+    public function getOrganizer(): User
+    {
+        return $this->organizer;
+    }
+
+    /**
+     * @param User $organizer
+     */
+    public function setOrganizer(User $organizer): void
+    {
+        $this->organizer = $organizer;
+    }
+
+    /**
+     * @return Artist
+     */
+    public function getArtist(): Artist
+    {
+        return $this->artist;
+    }
+
+    /**
+     * @param Artist $artist
+     */
+    public function setArtist(Artist $artist): void
+    {
+        $this->artist = $artist;
+    }
+}

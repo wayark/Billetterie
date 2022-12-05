@@ -2,14 +2,17 @@
 use PHPUnit\Framework\TestCase;
 
 require_once('./model/database/Connection.php');
-require_once('./model/database/RoleDAO.php');
+require_once('./model/database/dao/RoleDAO.php');
 
 class RoleDAOTest extends TestCase
 {
     private static Connection $con;
-    private static  $bdd;
+    private static PDO $bdd;
     private RoleDAO $roleDAO;
 
+    /**
+     * @throws NoDatabaseException
+     */
     public static function setUpBeforeClass(): void
     {
         RoleDAOTest::$con = Connection::getInstance();
@@ -19,12 +22,12 @@ class RoleDAOTest extends TestCase
     public function setUp(): void
     {
         $this->roleDAO = new RoleDAO();
-        self::$bdd->exec("INSERT INTO roletype VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO RoleType VALUES (-1, 'Client')");
     }
 
     public function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM roletype WHERE idRole = -1");
+        self::$bdd->exec("DELETE FROM RoleType WHERE idRole = -1");
     }
 
     public function test_getRoleById_shouldReturnTheRole_whenRoleExistInBase()

@@ -1,7 +1,7 @@
 <?php
 
 require_once ('./model/User.php');
-require_once('DAO.php');
+require_once('./model/database/DAO.php');
 
 class UserDAO extends DAO
 {
@@ -12,16 +12,15 @@ class UserDAO extends DAO
      */
     public function getUserByEmail(string $email, string $raw_pass) : ?User
     {
-        $sql = 'SELECT * FROM user WHERE mail = ?';
+        $sql = 'SELECT * FROM User WHERE mail = ?';
         $user = $this->queryRow($sql, [$email]);
 
         if ($user) {
             $tmp = new User($user[0], $user[1], $user[2], $user[6], $user['h_Password'], $user[3], $user[5]);
-
             if (password_verify($raw_pass, $tmp->getPassword())) {
                 $tmp->setFavoriteMethod($user[4]);
 
-                $roleArray = $this->queryRow("SELECT * FROM roletype WHERE idRole = ?", [$user['Role']]);
+                $roleArray = $this->queryRow("SELECT * FROM RoleType WHERE idRole = ?", [$user['Role']]);
 
                 $tmp->setRole(new Role($roleArray[0], $roleArray[1]));
                 return $tmp;
@@ -42,14 +41,14 @@ class UserDAO extends DAO
      */
     public function getUserById(int $id) : ?User
     {
-        $sql = 'SELECT * FROM user WHERE idUser = ?';
+        $sql = 'SELECT * FROM User WHERE idUser = ?';
         $user = $this->queryRow($sql, [$id]);
 
         if ($user) {
             $tmp = new User($user[0], $user[1], $user[2], $user[6], $user[8], $user[3], $user[5]);
             $tmp->setFavoriteMethod($user[4]);
 
-            $roleArray = $this->queryRow("SELECT * FROM roletype WHERE idRole = ?", [$user[7]]);
+            $roleArray = $this->queryRow("SELECT * FROM RoleType WHERE idRole = ?", [$user[7]]);
 
             $tmp->setRole(new Role($roleArray[0], $roleArray[1]));
             return $tmp;
@@ -63,7 +62,7 @@ class UserDAO extends DAO
      */
     public function getLastId() : int
     {
-        $sql = 'SELECT MAX(IdUser) FROM user';
+        $sql = 'SELECT MAX(IdUser) FROM User';
         $id = $this->queryRow($sql, []);
         if ($id[0] == null) {
             return 0;

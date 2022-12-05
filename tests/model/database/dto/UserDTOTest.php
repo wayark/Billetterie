@@ -1,10 +1,9 @@
 <?php
-
 use PHPUnit\Framework\TestCase;
 
 require_once('./model/database/Connection.php');
-require_once('./model/database/UserDTO.php');
-require_once('./model/database/UserDAO.php');
+require_once('./model/database/dto/UserDTO.php');
+require_once('./model/database/dao/UserDAO.php');
 require_once('./model/exception/UserAlreadyInBaseException.php');
 require_once('./model/User.php');
 require_once('./model/Role.php');
@@ -16,6 +15,9 @@ class UserDTOTest extends TestCase
     private UserDTO $userDTO;
     private UserDAO $userDAO;
 
+    /**
+     * @throws NoDatabaseException
+     */
     public static function setUpBeforeClass(): void
     {
         UserDTOTest::$con = Connection::getInstance();
@@ -26,54 +28,34 @@ class UserDTOTest extends TestCase
     {
         $this->userDTO = new UserDTO();
         $this->userDAO = new UserDAO();
-        self::$bdd->exec("INSERT INTO roletype VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO RoleType VALUES (-1, 'Client')");
     }
 
     public function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM user WHERE IdUser IN (-1, -2)");
-        self::$bdd->exec("DELETE FROM roletype WHERE idRole = -1");
-    }
-
-    public function test_addUser_shouldAddUserToDB_whenEmailOfUserNotInBase()
-    {
-        // ARRANGE
-        $userToAdd = new User(-1, "TestName", "Test", "test@mail.org", "hashed_password", "2002-03-01", "16 la street");
-        $userToAdd->setRole(new Role(-1, "Client"));
-        $userToAdd->setFavoriteMethod("Card");
-
-        // TEST
-        $this->userDTO->addUser($userToAdd);
-
-        // EXPECT
-        $addedUser = $this->userDAO->getUserByEmail("test@mail.org", "hashed_password");
-
-        $this->assertEquals($userToAdd, $addedUser);
+        self::$bdd->exec("DELETE FROM User WHERE IdUser IN (-1, -2)");
+        self::$bdd->exec("DELETE FROM RoleType WHERE idRole = -1");
     }
 
     /**
      * @throws UserAlreadyInBaseException
      */
-    /*
-    public function test_addUser_shouldThrowError_whenEmailOfUserIsInBase()
+    public function test_addUser_shouldAddUserToDB_whenEmailOfUserNotInBase()
     {
         // ARRANGE
-        $userToAdd = new User(-1, "TestName", "Test", "test@mail.org", "hashed_password", "2002-03-01", "16 la street");
+        $userToAdd = new User(-1, "TestName", "Test", "test@mail.org", "$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS", "2002-03-01", "16 la street");
         $userToAdd->setRole(new Role(-1, "Client"));
         $userToAdd->setFavoriteMethod("Card");
-
-        $userToAdd2 = new User(-2, "TestName", "Test", "test2@mail.org", "hashed_password", "2002-03-01", "16 la street");
-        $userToAdd2->setRole(new Role(-1, "Client"));
-        $userToAdd2->setFavoriteMethod("Card");
 
         // TEST
         $this->userDTO->addUser($userToAdd);
 
         // EXPECT
-        $this->expectException(UserAlreadyInBaseException::class);
-        $this->userDTO->addUser($userToAdd2);
+        $addedUser = $this->userDAO->getUserByEmail("test@mail.org", "test");
+
+        $this->assertNotNull($addedUser);
+        $this->assertEquals($userToAdd, $addedUser);
     }
-    */
 
     /**
      * @throws UserAlreadyInBaseException
@@ -91,18 +73,18 @@ class UserDTOTest extends TestCase
         $this->userDTO->deleteUser($userToAdd);
 
         // EXPECT
-        $statement = self::$bdd->query("SELECT * FROM user WHERE IdUser = -1");
+        $statement = self::$bdd->query("SELECT * FROM User WHERE IdUser = -1");
 
         $this->assertEquals(0, $statement->rowCount());
     }
 
     /**
-     * @throws UserAlreadyInBaseException
+     * @throws UserAlreadyInBaseException|NoDatabaseException
      */
     public function test_updateUser_shouldUpdateUserInDB_whenUserInBase()
     {
         // ARRANGE
-        $userToAdd = new User(-1, "TestName", "Test", "test@mail.org", "hashed_password", "2002-03-01", "16 la street");
+        $userToAdd = new User(-1, "TestName", "Test", "test@mail.org", "$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS", "2002-03-01", "16 la street");
         $userToAdd->setRole(new Role(-1, "Client"));
         $userToAdd->setFavoriteMethod("Card");
 
@@ -114,7 +96,7 @@ class UserDTOTest extends TestCase
         $this->userDTO->updateUser($userToAdd);
 
         // EXPECT
-        $updatedUser = $this->userDAO->getUserByEmail("test@mail.org", "hashed_password");
+        $updatedUser = $this->userDAO->getUserByEmail("test@mail.org", "test");
 
         $this->assertNotNull($updatedUser);
 

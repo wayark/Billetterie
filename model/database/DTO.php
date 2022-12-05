@@ -18,8 +18,9 @@ abstract class DTO
 
     /**
      * @param string $sql Sends the query to the database.
-     * @param array $args  Has at least one argument if the query is prepared statement.
+     * @param array $args Has at least one argument if the query is prepared statement.
      * @return PDOStatement Returns the PDO statement
+     * @throws NoDatabaseException
      */
     protected function _sendQuery(string $sql, array $args) : PDOStatement
     {
@@ -38,7 +39,7 @@ abstract class DTO
      * @param $values array The values to insert into the fields.
      * @return PDOStatement Returns the PDO statement
      */
-    public function insertQuery(string $table, array $fields, array $values)
+    public function insertQuery(string $table, array $fields, array $values): PDOStatement
     {
         $sql = "INSERT INTO $table";
         $sql .= " (";
@@ -69,6 +70,10 @@ abstract class DTO
         $sql .= "'".$value."'";
 
         return $this->_sendQuery($sql, []);
+    }
+
+    public function updateQuery(string $table, array $fields, array $values) {
+
     }
 
 }

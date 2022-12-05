@@ -1,9 +1,9 @@
 <?php
-
 use PHPUnit\Framework\TestCase;
 
+
 require_once('./model/database/Connection.php');
-require_once('./model/database/UserDAO.php');
+require_once('./model/database/dao/UserDAO.php');
 
 class UserDAOTest extends TestCase
 {
@@ -24,25 +24,25 @@ class UserDAOTest extends TestCase
     {
         $this->userDAO = new UserDAO();
 
-        self::$bdd->exec("INSERT INTO roletype VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO RoleType VALUES (-1, 'Client')");
 
-        self::$bdd->exec("INSERT INTO user(iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password)
-VALUES (-1, 'TestLastName', 'TestFirstName', '2003-03-18', 'Card', '1 rue de la Tech', 'tests@bot.com', -1,'aa00ce8b38d75c80bcaae1b8c33a89ab')");
-        self::$bdd->exec("INSERT INTO user(iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password)
-VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', 'Paypal', '1 rue de la Tech', 'tes2t@bot.com', -1,'1b761a9f2db00bdccfaccdec050cc732')");
+        self::$bdd->exec("INSERT INTO User(iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password)
+VALUES (-1, 'TestLastName', 'TestFirstName', '2003-03-18', 'Card', '1 rue de la Tech', 'tests@bot.com', -1,'$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS')");
+        self::$bdd->exec("INSERT INTO User(iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password)
+VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', 'Paypal', '1 rue de la Tech', 'tes2t@bot.com', -1,'$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS')");
     }
 
     public function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM user WHERE IdUser IN (-1, -2)");
-        self::$bdd->exec("DELETE FROM roletype WHERE idRole IN (-1)");
+        self::$bdd->exec("DELETE FROM User WHERE IdUser IN (-1, -2)");
+        self::$bdd->exec("DELETE FROM RoleType WHERE idRole IN (-1)");
     }
 
     public function test_GetUserByEmail_shouldReturnTheUser_whenUserExistInBase()
     {
-        $user = $this->userDAO->getUserByEmail("tests@bot.com", "aa00ce8b38d75c80bcaae1b8c33a89ab");
+        $user = $this->userDAO->getUserByEmail("tests@bot.com", "test");
 
-        $expectedUser = new User(-1, 'TestLastName', 'TestFirstName', 'tests@bot.com', 'aa00ce8b38d75c80bcaae1b8c33a89ab',
+        $expectedUser = new User(-1, 'TestLastName', 'TestFirstName', 'tests@bot.com', '$2y$10$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS',
             '2003-03-18', '1 rue de la Tech');
         $expectedUser->setRole(new Role(-1, 'Client'));
         $expectedUser->setFavoriteMethod("Card");
@@ -62,7 +62,7 @@ VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', 'Paypal', '1 rue de
     {
         $user = $this->userDAO->getUserById(-1);
 
-        $expectedUser = new User(-1, 'TestLastName', 'TestFirstName', 'tests@bot.com', 'aa00ce8b38d75c80bcaae1b8c33a89ab',
+        $expectedUser = new User(-1, 'TestLastName', 'TestFirstName', 'tests@bot.com', '$2y$10$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS',
             '2003-03-18', '1 rue de la Tech');
         $expectedUser->setRole(new Role(-1, 'Client'));
         $expectedUser->setFavoriteMethod("Card");

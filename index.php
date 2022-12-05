@@ -11,6 +11,4 @@ if (isset($_GET['page'])) {
 } else
     $page = 'reception';
 
-
-
 require_once(PATH_CONTROLLERS . $page . '.php');
