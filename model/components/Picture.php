@@ -13,7 +13,7 @@ class Picture
                                 string $pictureDescription = "")
     {
         $this->idPicture = $idPicture;
-        $this->picturePath = $picturePath;
+        $this->picturePath = PATH_IMAGES . $picturePath;
         $this->pictureName = $pictureName;
         $this->pictureDescription = $pictureDescription;
     }
@@ -43,14 +43,6 @@ class Picture
     }
 
     /**
-     * @param string $picturePath
-     */
-    public function setPicturePath(string $picturePath): void
-    {
-        $this->picturePath = $picturePath;
-    }
-
-    /**
      * @return string
      */
     public function getPictureName(): string
@@ -64,6 +56,7 @@ class Picture
     public function setPictureName(string $pictureName): void
     {
         $this->pictureName = $pictureName;
+        $this->picturePath = PATH_IMAGES . $pictureName;
     }
 
     /**

@@ -9,7 +9,7 @@ FROM event
 where IdEvent < 0;
 
 INSERT INTO Picture(IdPicture, NamePicture, descriptionPicture)
-VALUES (0, 'test', 'test');
+VALUES (0, 'branches.png', 'test');
 INSERT INTO User (iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role,
                   h_password)
 VALUES (0, 'Papy', 'Jonathan', '2003-12-12', 'paypal', '2 rue de la paix', 'titi@gmail.com', 1, 'PASS');
