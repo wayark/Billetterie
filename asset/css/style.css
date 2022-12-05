@@ -8,6 +8,10 @@ body{
     background-color: #383737;
 }
 
+body button:hover{
+    background-color: #767575;
+}
+
 /*--------------Header---------------*/
 
 
