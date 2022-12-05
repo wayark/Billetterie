@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `event` (
     `NbPlacesPit` int(11) NOT NULL,
     `NbSeatsStaircase` int(11) NOT NULL,
     `IdArtist` int(11) NOT NULL,
+    `description` VARCHAR(500),
     PRIMARY KEY (`IdEvent`),
     KEY `IdArtist` (`IdArtist`),
     KEY `IdPicture` (`IdPicture`),
@@ -145,5 +146,3 @@ CREATE TABLE IF NOT EXISTS `User` (
     PRIMARY KEY (`IdUser`)
     );
 COMMIT;
-
-INSERT INTO RoleType(IdRole, RoleName) VALUE (0, 'Client');

@@ -1,3 +1,9 @@
+<?php
+require_once './application/formatDate.php';
+/**
+ * @var array<int, Event> $allEvents Array of all the events in base
+ */
+?>
 <head>
     <link rel="stylesheet" href="../asset/css/reception.css">
 </head>
@@ -45,6 +51,28 @@ require_once PATH_VIEWS . 'header.php';
                 </div>
             </div>
         </div>
+        <?php
+        for ($i = 0; $i < count($allEvents) && $i <= 5; $i++) {
+            $event = $allEvents[$i];
+            echo '<div class=events>';
+            echo '<div class=eventimg>';
+            echo '<img src="'.$event->getEventInfo()->getPicture()->getPictureName().'" alt="'.$event->getEventInfo()->getPicture()->getPictureName().'>';
+            echo '</div>';
+
+            echo '<div class="eventtext-container">';
+            echo '<div id="containertextleft">
+                    <p class="eventtitle eventtext">'. $event->getEventInfo()->getEventName() .'</p>
+                    <p class="eventdate eventtext">'. format_date($event->getEventInfo()->getEventDate()) .'</p>
+                    <p class="eventdesc eventtext">'. $event->getEventInfo()->getEventDescription().'</p>
+                </div>';
+
+            echo '<div id="containertextright">
+                    <p class="eventplace eventtext">'.$event->getEventPlace()->getCountry().'</p>
+                    <p class="eventcity eventext">'.$event->getEventPlace()->getCity().'</p>
+                    <p class="eventplacesremaining eventtext">'. strval($event->getEventPlace()->getNbPlacesPit() + $event->getEventPlace()->getNbPlacesStair()) .'</p>
+                </div>';
+        }
+        ?>
         <div class=events id="event2">
             <div class="eventimg">
                 <img src="<?= PATH_IMAGES . "branches.png"?>" alt="">

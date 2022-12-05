@@ -2,6 +2,7 @@
 
 require_once 'Picture.php';
 require_once 'EventPlace.php';
+require_once 'EventType.php';
 
 class EventInfo
 {
@@ -9,11 +10,13 @@ class EventInfo
     private EventType $eventType;
     private Picture $picture;
     private string $eventName;
+    private string $eventDescription;
 
     public function __construct(string  $eventName = "",
                                 string  $eventDate = "",
                                 EventType  $eventType = null,
-                                Picture $picture = null)
+                                Picture $picture = null,
+                                string  $eventDescription = "")
     {
         if ($picture == null) {
             $picture = new Picture();
@@ -27,6 +30,7 @@ class EventInfo
         $this->eventDate = $eventDate;
         $this->eventType = $eventType;
         $this->picture = $picture;
+        $this->eventDescription = $eventDescription;
     }
 
     /**
@@ -91,5 +95,21 @@ class EventInfo
     public function setPicture(Picture $picture): void
     {
         $this->picture = $picture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEventDescription(): string
+    {
+        return $this->eventDescription;
+    }
+
+    /**
+     * @param string $eventDescription
+     */
+    public function setEventDescription(string $eventDescription): void
+    {
+        $this->eventDescription = $eventDescription;
     }
 }

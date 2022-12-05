@@ -1,5 +1,12 @@
 <?php
 
+require_once './model/database/DAO.php';
+require_once './model/database/dao/UserDAO.php';
+require_once './model/database/dao/EventTypeDAO.php';
+require_once './model/database/dao/ArtistDAO.php';
+require_once './model/database/dao/PictureDAO.php';
+require_once './model/components/builder/EventBuilder.php';
+
 class EventDAO extends DAO
 {
     /**

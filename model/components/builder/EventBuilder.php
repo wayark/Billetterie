@@ -85,6 +85,12 @@ class EventBuilder
         return $this;
     }
 
+    public function withDescription(string $description) : EventBuilder
+    {
+        $this->_event->getEventInfo()->setEventDescription($description);
+        return $this;
+    }
+
     public function build(): Event
     {
         return $this->_event;
