@@ -16,7 +16,7 @@
         <form action="Post">
             <div class="event-modification-summary">
                 <h2>Résumé</h2>
-                <textarea name="" id="" cols="30" rows="10" maxlength="1000"></textarea>
+                <textarea name="resume" id="" cols="30" rows="10" maxlength="1000"></textarea>
             </div>
 
             <div class="event-modification-information">
@@ -24,21 +24,21 @@
 
                 <div class="event-modification-place">
                     <h3>Lieu</h3>
-                    <input type="text" class="textPlace">
+                    <input type="text" class="textPlace" name="place">
                 </div>
 
                 <div class="event-modification-ticket">
                     <div>
                         <h3>Date</h3>
-                        <input type="date" class="textDate">
+                        <input type="date" class="textDate" name="date">
                     </div>
                     <div>
                         <h3>Nombre de ticket</h3>
-                        <input type="number">
+                        <input type="number" name="ticketNumber">
                     </div>
                     <div>
                         <h3>Prix des tickets</h3>
-                        <input type="number">
+                        <input type="number" name="ticketPrice">
                     </div>
                 </div>
                 <button class="modify">Modifier</button>
