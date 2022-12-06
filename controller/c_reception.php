@@ -1,8 +1,6 @@
 <?php
 
 require_once './model/database/dao/EventDAO.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
 
 $eventDAO = new EventDAO();
 try {
