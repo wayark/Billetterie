@@ -1,10 +1,10 @@
 <?php
 
 require_once PATH_MODELS . 'database/dao/EventDAO.php';
-$eventDAO = new EventDAO();
-try {
-    $allEvents = $eventDAO->getAllEvents();
-} catch (Exception $e) {
 
+if (isset($_GET['event'])) {
+    $eventDAO = new EventDAO();
+    $eventToDisplay = $eventDAO->getEventById($_GET['event']);
 }
+
 require_once PATH_VIEWS . "event.php";

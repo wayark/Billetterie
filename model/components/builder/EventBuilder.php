@@ -44,7 +44,7 @@ class EventBuilder
 
     public function withHall(string $hall): EventBuilder
     {
-        $this->_event->getEventPlace()->setHall($hall);
+        $this->_event->getEventPlace()->setPlaceName($hall);
         return $this;
     }
 
@@ -88,6 +88,12 @@ class EventBuilder
     public function withDescription(string $description) : EventBuilder
     {
         $this->_event->getEventInfo()->setEventDescription($description);
+        return $this;
+    }
+
+    public function withStreet(string $stree) : EventBuilder
+    {
+        $this->_event->getEventPlace()->setStreet($stree);
         return $this;
     }
 

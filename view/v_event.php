@@ -1,3 +1,9 @@
+<?php
+require_once './application/formatDate.php';
+/**
+ * @var Event $eventToDisplay The event to display
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,45 +11,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../asset/css/event.css">
-    <title>This event</title>
+    <title><?= $eventToDisplay->getEventInfo()->getEventName() ?></title>
 </head>
 <body>
+    <?php require_once PATH_VIEWS . 'header.php'; ?>
     <div id="container">
-        <ul id="options">
-            <li><a href="">Concert</a></li>
-            <li><a href="">Recherche</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
         <div id="container-description-event">
             <div id="img-title-date">
                 <img src="../.ressources/damso.png" alt="cover">
                 <div id="title-date">
-                    <h1>Ceci est un évènement</h1>
-                    <p>31/02/2023</p>
+                    <h1><?= $eventToDisplay->getEventInfo()->getEventName() ?></h1>
+                    <p><?= format_date($eventToDisplay->getEventInfo()->getEventDate()) ?></p>
                 </div>
             </div>
             <div id="summary-and-informations">
                 <div id="summary">
-                    <h1 class="title-section">Résumé :</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste quam rerum mollitia eveniet eum, facilis similique eligendi, veritatis alias commodi ea architecto dolore rem repudiandae ipsa numquam porro ad corporis reiciendis laboriosam obcaecati nesciunt dolorem! Dolorum totam dolore, doloribus harum eaque officia! Voluptates nostrum neque quas atque, quo ducimus facilis vero obcaecati excepturi, nam soluta aperiam adipisci iste alias accusamus sit aliquam nesciunt sint perferendis voluptas numquam illum error optio? Nemo molestias et pariatur. Eos corporis voluptatibus quo deserunt ad inventore temporibus cupiditate fugit, facere repellat enim culpa voluptatum? Quia, cum expedita. Saepe repellat pariatur neque, reprehenderit repudiandae tenetur mollitia.</p>
+                    <h1 class="title-section">Résumé</h1>
+                    <?= $eventToDisplay->getEventInfo()->getEventDescription() ?>
                 </div>
                 <div id="description-and-image-container">
                     <div id="informations-event">
-                        <h1 class="title-section">Informations :</h1>
+                        <h1 class="title-section">Informations</h1>
                         <div id="place">
-                            <h3 class="title-desc">-Lieu</h3>
-                            <p>Groupama-Stadium</p>
-                            <p>10 av Simone-Veil</p>
-                            <p>69150 Décines-Charpieu</p>
+                            <h3 class="title-desc">Lieu</h3>
+                            <p><?= $eventToDisplay->getEventPlace()->getPlaceName()  ?></p>
+                            <p><?= $eventToDisplay->getEventPlace()->getStreet() ?></p>
+                            <p><?= $eventToDisplay->getEventPlace()->getCity() ?></p>
+                            <p><?= $eventToDisplay->getEventPlace()->getCountry() ?></p>
                         </div>
                         <div id="date">
-                            <h3 class="title-desc">-Date</h3>
-                            <p>23 Décembre 2023 de 20h à 23h</p>
+                            <h3 class="title-desc">Date</h3>
+                            <p><?= format_date($eventToDisplay->getEventInfo()->getEventDate()) ?></p>
                         </div>
                         <div id="places">
-                            <h3 class="title-desc">-Nombre de places restantes</h3>
-                            <p>550 places en fosse (1000 au total)</p>
-                            <p>2456 places en gradin (3000 au total)</p>
+                            <h3 class="title-desc">Nombre de places restantes</h3>
+                            <p><?= $eventToDisplay->getEventPlace()->getNbPlacesPit() ?> places en fosse</p>
+                            <p><?= $eventToDisplay->getEventPlace()->getNbPlacesStair() ?> places en gradin</p>
                         </div>
                     </div>
                     <img src="../.ressources/location.png">
@@ -52,5 +55,6 @@
             </div>
         </div>
     </div>
+    <?php require_once PATH_VIEWS . 'footer.php'; ?>
 </body>
 </html>
