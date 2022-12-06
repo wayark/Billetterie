@@ -13,6 +13,9 @@ section{
     height: 10%;
     border-radius: 10px;
 }
+#submit{
+    display: none;
+}
 div, form{
     display: flex;
 }

@@ -21,7 +21,7 @@
                         <p id="mailA">toinon.math@gmail.com</p>
                         <input id="mailE" type="text">
                     </div>
-                    
+                    <input id="submit" type="submit" value="change!">
                     <button id="account" >Changer mon mot de passe</button>
                 </form>
             </div>
