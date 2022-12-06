@@ -10,17 +10,18 @@
                 <form>
                     <div class="nomPrenom">
                         <label>Prénom : </label>
-                        <p>Mathis</p>
-                        <input id="prenom" type="text">
+                        <p id="prenomA">Mathis</p>
+                        <input id="prenomE" type="text">
                         <label>Nom : </label>
-                        <p>Toinon</p>
-                        <input id="nom" type="text">
+                        <p id="nomA">Toinon</p>
+                        <input id="nomE" type="text">
                     </div>
                     <div>
                         <label>Email : </label>
-                        <p>toinon.math@gmail.com</p>
-                        <input id="mail" type="text">
+                        <p id="mailA">toinon.math@gmail.com</p>
+                        <input id="mailE" type="text">
                     </div>
+                    
                     <button id="account" >Changer mon mot de passe</button>
                 </form>
             </div>
