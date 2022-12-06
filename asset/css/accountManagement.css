@@ -13,10 +13,13 @@ section{
     height: 10%;
     border-radius: 10px;
 }
+#id{
+    width: 100%;
+ }
 #submit{
     display: none;
 }
-div, form{
+form{
     display: flex;
 }
 input{
@@ -33,6 +36,10 @@ form{
     flex-wrap: nowrap;
     flex-direction: column;
     margin: 1%;
+}
+#coteD{
+    display: flex;
+    flex-direction: column;
 }
 .nomPrenom{
     display: flex;
@@ -58,7 +65,7 @@ h1{
 label{
     font-size: larger;
 }
-button{
+#account{
     margin-top: 5%;
     margin-left: 25%;
     margin-right: 25%;

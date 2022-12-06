@@ -5,25 +5,27 @@
     <main>
         <section>
             <h1>Mon Compte</h1>
-            <div>
+            <div id="id">
                 <img src="./asset/image/IMG_1394.jpg">
-                <form>
-                    <div class="nomPrenom">
-                        <label>Prénom : </label>
-                        <p id="prenomA">Mathis</p>
-                        <input id="prenomE" type="text">
-                        <label>Nom : </label>
-                        <p id="nomA">Toinon</p>
-                        <input id="nomE" type="text">
-                    </div>
-                    <div>
-                        <label>Email : </label>
-                        <p id="mailA">toinon.math@gmail.com</p>
-                        <input id="mailE" type="text">
-                    </div>
-                    <input id="submit" type="submit" value="change!">
+                <div id="coteD">
+                    <form action="/controller/c_accountManagement.php" method="GET">
+                        <div class="nomPrenom">
+                            <label>Prénom : </label>
+                            <p id="prenomA">Mathis</p>
+                            <input id="prenomE" type="text" name="prenom">
+                            <label>Nom : </label>
+                            <p id="nomA">Toinon</p>
+                            <input id="nomE" type="text" name="nom">
+                        </div>
+                        <div>
+                            <label>Email : </label>
+                            <p id="mailA">toinon.math@gmail.com</p>
+                            <input id="mailE" type="text" name="mail">
+                        </div>
+                        <input id="submit" type="submit" name="submit" value="change !">
+                    </form>
                     <button id="account" >Changer mon mot de passe</button>
-                </form>
+                </div>
             </div>
 
         </section>
