@@ -7,14 +7,22 @@
             <h1>Mon Compte</h1>
             <div>
                 <img src="./asset/image/IMG_1394.jpg">
-                <div>
+                <form>
                     <div class="nomPrenom">
-                        <h2>Prénom : Mathis</h2>
-                        <h2>Nom : Toinon</h2>
+                        <label>Prénom : </label>
+                        <p>Mathis</p>
+                        <input id="prenom" type="text">
+                        <label>Nom : </label>
+                        <p>Toinon</p>
+                        <input id="nom" type="text">
                     </div>
-                    <h2>Email : toinon.math@gmail.com</h2>
-                    <button id="">Changer mon mot de passe</button>
-                </div>
+                    <div>
+                        <label>Email : </label>
+                        <p>toinon.math@gmail.com</p>
+                        <input id="mail" type="text">
+                    </div>
+                    <button id="account" >Changer mon mot de passe</button>
+                </form>
             </div>
 
         </section>

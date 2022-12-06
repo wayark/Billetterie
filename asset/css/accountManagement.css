@@ -9,16 +9,24 @@ section{
     margin-right: auto;
     flex-direction: column;
     background-color: #2D2D2D;
-    width: 60%;
+    width: 70%;
     height: 10%;
     border-radius: 10px;
 }
-div{
+div, form{
     display: flex;
 }
-div>div{
+input{
+    display: none;
+    width: 10%;
+    height: 20%;
+    align-self: center;
+}
+p{
+    align-self: center;
+}
+form{
     width: 100%;
-    display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     margin: 1%;
@@ -34,15 +42,17 @@ div>img{
     border-radius: 5px;
     padding: 5%;
 }
-h1, h2{
-    margin: 5%;
+h1, label, p{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 4%;
     color: #E7D9AB;
 }
 h1{
     font-size: xx-large;
     margin-bottom: 4%;
 }
-h2{
+label{
     font-size: larger;
 }
 button{
