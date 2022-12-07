@@ -72,4 +72,17 @@ class EventDAO extends DAO
 
         return $tmp->build();
     }
+    /**
+     * @return int the last id of the even
+     */
+    public function getLastId() : int
+    {
+        $sql = 'SELECT MAX(IdEvent) FROM event';
+        $id = $this->queryRow($sql, []);
+        if ($id[0] == null) {
+            return 0;
+        } else {
+            return $id[0];
+        }
+    }
 }

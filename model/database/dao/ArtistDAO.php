@@ -1,7 +1,7 @@
 <?php
 
 require_once './model/database/DAO.php';
-
+require_once './model/Artist.php';
 class ArtistDAO extends DAO
 {
     /**

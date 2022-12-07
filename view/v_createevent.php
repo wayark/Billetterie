@@ -4,9 +4,9 @@
 <link rel="stylesheet" href=<?= PATH_CSS . "createevent.css" ?>>
 <div id="pagecreateevent">
     <form method="post" action="./index.php?page=createevent" class="createeventForm">
-        <h1>Inscription</h1>
+        <h1>Création évènement</h1>
         <input name="eventName" type="text" class="eventName" placeholder="Nom de l'évènement...">
-        <input name="description" type="text" class="description"placeholder="Description...">
+        <input name="description" type="textarea" class="description"placeholder="Description...">
         <div>
             <input name="country" type="text" class="country" placeholder="Pays...">
             <input name="city" type="text" class="city" placeholder="Ville...">
@@ -37,6 +37,21 @@
         </div>
         <button name="createevent" type="submit"class="createventButton">Créer l'évènement</button>
     </form>
+    <?php
+                if (isset($resultDisplayCreateevent)) {
+                    $firstDiv = "<div class='registerDisplay' style='background: ";
+                    if ($resultDisplayCreateevent['type'] == 'success') {
+                        $firstDiv .= "lightgreen'>";
+                    } else {
+                        $firstDiv .= "lightcoral'>";
+                    }
+                    echo $firstDiv;
+
+                    echo $resultDisplayCreateevent['message'];
+
+                    echo "</div>";
+                }
+                ?>
 </div>
 
 <?php require_once(PATH_VIEWS . 'footer.php'); //header of the page

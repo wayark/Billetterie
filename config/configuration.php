@@ -2,7 +2,7 @@
 const BD_HOST = 'localhost';
 const BD_DBNAME = 'billeterie';
 const BD_USER = 'root';
-const BD_PWD = '';
+const BD_PWD = 'root';
 
 
 define('PATH_CONTROLLERS', './controller/c_');
