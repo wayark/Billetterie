@@ -1,5 +1,6 @@
 <?php
 
+require_once PATH_MODELS . 'DTO.php';
 require_once PATH_MODELS . 'Event.php';
 
 class EventDTO extends DTO
