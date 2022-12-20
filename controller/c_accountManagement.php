@@ -1,19 +1,16 @@
-<?php
-require_once(PATH_VIEWS . 'accountManagement.php');
-?>
-<?php
+<?php require_once(PATH_VIEWS . 'accountManagement.php');
+
 // Vérifier si le formulaire est soumis
-if ( isset( $_GET['submit'] ) ) {
-    /* récupérer les données du formulaire en utilisant
-       la valeur des attributs name comme clé
-      */
-    $nom = $_GET['nom'];
-    $prenom = $_GET['prenom'];
-    $mail = $_GET['mail'];
-    $adresse = $_GET['adresse'];
-    // afficher le résultat
-    echo '<h3>Informations récupérées en utilisant GET</h3>';
-    echo 'Nom : ' . $nom . ' Age : ' . $mail . ' Adresse : ' . $adresse;
-    exit;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nom = $_POST['nomA'];
+    $prenom = $_POST['prenomA'];
+    $mail = $_POST['mailA'];
+
+    // Do something with the data, e.g. send it to a database or email it to someone
 }
 ?>
+<script>
+  document.getElementById('prenomA').innerHTML = 'Name: ' + <?php echo json_encode($nom); ?>;
+  document.getElementById('nomA').innerHTML = 'Name: ' + <?php echo json_encode($mail); ?>;
+  document.getElementById('mailA').innerHTML = 'Name: ' + <?php echo json_encode($prenom); ?>;
+</script>
