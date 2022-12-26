@@ -43,6 +43,9 @@ class ArtistDAOTest extends TestCase
         ];
 
         $artists = $this->artistDAO->getAllArtists();
+        $artists = array_filter($artists, function ($artist) {
+            return $artist->getIdArtist() < 0;
+        });
         $this->assertEqualsCanonicalizing($expected, $artists);
     }
 

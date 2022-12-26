@@ -58,6 +58,9 @@ class PictureDAOTest extends TestCase
         ];
 
         $actual = $this->pictureDAO->getAllPictures();
+        $actual = array_filter($actual, function ($picture) {
+            return $picture->getIdPicture() < 0;
+        });
 
         $this->assertEqualsCanonicalizing($expected, $actual);
     }

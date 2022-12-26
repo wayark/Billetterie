@@ -58,6 +58,9 @@ class EventTypeDAOTest extends TestCase
         );
 
         $eventTypes = $this->eventTypeDAO->getAllEventType();
+        $eventTypes = array_filter($eventTypes, function ($eventType) {
+            return $eventType->getId() < 0;
+        });
         $this->assertEqualsCanonicalizing($expected, $eventTypes);
     }
 }
