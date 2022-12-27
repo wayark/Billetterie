@@ -1,6 +1,6 @@
 <?php
 
-require_once PATH_MODELS . 'DTO.php';
+require_once PATH_MODELS . 'database/DTO.php';
 require_once PATH_MODELS . 'Event.php';
 require_once './model/database/IObjectDTO.php';
 
@@ -34,9 +34,11 @@ class EventDTO extends DTO implements IObjectDTO
             $object->getEventInfo()->getEventName(),
             $object->getEventInfo()->getEventDate(),
             $object->getEventInfo()->getEventDescription(),
-            $object->getEventInfo()->getPicture()->getPicturePath(),
+            substr($object->getEventInfo()->getPicture()->getPicturePath(), strlen(PATH_IMAGES)),
             $object->getEventInfo()->getPicture()->getPictureDescription()
         ];
+
+        print_r($values);
 
         try {
             $this->insertQuery("event", $fields, $values);
@@ -73,7 +75,7 @@ class EventDTO extends DTO implements IObjectDTO
             $object->getEventInfo()->getEventName(),
             $object->getEventInfo()->getEventDate(),
             $object->getEventInfo()->getEventDescription(),
-            $object->getEventInfo()->getPicture()->getPicturePath(),
+            substr($object->getEventInfo()->getPicture()->getPicturePath(), strlen(PATH_IMAGES)),
             $object->getEventInfo()->getPicture()->getPictureDescription()
         ];
 
