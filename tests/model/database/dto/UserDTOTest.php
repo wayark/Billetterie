@@ -50,7 +50,7 @@ class UserDTOTest extends TestCase
         $userToAdd->setFavoriteMethod(new PaymentMethod(-1, "Card"));
 
         // TEST
-        $this->userDTO->addUser($userToAdd);
+        $this->userDTO->add($userToAdd);
 
         // EXPECT
         $addedUser = $this->userDAO->getUserByEmail("test@mail.org", "test");
@@ -69,10 +69,10 @@ class UserDTOTest extends TestCase
         $userToAdd->setRole(new Role(-1, "Client"));
         $userToAdd->setFavoriteMethod(new PaymentMethod(-1, "Card"));
 
-        $this->userDTO->addUser($userToAdd);
+        $this->userDTO->add($userToAdd);
 
         // TEST
-        $this->userDTO->deleteUser($userToAdd);
+        $this->userDTO->delete($userToAdd);
 
         // EXPECT
         $statement = self::$bdd->query("SELECT * FROM User WHERE ID_USER = -1");
@@ -90,12 +90,12 @@ class UserDTOTest extends TestCase
         $userToAdd->setRole(new Role(-1, "Client"));
         $userToAdd->setFavoriteMethod(new PaymentMethod(-1, "Card"));
 
-        $this->userDTO->addUser($userToAdd);
+        $this->userDTO->add($userToAdd);
 
         $userToAdd->setFirstName("NewName");
 
         // TEST
-        $this->userDTO->updateUser($userToAdd);
+        $this->userDTO->update($userToAdd);
 
         // EXPECT
         $updatedUser = $this->userDAO->getUserByEmail("test@mail.org", "test");

@@ -2,17 +2,19 @@
 
 require_once './model/database/DAO.php';
 require_once './model/Artist.php';
-class ArtistDAO extends DAO
+require_once './model/database/IObjectDAO.php';
+
+class ArtistDAO extends DAO implements IObjectDAO
 {
     /**
      * Get the artist with the given id
-     * @param int $idArtist The id of the artist
+     * @param int $id The id of the artist
      * @return Artist|null The artist or null if not found
      */
-    public function getArtistById(int $idArtist): ?Artist
+    public function getById(int $id): ?Artist
     {
         $sql = "SELECT * FROM Artist WHERE ID_ARTIST = ?";
-        $result = $this->queryRow($sql, [$idArtist]);
+        $result = $this->queryRow($sql, [$id]);
         return $this->processResult($result);
     }
 
@@ -32,7 +34,7 @@ class ArtistDAO extends DAO
      * Get all the artists
      * @return array The artists
      */
-    public function getAllArtists(): array {
+    public function getAll(): array {
         $sql = "SELECT * FROM Artist";
         $results = $this->queryAll($sql);
         $artists = array();

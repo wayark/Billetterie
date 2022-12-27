@@ -41,7 +41,7 @@ class ArtistDAOTest extends TestCase
             new Artist(-2, 'Jane', 'Doe', 'Janie', 'Biography')
         ];
 
-        $artists = $this->artistDAO->getAllArtists();
+        $artists = $this->artistDAO->getAll();
         $artists = array_filter($artists, function ($artist) {
             return $artist->getIdArtist() < 0;
         });
@@ -52,13 +52,13 @@ class ArtistDAOTest extends TestCase
     {
         $expected = new Artist(-1, 'John', 'Doe', 'Johnny', 'Biography');
 
-        $artist = $this->artistDAO->getArtistById(-1);
+        $artist = $this->artistDAO->getById(-1);
         $this->assertEquals($expected, $artist);
     }
 
     public function test_GetArtistById_shouldReturnNull_whenTheArtistNotInBase()
     {
-        $artist = $this->artistDAO->getArtistById(-3);
+        $artist = $this->artistDAO->getById(-3);
         $this->assertNull($artist);
     }
 

@@ -6,7 +6,10 @@ require_once('./model/database/DAO.php');
 class UserDAO extends DAO
 {
 
-    private string $baseQuery = "SELECT * FROM user NATURAL JOIN role_type NATURAL JOIN payment_method";
+    private string $baseQuery = "SELECT * FROM user 
+                                            NATURAL JOIN role_type 
+                                            JOIN payment_method JOIN payment_method pm 
+                                                on user.ID_FAVORITE_PAYMENT_METHOD = pm.ID_PAYMENT_METHOD";
 
     /**
      * @param $email string The email of the user to retrieve.
@@ -38,7 +41,7 @@ class UserDAO extends DAO
      */
     public function getLastId() : int
     {
-        $sql = 'SELECT MAX(IdUser) FROM User';
+        $sql = 'SELECT MAX(ID_USER) FROM User';
         $id = $this->queryRow($sql, []);
         if ($id[0] == null) {
             return 0;

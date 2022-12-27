@@ -51,6 +51,7 @@ class EventDAOTest extends TestCase
     {
         $tmp = EventBuilder::createEvent()
             ->withId(-1)
+            ->withIdLocation(-1)
             ->withStreet('testAddress')
             ->withCity('testCity')
             ->withCountry('testCountry')
@@ -68,9 +69,9 @@ class EventDAOTest extends TestCase
             ->withPhoto(new Picture('testPath', 'testPictureDescription'))
             ->build();
 
-        $expected = array(-1 => $tmp);
+        $expected = array($tmp);
 
-        $whatWeGot = $this->eventDAO->getAllEvents();
+        $whatWeGot = $this->eventDAO->getAll();
 
         $this->assertEquals($expected, $whatWeGot);
     }
@@ -79,6 +80,7 @@ class EventDAOTest extends TestCase
     {
         $tmp = EventBuilder::createEvent()
             ->withId(-1)
+            ->withIdLocation(-1)
             ->withStreet('testAddress')
             ->withCity('testCity')
             ->withCountry('testCountry')
@@ -98,14 +100,14 @@ class EventDAOTest extends TestCase
 
         $expected = $tmp;
 
-        $whatWeGot = $this->eventDAO->getEventById(-1);
+        $whatWeGot = $this->eventDAO->getById(-1);
 
         $this->assertEquals($expected, $whatWeGot);
     }
 
     public function test_getEventById_shouldReturnNullIfTheEventDoesntExist()
     {
-        $whatWeGot = $this->eventDAO->getEventById(-2);
+        $whatWeGot = $this->eventDAO->getById(-2);
 
         $this->assertNull($whatWeGot);
     }

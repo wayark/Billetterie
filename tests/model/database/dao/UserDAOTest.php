@@ -28,9 +28,9 @@ class UserDAOTest extends TestCase
         self::$bdd->exec("INSERT INTO payment_method VALUES (-1, 'Card')");
         self::$bdd->exec("INSERT INTO payment_method VALUES (-2, 'Paypal')");
 
-        self::$bdd->exec("INSERT INTO User(ID_USER, USER_LAST_NAME, USER_FIRST_NAME, DATE_OF_BIRTH, ID_PAYMENT_METHOD, USER_ADDRESS, EMAIL, ID_ROLE_TYPE, HASHED_PASSWORD)
+        self::$bdd->exec("INSERT INTO User(ID_USER, USER_LAST_NAME, USER_FIRST_NAME, DATE_OF_BIRTH, ID_FAVORITE_PAYMENT_METHOD, USER_ADDRESS, EMAIL, ID_ROLE_TYPE, HASHED_PASSWORD)
 VALUES (-1, 'TestLastName', 'TestFirstName', '2003-03-18', -1, '1 rue de la Tech', 'tests@bot.com', -1,'$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS')");
-        self::$bdd->exec("INSERT INTO User(ID_USER, USER_LAST_NAME, USER_FIRST_NAME, DATE_OF_BIRTH, ID_PAYMENT_METHOD, USER_ADDRESS, EMAIL, ID_ROLE_TYPE, HASHED_PASSWORD)
+        self::$bdd->exec("INSERT INTO User(ID_USER, USER_LAST_NAME, USER_FIRST_NAME, DATE_OF_BIRTH, ID_FAVORITE_PAYMENT_METHOD, USER_ADDRESS, EMAIL, ID_ROLE_TYPE, HASHED_PASSWORD)
 VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', -2, '1 rue de la Tech', 'tes2t@bot.com', -1,'$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS')");
     }
 

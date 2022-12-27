@@ -2,10 +2,11 @@
 
 require_once './model/database/DAO.php';
 require_once './model/database/dao/UserDAO.php';
+require_once './model/database/IObjectDAO.php';
 
 require_once './model/components/builder/EventBuilder.php';
 
-class EventDAO extends DAO
+class EventDAO extends DAO implements IObjectDAO
 {
     private string $baseQuery = "SELECT * 
                                     FROM event
@@ -17,7 +18,7 @@ class EventDAO extends DAO
     /**
      * @throws Exception
      */
-    public function getAllEvents(): array
+    public function getAll(): array
     {
         $sql = $this->baseQuery . " ORDER BY event_date ASC";
         $result = $this->queryAll($sql);
@@ -30,7 +31,7 @@ class EventDAO extends DAO
         return $events;
     }
 
-    public function getEventById(int $id): ?Event
+    public function getById(int $id): ?Event
     {
         $sql = $this->baseQuery . " WHERE ID_EVENT = ?";
         $result = $this->queryRow($sql, array($id));
@@ -49,6 +50,7 @@ class EventDAO extends DAO
             ->withId($idEvent)
             ->withName($row['EVENT_NAME'])
             ->withStreet($row['ADDRESS'])
+            ->withIdLocation($row['ID_LOCATION'])
             ->withCity($row['CITY'])
             ->withCountry($row['COUNTRY'])
             ->withPlaceName($row['PLACE_NAME'])

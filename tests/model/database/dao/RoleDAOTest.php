@@ -34,13 +34,13 @@ class RoleDAOTest extends TestCase
     {
         $expected = new Role(-1, 'Client');
 
-        $role = $this->roleDAO->getRoleById(-1);
+        $role = $this->roleDAO->getById(-1);
         $this->assertEquals($expected, $role);
     }
 
     public function test_getRoleById_shouldReturnNull_whenRoleNotInBase()
     {
-        $role = $this->roleDAO->getRoleById(-3);
+        $role = $this->roleDAO->getById(-3);
         $this->assertNull($role);
     }
 

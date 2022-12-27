@@ -97,6 +97,12 @@ class EventBuilder
         return $this;
     }
 
+    public function withIdLocation(int $idLocation) : EventBuilder
+    {
+        $this->_event->getEventPlace()->setIdLocation($idLocation);
+        return $this;
+    }
+
     public function build(): Event
     {
         return $this->_event;

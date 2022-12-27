@@ -37,13 +37,13 @@ class EventTypeDAOTest extends TestCase
     {
         $expected = new EventType(-1, 'Concert');
 
-        $eventType = $this->eventTypeDAO->getEventTypeById(-1);
+        $eventType = $this->eventTypeDAO->getById(-1);
         $this->assertEquals($expected, $eventType);
     }
 
     public function test_GetEventTypeById_shouldReturnNull_whenTheEventTypeDoesNotExist()
     {
-        $eventType = $this->eventTypeDAO->getEventTypeById(-4);
+        $eventType = $this->eventTypeDAO->getById(-4);
         $this->assertNull($eventType);
     }
 
@@ -55,7 +55,7 @@ class EventTypeDAOTest extends TestCase
             new EventType(-3, 'Exposition')
         );
 
-        $eventTypes = $this->eventTypeDAO->getAllEventType();
+        $eventTypes = $this->eventTypeDAO->getAll();
         $eventTypes = array_filter($eventTypes, function ($eventType) {
             return $eventType->getId() < 0;
         });
