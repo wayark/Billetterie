@@ -49,12 +49,12 @@ body{
     border-radius: 20px;
     background-color: #2d2d2d;
     color : white;
+    padding: 3vw;
+    margin-top: 5vh;
+    gap: 2vh;
 }
 
-/* Tous les enfants de #container-description-event */
-#container-description-event > *{
-    margin-left: 3vw;
-}
+
 
 #container-description-event img{
     margin-top: 3vw;
@@ -72,6 +72,7 @@ body{
 #title-date {
     margin-top : 3vw;
     justify-self: center;
+    margin-left: 3vw;
 }
 
 #title-date h1{

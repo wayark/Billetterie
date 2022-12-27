@@ -28,7 +28,7 @@ require_once './application/display/formatDate.php';
         <div id="summary-and-informations">
             <div id="summary">
                 <h1 class="title-section">Résumé</h1>
-                <?= $eventToDisplay->getEventInfo()->getEventDescription() ?>
+                <p><?= $eventToDisplay->getEventInfo()->getEventDescription() ?></p>
             </div>
             <div id="description-and-image-container">
                 <div id="informations-event">
@@ -51,8 +51,8 @@ require_once './application/display/formatDate.php';
                     </div>
                 </div>
                 <iframe
-                        width="450"
-                        height="250"
+                        width="600"
+                        height="450"
                         frameborder="0" style="border:0"
                         referrerpolicy="no-referrer-when-downgrade"
                         src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $eventToDisplay->getEventPlace()->getStreet() ?>,<?= $eventToDisplay->getEventPlace()->getCity() ?>,<?= $eventToDisplay->getEventPlace()->getCountry() ?>"
