@@ -72,8 +72,19 @@ abstract class DTO
         return $this->_sendQuery($sql, []);
     }
 
-    public function updateQuery(string $table, array $fields, array $values) {
+    protected function updateQuery(string $table, array $fields, array $values, string $where_field, string $where_value) : PDOStatement {
+        $sql = "UPDATE $table SET ";
+        $sql .= $fields[0] . " = ? ";
 
+        for ($i = 1; $i < count($fields); $i++) {
+            $sql .= ", " . $fields[$i] . " = ? ";
+        }
+
+        $sql .= " WHERE " . $where_field . " = ?";
+
+        $values[] = $where_value;
+
+        return $this->_sendQuery($sql, $values);
     }
 
 }

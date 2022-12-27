@@ -1,26 +1,29 @@
 <?php
 
 require_once('./model/database/DTO.php');
+require_once './model/database/IObjectDTO.php';
 
-class UserDTO extends DTO
+class UserDTO extends DTO implements IObjectDTO
 {
     /**
-     * @param User $userToAdd The user to add to the database.
+     * @param User $object The user to add to the database.
      * @throws UserAlreadyInBaseException If the user is already in the database.
      */
-    public function addUser(User $userToAdd)
+    public function add($object) : void
     {
-        $fields = ['idUser', 'UserLastName', 'UserFirstName', 'DateOfBirth', 'FavoritePaymentMode', 'UserAdress', 'Mail', 'Role', 'h_password'];
+        $fields = ['ID_USER', 'USER_LAST_NAME', 'USER_FIRST_NAME',
+            'DATE_OF_BIRTH', 'ID_FAVORITE_PAYMENT_METHOD',
+            'USER_ADDRESS', 'EMAIL', 'ID_ROLE_TYPE', 'HASHED_PASSWORD'];
         $values = [
-            $userToAdd->getId(),
-            $userToAdd->getLastName(),
-            $userToAdd->getFirstName(),
-            $userToAdd->getBirthDate(),
-            $userToAdd->getFavoriteMethod(),
-            $userToAdd->getAddress(),
-            $userToAdd->getMail(),
-            $userToAdd->getRole()->getId(),
-            $userToAdd->getPassword()
+            $object->getId(),
+            $object->getLastName(),
+            $object->getFirstName(),
+            $object->getBirthDate(),
+            $object->getFavoriteMethod()->getIdPaymentMethod(),
+            $object->getAddress(),
+            $object->getMail(),
+            $object->getRole()->getId(),
+            $object->getPassword()
         ];
 
         for ($i = 0; $i < count($values); $i++) {
@@ -34,45 +37,39 @@ class UserDTO extends DTO
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) {
                 throw new UserAlreadyInBaseException($e->getMessage());
-            };
+            }
         }
     }
 
     /**
-     * @param User $userToDelete The user to delete from the database.
+     * @param User $object The user to delete from the database.
      * @return void Deletes the user from the database.
      */
-    public function deleteUser(User $userToDelete)
+    public function delete($object) : void
     {
-        $this->deleteQuery('User', 'mail', $userToDelete->getMail());
+        $this->deleteQuery('User', 'ID_USER', $object->getId());
     }
 
     /**
-     * @param User $userToUpdate The user to update in the database.
+     * @param User $object The user to update in the database.
      * @return void Updates the user in the database.
-     * @throws NoDatabaseException
      */
-    public function updateUser(User $userToUpdate)
+    public function update($object) : void
     {
-        $fields = ['UserLastName', 'UserFirstName', 'DateOfBirth', 'FavoritePaymentMode', 'UserAdress', 'Mail', 'Role', 'h_password'];
+        $fields = ['USER_LAST_NAME', 'USER_FIRST_NAME',
+            'DATE_OF_BIRTH', 'ID_FAVORITE_PAYMENT_METHOD',
+            'USER_ADDRESS', 'EMAIL', 'ID_ROLE_TYPE', 'HASHED_PASSWORD'];
         $values = [
-            $userToUpdate->getLastName(),
-            $userToUpdate->getFirstName(),
-            $userToUpdate->getBirthDate(),
-            $userToUpdate->getFavoriteMethod(),
-            $userToUpdate->getAddress(),
-            $userToUpdate->getMail(),
-            $userToUpdate->getRole()->getId(),
-            $userToUpdate->getPassword()
+            $object->getLastName(),
+            $object->getFirstName(),
+            $object->getBirthDate(),
+            $object->getFavoriteMethod()->getIdPaymentMethod(),
+            $object->getAddress(),
+            $object->getMail(),
+            $object->getRole()->getId(),
+            $object->getPassword()
         ];
 
-        for ($i = 0; $i < count($fields); $i++) {
-            if (is_null($values[$i])) {
-                $values[$i] = "NULL";
-            }
-
-            $this->_sendQuery("UPDATE User SET $fields[$i] = ? WHERE IdUser = ?",
-                [$values[$i], $userToUpdate->getId()]);
-        }
+        $this->updateQuery('user', $fields, $values, 'ID_USER', $object->getId());
     }
 }

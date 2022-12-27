@@ -84,7 +84,7 @@ Les trois branches proposées dans ce template permettent de gérer de manière 
 
 Ce modèle est librement inspiré de l'approche GitLab Flow, pour en savoir plus : [GitLab Flow](https://www.youtube.com/watch?v=ZJuUz5jWb44).
 
-![](asset/image/branches.png)
+![](asset/image/events/branches.png)
 
 ###  3.5. <a name='Modlespourlesissuesetlesmergesrequests'></a>Modèles pour les issues et les merges requests
 

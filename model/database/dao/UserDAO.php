@@ -5,6 +5,12 @@ require_once('./model/database/DAO.php');
 
 class UserDAO extends DAO
 {
+
+    private string $baseQuery = "SELECT * FROM user 
+                                            NATURAL JOIN role_type 
+                                            JOIN payment_method JOIN payment_method pm 
+                                                on user.ID_FAVORITE_PAYMENT_METHOD = pm.ID_PAYMENT_METHOD";
+
     /**
      * @param $email string The email of the user to retrieve.
      * @param $raw_pass string The hashed password of the user to retrieve.
@@ -12,27 +18,10 @@ class UserDAO extends DAO
      */
     public function getUserByEmail(string $email, string $raw_pass) : ?User
     {
-        $sql = 'SELECT * FROM User WHERE mail = ?';
-        $user = $this->queryRow($sql, [$email]);
-
-        if ($user) {
-            $tmp = new User($user[0], $user[1], $user[2], $user[6], $user['h_Password'], $user[3], $user[5]);
-            if (password_verify($raw_pass, $tmp->getPassword())) {
-                $tmp->setFavoriteMethod($user[4]);
-
-                $roleArray = $this->queryRow("SELECT * FROM RoleType WHERE idRole = ?", [$user['Role']]);
-
-                $tmp->setRole(new Role($roleArray[0], $roleArray[1]));
-                return $tmp;
-            }
-
-            else{
-                return null;
-            }
-
-        } else {
-            return null;
-        }
+        $sql = $this->baseQuery . " WHERE EMAIL = ?";
+        $userArray = $this->queryRow($sql, [$email]);
+        if (!$userArray) return null;
+        return $this->processRow($userArray, $raw_pass);
     }
 
     /**
@@ -41,20 +30,10 @@ class UserDAO extends DAO
      */
     public function getUserById(int $id) : ?User
     {
-        $sql = 'SELECT * FROM User WHERE idUser = ?';
+        $sql = $this->baseQuery . " WHERE ID_USER = ?";
         $user = $this->queryRow($sql, [$id]);
-
-        if ($user) {
-            $tmp = new User($user[0], $user[1], $user[2], $user[6], $user[8], $user[3], $user[5]);
-            $tmp->setFavoriteMethod($user[4]);
-
-            $roleArray = $this->queryRow("SELECT * FROM RoleType WHERE idRole = ?", [$user[7]]);
-
-            $tmp->setRole(new Role($roleArray[0], $roleArray[1]));
-            return $tmp;
-        } else {
-            return null;
-        }
+        if (!$user) return null;
+        return $this->processRow($user);
     }
 
     /**
@@ -62,13 +41,30 @@ class UserDAO extends DAO
      */
     public function getLastId() : int
     {
-        $sql = 'SELECT MAX(IdUser) FROM User';
+        $sql = 'SELECT MAX(ID_USER) FROM User';
         $id = $this->queryRow($sql, []);
         if ($id[0] == null) {
             return 0;
         } else {
             return $id[0];
         }
+    }
+
+    private function processRow(array $user, string $raw_pass = null) : ?User {
+        if (!$user) return null;
+
+        $tmp = new User($user['ID_USER'], $user['USER_LAST_NAME'],
+            $user['USER_FIRST_NAME'], $user['EMAIL'],
+            $user['HASHED_PASSWORD'], $user['DATE_OF_BIRTH'], $user['USER_ADDRESS']);
+
+        if (!is_null($raw_pass)) {
+            if (!password_verify($raw_pass, $tmp->getPassword())) return null;
+        }
+
+        $tmp->setFavoriteMethod(new PaymentMethod($user['ID_PAYMENT_METHOD'], $user['PAYMENT_METHOD_NAME']));
+        $tmp->setRole(new Role($user['ID_ROLE_TYPE'], $user['ROLE_NAME']));
+
+        return $tmp;
     }
 
 }

@@ -22,25 +22,25 @@ class RoleDAOTest extends TestCase
     public function setUp(): void
     {
         $this->roleDAO = new RoleDAO();
-        self::$bdd->exec("INSERT INTO RoleType VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO role_type VALUES (-1, 'Client')");
     }
 
     public function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM RoleType WHERE idRole = -1");
+        self::$bdd->exec("DELETE FROM role_type WHERE ID_ROLE_TYPE < 0");
     }
 
     public function test_getRoleById_shouldReturnTheRole_whenRoleExistInBase()
     {
         $expected = new Role(-1, 'Client');
 
-        $role = $this->roleDAO->getRoleById(-1);
+        $role = $this->roleDAO->getById(-1);
         $this->assertEquals($expected, $role);
     }
 
     public function test_getRoleById_shouldReturnNull_whenRoleNotInBase()
     {
-        $role = $this->roleDAO->getRoleById(-3);
+        $role = $this->roleDAO->getById(-3);
         $this->assertNull($role);
     }
 

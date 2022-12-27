@@ -119,4 +119,5 @@ class Event
     {
         $this->artist = $artist;
     }
+
 }

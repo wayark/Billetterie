@@ -1,25 +1,26 @@
 <?php
 
 require_once ('./model/database/DAO.php');
+require_once './model/database/IObjectDAO.php';
 
-class EventTypeDAO extends DAO
+class EventTypeDAO extends DAO implements IObjectDAO
 {
-    public function getEventTypeById(int $idEventType) : ?EventType {
-        $sql = "SELECT * FROM TypeEvent WHERE IdType = ?";
-        $result = $this->queryRow($sql, array($idEventType));
+    public function getById(int $id) : ?EventType {
+        $sql = "SELECT * FROM event_type WHERE ID_EVENT_TYPE = ?";
+        $result = $this->queryRow($sql, array($id));
         if ($result) {
-            return new EventType(intval($result['IdType']), $result['TypeName']);
+            return new EventType(intval($result['ID_EVENT_TYPE']), $result['EVENT_TYPE_NAME']);
         } else {
             return null;
         }
     }
 
-    public function getAllEventType() : array {
-        $sql = "SELECT * FROM TypeEvent";
+    public function getAll() : array {
+        $sql = "SELECT * FROM event_type";
         $result = $this->queryAll($sql);
         $eventTypes = array();
         foreach ($result as $row) {
-            $eventTypes[] = new EventType(intval($row['IdType']), $row['TypeName']);
+            $eventTypes[] = new EventType(intval($row['ID_EVENT_TYPE']), $row['EVENT_TYPE_NAME']);
         }
         return $eventTypes;
     }

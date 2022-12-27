@@ -23,16 +23,15 @@ class ArtistDAOTest extends TestCase
     protected function setUp(): void
     {
         $this->artistDAO = new ArtistDAO();
-        self::$bdd->exec("INSERT INTO Artist(idArtist, ArtistFirstName, ArtistLastName, StageName, Biography) 
+        self::$bdd->exec("INSERT INTO artist(ID_ARTIST, ARTIST_FIRST_NAME, ARTIST_LAST_NAME, STAGE_NAME, BIOGRAPHY) 
                                     VALUES (-1, 'John', 'Doe', 'Johnny', 'Biography')");
-        self::$bdd->exec("INSERT INTO Artist(idArtist, ArtistFirstName, ArtistLastName, StageName, Biography)  
+        self::$bdd->exec("INSERT INTO artist(ID_ARTIST, ARTIST_FIRST_NAME, ARTIST_LAST_NAME, STAGE_NAME, BIOGRAPHY)  
                                     VALUES (-2, 'Jane', 'Doe', 'Janie', 'Biography')");
     }
 
     protected function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM Artist WHERE idArtist = -1");
-        self::$bdd->exec("DELETE FROM Artist WHERE idArtist = -2");
+        self::$bdd->exec("DELETE FROM Artist WHERE ID_ARTIST < 0");
     }
 
     public function test_GetAllArtists_shouldReturnAllTheArtistInBase()
@@ -42,7 +41,10 @@ class ArtistDAOTest extends TestCase
             new Artist(-2, 'Jane', 'Doe', 'Janie', 'Biography')
         ];
 
-        $artists = $this->artistDAO->getAllArtists();
+        $artists = $this->artistDAO->getAll();
+        $artists = array_filter($artists, function ($artist) {
+            return $artist->getIdArtist() < 0;
+        });
         $this->assertEqualsCanonicalizing($expected, $artists);
     }
 
@@ -50,13 +52,13 @@ class ArtistDAOTest extends TestCase
     {
         $expected = new Artist(-1, 'John', 'Doe', 'Johnny', 'Biography');
 
-        $artist = $this->artistDAO->getArtistById(-1);
+        $artist = $this->artistDAO->getById(-1);
         $this->assertEquals($expected, $artist);
     }
 
     public function test_GetArtistById_shouldReturnNull_whenTheArtistNotInBase()
     {
-        $artist = $this->artistDAO->getArtistById(-3);
+        $artist = $this->artistDAO->getById(-3);
         $this->assertNull($artist);
     }
 
