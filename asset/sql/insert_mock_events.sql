@@ -20,3 +20,15 @@ INSERT INTO event(ID_EVENT, ID_LOCATION, ID_EVENT_TYPE, ID_ORGANIZER,
                   ID_ARTIST, EVENT_NAME, EVENT_DATE, EVENT_DESCRIPTION,
                   PICTURE_PATH, PICTURE_DESCRIPTION)
 VALUE (1, 2, 1, 0, 1, 'Miel-vigne et cie', '2023-04-01 20:00:00', 'Miel-vigne et cie est un événement unique en son genre. Il s''agit d''une soirée de dégustation de vins et de miels, animée par un DJ et des animations. Vous pourrez ainsi découvrir les saveurs de la région et vous laisser emporter par la musique et la fête.', 'events/mielvigne.jpg', 'Miel-vigne et cie');
+
+INSERT INTO pricing(ID_PRICING, ID_EVENT, PRICE_AMOUNT, PRICING_NAME)
+VALUES (0, 1, 20.50, 'Tarif normal'),
+       (1, 1, 10, 'Tarif jeune'),
+
+       (2, 2, 15, 'Tarif normal'),
+       (6, 2, 5, 'Tarif étudiant'),
+
+       (7, 0, 10, 'Tarif normal'),
+       (8, 0, 5, 'Tarif étudiant'),
+       (9, 0, 15, 'Tarif groupe'),
+       (5, 0, 10, 'Tarif jeune');

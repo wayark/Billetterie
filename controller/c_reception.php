@@ -4,7 +4,7 @@ require_once './model/database/dao/EventDAO.php';
 
 $eventDAO = new EventDAO();
 try {
-    $allEvents = $eventDAO->getAllEvents();
+    $allEvents = $eventDAO->getAll();
 } catch (Exception $e) {
 }
 
