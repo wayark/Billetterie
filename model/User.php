@@ -3,6 +3,7 @@
 require_once('Role.php');
 require_once('database/dao/RoleDAO.php');
 require_once('components/PersonInfo.php');
+require_once 'PaymentMethod.php';
 
 class User
 {
@@ -21,9 +22,9 @@ class User
      */
     private string $_password;
     /**
-     * @var string $_favoriteMethod Favorite payment method of the user
+     * @var ?PaymentMethod $_favoriteMethod Favorite payment method of the user
      */
-    private string $_favoriteMethod;
+    private ?PaymentMethod $_favoriteMethod;
     /**
      * @var ?Role $_role Role of the user
      */
@@ -36,20 +37,17 @@ class User
      * @param $mail string The mail of the user.
      * @param $date string The birthdate of the user with format YYYY-MM-DD.
      * @param $adr string The address of the user.
+     * @param Role|null $role The role of the user.
+     * @param PaymentMethod|null $favoriteMethod The favorite payment method of the user.
      */
-    public function __construct(int $id, string $lastname, string $firstname, string $mail, string $hashed_password, string $date = "", string $adr = "")
+    public function __construct(int $id, string $lastname, string $firstname, string $mail, string $hashed_password,
+                                string $date = "", string $adr = "", Role $role = null, PaymentMethod $favoriteMethod = null)
     {
         $this->_id = $id;
         $this->_password = $hashed_password;
-        $this->_favoriteMethod = "";
+        $this->_favoriteMethod = $favoriteMethod;
         $this->_personInfo = new PersonInfo($lastname, $firstname, $mail, $date, $adr);
-
-        $roleDAO = new RoleDAO();
-
-        $this->_role = $roleDAO->getRoleByName('Client');
-        if ($this->_role == null) {
-            $this->_role = new Role(0, 'Client');
-        }
+        $this->_role = $role;
     }
 
 
@@ -188,18 +186,18 @@ class User
     }
 
     /**
-     * @param string $method The favorite payment method of the user.
+     * @param PaymentMethod $method The favorite payment method of the user.
      * @return void Change the favorite payment method of the user.
      */
-    public function setFavoriteMethod(string $method) : void
+    public function setFavoriteMethod(PaymentMethod $method) : void
     {
         $this->_favoriteMethod = $method;
     }
 
     /**
-     * @return string The favorite payment method of the user.
+     * @return PaymentMethod The favorite payment method of the user.
      */
-    public function getFavoriteMethod() : string
+    public function getFavoriteMethod() : PaymentMethod
     {
         return $this->_favoriteMethod;
     }

@@ -42,7 +42,7 @@ class EventBuilder
         return $this;
     }
 
-    public function withHall(string $hall): EventBuilder
+    public function withPlaceName(string $hall): EventBuilder
     {
         $this->_event->getEventPlace()->setPlaceName($hall);
         return $this;

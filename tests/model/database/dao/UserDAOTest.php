@@ -24,18 +24,21 @@ class UserDAOTest extends TestCase
     {
         $this->userDAO = new UserDAO();
 
-        self::$bdd->exec("INSERT INTO RoleType VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO role_type VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO payment_method VALUES (-1, 'Card')");
+        self::$bdd->exec("INSERT INTO payment_method VALUES (-2, 'Paypal')");
 
-        self::$bdd->exec("INSERT INTO User(iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password)
-VALUES (-1, 'TestLastName', 'TestFirstName', '2003-03-18', 'Card', '1 rue de la Tech', 'tests@bot.com', -1,'$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS')");
-        self::$bdd->exec("INSERT INTO User(iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password)
-VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', 'Paypal', '1 rue de la Tech', 'tes2t@bot.com', -1,'$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS')");
+        self::$bdd->exec("INSERT INTO User(ID_USER, USER_LAST_NAME, USER_FIRST_NAME, DATE_OF_BIRTH, ID_PAYMENT_METHOD, USER_ADDRESS, EMAIL, ID_ROLE_TYPE, HASHED_PASSWORD)
+VALUES (-1, 'TestLastName', 'TestFirstName', '2003-03-18', -1, '1 rue de la Tech', 'tests@bot.com', -1,'$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS')");
+        self::$bdd->exec("INSERT INTO User(ID_USER, USER_LAST_NAME, USER_FIRST_NAME, DATE_OF_BIRTH, ID_PAYMENT_METHOD, USER_ADDRESS, EMAIL, ID_ROLE_TYPE, HASHED_PASSWORD)
+VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', -2, '1 rue de la Tech', 'tes2t@bot.com', -1,'$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS')");
     }
 
     public function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM User WHERE IdUser IN (-1, -2)");
-        self::$bdd->exec("DELETE FROM RoleType WHERE idRole IN (-1)");
+        self::$bdd->exec("DELETE FROM User WHERE ID_USER < 0");
+        self::$bdd->exec("DELETE FROM role_type WHERE ID_ROLE_TYPE < 0");
+        self::$bdd->exec("DELETE FROM payment_method WHERE ID_PAYMENT_METHOD < 0");
     }
 
     public function test_GetUserByEmail_shouldReturnTheUser_whenUserExistInBase()
@@ -45,7 +48,7 @@ VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', 'Paypal', '1 rue de
         $expectedUser = new User(-1, 'TestLastName', 'TestFirstName', 'tests@bot.com', '$2y$10$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS',
             '2003-03-18', '1 rue de la Tech');
         $expectedUser->setRole(new Role(-1, 'Client'));
-        $expectedUser->setFavoriteMethod("Card");
+        $expectedUser->setFavoriteMethod(new PaymentMethod(-1, 'Card'));
 
         self::assertNotNull($user);
 
@@ -65,7 +68,7 @@ VALUES (-2, 'TestLastName2', 'TestFirstName2', '2003-02-20', 'Paypal', '1 rue de
         $expectedUser = new User(-1, 'TestLastName', 'TestFirstName', 'tests@bot.com', '$2y$10$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS',
             '2003-03-18', '1 rue de la Tech');
         $expectedUser->setRole(new Role(-1, 'Client'));
-        $expectedUser->setFavoriteMethod("Card");
+        $expectedUser->setFavoriteMethod(new PaymentMethod(-1, 'Card'));
 
         self::assertNotNull($user);
         self::assertEquals($expectedUser, $user);

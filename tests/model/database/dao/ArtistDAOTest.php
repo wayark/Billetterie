@@ -23,16 +23,15 @@ class ArtistDAOTest extends TestCase
     protected function setUp(): void
     {
         $this->artistDAO = new ArtistDAO();
-        self::$bdd->exec("INSERT INTO Artist(idArtist, ArtistFirstName, ArtistLastName, StageName, Biography) 
+        self::$bdd->exec("INSERT INTO artist(ID_ARTIST, ARTIST_FIRST_NAME, ARTIST_LAST_NAME, STAGE_NAME, BIOGRAPHY) 
                                     VALUES (-1, 'John', 'Doe', 'Johnny', 'Biography')");
-        self::$bdd->exec("INSERT INTO Artist(idArtist, ArtistFirstName, ArtistLastName, StageName, Biography)  
+        self::$bdd->exec("INSERT INTO artist(ID_ARTIST, ARTIST_FIRST_NAME, ARTIST_LAST_NAME, STAGE_NAME, BIOGRAPHY)  
                                     VALUES (-2, 'Jane', 'Doe', 'Janie', 'Biography')");
     }
 
     protected function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM Artist WHERE idArtist = -1");
-        self::$bdd->exec("DELETE FROM Artist WHERE idArtist = -2");
+        self::$bdd->exec("DELETE FROM Artist WHERE ID_ARTIST < 0");
     }
 
     public function test_GetAllArtists_shouldReturnAllTheArtistInBase()

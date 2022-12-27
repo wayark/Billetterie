@@ -11,7 +11,7 @@ class ArtistDAO extends DAO
      */
     public function getArtistById(int $idArtist): ?Artist
     {
-        $sql = "SELECT * FROM Artist WHERE idArtist = ?";
+        $sql = "SELECT * FROM Artist WHERE ID_ARTIST = ?";
         $result = $this->queryRow($sql, [$idArtist]);
         return $this->processResult($result);
     }
@@ -23,7 +23,7 @@ class ArtistDAO extends DAO
      */
     public function getArtistByStageName(string $stageName): ?Artist
     {
-        $sql = "SELECT * FROM Artist WHERE StageName = ?";
+        $sql = "SELECT * FROM Artist WHERE STAGE_NAME = ?";
         $result = $this->queryRow($sql, [$stageName]);
         return $this->processResult($result);
     }
@@ -52,8 +52,8 @@ class ArtistDAO extends DAO
     private function processResult($result) : ?Artist
     {
         if ($result) {
-            return new Artist($result['IdArtist'], $result['ArtistFirstName'], $result['ArtistLastName'],
-                $result['StageName'], $result['Biography']);
+            return new Artist($result['ID_ARTIST'], $result['ARTIST_FIRST_NAME'], $result['ARTIST_LAST_NAME'],
+                $result['STAGE_NAME'], $result['BIOGRAPHY']);
         } else {
             return null;
         }

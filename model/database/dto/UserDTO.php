@@ -10,13 +10,15 @@ class UserDTO extends DTO
      */
     public function addUser(User $userToAdd)
     {
-        $fields = ['idUser', 'UserLastName', 'UserFirstName', 'DateOfBirth', 'FavoritePaymentMode', 'UserAdress', 'Mail', 'Role', 'h_password'];
+        $fields = ['ID_USER', 'USER_LAST_NAME', 'USER_FIRST_NAME',
+            'DATE_OF_BIRTH', 'ID_PAYMENT_METHOD',
+            'USER_ADDRESS', 'EMAIL', 'ID_ROLE_TYPE', 'HASHED_PASSWORD'];
         $values = [
             $userToAdd->getId(),
             $userToAdd->getLastName(),
             $userToAdd->getFirstName(),
             $userToAdd->getBirthDate(),
-            $userToAdd->getFavoriteMethod(),
+            $userToAdd->getFavoriteMethod()->getIdPaymentMethod(),
             $userToAdd->getAddress(),
             $userToAdd->getMail(),
             $userToAdd->getRole()->getId(),
@@ -44,7 +46,7 @@ class UserDTO extends DTO
      */
     public function deleteUser(User $userToDelete)
     {
-        $this->deleteQuery('User', 'mail', $userToDelete->getMail());
+        $this->deleteQuery('User', 'EMAIL', $userToDelete->getMail());
     }
 
     /**
@@ -54,12 +56,15 @@ class UserDTO extends DTO
      */
     public function updateUser(User $userToUpdate)
     {
-        $fields = ['UserLastName', 'UserFirstName', 'DateOfBirth', 'FavoritePaymentMode', 'UserAdress', 'Mail', 'Role', 'h_password'];
+        $fields = ['ID_USER', 'USER_LAST_NAME', 'USER_FIRST_NAME',
+            'DATE_OF_BIRTH', 'ID_PAYMENT_METHOD',
+            'USER_ADDRESS', 'EMAIL', 'ID_ROLE_TYPE', 'HASHED_PASSWORD'];
         $values = [
+            $userToUpdate->getId(),
             $userToUpdate->getLastName(),
             $userToUpdate->getFirstName(),
             $userToUpdate->getBirthDate(),
-            $userToUpdate->getFavoriteMethod(),
+            $userToUpdate->getFavoriteMethod()->getIdPaymentMethod(),
             $userToUpdate->getAddress(),
             $userToUpdate->getMail(),
             $userToUpdate->getRole()->getId(),
@@ -67,11 +72,7 @@ class UserDTO extends DTO
         ];
 
         for ($i = 0; $i < count($fields); $i++) {
-            if (is_null($values[$i])) {
-                $values[$i] = "NULL";
-            }
-
-            $this->_sendQuery("UPDATE User SET $fields[$i] = ? WHERE IdUser = ?",
+            $this->_sendQuery("UPDATE User SET $fields[$i] = ? WHERE ID_USER = ?",
                 [$values[$i], $userToUpdate->getId()]);
         }
     }

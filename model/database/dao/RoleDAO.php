@@ -11,7 +11,7 @@ class RoleDAO extends DAO
      */
     public function getRoleById(int $id) : ?Role
     {
-        $sql = 'SELECT * FROM RoleType WHERE idRole = ?';
+        $sql = 'SELECT * FROM role_type WHERE ID_ROLE_TYPE = ?';
         $role = $this->queryRow($sql, [$id]);
         if ($role) {
             return new Role($role[0], $role[1]);
@@ -26,7 +26,7 @@ class RoleDAO extends DAO
      */
     public function getRoleByName(string $name) : ?Role
     {
-        $sql = 'SELECT * FROM RoleType WHERE RoleName = ?';
+        $sql = 'SELECT * FROM role_type WHERE ID_ROLE_TYPE = ?';
         $role = $this->queryRow($sql, [$name]);
         if ($role) {
             return new Role($role[0], $role[1]);
