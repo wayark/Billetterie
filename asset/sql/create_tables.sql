@@ -1,149 +1,169 @@
---
--- Database : `sae_billeterie`
---
+drop table ticket cascade;
 
--- --------------------------------------------------------
+drop table event cascade;
 
---
--- Table structure `Artist`
---
+drop table artist cascade;
 
-DROP TABLE IF EXISTS `Artist`;
-CREATE TABLE IF NOT EXISTS `Artist` (
-    `ArtistLastName` varchar(50) NOT NULL,
-    `ArtistFirstName` varchar(50) NOT NULL,
-    `StageName` varchar(50) NOT NULL,
-    `IdArtist` int(11) NOT NULL,
-    `Biography` varchar(500) NOT NULL,
-    PRIMARY KEY (`IdArtist`)
-    );
+drop table event_type cascade;
 
--- --------------------------------------------------------
+drop table location cascade;
 
---
--- Table structure `event`
---
+drop table ticket_type cascade;
 
-DROP TABLE IF EXISTS `event`;
-CREATE TABLE IF NOT EXISTS `event` (
-    `IdEvent` int(11) NOT NULL,
-    `EventName` varchar(50) NOT NULL,
-    `Country` varchar(50) NOT NULL,
-    `City` varchar(50) NOT NULL,
-    `Hall` varchar(50) NOT NULL,
-    `street` varchar(200) NOT NULL,
-    `Date` date NOT NULL,
-    `idtypeEvent` int(11) NOT NULL,
-    `idPicture` int(11) NOT NULL,
-    `OrganizerId` int(11) NOT NULL,
-    `NbPlacesPit` int(11) NOT NULL,
-    `NbSeatsStaircase` int(11) NOT NULL,
-    `IdArtist` int(11) NOT NULL,
-    `description` VARCHAR(500),
-    PRIMARY KEY (`IdEvent`),
-    KEY `IdArtist` (`IdArtist`),
-    KEY `IdPicture` (`IdPicture`),
-    KEY `IdPicture2` (`idPicture`),
-    KEY `IdTypeEvent` (`IdTypeEvent`)
-    );
+drop table user cascade;
 
--- --------------------------------------------------------
+drop table payment_method cascade;
 
---
--- Table structure `Place`
---
+drop table role_type cascade;
 
-DROP TABLE IF EXISTS `Place`;
-CREATE TABLE IF NOT EXISTS `Place` (
-    `IdPlace` int(11) NOT NULL,
-    `Address` varchar(50) NOT NULL,
-    `RoomName` varchar(50) NOT NULL,
-    PRIMARY KEY (`IdPlace`)
-    );
 
--- --------------------------------------------------------
+/*==============================================================*/
+/* Table : ARTIST                                               */
+/*==============================================================*/
+create table ARTIST
+(
+    ID_ARTIST         int  not null,
+    ARTIST_LAST_NAME  text not null,
+    ARTIST_FIRST_NAME text not null,
+    STAGE_NAME        text not null,
+    BIOGRAPHY         text,
+    primary key (ID_ARTIST)
+);
 
---
--- Table structure `Picture`
---
+/*==============================================================*/
+/* Table : EVENT                                                */
+/*==============================================================*/
+create table EVENT
+(
+    ID_EVENT            int      not null,
+    ID_LOCATION         int      not null,
+    ID_EVENT_TYPE       int      not null,
+    ID_ORGANIZER        int      not null,
+    ID_ARTIST           int      not null,
+    EVENT_NAME          text     not null,
+    EVENT_DATE          datetime not null,
+    EVENT_DESCRIPTION   text,
+    PICTURE_PATH        text,
+    PICTURE_DESCRIPTION text,
+    primary key (ID_EVENT)
+);
 
-DROP TABLE IF EXISTS `Picture`;
-CREATE TABLE IF NOT EXISTS `Picture` (
-    `IdPicture` int(11) NOT NULL,
-    `NamePicture` varchar(50) NOT NULL,
-    `descriptionPicture` varchar(100) NOT NULL,
-    PRIMARY KEY (`Idpicture`)
-    );
+/*==============================================================*/
+/* Table : EVENT_TYPE                                           */
+/*==============================================================*/
+create table EVENT_TYPE
+(
+    ID_EVENT_TYPE   int not null,
+    EVENT_TYPE_NAME text,
+    primary key (ID_EVENT_TYPE)
+);
 
--- --------------------------------------------------------
+/*==============================================================*/
+/* Table : LOCATION                                             */
+/*==============================================================*/
+create table LOCATION
+(
+    ID_LOCATION        int  not null,
+    COUNTRY            text not null,
+    CITY               text not null,
+    ADDRESS            text not null,
+    PLACE_NAME         text not null,
+    NB_PLACE_PIT       int  not null,
+    NB_PLACE_STAIRCASE int  not null,
+    primary key (ID_LOCATION)
+);
 
---
--- Table structure `Ticket`
---
+/*==============================================================*/
+/* Table : PAYMENT_METHOD                                       */
+/*==============================================================*/
+create table PAYMENT_METHOD
+(
+    ID_PAYMENT_METHOD   int not null,
+    PAYMENT_METHOD_NAME text,
+    primary key (ID_PAYMENT_METHOD)
+);
 
-DROP TABLE IF EXISTS `Ticket`;
-CREATE TABLE IF NOT EXISTS `Ticket` (
-    `IdTicket` int(11) NOT NULL,
-    `TypePlace` varchar(50) NOT NULL,
-    PRIMARY KEY (`IdTicket`)
-    );
+/*==============================================================*/
+/* Table : ROLE_TYPE                                            */
+/*==============================================================*/
+create table ROLE_TYPE
+(
+    ID_ROLE_TYPE int not null,
+    ROLE_NAME    text,
+    primary key (ID_ROLE_TYPE)
+);
 
--- --------------------------------------------------------
+/*==============================================================*/
+/* Table : TICKET                                               */
+/*==============================================================*/
+create table TICKET
+(
+    ID_TICKET      int not null,
+    ID_EVENT       int not null,
+    ID_TICKET_TYPE int not null,
+    ID_OWNER       int not null,
+    primary key (ID_TICKET)
+);
 
---
--- Table structure `TypeEvent`
---
+/*==============================================================*/
+/* Table : TICKET_TYPE                                          */
+/*==============================================================*/
+create table TICKET_TYPE
+(
+    ID_TICKET_TYPE   int not null,
+    TICKET_TYPE_NAME text,
+    primary key (ID_TICKET_TYPE)
+);
 
-DROP TABLE IF EXISTS `TypeEvent`;
-CREATE TABLE IF NOT EXISTS `TypeEvent` (
-    `IdType` int(11) NOT NULL,
-    `TypeName` varchar(50) NOT NULL,
-    PRIMARY KEY (`IdType`)
-    );
+/*==============================================================*/
+/* Table : USER                                                 */
+/*==============================================================*/
+create table USER
+(
+    ID_USER           int not null,
+    ID_PAYMENT_METHOD int not null,
+    ID_ROLE_TYPE      int not null,
+    USER_LAST_NAME    text,
+    USER_FIRST_NAME   text,
+    DATE_OF_BIRTH     date,
+    USER_ADDRESS      text,
+    EMAIL             text,
+    HASHED_PASSWORD   text,
+    primary key (ID_USER)
+);
 
--- --------------------------------------------------------
+alter table EVENT
+    add constraint FK_ARTIST_PERFORMING foreign key (ID_ARTIST)
+        references ARTIST (ID_ARTIST) on delete restrict on update restrict;
 
---
--- Table structure `RoleType`
---
+alter table EVENT
+    add constraint FK_EVENT_CATEGORY foreign key (ID_EVENT_TYPE)
+        references EVENT_TYPE (ID_EVENT_TYPE) on delete restrict on update restrict;
 
-DROP TABLE IF EXISTS `RoleType`;
-CREATE TABLE IF NOT EXISTS `RoleType` (
-    `IdRole` int(11) NOT NULL,
-    `RoleName` varchar(30) NOT NULL,
-    PRIMARY KEY (`IdRole`)
-    );
+alter table EVENT
+    add constraint FK_EVENT_LOCATION foreign key (ID_LOCATION)
+        references LOCATION (ID_LOCATION) on delete restrict on update restrict;
 
--- --------------------------------------------------------
+alter table EVENT
+    add constraint FK_ORGANIZER foreign key (ID_ORGANIZER)
+        references USER (ID_USER) on delete restrict on update restrict;
 
---
--- Table structure `TypeTicket`
---
+alter table TICKET
+    add constraint FK_TICKER_OWNER foreign key (ID_OWNER)
+        references USER (ID_USER) on delete restrict on update restrict;
 
-DROP TABLE IF EXISTS `TypeTicket`;
-CREATE TABLE IF NOT EXISTS `TypeTicket` (
-    `IdTypeTicket` int(11) NOT NULL,
-    `NomTypeTicket` varchar(50) NOT NULL,
-    PRIMARY KEY (`IdTypeTicket`)
-    );
+alter table TICKET
+    add constraint FK_TICKET_OF_EVENT foreign key (ID_EVENT)
+        references EVENT (ID_EVENT) on delete restrict on update restrict;
 
--- --------------------------------------------------------
+alter table TICKET
+    add constraint FK_TYPE_OF_TICKET foreign key (ID_TICKET_TYPE)
+        references TICKET_TYPE (ID_TICKET_TYPE) on delete restrict on update restrict;
 
---
--- Table structure `User`
---
+alter table USER
+    add constraint FK_FAVORITE_PAYMENT_METHOD foreign key (ID_PAYMENT_METHOD)
+        references PAYMENT_METHOD (ID_PAYMENT_METHOD) on delete restrict on update restrict;
 
-DROP TABLE IF EXISTS `User`;
-CREATE TABLE IF NOT EXISTS `User` (
-    `IdUser` int(11) NOT NULL,
-    `UserLastName` varchar(50) NOT NULL,
-    `UserFirstName` varchar(50) NOT NULL,
-    `DateOfBirth` date NOT NULL,
-    `FavoritePaymentMode` varchar(50) NOT NULL,
-    `UserAdress` varchar(50) NOT NULL,
-    `Mail` varchar(50) NOT NULL UNIQUE ,
-    `Role` int(11) NOT NULL,
-    `h_Password` varchar(250) NOT NULL,
-    PRIMARY KEY (`IdUser`)
-    );
-COMMIT;
+alter table USER
+    add constraint FK_USER_ROLE foreign key (ID_ROLE_TYPE)
+        references ROLE_TYPE (ID_ROLE_TYPE) on delete restrict on update restrict;
