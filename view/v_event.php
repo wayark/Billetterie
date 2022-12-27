@@ -1,5 +1,5 @@
 <?php
-require_once './application/formatDate.php';
+require_once './application/display/formatDate.php';
 /**
  * @var Event $eventToDisplay The event to display
  */
@@ -18,7 +18,7 @@ require_once './application/formatDate.php';
     <div id="container">
         <div id="container-description-event">
             <div id="img-title-date">
-                <img src="../.ressources/damso.png" alt="cover">
+                <img src="<?= $eventToDisplay->getEventInfo()->getPicture()->getPicturePath()  ?>" alt="<?= $eventToDisplay->getEventInfo()->getPicture()->getPictureDescription()?>">
                 <div id="title-date">
                     <h1><?= $eventToDisplay->getEventInfo()->getEventName() ?></h1>
                     <p><?= format_date($eventToDisplay->getEventInfo()->getEventDate()) ?></p>

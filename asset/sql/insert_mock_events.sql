@@ -1,7 +1,11 @@
 INSERT INTO event(ID_EVENT, ID_LOCATION, ID_EVENT_TYPE, ID_ORGANIZER,
                   ID_ARTIST, EVENT_NAME, EVENT_DATE, EVENT_DESCRIPTION,
                   PICTURE_PATH, PICTURE_DESCRIPTION)
-VALUE (0, 3, 0, 1, 2, 'Le grand retour de Wayark', '2023-01-20 18:00:00', 'Wayark est de retour pour un concert exceptionnel !', 'events/wayark.jpg', 'Wayark en concert');
+VALUE (0, 3, 0, 1, 2, 'Le grand retour de Wayark', '2023-01-20 18:00:00', '"Le grand retour de Wayark" est un événement incontournable pour tous les fans de musique et de guitar hero. Organisé par le célèbre guitariste Liam LUCAS, connu sous le nom de scène "Wayark", cet événement promet d''être une soirée inoubliable pleine de surprises et de talent.
+
+Au programme de la soirée, vous pourrez découvrir les derniers hits de Wayark interprétés par le guitariste lui-même, ainsi que ses invités de renom. La scène sera animée par un show de lumières et de lasers, et vous pourrez profiter de la puissance et de la maîtrise de Wayark à la guitare.
+
+En plus de la musique, "Le grand retour de Wayark" propose également un large choix de boissons et de snacks pour vous sustenter tout au long de la nuit. Alors n''hésitez pas à vous laisser emporter par la magie de la musique et de la fête. "Le grand retour de Wayark" vous attend !', 'events/wayark.jpg', 'Wayark en concert');
 
 INSERT INTO event(ID_EVENT, ID_LOCATION, ID_EVENT_TYPE, ID_ORGANIZER,
                   ID_ARTIST, EVENT_NAME, EVENT_DATE, EVENT_DESCRIPTION,

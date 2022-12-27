@@ -19,7 +19,8 @@ class EventDAO extends DAO
      */
     public function getAllEvents(): array
     {
-        $result = $this->queryAll($this->baseQuery);
+        $sql = $this->baseQuery . " ORDER BY event_date ASC";
+        $result = $this->queryAll($sql);
         $events = array();
         if ($result) {
             foreach ($result as $row) {
