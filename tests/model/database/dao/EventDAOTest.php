@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 require_once './model/database/dao/EventDAO.php';
+require_once './model/components/EventPricing.php';
 
 class EventDAOTest extends TestCase
 {
@@ -31,10 +32,12 @@ class EventDAOTest extends TestCase
         self::$bdd->exec("INSERT INTO artist VALUE (-1, 'testLastName', 'testFirstName', 'testStageName', 'testBiography')");
         self::$bdd->exec("INSERT INTO event VALUE (-1, -1, -1, -1, -1, 'testName', '0000-00-00 00:00:00', 
                          'testDescription', 'testPath', 'testPictureDescription')");
+        self::$bdd->exec("INSERT INTO pricing VALUE (-1, -1, 12.30, 'testName')");
     }
 
     protected function tearDown(): void
     {
+        self::$bdd->exec("DELETE FROM pricing WHERE ID_PRICING < 0");
         self::$bdd->exec("DELETE FROM event WHERE ID_EVENT < 0");
         self::$bdd->exec("DELETE FROM artist WHERE ID_ARTIST < 0");
         self::$bdd->exec("DELETE FROM user WHERE ID_USER < 0");
@@ -67,6 +70,7 @@ class EventDAOTest extends TestCase
             ->withDate('0000-00-00 00:00:00')
             ->withDescription('testDescription')
             ->withPhoto(new Picture('testPath', 'testPictureDescription'))
+            ->addPricing(new EventPricing(-1, 'testName', 12.30))
             ->build();
 
         $expected = array($tmp);
@@ -96,6 +100,7 @@ class EventDAOTest extends TestCase
             ->withDate('0000-00-00 00:00:00')
             ->withDescription('testDescription')
             ->withPhoto(new Picture('testPath', 'testPictureDescription'))
+            ->addPricing(new EventPricing(-1, 'testName', 12.30))
             ->build();
 
         $expected = $tmp;

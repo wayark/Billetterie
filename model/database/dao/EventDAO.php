@@ -66,6 +66,12 @@ class EventDAO extends DAO implements IObjectDAO
             $tmp->withOrganizer($organizer);
         }
 
+        $prices = $this->queryAll("SELECT * FROM pricing WHERE ID_EVENT = ?", array($idEvent));
+        if ($prices) {
+            foreach ($prices as $price) {
+                $tmp->addPricing(new EventPricing($price['ID_PRICING'], $price['PRICING_NAME'], $price['PRICE_AMOUNT']));
+            }
+        }
         return $tmp->build();
     }
 

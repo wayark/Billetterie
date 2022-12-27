@@ -103,6 +103,12 @@ class EventBuilder
         return $this;
     }
 
+    public function addPricing(EventPricing $pricing) : EventBuilder
+    {
+        $this->_event->getEventInfo()->addPrice($pricing);
+        return $this;
+    }
+
     public function build(): Event
     {
         return $this->_event;
