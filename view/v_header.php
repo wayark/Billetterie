@@ -11,30 +11,30 @@
 </head>
 
 <body>
-    <header>
-        <a href="./index.php">
-            <img src="<?= PATH_IMAGES ?>logoWatiGold.png" alt="logo" class="logo">
+<header>
+    <a href="./index.php">
+        <img src="<?= PATH_IMAGES ?>logoWatiGold.png" alt="logo" class="logo">
+    </a>
+    <div class="header-right-button">
+        <a href="./index.php?page=connection">
+            <button class="headerButton accountButton">Mon compte</button>
         </a>
-        <div class="header-right-button">
-            <a href="./index.php?page=connection">
-                <button class="headerButton accountButton">Mon compte</button>
-            </a>
-            <a href="TODO">
-                <button class="headerButton cartButton">
-                    <img src="<?= PATH_IMAGES ?>panier.png" alt="cart" class="cart">
-                </button>
-            </a>
-        </div>
+        <a href="TODO">
+            <button class="headerButton cartButton">
+                <img src="<?= PATH_IMAGES ?>panier.png" alt="cart" class="cart">
+            </button>
+        </a>
+    </div>
 
-    </header>
-    <nav>
-        <div class="concert-nav">
-            <p>Concert</p>
-        </div>
-        <div class="search-nav">
-            <p>Recherche</p>
-        </div>
-        <div class="contact-nav">
-            <p>Contact</p>
-        </div>
-    </nav>
+</header>
+<nav>
+    <div class="concert-nav">
+        <p>Concert</p>
+    </div>
+    <div class="search-nav">
+        <p>Recherche</p>
+    </div>
+    <div class="contact-nav">
+        <p>Contact</p>
+    </div>
+</nav>
