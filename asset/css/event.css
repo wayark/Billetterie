@@ -72,15 +72,14 @@ body{
 #title-date {
     margin-top : 3vw;
     justify-self: center;
-    margin-left: 3vw;
 }
 
 #title-date h1{
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 #title-date p{
-    font-size: 2.5vw;
+    font-size: 1.5vw;
 }
 
 #summary-and-informations{
@@ -95,7 +94,8 @@ body{
 
 #summary p {
     margin-right : 3vw;
-    font-size: 1.5vw;
+    font-size: 1vw;
+    padding: 1vw;
 }
 
 #btn-book{
@@ -119,7 +119,7 @@ body{
 
 
 .title-section{
-    font-size: 3vw;
+    font-size: 2.5vw;
 }
 
 #informations-event{
@@ -134,7 +134,7 @@ body{
 
 #informations-event * *:not(.title-desc){
     margin-left: 3vw;
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 #informations-event div{

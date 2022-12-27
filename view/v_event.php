@@ -10,7 +10,7 @@ require_once './application/display/formatDate.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../asset/css/event.css">
+    <link rel="stylesheet" href="./asset/css/event.css">
     <title><?= $eventToDisplay->getEventInfo()->getEventName() ?></title>
 </head>
 <body>
@@ -51,8 +51,8 @@ require_once './application/display/formatDate.php';
                     </div>
                 </div>
                 <iframe
-                        width="600"
-                        height="450"
+                        width="500vw"
+                        height="350vh"
                         frameborder="0" style="border:0"
                         referrerpolicy="no-referrer-when-downgrade"
                         src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $eventToDisplay->getEventPlace()->getStreet() ?>,<?= $eventToDisplay->getEventPlace()->getCity() ?>,<?= $eventToDisplay->getEventPlace()->getCountry() ?>"

@@ -308,8 +308,9 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 95vw;
-    height: 20vw;
+    width: fit-content;
+    height: fit-content;
+    padding: 2vw;
     background-color: #2d2d2d;
     border-radius: 15px;
     color : white;
@@ -349,7 +350,8 @@ body{
 
 .eventdesc{
     font-size: 17px;
-    margin-left: 40px;
+    margin-left: 1vw;
+    margin-top: 1vh;
     color: #949494;
 }
 

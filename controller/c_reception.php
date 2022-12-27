@@ -24,17 +24,16 @@ function eventDisplayString(array $events): string
         $displayString .= '</a>';
         $displayString .= '</div>';
         $displayString .= '<div class="eventtext-container">';
-        $displayString .= '<div id="containertextleft">
-                    <p class="eventtitle eventtext">' . $event->getEventInfo()->getEventName() . '</p>
-                    <p class="eventdate eventtext">' . format_date($event->getEventInfo()->getEventDate()) . '</p>
-                    <p class="eventdesc eventtext">' . $event->getEventInfo()->getEventDescription() . '</p>
-                  </div>';
-
-        $displayString .= '<div id="containertextright">
-                    <p class="eventplace eventtext">' . $event->getEventPlace()->getCountry() . '</p>
-                    <p class="eventcity eventext">' . $event->getEventPlace()->getCity() . '</p>
-                    <p class="eventplacesremaining eventtext">' . strval($event->getEventPlace()->getNbPlacesPit() + $event->getEventPlace()->getNbPlacesStair()) . ' places restantes' . '</p>
-                </div>';
+        $displayString .= '<div id="containertextleft">';
+        $displayString .= '<p class="eventtitle eventtext">' . $event->getEventInfo()->getEventName() . '</p>';
+        $displayString .= '<p class="eventdate eventtext">' . format_date($event->getEventInfo()->getEventDate()) . '</p>';
+        $displayString .= '<p class="eventdesc eventtext">' . $event->getEventInfo()->getEventDescription() . '</p>';
+        $displayString .= "</div>";
+        $displayString .= '<div id="containertextright">';
+        $displayString .= '<p class="eventplace eventtext">' . $event->getEventPlace()->getCountry() . '</p>';
+        $displayString .= '<p class="eventcity eventext">' . $event->getEventPlace()->getCity() . '</p>';
+        $displayString .= '<p class="eventplacesremaining eventtext">' . strval($event->getEventPlace()->getNbPlacesPit() + $event->getEventPlace()->getNbPlacesStair()) . ' places restantes' . '</p>';
+        $displayString .= "</div>";
         $displayString .= "</div></div>";
 
     }
