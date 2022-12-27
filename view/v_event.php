@@ -49,7 +49,14 @@ require_once './application/display/formatDate.php';
                             <p><?= $eventToDisplay->getEventPlace()->getNbPlacesStair() ?> places en gradin</p>
                         </div>
                     </div>
-                    <img src="../.ressources/location.png">
+                    <iframe
+                            width="450"
+                            height="250"
+                            frameborder="0" style="border:0"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $eventToDisplay->getEventPlace()->getStreet() ?>,<?= $eventToDisplay->getEventPlace()->getCity() ?>,<?= $eventToDisplay->getEventPlace()->getCountry() ?>"
+                            allowfullscreen>
+                    </iframe>
                 </div>
                 <button id="btn-book">Ajouter au panier</button>
             </div>

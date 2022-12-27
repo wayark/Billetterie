@@ -3,6 +3,7 @@ const BD_HOST = 'localhost';
 const BD_DBNAME = 'billeterie';
 const BD_USER = 'root';
 const BD_PWD = '';
+const GOOGLE_API_TOKEN = 'AIzaSyC87bEs-lrBLIUbatB3rebtVbp2eBbgdqw';
 
 
 define('PATH_CONTROLLERS', './controller/c_');

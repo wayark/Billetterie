@@ -24,8 +24,7 @@ class EventDAO extends DAO
         $events = array();
         if ($result) {
             foreach ($result as $row) {
-                $id = $row['ID_EVENT'];
-                $events[$id] = $this->processRow($row);
+                $events[] = $this->processRow($row);
             }
         }
         return $events;

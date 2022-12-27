@@ -12,7 +12,8 @@ try {
  * @param array<Event> $events The events to display
  * @return string The HTML code to display the events
  */
-function eventDisplayString(array $events) {
+function eventDisplayString(array $events): string
+{
     $displayString = "";
     for ($i = 0; $i < count($events) && $i <= 5; $i++) {
         $event = $events[$i];
@@ -39,5 +40,6 @@ function eventDisplayString(array $events) {
     }
     return $displayString;
 }
+
 
 require_once (PATH_VIEWS . 'reception.php');
