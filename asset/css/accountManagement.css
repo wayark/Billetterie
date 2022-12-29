@@ -1,10 +1,9 @@
-main{
+main {
     margin-top: 50px;
     display: flex;
-    width: 100vw;
 }
-section{
-    display: flex;
+
+section {
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
@@ -13,59 +12,82 @@ section{
     height: 10%;
     border-radius: 10px;
 }
-#id{
-    width: 100%;
- }
-#submit{
-    display: none;
+
+
+form {
+    display: grid;
 }
-form{
-    display: flex;
-}
-input{
-    display: none;
-    width: 10%;
-    height: 20%;
+
+form > div {
+    text-align: center;
     align-self: center;
 }
-p{
+
+input, select {
+    text-align: center;
+    display: none;
     align-self: center;
 }
-form{
+
+input, select{
+    width: 80%;
+    height: 80%;
+}
+
+button[type=submit] {
+    height: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-self: center;
+}
+
+p {
+    align-self: center;
+}
+
+form {
     width: 100%;
-    flex-wrap: nowrap;
-    flex-direction: column;
     margin: 1%;
+    display: grid;
+    grid-template-columns: auto 25vw;
+    grid-column-gap: 3vw;
 }
-#coteD{
+
+#coteD, #coteG {
     display: flex;
-    flex-direction: column;
+    flex-direction: column
 }
-.nomPrenom{
-    display: flex;
-    flex-direction: initial;
+
+#coteG :nth-child(3) {
+    margin: 2vw;
 }
-div>img{
-    align-self: flex-end;
-    width: 30%;
-    height: 30%;
+
+div > img {
+    align-self: center;
+    width: 20vw;
+    height: 20vw;
     border-radius: 5px;
-    padding: 5%;
+    padding: 5vw;
 }
-h1, label, p{
+
+h1, label, p {
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: 4%;
     color: #E7D9AB;
 }
-h1{
+
+h1 {
     font-size: xx-large;
     margin-bottom: 4%;
 }
-label{
+
+label {
     font-size: larger;
 }
-#account{
+
+
+button.styleButton {
     margin-top: 5%;
     margin-left: 25%;
     margin-right: 25%;
@@ -74,4 +96,15 @@ label{
     background-color: #5F5F5F;
     border: none;
     border-radius: 20px;
+    width: 10vw;
+}
+
+#sides-container {
+    display: flex;
+}
+
+div#actionButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 2vh;
 }

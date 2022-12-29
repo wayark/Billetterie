@@ -29,6 +29,8 @@ class SignUpConnectionState implements ConnectionState
             $this->set_error("empty");
         }
 
+        print_r($this->resultDisplay);
+
         return array('resultDisplayRegister' => $this->resultDisplay, 'type' => $this->resultDisplay['type']);
     }
 

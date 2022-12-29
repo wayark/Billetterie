@@ -61,4 +61,9 @@ class ArtistDAO extends DAO implements IObjectDAO
         }
     }
 
+    public function getLastId() : int
+    {
+        return $this->getTableLastId("artist", "ID_ARTIST");
+    }
+
 }

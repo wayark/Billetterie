@@ -2,19 +2,16 @@
 
 abstract class Presenter
 {
-    protected ?array $session;
     protected ?array $get;
     protected ?array $post;
 
     /**
      * Process the given data and store the data to display in the $dataToDisplay attribute
-     * @param array|null $session The $_SESSION array
      * @param array|null $get The $_GET array
      * @param array|null $post The $_POST array
      */
-    protected function __construct(?array $session, ?array $get, ?array $post)
+    protected function __construct(?array $get, ?array $post)
     {
-        $this->session = $session;
         $this->get = $get;
         $this->post = $post;
         $this->checkProcess();

@@ -77,4 +77,14 @@ abstract class DAO
         return $res;
     }
 
+    public function getTableLastId(string $table, string $id_field_name) : int {
+        $sql = 'SELECT MAX($id_field_name) FROM $table';
+        $id = $this->queryRow($sql, []);
+        if ($id[0] == null) {
+            return 0;
+        } else {
+            return $id[0];
+        }
+    }
+
 }

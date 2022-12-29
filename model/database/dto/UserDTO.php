@@ -8,6 +8,7 @@ class UserDTO extends DTO implements IObjectDTO
     /**
      * @param User $object The user to add to the database.
      * @throws UserAlreadyInBaseException If the user is already in the database.
+     * @throws Exception
      */
     public function add($object) : void
     {
@@ -37,6 +38,8 @@ class UserDTO extends DTO implements IObjectDTO
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) {
                 throw new UserAlreadyInBaseException($e->getMessage());
+            } else {
+                throw new Exception($e->getMessage());
             }
         }
     }
@@ -58,7 +61,7 @@ class UserDTO extends DTO implements IObjectDTO
     {
         $fields = ['USER_LAST_NAME', 'USER_FIRST_NAME',
             'DATE_OF_BIRTH', 'ID_FAVORITE_PAYMENT_METHOD',
-            'USER_ADDRESS', 'EMAIL', 'ID_ROLE_TYPE', 'HASHED_PASSWORD'];
+            'USER_ADDRESS', 'EMAIL', 'ID_ROLE_TYPE', 'HASHED_PASSWORD', 'PICTURE_PATH'];
         $values = [
             $object->getLastName(),
             $object->getFirstName(),
@@ -67,7 +70,8 @@ class UserDTO extends DTO implements IObjectDTO
             $object->getAddress(),
             $object->getMail(),
             $object->getRole()->getId(),
-            $object->getPassword()
+            $object->getPassword(),
+            substr($object->getProfilePicture()->getPicturePath(), strlen(PATH_IMAGES))
         ];
 
         $this->updateQuery('user', $fields, $values, 'ID_USER', $object->getId());

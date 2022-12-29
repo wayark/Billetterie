@@ -5,7 +5,7 @@ class PaymentMethod
     private int $idPaymentMethod;
     private string $paymentMethodName;
 
-    public function __construct(int $idPaymentMethod = -1, string $paymentMethodName = "")
+    public function __construct(int $idPaymentMethod = 0, string $paymentMethodName = "None")
     {
         $this->idPaymentMethod = $idPaymentMethod;
         $this->paymentMethodName = $paymentMethodName;

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Picture.php';
+
 class PersonInfo
 {
     /**
@@ -18,14 +20,16 @@ class PersonInfo
      * @var string $_address :
      */
     private string $_address;
+    private Picture $_picture;
 
-    public function __construct(string $lastName, string $firstName, string $mail, string $birthDate, string $address)
+    public function __construct(string $firstName, string $lastName, string $mail, string $birthDate, string $address, Picture $picture)
     {
         $this->_lastName = $lastName;
         $this->_firstName = $firstName;
         $this->_mail = $mail;
         $this->_birthDate = $birthDate;
         $this->_address = $address;
+        $this->_picture = $picture;
     }
 
     /**
@@ -112,4 +116,21 @@ class PersonInfo
     {
         $this->_address = $address;
     }
+
+    /**
+     * @return Picture
+     */
+    public function getPicture(): Picture
+    {
+        return $this->_picture;
+    }
+
+    /**
+     * @param Picture $picture
+     */
+    public function setPicture(Picture $picture): void
+    {
+        $this->_picture = $picture;
+    }
+
 }

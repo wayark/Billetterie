@@ -12,9 +12,9 @@ class ReceptionPresenter extends Presenter
     /**
      * @inheritDoc
      */
-    public function __construct(array $session = null, array $get = null, array $post = null)
+    public function __construct(array $get = null, array $post = null)
     {
-        parent::__construct($session, $get, $post);
+        parent::__construct($get, $post);
     }
 
     protected function checkProcess(): void

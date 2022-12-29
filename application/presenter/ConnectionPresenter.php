@@ -12,9 +12,9 @@ class ConnectionPresenter extends Presenter
     private ConnectionState $state;
     private array $display;
 
-    public function __construct($session, $get, $post)
+    public function __construct($get, $post)
     {
-        parent::__construct($session, $get, $post);
+        parent::__construct($get, $post);
     }
 
     /**
@@ -22,7 +22,7 @@ class ConnectionPresenter extends Presenter
      */
     protected function checkProcess(): void
     {
-        if (isset($this->session['user'])) {
+        if (isset($_SESSION['user'])) {
             $this->state = new AlreadySignInConnectionState();
         } else if (isset($this->post['signUp'])) {
             $this->state = new SignUpConnectionState();
@@ -32,7 +32,7 @@ class ConnectionPresenter extends Presenter
             $this->state = new DefaultConnectionState();
         }
 
-        $this->display = $this->state->handle($this->session, $this->post);
+        $this->display = $this->state->handle($this->post);
     }
 
 

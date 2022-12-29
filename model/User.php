@@ -39,15 +39,23 @@ class User
      * @param $adr string The address of the user.
      * @param Role|null $role The role of the user.
      * @param PaymentMethod|null $favoriteMethod The favorite payment method of the user.
+     * @param string|null $photoPath The path to the profile picture of the user
      */
     public function __construct(int $id, string $lastname, string $firstname, string $mail, string $hashed_password,
-                                string $date = "", string $adr = "", Role $role = null, PaymentMethod $favoriteMethod = null)
+                                string $date = "", string $adr = "", Role $role = null,
+                                PaymentMethod $favoriteMethod = null, string $photoPath = null)
     {
+        $roleDAO = new RoleDAO();
+
+        if (is_null($role)) $role = $roleDAO->getRoleByName("User");
+        if (is_null($favoriteMethod)) $favoriteMethod = new PaymentMethod(0, "Aucun");
+        if (is_null($photoPath)) $photoPath = 'users/unnamed.jpg';
         $this->_id = $id;
         $this->_password = $hashed_password;
-        $this->_favoriteMethod = $favoriteMethod;
-        $this->_personInfo = new PersonInfo($lastname, $firstname, $mail, $date, $adr);
+        $this->_personInfo = new PersonInfo($lastname, $firstname, $mail, $date, $adr,
+            new Picture($photoPath, $firstname . " " . $lastname));
         $this->_role = $role;
+        $this->_favoriteMethod = $favoriteMethod;
     }
 
 
@@ -146,7 +154,7 @@ class User
      */
     public function setLastName(string $nom) : void
     {
-        $this->_personInfo->setFirstName($nom);
+        $this->_personInfo->setLastName($nom);
     }
 
     /**
@@ -197,9 +205,19 @@ class User
     /**
      * @return PaymentMethod The favorite payment method of the user.
      */
-    public function getFavoriteMethod() : PaymentMethod
+    public function getFavoriteMethod() : ?PaymentMethod
     {
         return $this->_favoriteMethod;
+    }
+
+    public function getProfilePicture() : Picture
+    {
+        return $this->_personInfo->getPicture();
+    }
+
+    public function setProfilePicture(string $target_file)
+    {
+        $this->_personInfo->getPicture()->setPicturePath($target_file);
     }
 
     /**

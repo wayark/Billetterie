@@ -23,7 +23,7 @@ drop table if exists role_type;
 /*==============================================================*/
 create table ARTIST
 (
-    ID_ARTIST            int not null,
+    ID_ARTIST            int not null ,
     ARTIST_LAST_NAME     text not null,
     ARTIST_FIRST_NAME    text not null,
     STAGE_NAME           text not null,
@@ -36,7 +36,7 @@ create table ARTIST
 /*==============================================================*/
 create table EVENT
 (
-    ID_EVENT             int not null,
+    ID_EVENT             int not null ,
     ID_LOCATION          int not null,
     ID_EVENT_TYPE        int not null,
     ID_ORGANIZER         int not null,
@@ -64,7 +64,7 @@ create table EVENT_TYPE
 /*==============================================================*/
 create table LOCATION
 (
-    ID_LOCATION          int not null,
+    ID_LOCATION          int not null ,
     COUNTRY              text not null,
     CITY                 text not null,
     ADDRESS              text not null,
@@ -89,7 +89,7 @@ create table PAYMENT_METHOD
 /*==============================================================*/
 create table PRICING
 (
-    ID_PRICING           int not null,
+    ID_PRICING           int not null ,
     ID_EVENT             int not null,
     PRICE_AMOUNT         float not null,
     PRICING_NAME         text not null,
@@ -111,7 +111,7 @@ create table ROLE_TYPE
 /*==============================================================*/
 create table TICKET
 (
-    ID_TICKET            int not null,
+    ID_TICKET            int not null ,
     ID_EVENT             int not null,
     ID_TICKET_TYPE       int not null,
     ID_OWNER             int not null,
@@ -134,7 +134,7 @@ create table TICKET_TYPE
 /*==============================================================*/
 create table USER
 (
-    ID_USER              int not null,
+    ID_USER              int not null ,
     ID_FAVORITE_PAYMENT_METHOD int not null,
     ID_ROLE_TYPE         int not null,
     USER_LAST_NAME       text,
@@ -143,6 +143,7 @@ create table USER
     USER_ADDRESS         text,
     EMAIL                text,
     HASHED_PASSWORD      text,
+    PICTURE_PATH         text default 'users/unnamed.jpg',
     primary key (ID_USER)
 );
 
@@ -175,6 +176,8 @@ alter table USER add constraint FK_FAVORITE_PAYMENT_METHOD foreign key (ID_FAVOR
 
 alter table USER add constraint FK_USER_ROLE foreign key (ID_ROLE_TYPE)
     references ROLE_TYPE (ID_ROLE_TYPE) on delete restrict on update restrict;
+
+alter table USER add constraint UK_USER_EMAIL unique (EMAIL);
 
 DROP INDEX IF EXISTS IDX_EMAIL_USER ON USER;
 CREATE INDEX IDX_EMAIL_USER ON USER (EMAIL);

@@ -24,7 +24,7 @@ class Picture
      */
     public function setPicturePath(string $picturePath): void
     {
-        $this->picturePath = $picturePath;
+        $this->picturePath = PATH_IMAGES . $picturePath;
     }
 
     /**

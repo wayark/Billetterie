@@ -1,24 +1,14 @@
-<?php require_once(PATH_VIEWS . 'accountManagement.php');
-
-// Vérifier si le formulaire est soumis
-
-if (isset($_POST['submit'])) {
-$resultDisplayRegister = func();
-}
-
-function func(){
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nom = $_POST['nomA'];
-        $prenom = $_POST['prenomA'];
-        $mail = $_POST['mailA'];
-        ?>
-        <script>
-            document.getElementById('prenomA').innerHTML = 'Name: ' + <?php echo json_encode($nom); ?>;
-            document.getElementById('nomA').innerHTML = 'Name: ' + <?php echo json_encode($mail); ?>;
-            document.getElementById('mailA').innerHTML = 'Name: ' + <?php echo json_encode($prenom); ?>;
-        </script>
 <?php
-        // Do something with the data, e.g. send it to a database or email it to someone
-    }
+require_once PATH_PRESENTER . 'AccountManagementPresenter.php';
+
+if (session_id() == '') session_start();
+
+if (!isset($_SESSION) || !isset($_SESSION['user'])) {
+    require_once PATH_VIEWS . '404.php';
+    exit();
 }
-?>
+
+$presenter = new AccountManagementPresenter($_GET, $_POST, $_FILES);
+$display = $presenter->formatDisplay();
+
+require_once(PATH_VIEWS . 'accountManagement.php');

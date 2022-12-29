@@ -11,9 +11,9 @@ class EventPresenter extends Presenter
     private array $display;
     private Event $eventToDisplay;
 
-    public function __construct(?array $session, ?array $get, ?array $post)
+    public function __construct(?array $get, ?array $post)
     {
-        parent::__construct($session, $get, $post);
+        parent::__construct($get, $post);
     }
 
     protected function checkProcess() : void

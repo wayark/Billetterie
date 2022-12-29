@@ -3,7 +3,7 @@ require_once PATH_PRESENTER . 'ConnectionPresenter.php';
 
 if (session_id() == '') session_start();
 
-$presenter = new ConnectionPresenter($_SESSION, null, $_POST);
+$presenter = new ConnectionPresenter($_GET, $_POST);
 $result = $presenter->formatDisplay();
 
 
