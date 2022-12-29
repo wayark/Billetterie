@@ -89,7 +89,7 @@ create table PAYMENT_METHOD
 /*==============================================================*/
 create table PRICING
 (
-    ID_PRICING           int not null ,
+    ID_PRICING           int not null AUTO_INCREMENT,
     ID_EVENT             int not null,
     PRICE_AMOUNT         float not null,
     PRICING_NAME         text not null,

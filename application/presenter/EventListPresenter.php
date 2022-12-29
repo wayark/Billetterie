@@ -51,7 +51,7 @@ class EventListPresenter extends Presenter
         foreach ($this->events as $event) {
             $ans .= '<div class="eventList-exempleEvent" id="eventList-exempleEvent">';
             $ans .= '<div class="eventImg">';
-            $ans .= '<a href="index.php?page=event&&event=' . $event->getIdEvent() . '">';
+            $ans .= '<a href="index.php?page=event&event=' . $event->getIdEvent() . '">';
             $ans .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="' . $event->getEventInfo()->getPicture()->getPictureDescription() . '">';
             $ans .= '</a>';
             $ans .= '</div>';
@@ -59,7 +59,7 @@ class EventListPresenter extends Presenter
             $ans .= '<h1>' . $event->getEventInfo()->getEventName() . '</h1>';
             $ans .= '</div>';
             $ans .= '<div class="eventButton">';
-            $ans .= '<a href="./index.php?page=eventModification&&event=' . $event->getIdEvent() . '">';
+            $ans .= '<a href="./index.php?page=eventModification&event=' . $event->getIdEvent() . '">';
             $ans .= '<button>Modifier</button>';
             $ans .= '</a>';
             $ans .= '<a href="./index.php?page=statEvent&&event=' . $event->getIdEvent() . '">';

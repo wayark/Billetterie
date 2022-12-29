@@ -1,7 +1,7 @@
 <?php
 require_once './application/presenter/EventPresenter.php';
 
-$presenter = new EventPresenter(null, $_GET, $_POST);
+$presenter = new EventPresenter($_GET, $_POST);
 
 $display = $presenter->formatDisplay();
 
