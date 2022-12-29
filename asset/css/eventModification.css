@@ -69,7 +69,8 @@
 }
 
 .event-modification-place{
-    margin-top: 1vw;    
+    margin-top: 1vw;  
+    width: 43vw;  
 }
 
 .event-modification-place>input{
@@ -110,6 +111,20 @@ input{
     border:none;
     border-radius:10px;
     color:rgb(206, 206, 206);
+}
+
+.textPlace-container{
+    padding-left: 1vw;
+    padding-right: 1vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.textPlace-container > input{
+        margin-top: 1vw;
+        height: 2vw;
+        width: 10vw;
+        min-width: 60px;
 }
 
 textarea{
