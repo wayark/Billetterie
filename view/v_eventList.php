@@ -1,4 +1,11 @@
-<?php require_once(PATH_VIEWS . "header.php"); ?>
+<?php
+require_once(PATH_VIEWS . "header.php");
+/**
+ * @var array{
+ *     events: string
+ * } $display
+ */
+?>
 <link href="<?= PATH_CSS ?>eventList.css" rel="stylesheet">
 
 
@@ -6,31 +13,7 @@
 
     <div class="eventList-frame">
         <h1>Vos Événements</h1>
-
-        <?php
-        foreach ($EventOrga as $event) {
-            echo '
-            <div class="eventList-exempleEvent" id="eventList-exempleEvent">
-                <div class="eventImg">
-                    <a href="index.php?page=event&&event=' . $event->getIdEvent() . '">
-                        <img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="' . $event->getEventInfo()->getPicture()->getPictureName() . '">
-                    </a>
-                </div>
-                <div class="eventTitre">
-                    <h1>' . $event->getEventInfo()->getEventName() . '</h1>
-                </div>
-                <div class="eventButton">
-                    <a href="./index.php?page=eventModification&&event=' . $event->getIdEvent() . '">
-                        <button>Modifier</button>
-                    </a>
-                    <a href="./index.php?page=statEvent&&event=' . $event->getIdEvent() . '">
-                        <button>Statistiques</button>
-                    </a>
-                </div>
-            </div>
-                ';
-        }
-        ?>
+        <?= $display['events'] ?>
         <!--<div class="eventList-exempleEvent" id="eventList-exempleEvent">
             <div class="eventImg">
                 <a href="">

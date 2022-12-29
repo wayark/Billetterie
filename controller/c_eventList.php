@@ -1,14 +1,15 @@
 <?php
 
-require_once './model/database/dao/EventDAO.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+require_once PATH_PRESENTER . 'EventListPresenter.php';
 
-$EventData = new EventDAO();
+if (session_id() == '') session_start();
 
-try {
-    $EventOrga = $EventData->getAllEventsByArtistId($_SESSION['user']);
-} catch (Exception $e) {
+if (!isset($_SESSION) || !isset($_SESSION['user'])) {
+    require_once PATH_VIEWS . '404.php';
+    exit();
 }
+
+$presenter = new EventListPresenter($_GET, $_POST);
+$display = $presenter->formatDisplay();
 
 require_once(PATH_VIEWS . "eventList.php");
