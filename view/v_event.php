@@ -1,7 +1,17 @@
 <?php
-require_once './application/display/formatDate.php';
 /**
- * @var Event $eventToDisplay The event to display
+ * @var array{
+ *     eventName: string,
+ *     eventPicture:string,
+ *     eventPictureDescription: string,
+ *     eventDate: string,
+ *     eventDescription: string,
+ *     eventPlaceName: string,
+ *     eventPlaceStreet: string,
+ *     eventPlaceCity: string,
+ *     eventPlaceCountry: string,
+ *     eventPlaceNbPlacesPit: string,
+ *     eventPlaceNbPlacesStair: string} $display The data to display
  */
 ?>
 <!DOCTYPE html>
@@ -11,43 +21,43 @@ require_once './application/display/formatDate.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./asset/css/event.css">
-    <title><?= $eventToDisplay->getEventInfo()->getEventName() ?></title>
+    <title><?= $display['eventName'] ?></title>
 </head>
 <body>
 <?php require_once PATH_VIEWS . 'header.php'; ?>
 <div id="container">
     <div id="container-description-event">
         <div id="img-title-date">
-            <img src="<?= $eventToDisplay->getEventInfo()->getPicture()->getPicturePath() ?>"
-                 alt="<?= $eventToDisplay->getEventInfo()->getPicture()->getPictureDescription() ?>">
+            <img src="<?= $display['eventPicture']?>"
+                 alt="<?= $display['eventPictureDescription'] ?>">
             <div id="title-date">
-                <h1><?= $eventToDisplay->getEventInfo()->getEventName() ?></h1>
-                <p><?= format_date($eventToDisplay->getEventInfo()->getEventDate()) ?></p>
+                <h1><?= $display['eventName'] ?></h1>
+                <p><?= $display['eventDate'] ?></p>
             </div>
         </div>
         <div id="summary-and-informations">
             <div id="summary">
                 <h1 class="title-section">Résumé</h1>
-                <p><?= $eventToDisplay->getEventInfo()->getEventDescription() ?></p>
+                <p><?= $display['eventDescription'] ?></p>
             </div>
             <div id="description-and-image-container">
                 <div id="informations-event">
                     <h1 class="title-section">Informations</h1>
                     <div id="place">
                         <h3 class="title-desc">Lieu</h3>
-                        <p><?= $eventToDisplay->getEventPlace()->getPlaceName() ?></p>
-                        <p><?= $eventToDisplay->getEventPlace()->getStreet() ?></p>
-                        <p><?= $eventToDisplay->getEventPlace()->getCity() ?></p>
-                        <p><?= $eventToDisplay->getEventPlace()->getCountry() ?></p>
+                        <p><?= $display['eventPlaceName'] ?></p>
+                        <p><?= $display['eventPlaceStreet'] ?></p>
+                        <p><?= $display['eventPlaceCity'] ?></p>
+                        <p><?= $display['eventPlaceCountry'] ?></p>
                     </div>
                     <div id="date">
                         <h3 class="title-desc">Date</h3>
-                        <p><?= format_date($eventToDisplay->getEventInfo()->getEventDate()) ?></p>
+                        <p><?= $display['eventDate'] ?></p>
                     </div>
                     <div id="places">
                         <h3 class="title-desc">Nombre de places restantes</h3>
-                        <p><?= $eventToDisplay->getEventPlace()->getNbPlacesPit() ?> places en fosse</p>
-                        <p><?= $eventToDisplay->getEventPlace()->getNbPlacesStair() ?> places en gradin</p>
+                        <p><?= $display['eventPlaceNbPlacesPit'] ?> places en fosse</p>
+                        <p><?= $display['eventPlaceNbPlacesStair'] ?> places en gradin</p>
                     </div>
                 </div>
                 <iframe
@@ -55,7 +65,8 @@ require_once './application/display/formatDate.php';
                         height="350vh"
                         frameborder="0" style="border:0"
                         referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $eventToDisplay->getEventPlace()->getStreet() ?>,<?= $eventToDisplay->getEventPlace()->getCity() ?>,<?= $eventToDisplay->getEventPlace()->getCountry() ?>"
+                        src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $display['eventPlaceStreet'] ?>,
+                        <?= $display['eventPlaceCity'] ?>,<?= $display['eventPlaceCountry'] ?>"
                         allowfullscreen>
                 </iframe>
             </div>
