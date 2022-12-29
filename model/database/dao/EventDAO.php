@@ -4,6 +4,7 @@ require_once './model/database/DAO.php';
 require_once './model/database/dao/UserDAO.php';
 require_once './model/database/IObjectDAO.php';
 
+require_once './model/components/EventPricing.php';
 require_once './model/components/builder/EventBuilder.php';
 
 class EventDAO extends DAO implements IObjectDAO
@@ -80,12 +81,6 @@ class EventDAO extends DAO implements IObjectDAO
      */
     public function getLastId(): int
     {
-        $sql = 'SELECT MAX(ID_EVENT) FROM event';
-        $id = $this->queryRow($sql, []);
-        if ($id[0] == null) {
-            return 0;
-        } else {
-            return $id[0];
-        }
+        return $this->getTableLastId("event", "ID_EVENT");
     }
 }

@@ -24,4 +24,9 @@ class EventTypeDAO extends DAO implements IObjectDAO
         }
         return $eventTypes;
     }
+
+    public function getLastId(): int
+    {
+        return $this->getTableLastId("event_type", "ID_EVENT_TYPE");
+    }
 }

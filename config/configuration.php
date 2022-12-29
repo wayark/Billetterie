@@ -10,7 +10,11 @@ define('PATH_CONTROLLERS', './controller/c_');
 define('PATH_MODELS', './model/');
 define('PATH_VIEWS', './view/v_');
 define('PATH_ASSETS', './asset/');
-define('PATH_LIB', './lib/');
+define('PATH_APPLICATION', './application/');
+define('PATH_PRESENTER', PATH_APPLICATION . 'presenter/');
+
+define('PATH_DAO', PATH_MODELS . 'database/dao/');
+define('PATH_DTO', PATH_MODELS . 'database/dto/');
 
 define('PATH_CSS', PATH_ASSETS . 'css/');
 define('PATH_IMAGES', PATH_ASSETS . 'image/');

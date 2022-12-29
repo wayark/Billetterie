@@ -1,7 +1,8 @@
 <?php
 require_once './application/display/formatDate.php';
 /**
- * @var array<int, Event> $allEvents Array of all the events in base
+ *
+ * @var array{events: string} $displayArray The data to be displayed
  */
 ?>
 <head>
@@ -34,7 +35,7 @@ require_once PATH_VIEWS . 'header.php';
         <input type="text" placeholder="Rechercher un concert...">
     </div>
     <article id="events-container">
-        <?= eventDisplayString($allEvents) ?>
+        <?= $displayArray['events'] ?>
     </article>
 </section>
 

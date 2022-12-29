@@ -13,15 +13,25 @@
 <body>
 <header>
     <a href="./index.php">
-        <img src="<?= PATH_IMAGES ?>logoWatiGold.png" alt="logo" class="logo">
+        <img src="<?= PATH_IMAGES ?>/logos/logoWatiGold.png" alt="logo" class="logo">
     </a>
     <div class="header-right-button">
+        <?php
+        if (session_id() == '') session_start();
+        if (isset($_SESSION) and isset($_SESSION['user'])) {
+            echo '<a href="./index.php?page=deconnection">
+                    <button class="headerButton cartButton">
+                        <img src="' . PATH_IMAGES . 'logos/deconnection.png" alt="Deconnexion" class="cart">
+                    </button>
+                    </a>';
+        }
+        ?>
         <a href="./index.php?page=connection">
             <button class="headerButton accountButton">Mon compte</button>
         </a>
         <a href="TODO">
             <button class="headerButton cartButton">
-                <img src="<?= PATH_IMAGES ?>panier.png" alt="cart" class="cart">
+                <img src="<?= PATH_IMAGES ?>/logos/panier.png" alt="cart" class="cart">
             </button>
         </a>
     </div>

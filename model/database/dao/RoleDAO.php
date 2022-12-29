@@ -46,4 +46,9 @@ class RoleDAO extends DAO implements IObjectDAO
         }
         return $roleList;
     }
+
+    public function getLastId(): int
+    {
+        return $this->getTableLastId("role_type", "ID_ROLE_TYPE");
+    }
 }

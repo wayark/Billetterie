@@ -1,51 +1,93 @@
-main{
+main {
     margin-top: 50px;
     display: flex;
-    width: 100vw;
 }
-section{
-    display: flex;
+
+section {
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
     background-color: #2D2D2D;
-    width: 60%;
+    width: 70%;
     height: 10%;
     border-radius: 10px;
 }
-div{
-    display: flex;
+
+
+form {
+    display: grid;
 }
-div>div{
+
+form > div {
+    text-align: center;
+    align-self: center;
+}
+
+input, select {
+    text-align: center;
+    display: none;
+    align-self: center;
+}
+
+input, select{
+    width: 80%;
+    height: 80%;
+}
+
+button[type=submit] {
+    height: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-self: center;
+}
+
+p {
+    align-self: center;
+}
+
+form {
     width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
     margin: 1%;
+    display: grid;
+    grid-template-columns: auto 25vw;
+    grid-column-gap: 3vw;
 }
-.nomPrenom{
+
+#coteD, #coteG {
     display: flex;
-    flex-direction: initial;
+    flex-direction: column
 }
-div>img{
-    align-self: flex-end;
-    width: 30%;
-    height: 30%;
+
+#coteG :nth-child(3) {
+    margin: 2vw;
+}
+
+div > img {
+    align-self: center;
+    width: 20vw;
+    height: 20vw;
     border-radius: 5px;
-    padding: 5%;
+    padding: 5vw;
 }
-h1, h2{
-    margin: 5%;
+
+h1, label, p {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 4%;
     color: #E7D9AB;
 }
-h1{
+
+h1 {
     font-size: xx-large;
     margin-bottom: 4%;
 }
-h2{
+
+label {
     font-size: larger;
 }
-button{
+
+
+button.styleButton {
     margin-top: 5%;
     margin-left: 25%;
     margin-right: 25%;
@@ -54,4 +96,15 @@ button{
     background-color: #5F5F5F;
     border: none;
     border-radius: 20px;
+    width: 10vw;
+}
+
+#sides-container {
+    display: flex;
+}
+
+div#actionButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 2vh;
 }

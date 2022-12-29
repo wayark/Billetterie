@@ -93,6 +93,7 @@ class UserDTOTest extends TestCase
         $this->userDTO->add($userToAdd);
 
         $userToAdd->setFirstName("NewName");
+        $userToAdd->getProfilePicture()->setPictureDescription("NewName TestName");
 
         // TEST
         $this->userDTO->update($userToAdd);

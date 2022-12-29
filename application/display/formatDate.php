@@ -1,5 +1,5 @@
 <?php
-function format_date(string $original): string
+function format_datetime(string $original): string
 {
     $dateCut = explode(" ", $original);
     $hourTime = explode(":", $dateCut[1]);
@@ -31,4 +31,11 @@ function format_date(string $original): string
 
     return $days[$day] . ' ' . $splitted[2] . ' ' . $month[$splitted[1]] . ' ' . $splitted[0] .
         ' à ' . $hourTime[0] . 'h' . $hourTime[1];
+}
+
+function format_date(string $original) : string {
+    if (empty($original)) return "00/00/0000";
+    $numbers = explode("-", $original);
+
+    return $numbers[2] . "/" . $numbers[1] . "/" . $numbers[0];
 }

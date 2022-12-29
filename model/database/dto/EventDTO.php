@@ -38,8 +38,6 @@ class EventDTO extends DTO implements IObjectDTO
             $object->getEventInfo()->getPicture()->getPictureDescription()
         ];
 
-        print_r($values);
-
         try {
             $this->insertQuery("event", $fields, $values);
         } catch (PDOException $e) {
