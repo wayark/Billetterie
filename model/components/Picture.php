@@ -2,36 +2,13 @@
 
 class Picture
 {
-    private int $idPicture;
     private string $picturePath;
-    private string $pictureName;
     private string $pictureDescription;
 
-    public function __construct(int $idPicture = -1,
-                                string $picturePath = "",
-                                string $pictureName = "",
-                                string $pictureDescription = "")
+    public function __construct(string $picturePath = "", string $pictureDescription = "")
     {
-        $this->idPicture = $idPicture;
         $this->picturePath = PATH_IMAGES . $picturePath;
-        $this->pictureName = $pictureName;
         $this->pictureDescription = $pictureDescription;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdPicture(): int
-    {
-        return $this->idPicture;
-    }
-
-    /**
-     * @param int $idPicture
-     */
-    public function setIdPicture(int $idPicture): void
-    {
-        $this->idPicture = $idPicture;
     }
 
     /**
@@ -43,20 +20,11 @@ class Picture
     }
 
     /**
-     * @return string
+     * @param string $picturePath
      */
-    public function getPictureName(): string
+    public function setPicturePath(string $picturePath): void
     {
-        return $this->pictureName;
-    }
-
-    /**
-     * @param string $pictureName
-     */
-    public function setPictureName(string $pictureName): void
-    {
-        $this->pictureName = $pictureName;
-        $this->picturePath = PATH_IMAGES . $pictureName;
+        $this->picturePath = PATH_IMAGES . $picturePath;
     }
 
     /**
@@ -66,6 +34,7 @@ class Picture
     {
         return $this->pictureDescription;
     }
+
 
     /**
      * @param string $pictureDescription

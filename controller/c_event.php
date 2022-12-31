@@ -1,10 +1,8 @@
 <?php
+require_once './application/presenter/EventPresenter.php';
 
-require_once PATH_MODELS . 'database/dao/EventDAO.php';
+$presenter = new EventPresenter($_GET, $_POST);
 
-if (isset($_GET['event'])) {
-    $eventDAO = new EventDAO();
-    $eventToDisplay = $eventDAO->getEventById($_GET['event']);
-}
+$display = $presenter->formatDisplay();
 
 require_once PATH_VIEWS . "event.php";

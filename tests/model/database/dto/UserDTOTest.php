@@ -28,13 +28,15 @@ class UserDTOTest extends TestCase
     {
         $this->userDTO = new UserDTO();
         $this->userDAO = new UserDAO();
-        self::$bdd->exec("INSERT INTO RoleType VALUES (-1, 'Client')");
+        self::$bdd->exec("INSERT INTO payment_method VALUES (-1, 'Card')");
+        self::$bdd->exec("INSERT INTO role_type VALUES (-1, 'Client')");
     }
 
     public function tearDown(): void
     {
-        self::$bdd->exec("DELETE FROM User WHERE IdUser IN (-1, -2)");
-        self::$bdd->exec("DELETE FROM RoleType WHERE idRole = -1");
+        self::$bdd->exec("DELETE FROM User WHERE ID_USER < 0");
+        self::$bdd->exec("DELETE FROM role_type WHERE ID_ROLE_TYPE < 0");
+        self::$bdd->exec("DELETE FROM payment_method WHERE ID_PAYMENT_METHOD < 0");
     }
 
     /**
@@ -45,10 +47,10 @@ class UserDTOTest extends TestCase
         // ARRANGE
         $userToAdd = new User(-1, "TestName", "Test", "test@mail.org", "$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS", "2002-03-01", "16 la street");
         $userToAdd->setRole(new Role(-1, "Client"));
-        $userToAdd->setFavoriteMethod("Card");
+        $userToAdd->setFavoriteMethod(new PaymentMethod(-1, "Card"));
 
         // TEST
-        $this->userDTO->addUser($userToAdd);
+        $this->userDTO->add($userToAdd);
 
         // EXPECT
         $addedUser = $this->userDAO->getUserByEmail("test@mail.org", "test");
@@ -65,15 +67,15 @@ class UserDTOTest extends TestCase
         // ARRANGE
         $userToAdd = new User(-1, "TestName", "Test", "test@mail.org", "hashed_password", "2002-03-01", "16 la street");
         $userToAdd->setRole(new Role(-1, "Client"));
-        $userToAdd->setFavoriteMethod("Card");
+        $userToAdd->setFavoriteMethod(new PaymentMethod(-1, "Card"));
 
-        $this->userDTO->addUser($userToAdd);
+        $this->userDTO->add($userToAdd);
 
         // TEST
-        $this->userDTO->deleteUser($userToAdd);
+        $this->userDTO->delete($userToAdd);
 
         // EXPECT
-        $statement = self::$bdd->query("SELECT * FROM User WHERE IdUser = -1");
+        $statement = self::$bdd->query("SELECT * FROM User WHERE ID_USER = -1");
 
         $this->assertEquals(0, $statement->rowCount());
     }
@@ -86,14 +88,15 @@ class UserDTOTest extends TestCase
         // ARRANGE
         $userToAdd = new User(-1, "TestName", "Test", "test@mail.org", "$2y$10\$k9aPtCBb3gLwQ8Ka5gEfQupYqgWs7rJIOj5tAF9Tb6.d8.kCUOwyS", "2002-03-01", "16 la street");
         $userToAdd->setRole(new Role(-1, "Client"));
-        $userToAdd->setFavoriteMethod("Card");
+        $userToAdd->setFavoriteMethod(new PaymentMethod(-1, "Card"));
 
-        $this->userDTO->addUser($userToAdd);
+        $this->userDTO->add($userToAdd);
 
         $userToAdd->setFirstName("NewName");
+        $userToAdd->getProfilePicture()->setPictureDescription("NewName TestName");
 
         // TEST
-        $this->userDTO->updateUser($userToAdd);
+        $this->userDTO->update($userToAdd);
 
         // EXPECT
         $updatedUser = $this->userDAO->getUserByEmail("test@mail.org", "test");

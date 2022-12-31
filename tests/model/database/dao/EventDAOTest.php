@@ -1,101 +1,120 @@
 <?php
+
 use PHPUnit\Framework\TestCase;
 
 require_once './model/database/dao/EventDAO.php';
-require_once './model/components/builder/EventBuilder.php';
+require_once './model/components/EventPricing.php';
 
 class EventDAOTest extends TestCase
 {
     private EventDAO $eventDAO;
-    private static Connection $connection;
-    private static PDO $pdo;
+    private static Connection $con;
+    private static $bdd;
 
     /**
      * @throws NoDatabaseException
      */
     public static function setUpBeforeClass(): void
     {
-        self::$connection = Connection::getInstance();
-        self::$pdo = self::$connection->getBdd();
+        EventDAOTest::$con = Connection::getInstance();
+        self::$bdd = self::$con->getBdd();
     }
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->eventDAO = new EventDAO();
-        self::$pdo->exec("INSERT INTO TypeEvent (IdType, typeName) VALUES (-1, 'Soirée')");
-        self::$pdo->exec("INSERT INTO Picture(IdPicture, NamePicture, descriptionPicture) VALUES (-1, 'test', 'test')");
-        self::$pdo->exec("INSERT INTO RoleType (IdRole, roleName) VALUES (-1, 'Organisateur')");
-        self::$pdo->exec("INSERT INTO User (iduser, userlastname, userfirstname, dateofbirth, favoritepaymentmode, useradress, mail, role, h_password) 
-                                        VALUES (-1, 'test', 'test', '0000-00-00', 'test', 'test', 'test@mail.com', -1, 'PASS')");
-        self::$pdo->exec("INSERT INTO Artist (IdArtist, ArtistFirstName, ArtistLastName, StageName, Biography) 
-                                        VALUES (-1, 'testFirst', 'testSecond', 'The best test', 'Let me write your bio')");
-
-        self::$pdo->exec("INSERT INTO event(idevent, eventname, country, city, hall, date, idtypeevent, idpicture, organizerid, nbplacespit, nbseatsstaircase, idartist) 
-                            VALUES (-1, 'Soirée mousse', 'France', 'Lyon', 'Le transbordeur', '2021-01-01', -1, -1, -1, 100, 100, -1)");
+        self::$bdd->exec("INSERT INTO location VALUE (-1, 'testCountry', 'testCity', 'testAddress', 'testPlace', 0, 2)");
+        self::$bdd->exec("INSERT INTO event_type VALUE (-1, 'testType')");
+        self::$bdd->exec("INSERT INTO payment_method VALUE (-1, 'testMethod')");
+        self::$bdd->exec("INSERT INTO role_type VALUE (-1, 'testRole')");
+        self::$bdd->exec("INSERT INTO user VALUE (-1, -1, -1, 'testName', 'testFirstName', '0000-00-00', 'testAddress',
+                        'testMail', 'testPass')");
+        self::$bdd->exec("INSERT INTO artist VALUE (-1, 'testLastName', 'testFirstName', 'testStageName', 'testBiography')");
+        self::$bdd->exec("INSERT INTO event VALUE (-1, -1, -1, -1, -1, 'testName', '0000-00-00 00:00:00', 
+                         'testDescription', 'testPath', 'testPictureDescription')");
+        self::$bdd->exec("INSERT INTO pricing VALUE (-1, -1, 12.30, 'testName')");
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
-        self::$pdo->exec("DELETE FROM event WHERE idevent = -1");
-        self::$pdo->exec("DELETE FROM Artist WHERE IdArtist = -1");
-        self::$pdo->exec("DELETE FROM User WHERE iduser = -1");
-        self::$pdo->exec("DELETE FROM RoleType WHERE IdRole = -1");
-        self::$pdo->exec("DELETE FROM Picture WHERE idpicture = -1");
-        self::$pdo->exec("DELETE FROM TypeEvent WHERE IdType = -1");
+        self::$bdd->exec("DELETE FROM pricing WHERE ID_PRICING < 0");
+        self::$bdd->exec("DELETE FROM event WHERE ID_EVENT < 0");
+        self::$bdd->exec("DELETE FROM artist WHERE ID_ARTIST < 0");
+        self::$bdd->exec("DELETE FROM user WHERE ID_USER < 0");
+        self::$bdd->exec("DELETE FROM role_type WHERE ID_ROLE_TYPE < 0");
+        self::$bdd->exec("DELETE FROM payment_method WHERE ID_PAYMENT_METHOD < 0");
+        self::$bdd->exec("DELETE FROM event_type WHERE ID_EVENT_TYPE < 0");
+        self::$bdd->exec("DELETE FROM location WHERE ID_LOCATION < 0");
     }
 
     /**
      * @throws Exception
      */
-    public function test_GetAllEvents_shouldReturnArrayOfAllEvents()
+    public function test_GetAllEvents_shouldReturnAllTheEventsInBase()
     {
-        $organizer = new User(-1, 'test', 'test', 'test@mail.com', 'PASS', '0000-00-00', 'test');
-        $organizer->setRole(new Role(-1, 'Organisateur'));
-        $organizer->setFavoriteMethod('test');
-
-        $expectedEvent = EventBuilder::createEvent()
+        $tmp = EventBuilder::createEvent()
             ->withId(-1)
-            ->withName('Soirée mousse')
-            ->withCountry('France')
-            ->withCity('Lyon')
-            ->withHall('Le transbordeur')
-            ->withDate('2021-01-01')
-            ->withNbPlaces(100, 100)
-            ->withTypeEvent(new EventType(-1, 'Soirée'))
-            ->withPhoto(new Picture(-1, 'test', 'test'))
-            ->withOrganizer($organizer)
-            ->withArtist(new Artist(-1, 'testFirst', 'testSecond', 'The best test', 'Let me write your bio'))
+            ->withIdLocation(-1)
+            ->withStreet('testAddress')
+            ->withCity('testCity')
+            ->withCountry('testCountry')
+            ->withPlaceName("testPlace")
+            ->withNbPlaces(0,2)
+            ->withTypeEvent(new EventType(-1, 'testType'))
+            ->withOrganizer(new User(-1, 'testName', 'testFirstName', 'testMail', 'testPass',
+                '0000-00-00', 'testAddress',
+                new Role(-1, 'testRole'),
+                new PaymentMethod(-1, 'testMethod')))
+            ->withArtist(new Artist(-1, 'testFirstName', 'testLastName', 'testStageName', 'testBiography'))
+            ->withName('testName')
+            ->withDate('0000-00-00 00:00:00')
+            ->withDescription('testDescription')
+            ->withPhoto(new Picture('testPath', 'testPictureDescription'))
+            ->addPricing(new EventPricing(-1, 'testName', 12.30))
             ->build();
 
-        $expected = array(-1 => $expectedEvent);
+        $expected = array($tmp);
 
-        $events = $this->eventDAO->getAllEvents();
+        $whatWeGot = $this->eventDAO->getAll();
 
-        $this->assertEquals($expected, $events);
+        $this->assertEquals($expected, $whatWeGot);
     }
 
-    public function testGetEventById()
+    public function test_getEventById_shouldReturnTheEventWithTheId()
     {
-        $organizer = new User(-1, 'test', 'test', 'test@mail.com', 'PASS', '0000-00-00', 'test');
-        $organizer->setRole(new Role(-1, 'Organisateur'));
-        $organizer->setFavoriteMethod("test");
-
-        $expectedEvent = EventBuilder::createEvent()
+        $tmp = EventBuilder::createEvent()
             ->withId(-1)
-            ->withName('Soirée mousse')
-            ->withCountry('France')
-            ->withCity('Lyon')
-            ->withHall('Le transbordeur')
-            ->withDate('2021-01-01')
-            ->withNbPlaces(100, 100)
-            ->withTypeEvent(new EventType(-1, 'Soirée'))
-            ->withPhoto(new Picture(-1, 'test', 'test'))
-            ->withOrganizer($organizer)
-            ->withArtist(new Artist(-1, 'testFirst', 'testSecond', 'The best test', 'Let me write your bio'))
+            ->withIdLocation(-1)
+            ->withStreet('testAddress')
+            ->withCity('testCity')
+            ->withCountry('testCountry')
+            ->withPlaceName("testPlace")
+            ->withNbPlaces(0,2)
+            ->withTypeEvent(new EventType(-1, 'testType'))
+            ->withOrganizer(new User(-1, 'testName', 'testFirstName', 'testMail', 'testPass',
+                '0000-00-00', 'testAddress',
+                new Role(-1, 'testRole'),
+                new PaymentMethod(-1, 'testMethod')))
+            ->withArtist(new Artist(-1, 'testFirstName', 'testLastName', 'testStageName', 'testBiography'))
+            ->withName('testName')
+            ->withDate('0000-00-00 00:00:00')
+            ->withDescription('testDescription')
+            ->withPhoto(new Picture('testPath', 'testPictureDescription'))
+            ->addPricing(new EventPricing(-1, 'testName', 12.30))
             ->build();
 
-        $event = $this->eventDAO->getEventById(-1);
+        $expected = $tmp;
 
-        $this->assertEquals($expectedEvent, $event);
+        $whatWeGot = $this->eventDAO->getById(-1);
+
+        $this->assertEquals($expected, $whatWeGot);
     }
+
+    public function test_getEventById_shouldReturnNullIfTheEventDoesntExist()
+    {
+        $whatWeGot = $this->eventDAO->getById(-2);
+
+        $this->assertNull($whatWeGot);
+    }
+
 }

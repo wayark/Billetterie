@@ -1,2 +1,3 @@
-INSERT INTO RoleType(IdRole, RoleName) VALUE (0, 'Client');
-INSERT INTO RoleType(idrole, rolename) VALUES (1, 'Organizer');
+INSERT INTO role_type(ID_ROLE_TYPE, ROLE_NAME)
+VALUES (0, 'User'),
+       (1, 'Organizer');

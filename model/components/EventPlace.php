@@ -2,6 +2,7 @@
 
 class EventPlace
 {
+    private int $idLocation;
     private string $country;
     private string $city;
     private string $street;
@@ -10,13 +11,15 @@ class EventPlace
     private int $nbPlacesPit;
     private int $nbPlacesStair;
 
-    public function __construct(string $country = "",
+    public function __construct(int $id = -1,
+                                string $country = "",
                                 string $city = "",
                                 string $hall = "",
                                 string $street = "",
                                 int $nbPlacesPit = -1,
                                 int $nbPlacesStair = -1)
     {
+        $this->idLocation = $id;
         $this->country = $country;
         $this->city = $city;
         $this->street = $street;
@@ -119,5 +122,21 @@ class EventPlace
     public function setPlaceName(string $placeName): void
     {
         $this->placeName = $placeName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdLocation(): int
+    {
+        return $this->idLocation;
+    }
+
+    /**
+     * @param int $idLocation
+     */
+    public function setIdLocation(int $idLocation): void
+    {
+        $this->idLocation = $idLocation;
     }
 }

@@ -2,7 +2,7 @@
 
 Template de base pour gérer (en mode SCRUM-light) les SAE du s3 avec GitLab 🦊
 
-![bannière](asset/image/SAE-s3-logo-bleu.png)
+![bannière](asset/image/readme/SAE-s3-logo-bleu.png)
 
 ##  1. <a name='Tabledesmatires'></a> Table des matières
 <!-- vscode-markdown-toc -->
@@ -53,11 +53,11 @@ Les labels sont des éléments qui sont associés à des _issues_ et _merge requ
 
 On a distingué les labels prioritaires :
 
-![label](asset/image/labels.png)
+![label](asset/image/readme/labels.png)
 
 Des labels utilisés pour le board :
 
-![label](asset/image/labels2.png)
+![label](asset/image/readme/labels2.png)
 
 ###  3.2. <a name='Lesjalons'></a>Les Jalons
 
@@ -66,7 +66,7 @@ Dans le modèle, on a défini des jalons qui devraient vous aider, notamment pou
 
 Libre à vous de les adapter.
 
-![label](asset/image/jalons.png)
+![label](asset/image/readme/jalons.png)
 
 ###  3.3. <a name='LeBoard'></a>Le Board
 
@@ -76,7 +76,7 @@ Il permet de les visualiser et de suivre leur progression.
 
 La structure de ce board adopte l'approche [Scrumban](https://asana.com/fr/resources/scrumban).
 
-![board](asset/image/theBoard.png)
+![board](asset/image/readme/theBoard.png)
 
 ###  3.4. <a name='Lesbranches'></a>Les branches
 
@@ -84,15 +84,15 @@ Les trois branches proposées dans ce template permettent de gérer de manière 
 
 Ce modèle est librement inspiré de l'approche GitLab Flow, pour en savoir plus : [GitLab Flow](https://www.youtube.com/watch?v=ZJuUz5jWb44).
 
-![](asset/image/branches.png)
+![](asset/image/events/branches.png)
 
 ###  3.5. <a name='Modlespourlesissuesetlesmergesrequests'></a>Modèles pour les issues et les merges requests
 
 Ce template propose des modèles pour les _issues_ et les _merge requests_ afin de simplifier et standardiser leur utilisation par les équipes du projet.
 
-![board](asset/image/issues.png)
+![board](asset/image/readme/issues.png)
 
-![board](asset/image/mr.png)
+![board](asset/image/readme/mr.png)
 
 ##  4. <a name='Commentutilisercedpt'></a>Comment utiliser ce dépôt ?
 

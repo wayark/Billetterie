@@ -3,8 +3,7 @@
 require_once './model/database/dao/ArtistDAO.php';
 require_once PATH_MODELS . 'database/dao/EventDAO.php';
 require_once PATH_MODELS . 'exception/UserAlreadyInBaseException.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+
 
 $artistDAO = new ArtistDAO();
 try {

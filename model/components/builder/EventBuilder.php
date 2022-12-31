@@ -42,7 +42,7 @@ class EventBuilder
         return $this;
     }
 
-    public function withHall(string $hall): EventBuilder
+    public function withPlaceName(string $hall): EventBuilder
     {
         $this->_event->getEventPlace()->setPlaceName($hall);
         return $this;
@@ -94,6 +94,18 @@ class EventBuilder
     public function withStreet(string $stree) : EventBuilder
     {
         $this->_event->getEventPlace()->setStreet($stree);
+        return $this;
+    }
+
+    public function withIdLocation(int $idLocation) : EventBuilder
+    {
+        $this->_event->getEventPlace()->setIdLocation($idLocation);
+        return $this;
+    }
+
+    public function addPricing(EventPricing $pricing) : EventBuilder
+    {
+        $this->_event->getEventInfo()->addPrice($pricing);
         return $this;
     }
 

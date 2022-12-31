@@ -1,21 +1,13 @@
-<?php require_once(PATH_VIEWS . "eventModification.php");
+<?php
 
-if (isset($_POST["resume"])) {
-    $resume = $_POST["resume"];
-}
+require_once PATH_PRESENTER . 'EventModificationPresenter.php';
 
-if (isset($_POST["place"])) {
-    $place = $_POST["place"];
-}
+$presenter = new EventModificationPresenter($_GET, $_POST);
 
-if (isset($_POST["date"])) {
-    $date = $_POST["date"];
-}
+$display = $presenter->formatDisplay();
 
-if (isset($_POST["ticketNumber"])) {
-    $ticketNumber = $_POST["ticketNumber"];
-}
-
-if (isset($_POST["ticketPrice"])) {
-    $ticketPrice = $_POST["ticketPrice"];
+if ($display['type'] == 'success') {
+    require_once(PATH_VIEWS . "eventModification.php");
+} else {
+    require_once(PATH_VIEWS . "404.php");
 }

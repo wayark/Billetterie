@@ -2,17 +2,19 @@
 
 require_once './model/database/DAO.php';
 require_once './model/Artist.php';
-class ArtistDAO extends DAO
+require_once './model/database/IObjectDAO.php';
+
+class ArtistDAO extends DAO implements IObjectDAO
 {
     /**
      * Get the artist with the given id
-     * @param int $idArtist The id of the artist
+     * @param int $id The id of the artist
      * @return Artist|null The artist or null if not found
      */
-    public function getArtistById(int $idArtist): ?Artist
+    public function getById(int $id): ?Artist
     {
-        $sql = "SELECT * FROM Artist WHERE idArtist = ?";
-        $result = $this->queryRow($sql, [$idArtist]);
+        $sql = "SELECT * FROM Artist WHERE ID_ARTIST = ?";
+        $result = $this->queryRow($sql, [$id]);
         return $this->processResult($result);
     }
 
@@ -23,7 +25,7 @@ class ArtistDAO extends DAO
      */
     public function getArtistByStageName(string $stageName): ?Artist
     {
-        $sql = "SELECT * FROM Artist WHERE StageName = ?";
+        $sql = "SELECT * FROM Artist WHERE STAGE_NAME = ?";
         $result = $this->queryRow($sql, [$stageName]);
         return $this->processResult($result);
     }
@@ -32,7 +34,7 @@ class ArtistDAO extends DAO
      * Get all the artists
      * @return array The artists
      */
-    public function getAllArtists(): array {
+    public function getAll(): array {
         $sql = "SELECT * FROM Artist";
         $results = $this->queryAll($sql);
         $artists = array();
@@ -52,11 +54,16 @@ class ArtistDAO extends DAO
     private function processResult($result) : ?Artist
     {
         if ($result) {
-            return new Artist($result['IdArtist'], $result['ArtistFirstName'], $result['ArtistLastName'],
-                $result['StageName'], $result['Biography']);
+            return new Artist($result['ID_ARTIST'], $result['ARTIST_FIRST_NAME'], $result['ARTIST_LAST_NAME'],
+                $result['STAGE_NAME'], $result['BIOGRAPHY']);
         } else {
             return null;
         }
+    }
+
+    public function getLastId() : int
+    {
+        return $this->getTableLastId("artist", "ID_ARTIST");
     }
 
 }

@@ -11,6 +11,7 @@ class EventInfo
     private Picture $picture;
     private string $eventName;
     private string $eventDescription;
+    private array $prices;
 
     public function __construct(string  $eventName = "",
                                 string  $eventDate = "",
@@ -31,6 +32,7 @@ class EventInfo
         $this->eventType = $eventType;
         $this->picture = $picture;
         $this->eventDescription = $eventDescription;
+        $this->prices = array();
     }
 
     /**
@@ -112,4 +114,27 @@ class EventInfo
     {
         $this->eventDescription = $eventDescription;
     }
+
+    /**
+     * @param EventPricing $price
+     * @return void
+     */
+    public function addPrice(EventPricing $price) {
+        $this->prices[] = $price;
+    }
+
+    public function removePrice(EventPricing $price) {
+        $index = array_search($price, $this->prices);
+        if ($index !== false) {
+            unset($this->prices[$index]);
+        }
+    }
+
+    /**
+     * @return array<EventPricing> Prices of the event
+     */
+    public function getPrices() {
+        return $this->prices;
+    }
+
 }

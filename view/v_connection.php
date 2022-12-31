@@ -1,9 +1,12 @@
 <?php
 require_once(PATH_VIEWS . 'header.php'); //header of the page
+require_once './application/display/errorDisplay.php';
 /**
- * @var $resultDisplayRegister array    Exist if register button has been clicked
- *                              Contains the text and display type to show
- * @var $resultDisplayLogIn array       Exist if login button has been clicked
+ * @var array{
+ *     resultDisplayRegister: ?array<string, string>,
+ *     resultDisplayLogIn: ?array<string, string>,
+ *     type: string
+ * } $result contains the result of the presenter
  */
 ?>
     <link rel="stylesheet" href=<?= PATH_CSS . "connection.css" ?>>
@@ -18,21 +21,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
                     <button name="signIn" class="connectionButton">Connexion</button>
                 </form>
 
-                <?php
-                if (isset($registerDisplayLogIn)) {
-                    $firstDiv = "<div class='registerDisplay' style='background: ";
-                    if ($registerDisplayLogIn['type'] == 'success') {
-                        $firstDiv .= "lightgreen'>";
-                    } else {
-                        $firstDiv .= "lightcoral'>";
-                    }
-                    echo $firstDiv;
-
-                    echo $registerDisplayLogIn['message'];
-
-                    echo "</div>";
-                }
-                ?>
+                <?= displayError($result['resultDisplayLogIn'], 'registerDisplay') ?>
             </div>
 
             <div class="line"></div>
@@ -54,21 +43,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
 
                     <button name="signUp" class="connectionButton">Inscription</button>
                 </form>
-                <?php
-                if (isset($resultDisplayRegister)) {
-                    $firstDiv = "<div class='registerDisplay' style='background: ";
-                    if ($resultDisplayRegister['type'] == 'success') {
-                        $firstDiv .= "lightgreen'>";
-                    } else {
-                        $firstDiv .= "lightcoral'>";
-                    }
-                    echo $firstDiv;
-
-                    echo $resultDisplayRegister['message'];
-
-                    echo "</div>";
-                }
-                ?>
+                <?= displayError($result['resultDisplayRegister'], "registerDisplay"); ?>
             </div>
         </div>
     </section>
