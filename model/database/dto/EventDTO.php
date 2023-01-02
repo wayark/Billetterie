@@ -1,24 +1,12 @@
 <?php
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 require_once PATH_MODELS . 'Event.php';
-
-class EventDTO
-=======
 require_once PATH_MODELS . 'DTO.php';
-=======
 require_once PATH_MODELS . 'database/DTO.php';
->>>>>>> Dev
 require_once PATH_MODELS . 'Event.php';
 require_once './model/database/IObjectDTO.php';
 
-<<<<<<< HEAD
-class EventDTO extends DTO
->>>>>>> Dev
-=======
 class EventDTO extends DTO implements IObjectDTO
->>>>>>> Dev
 {
     /**
      * @param Event $object The event to add to the database
