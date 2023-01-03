@@ -26,10 +26,10 @@
                     </a>';
         }
         ?>
-        <a href="./index.php?page=connection">
+        <a href="./?page=connection">
             <button class="headerButton accountButton">Mon compte</button>
         </a>
-        <a href="TODO">
+        <a href="./?page=cart">
             <button class="headerButton cartButton">
                 <img src="<?= PATH_IMAGES ?>/logos/panier.png" alt="cart" class="cart">
             </button>

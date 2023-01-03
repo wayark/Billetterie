@@ -1,7 +1,8 @@
 <?php
 
 require_once PATH_PRESENTER . 'state/connection/ConnectionState.php';
-require_once PATH_DAO . 'UserDAO.php';
+require_once './model/database/dto/UserDTO.php';
+require_once './model/database/dto/UserDAO.php';
 
 class SignUpConnectionState implements ConnectionState
 {
