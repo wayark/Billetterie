@@ -88,6 +88,7 @@ nav > div{
     display: flex;
     align-items: center;
     color: #E7D9AB ;
+    cursor: pointer;
     font-size:calc(6px + 1.6vw);
     height:5vw ;
     min-height: 25px;
