@@ -7,7 +7,6 @@ class SignInConnectionState implements ConnectionState
 
     public function handle(array $post): array
     {
-
         $mail = htmlspecialchars($_POST['emailC']);
         $password = htmlspecialchars($_POST['passwordC']);
 
