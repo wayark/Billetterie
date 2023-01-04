@@ -13,13 +13,7 @@ class Connection
 
     private function __construct()
     {
-        $port = 8889;
-        $host = 'localhost';
-        $dbName = 'e-ticket';
-        $user = 'root';
-        $password = 'root';
-
-        self::$_bdd = new PDO("mysql:host=$host;port=$port;dbname=$dbName;charset=utf8", $user, $password);
+        self::$_bdd = new PDO("mysql:host=" . BD_HOST . ";port=$" . BD_PORT . ";dbname=" . BD_DBNAME  .";charset=utf8", BD_USER, BD_PWD);
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
