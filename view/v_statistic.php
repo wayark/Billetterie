@@ -36,7 +36,7 @@ require_once './application/display/errorDisplay.php';
         <div>
             <img src="<?= PATH_IMAGES?>/events/bdsmousse.jpg" alt="">
             <div>
-                <h1>Nom de l'évènement</h1>
+                <h1>Soirée Mousse</h1>
                 <p>26 décembre 2022</p>
             </div>
         </div>
