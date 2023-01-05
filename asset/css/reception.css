@@ -353,6 +353,11 @@ body{
     transition: background-image 1s;
 }
 
+.tendancies div:hover {
+    filter: brightness(0.8);
+    transition: 0.2s;
+}
+
 .t1 div, .t3 div{
     height: 17vw;
     width: 25vw;
@@ -372,7 +377,7 @@ body{
 }
 
 .moveCarousel div{
-    transition: 0.1s;
+    transition: 0.15s;
     background-image: url("../image/useful/arrow.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -381,8 +386,7 @@ body{
 }
 
 .moveCarousel div:hover{
-    background-image: url("../image/useful/arrowwhite.png");
-    transition: 0.1s;
+    transition: 0.15s;
 }
 
 .moveCarousel:hover{
@@ -400,12 +404,4 @@ body{
 
 #moveCarouselLeft div{
     transform: rotate(180deg);
-}
-
-#moveCarouselLeft div:hover{
-    transform: rotate(180deg) scale(0.8);
-}
-
-#moveCarouselRight div:hover{
-    transform: scale(0.8);
 }

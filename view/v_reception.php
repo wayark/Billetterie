@@ -16,7 +16,7 @@ require_once PATH_VIEWS . 'header.php';
 
 <section id="container">
     <div id="eventsimages">
-        <div id="moveCarouselLeft" class="moveCarousel" onclick="moveCarousel(this);">
+        <div id="moveCarouselLeft" class="moveCarousel" onclick="moveCarousel(this);"  onmouseover="colorArrow(this);" onmouseleave="uncolorArrow(this);">
             <div></div>
         </div>
         <a class="tendancies t1" href="?page=event&event=<?php echo $tendancies[1]->getIdEvent() ?>">
@@ -28,7 +28,7 @@ require_once PATH_VIEWS . 'header.php';
         <a class="tendancies t3" href="?page=event&event=<?php echo $tendancies[2]->getIdEvent() ?>">
             <div style="background-image: url(<?php echo $tendancies[2]->getEventInfo()->getPicture()->getPicturePath(); ?>);" draggable="false"></div>
         </a>
-        <div id="moveCarouselRight" class="moveCarousel" onclick="moveCarousel(this);">
+        <div id="moveCarouselRight" class="moveCarousel" onclick="moveCarousel(this);" onmouseover="colorArrow(this);" onmouseleave="uncolorArrow(this);">
             <div></div>
         </div>
     </div>

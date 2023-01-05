@@ -42,3 +42,18 @@ const shortDescriptions = () => {
     });
 }
 shortDescriptions();
+
+const colorArrow = (button) => {
+    let img = button.querySelector('div');
+    img.style.backgroundImage= "url('asset/image/useful/arrowwhite.png')";
+    if(button.id.includes('Left')){
+        img.style.transform = "rotate(180deg) scale(0.8)";
+    } else {
+        img.style.transform = "scale(0.8)";
+    }
+} 
+
+const uncolorArrow = (button) => {
+    let img = button.querySelector('div');
+    img.removeAttribute('style');
+}
