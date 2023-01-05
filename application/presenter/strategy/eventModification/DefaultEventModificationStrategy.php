@@ -1,6 +1,6 @@
 <?php
 
-class DefaultEventModificationState implements EventModificationState
+class DefaultEventModificationStrategy implements EventModificationStrategy
 {
 
     public function handle(array $get, array $post): array

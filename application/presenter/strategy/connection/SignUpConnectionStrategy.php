@@ -1,10 +1,10 @@
 <?php
 
-require_once PATH_PRESENTER . 'state/connection/ConnectionState.php';
+require_once PATH_PRESENTER . 'strategy/connection/ConnectionState.php';
 require_once './model/database/dto/UserDTO.php';
 require_once './model/database/dto/UserDAO.php';
 
-class SignUpConnectionState implements ConnectionState
+class SignUpConnectionStrategy implements ConnectionStrategy
 {
     private array $resultDisplay = array();
 

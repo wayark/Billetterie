@@ -1,15 +1,15 @@
 <?php
 
 require_once PATH_MODELS . 'Presenter.php';
-require_once PATH_PRESENTER . 'state/connection/AlreadySignInConnectionState.php';
-require_once PATH_PRESENTER . 'state/connection/SignInConnectionState.php';
-require_once PATH_PRESENTER . 'state/connection/SignUpConnectionState.php';
-require_once PATH_PRESENTER . 'state/connection/DefaultConnectionState.php';
+require_once PATH_PRESENTER . 'strategy/connection/AlreadySignInConnectionState.php';
+require_once PATH_PRESENTER . 'strategy/connection/SignInConnectionState.php';
+require_once PATH_PRESENTER . 'strategy/connection/SignUpConnectionState.php';
+require_once PATH_PRESENTER . 'strategy/connection/DefaultConnectionState.php';
 
 class ConnectionPresenter extends Presenter
 {
 
-    private ConnectionState $state;
+    private ConnectionStrategy $state;
     private array $display;
 
     public function __construct($get, $post)
@@ -23,13 +23,13 @@ class ConnectionPresenter extends Presenter
     protected function checkProcess(): void
     {
         if (isset($_SESSION['user'])) {
-            $this->state = new AlreadySignInConnectionState();
+            $this->state = new AlreadySignInConnectionStrategy();
         } else if (isset($this->post['signUp'])) {
-            $this->state = new SignUpConnectionState();
+            $this->state = new SignUpConnectionStrategy();
         } else if (isset($this->post['signIn'])) {
-            $this->state = new SignInConnectionState();
+            $this->state = new SignInConnectionStrategy();
         } else {
-            $this->state = new DefaultConnectionState();
+            $this->state = new DefaultConnectionStrategy();
         }
 
         $this->display = $this->state->handle($this->post);
