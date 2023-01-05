@@ -54,8 +54,6 @@ body{
     gap: 2vh;
 }
 
-
-
 #container-description-event img{
     margin-top: 3vw;
     width: 20vw;
@@ -151,4 +149,25 @@ body{
     display: flex;
     flex-direction: row;
     column-gap: 2vw;
+}
+
+#form-event{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-event select{
+    width: 10vw;
+    height: 3vw;
+    background-color: #424141;
+    color: #e0d3a6;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    text-align: center;
 }

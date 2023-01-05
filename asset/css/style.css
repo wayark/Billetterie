@@ -57,6 +57,7 @@ header{
     min-width: 70px;
     padding: 0.5vh;
     font-size:calc(6px + 0.7vw);
+    cursor: pointer;
 }
 
 .cartButton{
@@ -65,6 +66,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .cart{

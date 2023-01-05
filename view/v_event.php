@@ -25,55 +25,63 @@
 </head>
 <body>
 <?php require_once PATH_VIEWS . 'header.php'; ?>
-<div id="container">
-    <div id="container-description-event">
-        <div id="img-title-date">
-            <img src="<?= $display['eventPicture']?>"
-                 alt="<?= $display['eventPictureDescription'] ?>">
-            <div id="title-date">
-                <h1><?= $display['eventName'] ?></h1>
-                <p><?= $display['eventDate'] ?></p>
-            </div>
-        </div>
-        <div id="summary-and-informations">
-            <div id="summary">
-                <h1 class="title-section">Résumé</h1>
-                <p><?= $display['eventDescription'] ?></p>
-            </div>
-            <div id="description-and-image-container">
-                <div id="informations-event">
-                    <h1 class="title-section">Informations</h1>
-                    <div id="place">
-                        <h3 class="title-desc">Lieu</h3>
-                        <p><?= $display['eventPlaceName'] ?></p>
-                        <p><?= $display['eventPlaceStreet'] ?></p>
-                        <p><?= $display['eventPlaceCity'] ?></p>
-                        <p><?= $display['eventPlaceCountry'] ?></p>
-                    </div>
-                    <div id="date">
-                        <h3 class="title-desc">Date</h3>
-                        <p><?= $display['eventDate'] ?></p>
-                    </div>
-                    <div id="places">
-                        <h3 class="title-desc">Nombre de places restantes</h3>
-                        <p><?= $display['eventPlaceNbPlacesPit'] ?> places en fosse</p>
-                        <p><?= $display['eventPlaceNbPlacesStair'] ?> places en gradin</p>
-                    </div>
+<?php if (!isset($_GET['type-place'])) { ?>
+    <div id="container">
+        <div id="container-description-event">
+            <div id="img-title-date">
+                <img src="<?= $display['eventPicture']?>"
+                     alt="<?= $display['eventPictureDescription'] ?>">
+                <div id="title-date">
+                    <h1><?= $display['eventName'] ?></h1>
+                    <p><?= $display['eventDate'] ?></p>
                 </div>
-                <iframe
-                        width="500vw"
-                        height="350vh"
-                        frameborder="0" style="border:0"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $display['eventPlaceStreet'] ?>,
-                        <?= $display['eventPlaceCity'] ?>,<?= $display['eventPlaceCountry'] ?>"
-                        allowfullscreen>
-                </iframe>
             </div>
-            <button id="btn-book">Ajouter au panier</button>
+            <div id="summary-and-informations">
+                <div id="summary">
+                    <h1 class="title-section">Résumé</h1>
+                    <p><?= $display['eventDescription'] ?></p>
+                </div>
+                <div id="description-and-image-container">
+                    <div id="informations-event">
+                        <h1 class="title-section">Informations</h1>
+                        <div id="place">
+                            <h3 class="title-desc">Lieu</h3>
+                            <p><?= $display['eventPlaceName'] ?></p>
+                            <p><?= $display['eventPlaceStreet'] ?></p>
+                            <p><?= $display['eventPlaceCity'] ?></p>
+                            <p><?= $display['eventPlaceCountry'] ?></p>
+                        </div>
+                        <div id="date">
+                            <h3 class="title-desc">Date</h3>
+                            <p><?= $display['eventDate'] ?></p>
+                        </div>
+                        <div id="places">
+                            <h3 class="title-desc">Nombre de places restantes</h3>
+                            <p><?= $display['eventPlaceNbPlacesPit'] ?> places en fosse</p>
+                            <p><?= $display['eventPlaceNbPlacesStair'] ?> places en gradin</p>
+                        </div>
+                    </div>
+                    <iframe
+                            width="500vw"
+                            height="350vh"
+                            frameborder="0" style="border:0"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $display['eventPlaceStreet'] ?>,
+                            <?= $display['eventPlaceCity'] ?>,<?= $display['eventPlaceCountry'] ?>"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <form id="form-event" method="get">
+                    <select id="type-place">
+                        <option value="pit">Fosse</option>
+                        <option value="stair">Gradin</option>
+                    </select>
+                    <button id="btn-book" type="submit">Ajouter au panier</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+<?php } ?>
 <?php require_once PATH_VIEWS . 'footer.php'; ?>
 </body>
 </html>
