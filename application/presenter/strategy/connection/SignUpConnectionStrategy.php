@@ -1,10 +1,10 @@
 <?php
 
-require_once PATH_PRESENTER . 'state/connection/ConnectionState.php';
+require_once PATH_PRESENTER . 'strategy/connection/ConnectionStrategy.php';
 require_once './model/database/dto/UserDTO.php';
-require_once './model/database/dto/UserDAO.php';
+require_once PATH_DAO . 'UserDAO.php';
 
-class SignUpConnectionState implements ConnectionState
+class SignUpConnectionStrategy implements ConnectionStrategy
 {
     private array $resultDisplay = array();
 
@@ -21,16 +21,14 @@ class SignUpConnectionState implements ConnectionState
                 if ($password == $confirmPassword) {
                     $this->createAccount($firstname, $lastname, $email, $password);
                 } else {
-                    $this->set_error("password");
+                    $this->set_error("password", new Exception("Les mots de passe ne correspondent pas"));
                 }
             } else {
-                $this->set_error("email");
+                $this->set_error("email", new Exception("L'adresse mail n'est pas valide"));
             }
         } else {
-            $this->set_error("empty");
+            $this->set_error("empty", new Exception("Tous les champs doivent être remplis"));
         }
-
-        print_r($this->resultDisplay);
 
         return array('resultDisplayRegister' => $this->resultDisplay, 'type' => $this->resultDisplay['type']);
     }
@@ -53,16 +51,16 @@ class SignUpConnectionState implements ConnectionState
             $this->resultDisplay['type'] = "success";
 
         } catch (UserAlreadyInBaseException $e) {
-            $this->set_error("alreadyInBase");
-        } catch (NoDatabaseException $e) {
-            $this->set_error("noDatabase");
+            $this->set_error("alreadyInBase", $e);
+        } catch (NoDatabaseException|TypeError $e) {
+            $this->set_error("noDatabase", $e);
         } catch (Exception $e) {
-            $this->set_error("unknown");
+            $this->set_error("unknown", $e);
         }
 
     }
 
-    private function set_error(string $type) {
+    private function set_error(string $type,$e) {
         $messages = [
             "password" => "Les mots de passe ne correspondent pas",
             "email" => "L'adresse mail n'est pas valide",
@@ -74,5 +72,6 @@ class SignUpConnectionState implements ConnectionState
 
         $this->resultDisplay['message'] = $messages[$type];
         $this->resultDisplay['type'] = "error";
+        $this->resultDisplay['trace'] = $e->getTraceAsString();
     }
 }

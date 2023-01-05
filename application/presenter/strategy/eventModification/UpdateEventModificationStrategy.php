@@ -1,13 +1,13 @@
 <?php
 
-require_once PATH_PRESENTER . 'state/eventModification/EventModificationState.php';
+require_once PATH_PRESENTER . 'strategy/eventModification/EventModificationStrategy.php';
 require_once PATH_DAO . 'EventDAO.php';
 require_once PATH_DTO . 'EventDTO.php';
 require_once PATH_DAO . 'EventPricingDAO.php';
 require_once PATH_DTO . 'EventPricingDTO.php';
 require_once PATH_APPLICATION . 'display/formatDate.php';
 
-class UpdateEventModificationState implements EventModificationState
+class UpdateEventModificationStrategy implements EventModificationStrategy
 {
 
     private array $get;

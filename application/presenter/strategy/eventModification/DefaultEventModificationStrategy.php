@@ -1,6 +1,8 @@
 <?php
 
-class DefaultEventModificationState implements EventModificationState
+require_once PATH_PRESENTER . 'strategy/eventModification/EventModificationStrategy.php';
+
+class DefaultEventModificationStrategy implements EventModificationStrategy
 {
 
     public function handle(array $get, array $post): array
