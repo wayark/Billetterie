@@ -31,7 +31,7 @@ body{
 #options li a{
     text-decoration: none;
     color: #e0d3a6;
-    font-size: 20px;
+    font-size: 2.1vw;
 }
 
 #options li a:hover{
@@ -40,28 +40,10 @@ body{
     border-bottom: 3px solid #e0d3a6;
 }
 
-#titlepage{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 97vw;
-    height: 50px;
-    background-color: #424141;
-}
-
 #titlepage p {
     color: #e0d3a6;
-    font-size: 25px;
+    font-size: 2vw;
     margin-left: 2vw;
-}
-
-#searchconcert{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 65px;
-    background-color: #2d2d2d;
 }
 
 #searchconcert input{
@@ -70,7 +52,7 @@ body{
     border: none;
     background-color: #2d2d2d;
     color: #757575;
-    font-size: 20px;
+    font-size: 2.1vw;
     outline: none;
     margin-left: 2vw;
 }
@@ -87,8 +69,8 @@ body{
 }
 
 #point div {
-    width: 10px;
-    height: 10px;
+    width: 1vw;
+    height: 1vw;
     background-color: #e0d3a6;
     border-radius: 100%;
 }
@@ -108,9 +90,9 @@ body{
     width: 95vw;
     height: 20vw;
     background-color: #2d2d2d;
-    border-radius: 15px;
+    border-radius: 1.5vw;
     color : white;
-    box-shadow: 0 10px 0 0#2a2929;
+    box-shadow: 0 1vw 0 0#2a2929;
 }
 
 .events img {
@@ -118,7 +100,7 @@ body{
     width: 15vw;
     width: 25vw;
     margin-left: 3vw;
-    border-radius: 10px;
+    border-radius: 1vw;
 }
 
 .eventtext-container{
@@ -129,45 +111,10 @@ body{
     grid-template-columns: 40vw 20vw;
 }
 
-/* .eventtext{
-    position: absolute;
-} */
-
 .eventtitle{
-    font-size: 30px;
+    font-size: 3vw;
     font-weight: bold;
-    margin-top: 10px;
-}
-
-.eventdate{
-    font-size: 17px;
-    margin-top: 10px;
-}
-
-.eventdesc{
-    font-size: 17px;
-    margin-left: 40px;
-    color: #949494;
-}
-
-.eventplace{
-    font-size: 20px;
-    text-align: end;
-    color: #afafaf;
-    font-weight: bold;
-}
-
-.eventcity{
-    font-size: 15px;
-    text-align: end;
-    color: #afafaf;
-    font-weight: bold;
-}
-
-.eventplacesremaining{
-    font-size: 17px;
-    text-align: end;
-    color: #8a8a8a;
+    margin-top: 1.5vw;
 }
 
 #eventsimages{
@@ -223,7 +170,7 @@ body{
 #options li a{
     text-decoration: none;
     color: #e0d3a6;
-    font-size: 20px;
+    font-size: 2.1vw;
 }
 
 #options li a:hover{
@@ -237,14 +184,8 @@ body{
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 50px;
+    height: 4vw;
     background-color: #424141;
-}
-
-#titlepage p {
-    color: #e0d3a6;
-    font-size: 25px;
-    margin-left: 2vw;
 }
 
 #searchconcert{
@@ -252,7 +193,7 @@ body{
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 65px;
+    height: 5vw;
     background-color: #2d2d2d;
 }
 
@@ -262,7 +203,7 @@ body{
     border: none;
     background-color: #2d2d2d;
     color: #757575;
-    font-size: 20px;
+    font-size: 2.1vw;
     outline: none;
     margin-left: 2vw;
 }
@@ -279,8 +220,8 @@ body{
 }
 
 #point div {
-    width: 10px;
-    height: 10px;
+    width: 1vw;
+    height: 1vw;
     background-color: #e0d3a6;
     border-radius: 100%;
 }
@@ -301,50 +242,43 @@ body{
     grid-template-columns: 40vw 20vw;
 }
 
-/* .eventtext{
-    position: absolute;
-} */
-
-.eventtitle{
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
 .eventdate{
-    font-size: 17px;
-    margin-top: 10px;
+    font-size: 1.4vw;
+    margin-top: 1vw;
 }
 
 .eventdesc{
-    font-size: 17px;
+    font-size: 1.4vw;
     margin-left: 1vw;
     margin-top: 1vh;
     color: #949494;
 }
 
 .eventplace{
-    font-size: 20px;
+    font-size: 2.1vw;
     text-align: end;
     color: #afafaf;
     font-weight: bold;
 }
 
 .eventcity{
-    font-size: 15px;
+    font-size: 1.5vw;
     text-align: end;
     color: #afafaf;
     font-weight: bold;
 }
 
 .eventplacesremaining{
-    font-size: 17px;
+    font-size: 1.4vw;
     text-align: end;
     color: #8a8a8a;
 }
+.tendancies{
+    box-shadow: 0 1vw 0 0#2a2929;
+    border-radius: 3vw;
+}
 
 .tendancies div {
-    box-shadow: 0 10px 0 0#2a2929;
     transition: 0.2s;
     border-radius: 3vw;
     cursor: pointer;

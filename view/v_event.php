@@ -21,11 +21,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./asset/css/event.css">
+    <script src="<?php echo PATH_SCRIPTS . "justbought.js"?>" defer></script>
     <title><?= $display['eventName'] ?></title>
 </head>
 <body>
 <?php require_once PATH_VIEWS . 'header.php'; ?>
-<?php if (!isset($_GET['type-place'])) { ?>
+<?php if (!isset($_POST['type'])) { ?>
     <div id="container">
         <div id="container-description-event">
             <div id="img-title-date">
@@ -71,8 +72,8 @@
                             allowfullscreen>
                     </iframe>
                 </div>
-                <form id="form-event" method="get">
-                    <select id="type-place">
+                <form id="form-event" method="post" action="">
+                    <select id="type-place" name="type">
                         <option value="pit">Fosse</option>
                         <option value="stair">Gradin</option>
                     </select>
@@ -80,6 +81,16 @@
                 </form>
             </div>
         </div>
+    </div>
+<?php } else { ?>
+    <div id="addtocarttextcontainer">
+        <div id="imgandtextaddtocart">
+            <img src="<? echo PATH_IMAGES . "/useful/justbought.png" ?>" alt="justbought" draggable="false">
+            <h1 id="thankstoaddtocart" class="addtocarttext">Votre ticket a bien été ajouté au panier.</h1>
+        </div>
+        <? echo $ticketAddedToCart["event"]; ?>
+        <a href="?page=cart" class="buttonwherebuy">Voir mon panier</a>
+        <a href="?page=order" class="buttonwherebuy">Continuer mes achats</a>
     </div>
 <?php } ?>
 <?php require_once PATH_VIEWS . 'footer.php'; ?>
