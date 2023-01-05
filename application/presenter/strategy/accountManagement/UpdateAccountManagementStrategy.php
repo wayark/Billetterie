@@ -1,6 +1,6 @@
 <?php
 require_once PATH_APPLICATION . 'stringLib.php';
-require_once PATH_PRESENTER . 'strategy/accountManagement/AccountManagementState.php';
+require_once PATH_PRESENTER . 'strategy/accountManagement/AccountManagementStrategy.php';
 require_once PATH_MODELS . 'User.php';
 require_once PATH_DTO . 'UserDTO.php';
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once PATH_PRESENTER . 'strategy/connection/ConnectionState.php';
+require_once PATH_PRESENTER . 'strategy/connection/ConnectionStrategy.php';
 
 class DefaultConnectionStrategy implements ConnectionStrategy
 {

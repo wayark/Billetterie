@@ -1,6 +1,6 @@
 <?php
 
-require_once PATH_PRESENTER . 'strategy/accountManagement/AccountManagementState.php';
+require_once PATH_PRESENTER . 'strategy/accountManagement/AccountManagementStrategy.php';
 
 class ChangeTypeAccountManagementStrategy implements AccountManagerStrategy
 {

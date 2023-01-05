@@ -1,6 +1,6 @@
 <?php
 
-require_once PATH_PRESENTER . 'strategy/eventModification/EventModificationState.php';
+require_once PATH_PRESENTER . 'strategy/eventModification/EventModificationStrategy.php';
 require_once PATH_DAO . 'EventDAO.php';
 require_once PATH_DTO . 'EventDTO.php';
 require_once PATH_DAO . 'EventPricingDAO.php';

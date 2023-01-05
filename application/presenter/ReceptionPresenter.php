@@ -8,6 +8,7 @@ require_once './application/display/formatDate.php';
 class ReceptionPresenter extends Presenter
 {
     private array $events;
+    private ?array $error = null;
 
     /**
      * @inheritDoc
@@ -19,11 +20,23 @@ class ReceptionPresenter extends Presenter
 
     protected function checkProcess(): void
     {
-        $eventDAO = new EventDAO();
         try {
+            $eventDAO = new EventDAO();
             $this->events = $eventDAO->getAll();
+        } catch (Error $e) {
+            $this->error = array(
+                "message" => "Une erreur est survenue lors de la récupération des événements",
+                "type" => "error",
+                "trace" => $e->getTraceAsString(),
+                "events" => ""
+            );
         } catch (Exception $e) {
-
+            $this->error = array(
+                "message" => "Une erreur est survenue lors de la récupération des événements",
+                "type" => "error",
+                "trace" => $e->getTraceAsString(),
+                "events" => ""
+            );
         }
     }
 
@@ -32,6 +45,8 @@ class ReceptionPresenter extends Presenter
      */
     public function formatDisplay(): array
     {
+        if (!is_null($this->error)) return $this->error;
+
         $display = array();
         $displayString = "";
         for ($i = 0; $i < count($this->events) && $i <= 5; $i++) {

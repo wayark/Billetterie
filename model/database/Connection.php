@@ -24,8 +24,9 @@ class Connection
     public static function getInstance(): Connection
     {
         try {
+            self::$instance = new Connection();
             if (self::$instance == null) {
-                self::$instance = new Connection();
+                throw new NoDatabaseException();
             }
         } catch (PDOException $e) {
             if ($e->getCode() == 2002) {
