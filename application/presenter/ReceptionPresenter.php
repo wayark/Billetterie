@@ -58,43 +58,4 @@ class ReceptionPresenter extends Presenter
         $display['events'] = $displayString;
         return $display;
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function formatDisplayById($id, $type) : array {
-        if ($type == "pit") {
-            $typeofplace = "Fosse";
-        } else {
-            $typeofplace = "Gradin";
-        }
-        $display = array();
-        $displayString = "";
-        for ($i = 0; $i < count($this->events) && $i <= 5; $i++) {
-            $event = $this->events[$i];
-            if($event->getIdEvent() == $id) {
-                $event = $this->events[$i];
-                $displayString .= '<div class=events>';
-                $displayString .= '<div class=eventimg>';
-                $displayString .= '<div>';
-                $displayString .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" draggable="false">';
-                $displayString .= '</div>';
-                $displayString .= '</div>';
-                $displayString .= '<div class="eventtext-container">';
-                $displayString .= '<div id="containertextleft">';
-                $displayString .= '<p class="eventtitle eventtext">' . $event->getEventInfo()->getEventName() . '</p>';
-                $displayString .= '<p class="eventdate eventtext">' . format_datetime($event->getEventInfo()->getEventDate()) . '</p>';
-                $displayString .= '<p class="eventdesc eventtext">' . $event->getEventInfo()->getEventDescription() . '</p>';
-                $displayString .= "</div>";
-                $displayString .= '<div id="containertextright">';
-                $displayString .= '<p class="eventplace eventtext">' . $event->getEventPlace()->getCountry() . '</p>';
-                $displayString .= '<p class="eventcity eventext">' . $event->getEventPlace()->getCity() . '</p>';
-                $displayString .= '<p id="type-place">'. $typeofplace .'</p>';
-                $displayString .= "</div>";
-                $displayString .= "</div></div>";
-            }
-        }
-        $display['event'] = $displayString;
-        return $display;
-    }
 }

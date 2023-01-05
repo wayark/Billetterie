@@ -26,7 +26,7 @@
 </head>
 <body>
 <?php require_once PATH_VIEWS . 'header.php'; ?>
-<?php if (!isset($_POST['type'])) { ?>
+<?php if (!$posted) { ?>
     <div id="container">
         <div id="container-description-event">
             <div id="img-title-date">
