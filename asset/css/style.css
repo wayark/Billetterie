@@ -26,10 +26,9 @@ header{
 
 
 .logo{
-    width: 15vw;
+    width: 10vw;
     min-width: 90px;
     min-height: 32px;
-    height: 5.5vw;
     align-self: center;
     margin: 1vw;
 }
@@ -82,7 +81,7 @@ nav{
     display: flex;
     justify-content: space-evenly;
     background-color: #424141;
-    height: 5vw;
+    height: 4vw;
     min-height: 25px;
 }
 
@@ -91,8 +90,7 @@ nav > div{
     align-items: center;
     color: #E7D9AB ;
     cursor: pointer;
-    font-size:calc(6px + 1.6vw);
-    height:5vw ;
+    font-size:calc(6px + 1.2vw);
     min-height: 25px;
     padding-left: 0.5vw;
     padding-right: 0.5vw;;

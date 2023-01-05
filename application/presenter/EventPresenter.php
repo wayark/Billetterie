@@ -7,7 +7,6 @@ require_once './application/display/formatDate.php';
 
 class EventPresenter extends Presenter
 {
-
     private array $display;
     private Event $eventToDisplay;
 

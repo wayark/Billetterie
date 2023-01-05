@@ -69,15 +69,19 @@ body{
 
 #title-date {
     margin-top : 3vw;
+    margin-left: 2vw;
     justify-self: center;
 }
 
 #title-date h1{
-    font-size: 2vw;
+    font-size: 4vw;
+    margin-right: 4vw;
 }
 
 #title-date p{
     font-size: 1.5vw;
+    margin-top: 1.5vw;
+    text-align: center;
 }
 
 #summary-and-informations{

@@ -7,6 +7,7 @@ require_once './application/display/formatDate.php';
 ?>
 <head>
     <link rel="stylesheet" href="../asset/css/reception.css">
+    <script src="<?php echo PATH_ASSETS . "javascript/" ?>reception.js" defer></script>
 </head>
 <body>
 <?php
@@ -15,14 +16,20 @@ require_once PATH_VIEWS . 'header.php';
 
 <section id="container">
     <div id="eventsimages">
-        <div class="tendancies t2">
-            <img src="<?= PATH_IMAGES . "events/mielvigne.jpg" ?>" alt="">
+        <div id="moveCarouselLeft" class="moveCarousel" onclick="moveCarousel(this);">
+            <div></div>
         </div>
-        <div class="tendancies t1">
-            <img src="<?= PATH_IMAGES . "events/wayark.jpg" ?>" alt="">
-        </div>
-        <div class="tendancies t3">
-            <img src="<?= PATH_IMAGES . "events/bdsmousse.jpg" ?>" alt="">
+        <a class="tendancies t1" href="?page=event&event=<?php echo $tendancies[1]->getIdEvent() ?>">
+            <div style="background-image:url(<?php echo $tendancies[1]->getEventInfo()->getPicture()->getPicturePath(); ?>);" draggable="false"></div>
+        </a>
+        <a class="tendancies t2" href="?page=event&event=<?php echo $tendancies[0]->getIdEvent() ?>">
+            <div style="background-image:url(<?php echo $tendancies[0]->getEventInfo()->getPicture()->getPicturePath(); ?>);" draggable="false"></div>
+        </a>
+        <a class="tendancies t3" href="?page=event&event=<?php echo $tendancies[2]->getIdEvent() ?>">
+            <div style="background-image: url(<?php echo $tendancies[2]->getEventInfo()->getPicture()->getPicturePath(); ?>);" draggable="false"></div>
+        </a>
+        <div id="moveCarouselRight" class="moveCarousel" onclick="moveCarousel(this);">
+            <div></div>
         </div>
     </div>
     <div id="titlepage">
