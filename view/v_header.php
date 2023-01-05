@@ -12,7 +12,7 @@
 
 <body>
 <header>
-    <a href="./index.php">
+    <a href="./">
         <img src="<?= PATH_IMAGES ?>/logos/logoWatiGold.png" alt="logo" class="logo">
     </a>
     <div class="header-right-button">

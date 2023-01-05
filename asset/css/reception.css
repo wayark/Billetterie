@@ -188,7 +188,16 @@ body{
     border : 3px solid black;
 }
 
-.t1{
+.t1 img{
+    width: 30vw;
+}
+
+.t2 img{
+    width: 27vw;
+}
+
+.t3 img{
+    width: 28vw;
 }
 
 .t2 {
