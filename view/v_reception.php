@@ -35,12 +35,15 @@ require_once PATH_VIEWS . 'header.php';
     <div id="titlepage">
         <p>Tous nos événements</p>
     </div>
-    <div id="searchconcert">
+    <form id="searchconcert" action="" method="get">
         <div id="point">
             <div></div>
         </div>
-        <input type="text" placeholder="Rechercher un concert...">
-    </div>
+        <input type="text" placeholder="Rechercher un concert..." name="search" required>
+        <button type="submit" id="searchbutton">
+            <img src="<?php echo PATH_IMAGES . 'useful/glass.png';?>" alt="">
+        </button>
+    </form>
     <article id="events-container">
         <?= $displayArray['events'] ?>
     </article>

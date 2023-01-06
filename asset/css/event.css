@@ -215,6 +215,8 @@ body{
 
 .buttonwherebuy{
     display: flex;
+    flex-direction: row;
+    column-gap: 0.7vw;
     align-items: center;
     justify-content: center;
     font-size: 1.5vw;
@@ -229,6 +231,11 @@ body{
     cursor: pointer;
     font-weight: bold;
     text-decoration: none;
+}
+
+.buttonwherebuy img{
+    width : 3vw;
+    z-index : 999;
 }
 
 .buttonwherebuy:hover{

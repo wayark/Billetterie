@@ -99,8 +99,12 @@
             <h1 id="thankstoaddtocart" class="addtocarttext">Votre ticket a bien été ajouté au panier.</h1>
         </div>
         <? echo $ticketAddedToCart["event"]; ?>
-        <a href="?page=cart" class="buttonwherebuy">Voir mon panier</a>
-        <a href="?page=order" class="buttonwherebuy">Continuer mes achats</a>
+        <a href="?page=cart" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);" onmouseout="unchangeImgButtonColor(this);">
+            <img draggable="false" src="<?php echo PATH_IMAGES . "useful/cart.png" ;?>">Voir mon panier
+        </a>
+        <a href="?" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);" onmouseout="unchangeImgButtonColor(this);">
+            Continuer mes achats<img draggable="false" src="<?php echo PATH_IMAGES . "useful/doublearrow.png" ;?>">
+        </a>
     </div>
 <?php } ?>
 <?php require_once PATH_VIEWS . 'footer.php'; ?>
