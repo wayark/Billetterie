@@ -101,11 +101,15 @@ body{
 }
 
 #btn-book{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 20vw;
     height: 3vw;
     align-self: center;
     background-color: #757575;
     cursor: pointer;
+    text-decoration: none;
     border: none;
     border-radius: 50px;
     color: #e0d3a6;
@@ -235,8 +239,12 @@ body{
 #type-place-recap-text{
     text-align: end;
     margin-top: 2.5vw;
-    margin-right:3vw;
     color : #afafaf;
-    font-size : 4vw;
+    font-size : 3vw;
+    font-weight: bolder;
+}
+
+.eventtitle-cart{
+    font-size: 3.1vw;
     font-weight: bolder;
 }

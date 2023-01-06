@@ -14,7 +14,7 @@ require_once './application/display/errorDisplay.php';
     <section class="connectionPage">
         <div class="connection-register-frame">
             <div>
-                <form method="post" action="./index.php?page=connection" class="connectionForm">
+                <form method="post" action="./?page=connection" class="connectionForm">
                     <p>Connexion</p>
                     <input name="emailC" type="text" class="emailC" placeholder="E-mail...">
                     <input name="passwordC" type="password" class="passwordC" placeholder="Mot de passe...">

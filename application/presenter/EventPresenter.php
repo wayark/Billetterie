@@ -64,13 +64,13 @@ class EventPresenter extends Presenter
             $event = $this->eventToDisplay;
             $displayString .= '<div class=events>';
             $displayString .= '<div class=eventimg>';
-            $displayString .= '<div>';
+            $displayString .= '<a href="?page=event&event='. $event->getIdEvent().'">';
             $displayString .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" draggable="false">';
-            $displayString .= '</div>';
+            $displayString .= '</a>';
             $displayString .= '</div>';
             $displayString .= '<div class="eventtext-container">';
             $displayString .= '<div id="containertextleft">';
-            $displayString .= '<p class="eventtitle eventtext">' . $event->getEventInfo()->getEventName() . '</p>';
+            $displayString .= '<p class="eventtitle-cart eventtext">' . $event->getEventInfo()->getEventName() . '</p>';
             $displayString .= '<p class="eventdate eventtext">' . format_datetime($event->getEventInfo()->getEventDate()) . '</p>';
             $displayString .= '<p class="eventdesc eventtext">' . $event->getEventInfo()->getEventDescription() . '</p>';
             $displayString .= "</div>";

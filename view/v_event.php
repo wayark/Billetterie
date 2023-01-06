@@ -72,13 +72,23 @@
                             allowfullscreen>
                     </iframe>
                 </div>
-                <form id="form-event" method="post" action="">
-                    <select id="type-place" name="type">
-                        <option value="pit">Fosse</option>
-                        <option value="stair">Gradin</option>
-                    </select>
-                    <button id="btn-book" type="submit">Ajouter au panier</button>
-                </form>
+                <?php if (isset($_SESSION['user'])){ ?>
+                    <form id="form-event" method="post" action="">
+                        <select id="type-place" name="type">
+                            <option value="pit">Fosse</option>
+                            <option value="stair">Gradin</option>
+                        </select>
+                        <button id="btn-book" type="submit">Ajouter au panier</button>
+                    </form>
+                <?php } else { ?>
+                    <div id="form-event">
+                        <select id="type-place" name="type">
+                            <option value="pit">Fosse</option>
+                            <option value="stair">Gradin</option>
+                        </select>
+                        <a id="btn-book" href="?page=connection">Ajouter au panier</a>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

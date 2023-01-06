@@ -19,7 +19,7 @@
         <?php
         if (session_id() == '') session_start();
         if (isset($_SESSION) and isset($_SESSION['user'])) {
-            echo '<a href="./index.php?page=deconnection">
+            echo '<a href="./?page=deconnection">
                     <button class="headerButton cartButton">
                         <img src="' . PATH_IMAGES . 'logos/deconnection.png" alt="Deconnexion" class="cart">
                     </button>
