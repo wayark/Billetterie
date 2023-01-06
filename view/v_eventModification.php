@@ -33,9 +33,7 @@ require_once PATH_APPLICATION . 'display/formatDate.php';
                     <section class="eventModification">
                         <div class="event-modification-frame">
                             <div class="event-modification-title">
-
-                                <form method="Post"
-                                      action="./index.php?page=eventModification&event=<?= $display['event']['id'] ?>">
+                                <form method="Post" action="./index.php?page=eventModification&event=<?= $display['event']['id'] ?>">
                                     <div class="event-modification-summary">
                                         <h2>Résumé</h2>
                                         <textarea name="resume" id="" cols="30" rows="10" maxlength="1000"></textarea>

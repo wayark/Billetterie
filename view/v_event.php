@@ -73,11 +73,15 @@
                     </iframe>
                 </div>
                 <?php if (isset($_SESSION['user'])){ ?>
-                    <form id="form-event" method="post" action="">
+                    <form id="form-event" method="post">
                         <select id="type-place" name="type">
                             <option value="pit">Fosse</option>
                             <option value="stair">Gradin</option>
                         </select>
+                        <div id="quantity">
+                            <p for="quantity">Quantité</p>
+                            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+                        </div>
                         <button id="btn-book" type="submit">Ajouter au panier</button>
                     </form>
                 <?php } else { ?>
@@ -86,6 +90,10 @@
                             <option value="pit">Fosse</option>
                             <option value="stair">Gradin</option>
                         </select>
+                        <div id="quantity">
+                            <p for="quantity">Quantité</p>
+                            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+                        </div>
                         <a id="btn-book" href="?page=connection">Ajouter au panier</a>
                     </div>
                 <?php } ?>

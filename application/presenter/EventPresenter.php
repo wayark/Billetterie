@@ -50,11 +50,16 @@ class EventPresenter extends Presenter
         return $this->display;
     }
 
-    public function formatDisplayById($id, $type) {
+    public function formatDisplayById($id, $type, $quantity) {
         if ($type == "pit") {
             $typeofplace = "Fosse";
         } else {
             $typeofplace = "Gradin";
+        }
+
+        $quantity = $quantity . " place";
+        if ($quantity > 1) {
+            $quantity .= "s";
         }
 
         $event = $this->eventToDisplay;
@@ -78,10 +83,16 @@ class EventPresenter extends Presenter
             $displayString .= '<p class="eventplace eventtext">' . $event->getEventPlace()->getCountry() . '</p>';
             $displayString .= '<p class="eventcity eventext">' . $event->getEventPlace()->getCity() . '</p>';
             $displayString .= '<p id="type-place-recap-text">'. $typeofplace .'</p>';
+            $displayString .= '<p id="quantity-recap-text">'. $quantity .'</p>';
             $displayString .= "</div>";
             $displayString .= "</div></div>";
         }
         $display['event'] = $displayString;
         return $display;
+    }
+
+    public function getEventToDisplay() : Event
+    {
+        return $this->eventToDisplay;
     }
 }

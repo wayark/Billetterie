@@ -114,7 +114,6 @@ body{
     border-radius: 50px;
     color: #e0d3a6;
     font-size: 2vw;
-    margin-top: 1.5vw;
 }
 
 #btn-book:hover{
@@ -253,4 +252,37 @@ body{
 .eventtitle-cart{
     font-size: 3.1vw;
     font-weight: bolder;
+}
+
+#quantity{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.3vw;
+    align-items: center;
+    justify-content: center;
+}
+
+#quantity p{
+    font-size: 1.5vw;
+    color: #afafaf;
+}
+
+#quantity input{
+    width: 3vw;
+    height: 3vw;
+    background-color: #424141;
+    color: #e0d3a6;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    text-align: center;
+}
+
+#quantity-recap-text{
+    font-weight: bold;
+    font-size: 2vw;
+    text-align: end;
+    color: #afafaf;
+
 }
