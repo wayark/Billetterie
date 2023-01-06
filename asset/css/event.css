@@ -235,7 +235,6 @@ body{
 
 .buttonwherebuy img{
     width : 3vw;
-    z-index : 999;
 }
 
 .buttonwherebuy:hover{

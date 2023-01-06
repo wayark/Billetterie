@@ -127,12 +127,8 @@ body{
 }
 
 .t2 div{
-    width: 30vw;
-    height : 21vw;
-}
-
-.t2 div{
     width: 27vw;
+    height : 21vw;
 }
 
 .t3 div{
@@ -276,7 +272,7 @@ body{
 
 .t1 div, .t3 div{
     height: 17vw;
-    width: 25vw;
+    width: 23vw;
 }
 
 .moveCarousel{

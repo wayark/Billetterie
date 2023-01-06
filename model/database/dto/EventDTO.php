@@ -1,9 +1,7 @@
 <?php
 
 require_once PATH_MODELS . 'Event.php';
-require_once PATH_MODELS . 'DTO.php';
 require_once PATH_MODELS . 'database/DTO.php';
-require_once PATH_MODELS . 'Event.php';
 require_once './model/database/IObjectDTO.php';
 
 class EventDTO extends DTO implements IObjectDTO

@@ -8,15 +8,3 @@ eventDescriptions.forEach((eventDescription) => {
         eventDescription.innerText = text;
     }
 });
-
-const changeImgButtonColor = (element) => {
-    let imgSrc = element.querySelector("img").src;
-    /* imgSrc = imgSrc.substring(0, imgSrc.length - 4)+"_hover.png"; */
-    console.log(imgSrc);
-}
-
-const unchangeImgButtonColor = (element) => {
-    let imgSrc = element.querySelector("img").src;
-    imgSrc= imgSrc.substring(0, imgSrc.length - 8)+"cart.png";
-    console.log(imgSrc);
-}

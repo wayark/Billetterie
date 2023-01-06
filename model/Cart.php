@@ -1,9 +1,10 @@
 <?php
 
 class Cart {
+
+    private array $cart;
+
     public function __construct() {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = array();
-        }
+        
     }
 }
