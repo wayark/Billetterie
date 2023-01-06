@@ -57,9 +57,9 @@ class EventPresenter extends Presenter
             $typeofplace = "Gradin";
         }
 
-        $quantity = $quantity . " place";
+        $tmp = $quantity . " place";
         if ($quantity > 1) {
-            $quantity .= "s";
+            $tmp .= "s";
         }
 
         $event = $this->eventToDisplay;
@@ -83,7 +83,7 @@ class EventPresenter extends Presenter
             $displayString .= '<p class="eventplace eventtext">' . $event->getEventPlace()->getCountry() . '</p>';
             $displayString .= '<p class="eventcity eventext">' . $event->getEventPlace()->getCity() . '</p>';
             $displayString .= '<p id="type-place-recap-text">'. $typeofplace .'</p>';
-            $displayString .= '<p id="quantity-recap-text">'. $quantity .'</p>';
+            $displayString .= '<p id="quantity-recap-text">'. $tmp .'</p>';
             $displayString .= "</div>";
             $displayString .= "</div></div>";
         }

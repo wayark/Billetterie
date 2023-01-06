@@ -104,7 +104,7 @@
     <div id="addtocarttextcontainer">
         <div id="imgandtextaddtocart">
             <img src="<? echo PATH_IMAGES . "/useful/justbought.png" ?>" alt="justbought" draggable="false">
-            <h1 id="thankstoaddtocart" class="addtocarttext">Votre ticket a bien été ajouté au panier.</h1>
+            <h1 id="thankstoaddtocart" class="addtocarttext"><?php echo $textToDisplay;?></h1>
         </div>
         <? echo $ticketAddedToCart["event"]; ?>
         <a href="?page=cart" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);" onmouseout="unchangeImgButtonColor(this);">
