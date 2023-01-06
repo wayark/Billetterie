@@ -66,9 +66,33 @@ require_once './application/display/errorDisplay.php';
     console.log("longeure : " + longeureJour);
     avanceJ = 0
     var ctx = document.getElementById('myCanvas').getContext('2d');
+    ctx.beginPath();
+    ctx.moveTo(1,0);
+    ctx.lineTo(1,149);
+    ctx.moveTo(1,149);
+    ctx.lineTo(300, 149);
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 4;
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    avanceJ = 150;
+    while(avanceJ > 0){
+        ctx.moveTo(0,avanceJ);
+        ctx.lineTo(10,avanceJ);
+        avanceJ = avanceJ - hauteurParVente*10;
+    }
+    ctx.lineWidth = 2;
+    ctx.closePath();
+    ctx.stroke();
+
+    avanceJ = 0
+
+    ctx.beginPath();
     ctx.strokeStyle = '#ff0000';
     ctx.lineWidth = 3;
-    ctx.beginPath();
+
     for(i=0; i<tableau.length -2; i=i+1){
         console.log("point départ : x :" + avanceJ + "    y : " + ((tableau[i]*hauteurParVente) + (150-(tableau[i]*hauteurParVente)*2)))
         ctx.moveTo(avanceJ, (tableau[i]*hauteurParVente) + (150-(tableau[i]*hauteurParVente)*2));
