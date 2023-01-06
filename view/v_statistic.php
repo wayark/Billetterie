@@ -58,22 +58,23 @@ require_once './application/display/errorDisplay.php';
     </section>
 </main>
 <script>
-    tableau = [10, 20, 34, 55];
+    tableau = [10, 20, 34, 55, 76, 100];
     max = tableau[tableau.length - 1];
     hauteurParVente = 150 /max;
     console.log("hauteur : " + hauteurParVente);
-    longeureJour = 300 / 3;
+    longeureJour = 300 / tableau.length;
     console.log("longeure : " + longeureJour);
     avanceJ = 0
     var ctx = document.getElementById('myCanvas').getContext('2d');
     ctx.strokeStyle = '#ff0000';
     ctx.lineWidth = 5;
-    
     ctx.beginPath();
-    console.log("point départ : x :" + avanceJ + "    y : " + tableau[0]*hauteurParVente)
-    ctx.moveTo(avanceJ, tableau[0]*hauteurParVente);
-    avanceJ = avanceJ + longeureJour
-    ctx.lineTo(avanceJ, tableau[1]*hauteurParVente);
+    for(i=0; i<tableau.length -2; i=i+1){
+        console.log("point départ : x :" + avanceJ + "    y : " + tableau[0]*hauteurParVente)
+        ctx.moveTo(avanceJ, tableau[i]*hauteurParVente);
+        avanceJ = avanceJ + longeureJour
+        ctx.lineTo(avanceJ, tableau[i+1]*hauteurParVente);
+    }
 
     ctx.stroke();
 </script>
