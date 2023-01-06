@@ -41,7 +41,7 @@ class EventListPresenter extends Presenter
         ];
     }
 
-    private function displayStringEvents() : string
+    private function displayStringEvents(): string
     {
         if (empty($this->events)) {
             return '<div class="eventList-exempleEvent" id="eventList-exempleEvent"><p>Vous n\'avez pas encore d\'événement</p></div>';
@@ -64,6 +64,10 @@ class EventListPresenter extends Presenter
             $ans .= '</a>';
             $ans .= '<a href="./index.php?page=statEvent&&event=' . $event->getIdEvent() . '">';
             $ans .= '<button>Statistiques</button>';
+            $ans .= '</a>';
+            $ans .= '</a>';
+            $ans .= '<a href="./index.php?page=delete&&event=' . $event->getIdEvent() . '">';
+            $ans .= '<button>Supprimer</button>';
             $ans .= '</a>';
             $ans .= '</div>';
             $ans .= '</div>';
