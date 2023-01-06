@@ -55,6 +55,6 @@ section div > div{
     flex-direction: column;
 }
 canvas{
-    width: 50%;
+    width: 300px;
     background-color: white;
 }
