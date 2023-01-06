@@ -62,18 +62,18 @@ require_once './application/display/errorDisplay.php';
     max = tableau[tableau.length - 1];
     hauteurParVente = 150 /max;
     console.log("hauteur : " + hauteurParVente);
-    longeureJour = 300 / tableau.length;
+    longeureJour = 300 / (tableau.length-2);
     console.log("longeure : " + longeureJour);
     avanceJ = 0
     var ctx = document.getElementById('myCanvas').getContext('2d');
     ctx.strokeStyle = '#ff0000';
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 3;
     ctx.beginPath();
     for(i=0; i<tableau.length -2; i=i+1){
-        console.log("point départ : x :" + avanceJ + "    y : " + tableau[0]*hauteurParVente)
-        ctx.moveTo(avanceJ, tableau[i]*hauteurParVente);
+        console.log("point départ : x :" + avanceJ + "    y : " + ((tableau[i]*hauteurParVente) + (150-(tableau[i]*hauteurParVente)*2)))
+        ctx.moveTo(avanceJ, (tableau[i]*hauteurParVente) + (150-(tableau[i]*hauteurParVente)*2));
         avanceJ = avanceJ + longeureJour
-        ctx.lineTo(avanceJ, tableau[i+1]*hauteurParVente);
+        ctx.lineTo(avanceJ, (tableau[i+1]*hauteurParVente) + (150-(tableau[i+1]*hauteurParVente)*2));
     }
 
     ctx.stroke();
