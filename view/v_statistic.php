@@ -42,7 +42,7 @@ require_once './application/display/errorDisplay.php';
         </div>
         <h2>statistique</h2>
         <div>
-            <canvas></canvas>
+            <canvas id="myCanvas"></canvas>
             <div>
                 <p>Nombre de places vendu :</p>
                 <div>
@@ -57,5 +57,18 @@ require_once './application/display/errorDisplay.php';
         </div>
     </section>
 </main>
+<script>
+    var ctx = document.getElementById('myCanvas').getContext('2d');
+    ctx.strokeStyle = '#ff0000';
+    ctx.lineWidth = 5;
+
+    ctx.beginPath();
+
+    ctx.moveTo(0, 0);
+
+    ctx.lineTo(300, 150);
+
+    ctx.stroke();
+</script>
 <?php require_once(PATH_VIEWS . 'footer.php'); ?>
 </body>
