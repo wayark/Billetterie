@@ -87,6 +87,17 @@ abstract class DAO
         return $this->queryAll($sql, $args);
     }
 
+    public function getQueryTripleCondition(string $table, string $field1, string $field2, string $field3, string $value1, string $value2, string $value3): array
+    {
+        $sql = "SELECT * FROM $table WHERE $field1 = :value1 AND $field2 = :value2 AND $field3 = :value3";
+        $args = array(
+            'value1' => $value1,
+            'value2' => $value2,
+            'value3' => $value3
+        );
+        return $this->queryAll($sql, $args);
+    }
+
     public function getTableLastId(string $table, string $id_field_name) : int {
         $sql = 'SELECT MAX($id_field_name) FROM $table';
         $id = $this->queryRow($sql, []);

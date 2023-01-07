@@ -41,19 +41,21 @@ if(isset($_POST['type']) && isset($_POST['quantity'])){
     $table = "Cart";
     $field1 = "ID_USER";
     $field2 = "ID_EVENT";
+    $field3 = "IS_PIT";
     $value1 = $_SESSION["user"]->getId();
     $value2 = $event->getIdEvent();
+    $value3 = $isPit;
     
-    $SamesTickets = $TicketDAO->getQueryDoubleCondition($table, $field1, $field2, $value1, $value2);
-    
-    $newQuantity = $_POST['quantity'];
+    $SamesTickets = $TicketDAO->getQueryTripleCondition($table, $field1, $field2, $field3, $value1, $value2, $value3);
+
+    $newQuantity = (int)$_POST['quantity'];
     foreach ($SamesTickets as $tmpTicket) {
-        $newQuantity += $tmpTicket['QUANTITY'];
+        $newQuantity += (int)$tmpTicket['QUANTITY'];
     }
 
+    $TicketDTO->deleteQueryTripleCondition($table, $field1, $field2, $field3, $value1, $value2, $value3);
+    
     $ticket = new Ticket($event->getIdEvent(), $_SESSION["user"]->getId(),$isPit, $newQuantity);
-
-    $TicketDTO->deleteQueryDoubleCondition($table, $field1, $field2, $value1, $value2);
 
     $TicketDTO->add($ticket);    
 }
