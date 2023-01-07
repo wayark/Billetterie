@@ -1,9 +1,6 @@
 <?php
 
-require_once 'model/database/DTO.php';
-require_once 'model/exception/ArtistAlreadyInBaseException.php';
-require_once 'model/Artist.php';
-require_once 'model/database/IObjectDTO.php';
+
 
 class ArtistDTO extends DTO implements IObjectDTO
 {

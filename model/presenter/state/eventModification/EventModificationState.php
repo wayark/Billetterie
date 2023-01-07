@@ -1,6 +1,6 @@
 <?php
 
-interface EventModificationStrategy
+interface EventModificationState
 {
     public function handle(array $get, array $post): array;
 }

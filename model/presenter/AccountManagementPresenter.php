@@ -1,20 +1,12 @@
 <?php
 
-require_once PATH_MODELS . 'Presenter.php';
-require_once PATH_MODELS . 'User.php';
-require_once PATH_APPLICATION . 'display/formatDate.php';
-require_once PATH_DAO . 'PaymentMethodDAO.php';
-require_once PATH_PRESENTER . 'strategy/accountManagement/DefaultAccountManagementStrategy.php';
-require_once PATH_PRESENTER . 'strategy/accountManagement/UpdateAccountManagementStrategy.php';
-require_once PATH_PRESENTER . 'strategy/accountManagement/ChangeTypeAccountManagementStrategy.php';
-
 class AccountManagementPresenter extends Presenter
 {
 
     private array $display = array();
     private User $currentUser;
     private array $methods;
-    private AccountManagerStrategy $state;
+    private AccountManagementState $state;
     private array $files;
 
     public function __construct(array $get, array $post, array $files)
@@ -32,12 +24,12 @@ class AccountManagementPresenter extends Presenter
         $this->currentUser = $_SESSION['user'];
         $this->methods = $paymentDAO->getAll();
 
-        if (isset($this->get['strategy']) && $this->get['strategy'] == 'changeType') {
-            $this->state = new ChangeTypeAccountManagementStrategy();
+        if (isset($this->get['state']) && $this->get['state'] == 'changeType') {
+            $this->state = new ChangeTypeAccountManagementState();
         } else if (isset($this->post['submit'])) {
-            $this->state = new UpdateAccountManagementStrategy();
+            $this->state = new UpdateAccountManagementState();
         } else {
-            $this->state = new DefaultAccountManagementStrategy();
+            $this->state = new DefaultAccountManagementState();
         }
         $this->display['resultDisplay'] = $this->state->handle($this->currentUser, $this->post, $this->files);
     }
@@ -54,7 +46,7 @@ class AccountManagementPresenter extends Presenter
             'lastName' => $this->currentUser->getLastName(),
             'mail' => $this->currentUser->getMail(),
             'birthDateNoFormat' => $this->currentUser->getBirthDate(),
-            'birthDate' => format_date($this->currentUser->getBirthDate()),
+            'birthDate' => DateDisplayService::formatDate($this->currentUser->getBirthDate()),
             'address' => $this->currentUser->getAddress(),
             'pictureFileName' => substr($this->currentUser->getProfilePicture()->getPicturePath(), strlen(PATH_IMAGES . 'users/')),
             'favoritePaymentMethod' => $this->currentUser->getFavoriteMethod()->getPaymentMethodName()
@@ -109,7 +101,7 @@ class AccountManagementPresenter extends Presenter
             $ans .= createButton("Gérer mes événements", "./index.php?page=eventList");
         } else {
             $ans .= createButton("Gérer mes billets", "./index.php");
-            $ans .= createButton("Passer organisateur", "./index.php?page=accountManagement&strategy=changeType");
+            $ans .= createButton("Passer organisateur", "./index.php?page=accountManagement&state=changeType");
         }
         return $ans;
     }

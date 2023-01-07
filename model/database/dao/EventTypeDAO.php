@@ -1,7 +1,6 @@
 <?php
 
-require_once ('./model/database/DAO.php');
-require_once './model/database/IObjectDAO.php';
+
 
 class EventTypeDAO extends DAO implements IObjectDAO
 {

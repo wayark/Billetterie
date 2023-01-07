@@ -1,6 +1,8 @@
 <?php
 
-require_once PATH_PRESENTER . 'EventModificationPresenter.php';
+use model\presenter\EventModificationPresenter;
+
+
 
 $presenter = new EventModificationPresenter($_GET, $_POST);
 

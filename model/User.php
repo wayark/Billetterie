@@ -1,9 +1,6 @@
 <?php
 
-require_once('Role.php');
-require_once('database/dao/RoleDAO.php');
-require_once('components/PersonInfo.php');
-require_once 'PaymentMethod.php';
+
 
 class User
 {

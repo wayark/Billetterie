@@ -1,8 +1,6 @@
 <?php
 
-require_once('./model/database/DAO.php');
-require_once ('./model/Role.php');
-require_once './model/database/IObjectDAO.php';
+
 
 class RoleDAO extends DAO implements IObjectDAO
 {

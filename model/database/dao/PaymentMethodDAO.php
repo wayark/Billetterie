@@ -1,8 +1,6 @@
 <?php
 
-require_once './model/database/DAO.php';
-require_once './model/database/IObjectDAO.php';
-require_once './model/PaymentMethod.php';
+
 
 class PaymentMethodDAO extends DAO implements IObjectDAO
 {

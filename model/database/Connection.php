@@ -1,7 +1,6 @@
 <?php
 
-require_once('./config/configuration.php');
-require_once(PATH_MODELS . 'exception/NoDatabaseException.php');
+
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);

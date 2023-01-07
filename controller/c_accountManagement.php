@@ -1,5 +1,4 @@
 <?php
-require_once PATH_PRESENTER . 'AccountManagementPresenter.php';
 
 if (session_id() == '') session_start();
 

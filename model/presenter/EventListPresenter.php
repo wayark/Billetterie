@@ -1,8 +1,4 @@
 <?php
-require_once PATH_DAO . 'EventDAO.php';
-require_once PATH_MODELS . 'Presenter.php';
-require_once PATH_MODELS . 'Event.php';
-require_once PATH_MODELS . 'User.php';
 
 class EventListPresenter extends Presenter
 {

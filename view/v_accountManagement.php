@@ -1,6 +1,4 @@
 <?php
-require_once './application/display/formatDate.php';
-require_once './application/display/errorDisplay.php';
 /**
  * @var array{
  *     user: array{
@@ -39,7 +37,7 @@ require_once './application/display/errorDisplay.php';
                 <button class="styleButton" id="account">Modifier mes informations</button>
                 <img src="<?= $display['user']['picturePath'] ?>"
                      alt="<?= $display['user']['pictureDescription'] ?>">
-                <?= displayError($display['resultDisplay'], 'registerDisplay') ?>
+                <?= ErrorDisplayService::displayError($display['resultDisplay'], 'registerDisplay') ?>
             </div>
             <div id="coteD">
                 <form action="./index.php?page=accountManagement" method="POST" enctype="multipart/form-data">

@@ -1,8 +1,6 @@
 <?php
 
-require_once PATH_PRESENTER . 'strategy/accountManagement/AccountManagementStrategy.php';
-
-class ChangeTypeAccountManagementStrategy implements AccountManagerStrategy
+class ChangeTypeAccountManagementState implements AccountManagementState
 {
 
     public function handle(User $user, array $post, array $files): ?array

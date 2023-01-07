@@ -1,10 +1,5 @@
 <?php
 
-require_once './model/Presenter.php';
-require_once './model/database/dao/EventDAO.php';
-require_once './model/Event.php';
-require_once './application/display/formatDate.php';
-
 class ReceptionPresenter extends Presenter
 {
     private array $events;
@@ -60,7 +55,7 @@ class ReceptionPresenter extends Presenter
             $displayString .= '<div class="eventtext-container">';
             $displayString .= '<div id="containertextleft">';
             $displayString .= '<p class="eventtitle eventtext">' . $event->getEventInfo()->getEventName() . '</p>';
-            $displayString .= '<p class="eventdate eventtext">' . format_datetime($event->getEventInfo()->getEventDate()) . '</p>';
+            $displayString .= '<p class="eventdate eventtext">' . DateDisplayService::formatDatetime($event->getEventInfo()->getEventDate()) . '</p>';
             $displayString .= '<p class="eventdesc eventtext">' . $event->getEventInfo()->getEventDescription() . '</p>';
             $displayString .= "</div>";
             $displayString .= '<div id="containertextright">';

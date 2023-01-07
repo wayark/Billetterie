@@ -1,8 +1,6 @@
 <?php
 
-require_once PATH_PRESENTER . 'strategy/connection/ConnectionStrategy.php';
-
-class SignInConnectionStrategy implements ConnectionStrategy
+class SignInConnectionState implements ConnectionState
 {
 
     public function handle(array $post): array

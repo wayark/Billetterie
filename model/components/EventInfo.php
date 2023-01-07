@@ -1,8 +1,6 @@
 <?php
 
-require_once 'Picture.php';
-require_once 'EventPlace.php';
-require_once 'EventType.php';
+
 
 class EventInfo
 {

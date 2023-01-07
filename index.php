@@ -5,6 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once('./config/configuration.php');
+require_once PATH_AUTOLOAD;
 
 if (isset($_GET['page'])) {
     $page = htmlspecialchars($_GET['page']);

@@ -1,11 +1,6 @@
 <?php
 
-require_once './model/database/DAO.php';
-require_once './model/database/dao/UserDAO.php';
-require_once './model/database/IObjectDAO.php';
 
-require_once './model/components/EventPricing.php';
-require_once './model/components/builder/EventBuilder.php';
 
 class EventDAO extends DAO implements IObjectDAO
 {
