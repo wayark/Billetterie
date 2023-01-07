@@ -1,9 +1,5 @@
 <?php
 
-require_once PATH_PRESENTER . 'state/connection/ConnectionState.php';
-require_once './model/database/dto/UserDTO.php';
-require_once './model/database/dao/UserDAO.php';
-
 class SignUpConnectionState implements ConnectionState
 {
     private array $resultDisplay = array();
@@ -35,7 +31,7 @@ class SignUpConnectionState implements ConnectionState
         return array('resultDisplayRegister' => $this->resultDisplay, 'type' => $this->resultDisplay['type']);
     }
 
-    private function createAccount(string $firstname, string $lastname, string $email, string $password) : void
+    private function createAccount(string $firstname, string $lastname, string $email, string $password): void
     {
         try {
             $userDTO = new UserDTO();
@@ -62,7 +58,8 @@ class SignUpConnectionState implements ConnectionState
 
     }
 
-    private function set_error(string $type) {
+    private function set_error(string $type)
+    {
         $messages = [
             "password" => "Les mots de passe ne correspondent pas",
             "email" => "L'adresse mail n'est pas valide",

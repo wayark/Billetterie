@@ -1,8 +1,6 @@
 <?php
 
-require_once PATH_MODELS . 'Ticket.php';
-require_once PATH_MODELS . 'database/DAO.php';
-require_once PATH_MODELS . 'database/IObjectDAO.php';
+
 
 class TicketDAO extends DAO implements IObjectDAO {
 

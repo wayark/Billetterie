@@ -1,5 +1,4 @@
 <?php
-require_once './application/display/formatDate.php';
 /**
  *
  * @var array{events: string} $displayArray The data to be displayed

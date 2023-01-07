@@ -1,7 +1,5 @@
 <?php
 
-require_once PATH_PRESENTER . 'EventListPresenter.php';
-
 if (session_id() == '') session_start();
 
 if (!isset($_SESSION) || !isset($_SESSION['user'])) {

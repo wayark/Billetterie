@@ -1,12 +1,5 @@
 <?php
 
-require_once PATH_PRESENTER . 'state/eventModification/EventModificationState.php';
-require_once PATH_DAO . 'EventDAO.php';
-require_once PATH_DTO . 'EventDTO.php';
-require_once PATH_DAO . 'EventPricingDAO.php';
-require_once PATH_DTO . 'EventPricingDTO.php';
-require_once PATH_APPLICATION . 'display/formatDate.php';
-
 class UpdateEventModificationState implements EventModificationState
 {
 
@@ -66,8 +59,8 @@ class UpdateEventModificationState implements EventModificationState
         $ticketPriceF = $this->post["ticketPriceF"];
 
         $lastId = $pricingDAO->getLastId();
-        $this->currentEvent->getEventInfo()->addPrice(new EventPricing($lastId+1, "Gradin", $ticketPriceG));
-        $this->currentEvent->getEventInfo()->addPrice(new EventPricing($lastId+2, "Fosse", $ticketPriceF));
+        $this->currentEvent->getEventInfo()->addPrice(new EventPricing($lastId + 1, "Gradin", $ticketPriceG));
+        $this->currentEvent->getEventInfo()->addPrice(new EventPricing($lastId + 2, "Fosse", $ticketPriceF));
 
         $pricingDTO->add($this->currentEvent);
     }

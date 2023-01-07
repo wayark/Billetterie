@@ -1,8 +1,6 @@
 <?php
 
-require_once './model/Event.php';
-require_once './model/components/EventPlace.php';
-require_once './model/components/EventInfo.php';
+
 
 class EventBuilder
 {

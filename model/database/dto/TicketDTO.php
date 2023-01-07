@@ -1,8 +1,6 @@
 <?php
 
-require_once PATH_MODELS . 'Ticket.php';
-require_once PATH_MODELS . 'database/DTO.php';
-require_once PATH_MODELS . 'database/IObjectDTO.php';
+
 
 
 class TicketDTO extends DTO implements IObjectDTO {

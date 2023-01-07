@@ -1,6 +1,6 @@
 <?php
 
-require_once('Connection.php');
+
 
 /**
  * This class represents an abstract Data Acess Object allows to query the database

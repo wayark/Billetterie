@@ -1,8 +1,4 @@
 <?php
-require_once PATH_DAO . 'EventDAO.php';
-require_once PATH_MODELS . 'Presenter.php';
-require_once PATH_MODELS . 'Event.php';
-require_once PATH_MODELS . 'User.php';
 
 class EventListPresenter extends Presenter
 {
@@ -41,7 +37,7 @@ class EventListPresenter extends Presenter
         ];
     }
 
-    private function displayStringEvents() : string
+    private function displayStringEvents(): string
     {
         if (empty($this->events)) {
             return '<div class="eventList-exempleEvent" id="eventList-exempleEvent"><p>Vous n\'avez pas encore d\'événement</p></div>';

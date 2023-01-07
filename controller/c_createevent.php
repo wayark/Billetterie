@@ -1,8 +1,6 @@
 <?php
 
-require_once './model/database/dao/ArtistDAO.php';
-require_once PATH_MODELS . 'database/dao/EventDAO.php';
-require_once PATH_MODELS . 'exception/UserAlreadyInBaseException.php';
+
 
 
 $artistDAO = new ArtistDAO();

@@ -1,8 +1,6 @@
 <?php
 
-require_once PATH_MODELS . 'Cart.php';
-require_once PATH_MODELS . 'database/DTO.php';
-require_once './model/database/IObjectDTO.php';
+
 
 class CartDTO extends DTO implements IObjectDTO{
 

@@ -1,7 +1,6 @@
 <?php
 
-require_once ('./model/User.php');
-require_once('./model/database/DAO.php');
+
 
 class UserDAO extends DAO
 {

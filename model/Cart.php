@@ -1,6 +1,6 @@
 <?php
 
-require_once PATH_MODELS . 'Ticket.php';
+
 
 class Cart {
 

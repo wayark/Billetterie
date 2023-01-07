@@ -1,8 +1,6 @@
 <?php
 
-require_once './model/database/DAO.php';
-require_once './model/Artist.php';
-require_once './model/database/IObjectDAO.php';
+
 
 class ArtistDAO extends DAO implements IObjectDAO
 {

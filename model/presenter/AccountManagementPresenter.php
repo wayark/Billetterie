@@ -1,20 +1,12 @@
 <?php
 
-require_once PATH_MODELS . 'Presenter.php';
-require_once PATH_MODELS . 'User.php';
-require_once PATH_APPLICATION . 'display/formatDate.php';
-require_once PATH_DAO . 'PaymentMethodDAO.php';
-require_once PATH_PRESENTER . 'state/accountManagement/DefaultAccountManagementState.php';
-require_once PATH_PRESENTER . 'state/accountManagement/UpdateAccountManagementState.php';
-require_once PATH_PRESENTER . 'state/accountManagement/ChangeTypeAccountManagementState.php';
-
 class AccountManagementPresenter extends Presenter
 {
 
     private array $display = array();
     private User $currentUser;
     private array $methods;
-    private AccountManagerState $state;
+    private AccountManagementState $state;
     private array $files;
 
     public function __construct(array $get, array $post, array $files)
@@ -54,7 +46,7 @@ class AccountManagementPresenter extends Presenter
             'lastName' => $this->currentUser->getLastName(),
             'mail' => $this->currentUser->getMail(),
             'birthDateNoFormat' => $this->currentUser->getBirthDate(),
-            'birthDate' => format_date($this->currentUser->getBirthDate()),
+            'birthDate' => DateDisplayService::formatDate($this->currentUser->getBirthDate()),
             'address' => $this->currentUser->getAddress(),
             'pictureFileName' => substr($this->currentUser->getProfilePicture()->getPicturePath(), strlen(PATH_IMAGES . 'users/')),
             'favoritePaymentMethod' => $this->currentUser->getFavoriteMethod()->getPaymentMethodName()

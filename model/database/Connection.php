@@ -1,7 +1,6 @@
 <?php
 
-require_once('./config/configuration.php');
-require_once(PATH_MODELS . 'exception/NoDatabaseException.php');
+
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -13,11 +12,11 @@ class Connection
 
     private function __construct()
     {
-        $port = 8889;
+        $port = 3306;
         $host = 'localhost';
-        $dbName = 'e-ticket';
-        $user = 'root';
-        $password = 'root';
+        $dbName = 'billeterie';
+        $user = 'julien';
+        $password = '#!&4wMW%oMBkR2w5';
 
         self::$_bdd = new PDO("mysql:host=$host;port=$port;dbname=$dbName;charset=utf8", $user, $password);
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

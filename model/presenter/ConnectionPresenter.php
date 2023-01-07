@@ -1,10 +1,5 @@
 <?php
 
-require_once PATH_MODELS . 'Presenter.php';
-require_once PATH_PRESENTER . 'state/connection/AlreadySignInConnectionState.php';
-require_once PATH_PRESENTER . 'state/connection/SignInConnectionState.php';
-require_once PATH_PRESENTER . 'state/connection/SignUpConnectionState.php';
-require_once PATH_PRESENTER . 'state/connection/DefaultConnectionState.php';
 
 class ConnectionPresenter extends Presenter
 {

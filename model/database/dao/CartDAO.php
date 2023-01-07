@@ -1,11 +1,6 @@
-<?php 
+<?php
 
-require_once './model/database/DAO.php';
-require_once './model/database/dao/UserDAO.php';
-require_once './model/database/IObjectDAO.php';
 
-require_once './model/components/EventPricing.php';
-require_once './model/components/builder/EventBuilder.php';
 
 class CartDAO extends DAO implements IObjectDAO {
         private string $baseQuery = "SELECT * FROM cart
@@ -31,9 +26,10 @@ class CartDAO extends DAO implements IObjectDAO {
             return $res;
         }
 
-        public function getCartByUserId($userId){
+        public function getCartByUserId($userId) : array
+        {
             $sql = $this->baseQuery . " WHERE ID_USER = ?";
-            $result = $this->queryAll($sql, $userId);
+            $result = $this->queryAll($sql, [$userId]);
             $events = array();
             if ($result) {
                 foreach ($result as $row) {

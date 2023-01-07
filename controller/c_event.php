@@ -1,10 +1,4 @@
 <?php
-require_once './application/presenter/EventPresenter.php';
-require_once './application/presenter/ReceptionPresenter.php';
-require_once PATH_MODELS . 'Ticket.php';
-require_once PATH_DTO . 'TicketDTO.php';
-require_once PATH_DAO . 'TicketDAO.php';
-
 $presenter = new EventPresenter($_GET, $_POST);
 
 $display = $presenter->formatDisplay();

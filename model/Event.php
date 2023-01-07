@@ -1,9 +1,6 @@
 <?php
 
-require_once 'components/EventInfo.php';
-require_once 'components/EventPlace.php';
-require_once 'User.php';
-require_once 'Artist.php';
+
 
 class Event
 {

@@ -1,7 +1,6 @@
 <?php
 
-require_once('./model/database/DTO.php');
-require_once './model/database/IObjectDTO.php';
+
 
 class UserDTO extends DTO implements IObjectDTO
 {

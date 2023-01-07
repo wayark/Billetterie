@@ -1,6 +1,5 @@
 <?php
 require_once(PATH_VIEWS . 'header.php'); //header of the page
-require_once './application/display/errorDisplay.php';
 /**
  * @var array{
  *     resultDisplayRegister: ?array<string, string>,
@@ -21,7 +20,7 @@ require_once './application/display/errorDisplay.php';
                     <button name="signIn" class="connectionButton">Connexion</button>
                 </form>
 
-                <?= displayError($result['resultDisplayLogIn'], 'registerDisplay') ?>
+                <?= ErrorDisplayService::displayError($result['resultDisplayLogIn'], 'registerDisplay') ?>
             </div>
 
             <div class="line"></div>
@@ -43,7 +42,7 @@ require_once './application/display/errorDisplay.php';
 
                     <button name="signUp" class="connectionButton">Inscription</button>
                 </form>
-                <?= displayError($result['resultDisplayRegister'], "registerDisplay"); ?>
+                <?= ErrorDisplayService::displayError($result['resultDisplayRegister'], "registerDisplay"); ?>
             </div>
         </div>
     </section>

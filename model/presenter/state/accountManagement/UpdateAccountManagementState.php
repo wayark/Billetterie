@@ -1,11 +1,6 @@
 <?php
-require_once PATH_APPLICATION . 'stringLib.php';
-require_once PATH_PRESENTER . 'state/accountManagement/AccountManagementState.php';
-require_once PATH_MODELS . 'User.php';
-require_once PATH_DTO . 'UserDTO.php';
 
-
-class UpdateAccountManagementState implements AccountManagerState
+class UpdateAccountManagementState implements AccountManagementState
 {
     private User $currentUser;
     private array $post;
