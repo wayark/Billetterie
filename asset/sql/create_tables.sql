@@ -141,9 +141,9 @@ create table USER
     USER_FIRST_NAME      text,
     DATE_OF_BIRTH        date,
     USER_ADDRESS         text,
-    EMAIL                text,
+    EMAIL                VARCHAR(100),
     HASHED_PASSWORD      text,
-    PICTURE_PATH         text default 'users/unnamed.jpg',
+    PICTURE_PATH         VARCHAR(300) default 'users/unnamed.jpg',
     primary key (ID_USER)
 );
 
@@ -179,5 +179,4 @@ alter table USER add constraint FK_USER_ROLE foreign key (ID_ROLE_TYPE)
 
 alter table USER add constraint UK_USER_EMAIL unique (EMAIL);
 
-DROP INDEX IF EXISTS IDX_EMAIL_USER ON USER;
 CREATE INDEX IDX_EMAIL_USER ON USER (EMAIL);
