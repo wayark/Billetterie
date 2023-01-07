@@ -1,7 +1,7 @@
 <?php
 require_once './application/presenter/EventPresenter.php';
 require_once './application/presenter/ReceptionPresenter.php';
-require_once './model/Ticket.php';
+require_once PATH_MODELS . 'Ticket.php';
 require_once PATH_DTO . 'TicketDTO.php';
 require_once PATH_DAO . 'TicketDAO.php';
 
