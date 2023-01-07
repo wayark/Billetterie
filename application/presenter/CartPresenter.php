@@ -16,12 +16,6 @@ class CartPresenter extends Presenter {
 
     protected function checkProcess() : void {
         $eventDAO = new CartDAO();
-        $this->user = $_SESSION['cart'];
-        try {
-            $this->events = $cartDAO->getIFrom($this->user->getId());
-        } catch (Exception $e) {
-            $this->events = [];
-        }
     }
 
     public function formatDisplay(): array {
