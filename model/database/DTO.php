@@ -72,6 +72,21 @@ abstract class DTO
         return $this->_sendQuery($sql, []);
     }
 
+    public function deleteQueryDoubleCondition(string $table, string $field1, string $field2, string $value1, string $value2) : PDOStatement {
+        $sql = "DELETE FROM ";
+        $sql .= $table;
+        $sql .= " WHERE ";
+        $sql .= $field1;
+        $sql .= " = ";
+        $sql .= "'".$value1."'";  
+        $sql .= " AND ";
+        $sql .= $field2;
+        $sql .= " = ";
+        $sql .= "'".$value2."'";
+        
+        return $this->_sendQuery($sql, []);
+    }
+
     protected function updateQuery(string $table, array $fields, array $values, string $where_field, string $where_value) : PDOStatement {
         $sql = "UPDATE $table SET ";
         $sql .= $fields[0] . " = ? ";

@@ -2,7 +2,8 @@
 
 require_once PATH_MODELS . 'Ticket.php';
 require_once PATH_MODELS . 'database/DTO.php';
-require_once './model/database/IObjectDTO.php';
+require_once PATH_MODELS . 'database/IObjectDTO.php';
+
 
 class TicketDTO extends DTO implements IObjectDTO {
 
@@ -10,7 +11,6 @@ class TicketDTO extends DTO implements IObjectDTO {
     {
         $fields = ["ID_EVENT", "ID_USER", "IS_PIT", "QUANTITY"];
         $values = [$object->getIdEvent(), $object->getIdUser(), $object->getIsPit(), $object->getQuantity()];
-        
         try {
             $this->insertQuery('Cart', $fields, $values);
         } catch (PDOException $e) {
@@ -22,15 +22,9 @@ class TicketDTO extends DTO implements IObjectDTO {
         }
     }
 
-    public function delete($object): void
+    public function delete($ticket): void
     {
-
-    }
-
-    public function getAll(): array
-    {
-        $tickets = [];
-        return $tickets;
+        $this->deleteQuery('Cart', 'ID_TICKET', $ticket->getId());
     }
 
     public function update($object): void

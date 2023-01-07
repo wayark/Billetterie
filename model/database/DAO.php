@@ -77,6 +77,16 @@ abstract class DAO
         return $res;
     }
 
+    public function getQueryDoubleCondition(string $table, string $field1, string $field2, string $value1, string $value2): array
+    {
+        $sql = "SELECT * FROM $table WHERE $field1 = :value1 AND $field2 = :value2";
+        $args = array(
+            'value1' => $value1,
+            'value2' => $value2
+        );
+        return $this->queryAll($sql, $args);
+    }
+
     public function getTableLastId(string $table, string $id_field_name) : int {
         $sql = 'SELECT MAX($id_field_name) FROM $table';
         $id = $this->queryRow($sql, []);
