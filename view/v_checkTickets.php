@@ -32,16 +32,57 @@ require_once './application/display/errorDisplay.php';
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
 <main>
-    <div>
+    <div class="button">
         <h1><</h1>
     </div>
-    <section>
-
+    <section class="transparent">
+        <h2></h2>
+        <h3></h3>
+        <h3></h3>
     </section>
-    <div>
+    <section id="ticket">
+        <h2>Soirée mousse</h2>
+        <h3>nombres de places achetées : 3</h3>
+        <h3>Position : Gradin</h3>
+    </section>
+    <div class="button">
         <h1>></h1>
     </div>
 </main>
+<script>
+    zInd = 100;
+    rotate = "10deg";
+    const element = document.querySelector('.button');
 
+    // Ajout de l'évènement au clic à l'élément
+    element.addEventListener('click', function() {
+
+
+
+        const sectionToDuplicate = document.querySelector('#ticket');
+        // Création d'une copie de la section
+        const sectionCopy = sectionToDuplicate.cloneNode(true);
+        zInd = zInd - 1;
+        if(rotate == "-10deg"){
+            rotate = "10deg"
+            console.log("ok1");
+        }
+        else {
+            rotate = "-10deg";
+            console.log("ok")
+        }
+        console.log(rotate)
+        sectionCopy.style.transform = "rotate("+rotate+")";
+        sectionCopy.style.zIndex = zInd;
+        // Ajout de la copie de la section au DOM
+        const parentElement = document.querySelector('main');
+        parentElement.appendChild(sectionCopy);
+
+
+
+        console.log('L\'évènement au clic s\'est produit!');
+    });
+
+</script>
 <?php require_once(PATH_VIEWS . 'footer.php'); ?>
 </body>
