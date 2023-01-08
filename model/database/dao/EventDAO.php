@@ -25,6 +25,19 @@ class EventDAO extends DAO implements IObjectDAO
         return $events;
     }
 
+    public function getTendancies(): array
+    {
+        $sql = $this->baseQuery . " ORDER BY event_date DESC LIMIT 3";
+        $result = $this->queryAll($sql);
+        $events = array();
+        if ($result) {
+            foreach ($result as $row) {
+                $events[] = $this->processRow($row);
+            }
+        }
+        return $events;
+    }
+
     public function getById(int $id): ?Event
     {
         $sql = $this->baseQuery . " WHERE ID_EVENT = ?";

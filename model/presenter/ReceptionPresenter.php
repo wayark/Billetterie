@@ -17,28 +17,15 @@ class ReceptionPresenter extends Presenter
         parent::__construct($get, $post);
     }
 
-    private function computeMaxNumberofPlace(PricingList $pricings) : int
-    {
-        $max = 0;
-        foreach ($pricings->getPricingList() as $pricing) {
-            $max += $pricing->getMaxQuantity();
-        }
-        return $max;
-    }
-
     protected function checkProcess(): void
     {
         try {
             $eventDAO = new EventDAO();
-            $ticketDAO = new TicketDAO();
-            $pricingDAO = new TicketPricingDAO();
 
             $this->events = $eventDAO->getAll();
             $this->remainingTickets = array();
             foreach ($this->events as $event) {
-                $pricings = $pricingDAO->getPricingsForEventId($event->getIdEvent());
-
-                $this->remainingTickets[$event->getIdEvent()] = $this->computeMaxNumberofPlace($pricings) - $ticketDAO->getNumberOfTicketsBought($event);
+                $this->remainingTickets[$event->getIdEvent()] = NumberOfTicketsService::getTotalNumberOfRemainingTickets($event);
             }
 
         } catch (Error $e) {
@@ -72,7 +59,7 @@ class ReceptionPresenter extends Presenter
             $event = $this->events[$i];
             $displayString .= '<div class=events>';
             $displayString .= '<div class=eventimg>';
-            $displayString .= '<a href="index.php?page=event&event=' . $event->getIdEvent() . '">';
+            $displayString .= '<a href="?page=event&event=' . $event->getIdEvent() . '">';
             $displayString .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="' . $event->getEventInfo()->getPicture()->getPictureDescription() . '">';
             $displayString .= '</a>';
             $displayString .= '</div>';

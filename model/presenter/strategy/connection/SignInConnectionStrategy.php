@@ -1,6 +1,6 @@
 <?php
 
-class SignInConnectionState implements ConnectionState
+class SignInConnectionStrategy implements ConnectionStrategy
 {
 
     public function handle(array $post): array
@@ -9,9 +9,17 @@ class SignInConnectionState implements ConnectionState
         $password = htmlspecialchars($_POST['passwordC']);
 
         $userDAO = new UserDAO();
+        $cartDAO = new CartDAO();
+
         $user = $userDAO->getUserByEmail($mail, $password);
         if ($user) {
             $_SESSION['user'] = $user;
+            $tmp = $cartDAO->getById($user->getId());
+            if ($tmp == null) {
+                $tmp = new Cart($user->getId());
+            }
+            $_SESSION['cart'] = $tmp;
+
 
             $resultDisplay['message'] = "Connexion réussie";
             $resultDisplay['type'] = 'success';

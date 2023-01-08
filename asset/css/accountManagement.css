@@ -30,8 +30,16 @@ input, select {
 }
 
 input, select{
-    width: 80%;
-    height: 80%;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5vw;
+    color: #E7D9AB;
+    padding: 0.3vw;
+    background-color: #5F5F5F;
+}
+
+input::placeholder{
+    color: #ffffff;
 }
 
 button[type=submit] {

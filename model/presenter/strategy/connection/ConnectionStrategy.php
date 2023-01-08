@@ -1,6 +1,6 @@
 <?php
 
-interface ConnectionState
+interface ConnectionStrategy
 {
     public function handle(array $post): array;
 }

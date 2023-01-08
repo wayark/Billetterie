@@ -1,0 +1,60 @@
+section{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: grey;
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    padding: 2%;
+}
+section img{
+    width: 30%;
+
+}
+h1{
+    font-size: 35px;
+}
+
+@media (max-width: 1000px) {
+    h1 {
+        font-size: 25px;
+    }
+    h2{
+        font-size: 20px;
+    }
+}
+p{
+    margin-top: 1%;
+}
+h2{
+    margin: 3%;
+    font-size: 30px;
+}
+@media (max-width: 800px) {
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 15px;
+    }
+    p{
+        font-size: 10px;
+    }
+}
+section div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+section div div{
+    width: 100%;
+}
+section div > div{
+    flex-direction: column;
+}
+canvas{
+    width: 300px;
+    background-color: white;
+}

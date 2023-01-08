@@ -20,12 +20,16 @@ class TicketDAO extends DAO implements IObjectDAO {
         return 0;
     }
 
-    function getNumberOfTicketsBought(Event $evt): int
+    function getNumberOfTicketsBought(Event $evt, TicketPricing $pricing = null): int
     {
-        $query = "SELECT COUNT(*) AS NB_TICKETS FROM ticket WHERE ID_EVENT = :idEvent";
-        $result = $this->queryRow($query, array(
-            "idEvent" => $evt->getIdEvent()
-        ));
+        $comp = "";
+        $args = array($evt->getIdEvent());
+        if ($pricing != null) {
+            $comp = " AND id_ticket_pricing = ?";
+            $args[] = $pricing->getIdTicketPricing();
+        }
+        $query = "SELECT COUNT(*) AS NB_TICKETS FROM ticket WHERE ID_EVENT = ?" . $comp;
+        $result = $this->queryRow($query, $args);
         if (empty($result)) return 0;
         return $result["NB_TICKETS"];
     }

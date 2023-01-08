@@ -1,6 +1,6 @@
 <?php
 
-class UpdateEventModificationState implements EventModificationState
+class UpdateEventModificationStrategy implements EventModificationStrategy
 {
 
     private array $get;

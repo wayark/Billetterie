@@ -1,6 +1,6 @@
 <?php
 
-class ChangeTypeAccountManagementState implements AccountManagementState
+class ChangeTypeAccountManagementStrategy implements AccountManagementStrategy
 {
 
     public function handle(User $user, array $post, array $files): ?array

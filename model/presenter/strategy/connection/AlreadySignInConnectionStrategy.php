@@ -1,6 +1,6 @@
 <?php
 
-class AlreadySignInConnectionState implements ConnectionState
+class AlreadySignInConnectionStrategy implements ConnectionStrategy
 {
 
     public function handle(array $post): array

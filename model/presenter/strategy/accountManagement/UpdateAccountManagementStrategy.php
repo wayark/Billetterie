@@ -1,6 +1,6 @@
 <?php
 
-class UpdateAccountManagementState implements AccountManagementState
+class UpdateAccountManagementStrategy implements AccountManagementStrategy
 {
     private User $currentUser;
     private array $post;

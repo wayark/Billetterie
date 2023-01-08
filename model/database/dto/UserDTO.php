@@ -9,11 +9,10 @@ class UserDTO extends DTO implements IObjectDTO
      */
     public function add($object) : void
     {
-        $fields = ['ID_USER', 'USER_LAST_NAME', 'USER_FIRST_NAME',
+        $fields = ['USER_LAST_NAME', 'USER_FIRST_NAME',
             'DATE_OF_BIRTH', 'ID_FAVORITE_PAYMENT_METHOD',
             'USER_ADDRESS', 'EMAIL', 'ID_ROLE_TYPE', 'HASHED_PASSWORD'];
         $values = [
-            $object->getId(),
             $object->getLastName(),
             $object->getFirstName(),
             $object->getBirthDate(),

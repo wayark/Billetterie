@@ -38,20 +38,20 @@ class EventPresenter extends Presenter
             'eventPlaceName' => $this->eventToDisplay->getEventPlace()->getPlaceName(),
             'eventPlaceStreet' => $this->eventToDisplay->getEventPlace()->getStreet(),
             'eventPlaceCity' => $this->eventToDisplay->getEventPlace()->getCity(),
-            'eventPlaceCountry' => $this->eventToDisplay->getEventPlace()->getCountry(),
-            'eventPlaceNbPlacesPit' => $this->eventToDisplay->getEventPlace()->getNbPlacesPit(),
-            'eventPlaceNbPlacesStair' => $this->eventToDisplay->getEventPlace()->getNbPlacesStair(),
+            'eventPlaceCountry' => $this->eventToDisplay->getEventPlace()->getCountry()
         );
+
+        $this->display['pricings'] = $this->formatTicketDisplay($this->eventToDisplay);
+        $this->display['pricingsSelect'] = $this->formatPrincingChoice($this->eventToDisplay);
+
         return $this->display;
     }
 
     public function formatDisplayById($id, $type, $quantity)
     {
-        if ($type == "pit") {
-            $typeofplace = "Fosse";
-        } else {
-            $typeofplace = "Gradin";
-        }
+        $pricingDAO = new TicketPricingDAO();
+        $pricing = $pricingDAO->getById($type);
+        $typeofplace = $pricing->getName();
 
         $tmp = $quantity . " place";
         if ($quantity > 1) {
@@ -87,8 +87,28 @@ class EventPresenter extends Presenter
         return $display;
     }
 
-    public function getEventToDisplay(): Event
+    private function formatTicketDisplay(Event $evt) : string
     {
-        return $this->eventToDisplay;
+        $ticketPricingDAO = new TicketPricingDAO();
+        $pricings = $ticketPricingDAO->getPricingsForEventId($evt->getIdEvent());
+        $displayString = "";
+        foreach ($pricings->getPricingList() as $pricing) {
+            $displayString .= "<p>" . $pricing->getName() . " : " . $pricing->getPrice() . "€ - " .
+                NumberOfTicketsService::getNumberOfRemainingTicketsForPricing($pricing) .
+                " / " . NumberOfTicketsService::getNumberOfRemainingTicketsForPricing($pricing) . " places restantes</p>";
+        }
+        return $displayString;
+    }
+
+    private function formatPrincingChoice(Event $evt) : string
+    {
+        $ticketPricingDAO = new TicketPricingDAO();
+        $pricings = $ticketPricingDAO->getPricingsForEventId($evt->getIdEvent());
+        $displayString = "<select id=\"type-place\" name=\"type\">";
+        foreach ($pricings->getPricingList() as $pricing) {
+            $displayString .= "<option value=\"" . $pricing->getIdTicketPricing() . "\">" . $pricing->getName() . "</option>";
+        }
+        $displayString .= "</select>";
+        return $displayString;
     }
 }

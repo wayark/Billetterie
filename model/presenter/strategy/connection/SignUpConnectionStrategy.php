@@ -1,6 +1,6 @@
 <?php
 
-class SignUpConnectionState implements ConnectionState
+class SignUpConnectionStrategy implements ConnectionStrategy
 {
     private array $resultDisplay = array();
 
@@ -36,6 +36,7 @@ class SignUpConnectionState implements ConnectionState
         try {
             $userDTO = new UserDTO();
             $userDAO = new UserDAO();
+            $cartDAO = new CartDAO();
 
             $user = new User($userDAO->getLastId() + 1, $lastname, $firstname, $email,
                 password_hash($password, PASSWORD_DEFAULT));
@@ -44,6 +45,13 @@ class SignUpConnectionState implements ConnectionState
             $userDTO->add($user);
 
             $_SESSION['user'] = $user;
+            $tmp = $cartDAO->getById($user->getId());
+            if ($tmp == null) {
+                $tmp = new Cart($user->getId());
+            }
+            $_SESSION['cart'] = $tmp;
+
+            print_r($_SESSION);
 
             $this->resultDisplay['message'] = "Le compte a bien été créé";
             $this->resultDisplay['type'] = "success";

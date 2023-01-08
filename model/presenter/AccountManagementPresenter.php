@@ -6,7 +6,7 @@ class AccountManagementPresenter extends Presenter
     private array $display = array();
     private User $currentUser;
     private array $methods;
-    private AccountManagementState $state;
+    private AccountManagementStrategy $state;
     private array $files;
 
     public function __construct(array $get, array $post, array $files)
@@ -24,12 +24,12 @@ class AccountManagementPresenter extends Presenter
         $this->currentUser = $_SESSION['user'];
         $this->methods = $paymentDAO->getAll();
 
-        if (isset($this->get['state']) && $this->get['state'] == 'changeType') {
-            $this->state = new ChangeTypeAccountManagementState();
+        if (isset($this->get['strategy']) && $this->get['strategy'] == 'changeType') {
+            $this->state = new ChangeTypeAccountManagementStrategy();
         } else if (isset($this->post['submit'])) {
-            $this->state = new UpdateAccountManagementState();
+            $this->state = new UpdateAccountManagementStrategy();
         } else {
-            $this->state = new DefaultAccountManagementState();
+            $this->state = new DefaultAccountManagementStrategy();
         }
         $this->display['resultDisplay'] = $this->state->handle($this->currentUser, $this->post, $this->files);
     }
@@ -101,7 +101,7 @@ class AccountManagementPresenter extends Presenter
             $ans .= createButton("Gérer mes événements", "./index.php?page=eventList");
         } else {
             $ans .= createButton("Gérer mes billets", "./index.php");
-            $ans .= createButton("Passer organisateur", "./index.php?page=accountManagement&state=changeType");
+            $ans .= createButton("Passer organisateur", "./index.php?page=accountManagement&strategy=changeType");
         }
         return $ans;
     }

@@ -1,6 +1,7 @@
 <?php
 
 
+
 class RoleDAO extends DAO implements IObjectDAO
 {
     /**

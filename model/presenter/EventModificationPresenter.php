@@ -6,7 +6,7 @@ class EventModificationPresenter extends Presenter
 
     private array $display;
     private Event $currentEvent;
-    private EventModificationState $state;
+    private EventModificationStrategy $state;
 
     public function __construct(array $get, array $post)
     {
@@ -19,9 +19,9 @@ class EventModificationPresenter extends Presenter
     protected function checkProcess(): void
     {
         if (isset($this->get['event'])) {
-            $this->state = new UpdateEventModificationState();
+            $this->state = new UpdateEventModificationStrategy();
         } else {
-            $this->state = new DefaultEventModificationState();
+            $this->state = new DefaultEventModificationStrategy();
         }
         $this->display = $this->state->handle($this->get, $this->post);
         $this->currentEvent = $this->display['event'];

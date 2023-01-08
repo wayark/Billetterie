@@ -1,6 +1,6 @@
 <?php
 
-class DefaultConnectionState implements ConnectionState
+class DefaultConnectionStrategy implements ConnectionStrategy
 {
 
     public function handle(?array $post): array
