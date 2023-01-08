@@ -1,5 +1,6 @@
 <?php
 const BD_HOST = 'localhost';
+const BD_PORT = '3306';
 const BD_DBNAME = 'billeterie';
 const BD_USER = 'root';
 const BD_PWD = '';

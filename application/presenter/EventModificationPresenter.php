@@ -8,16 +8,16 @@ require_once PATH_DTO . 'EventDTO.php';
 require_once PATH_DAO . 'UserDAO.php';
 require_once PATH_DAO . 'EventPricingDAO.php';
 require_once PATH_DTO . 'EventPricingDTO.php';
-require_once PATH_PRESENTER . 'state/eventModification/EventModificationState.php';
-require_once PATH_PRESENTER . 'state/eventModification/UpdateEventModificationState.php';
-require_once PATH_PRESENTER . 'state/eventModification/DefaultEventModificationState.php';
+require_once PATH_PRESENTER . 'strategy/eventModification/EventModificationStrategy.php';
+require_once PATH_PRESENTER . 'strategy/eventModification/UpdateEventModificationStrategy.php';
+require_once PATH_PRESENTER . 'strategy/eventModification/DefaultEventModificationStrategy.php';
 
 class EventModificationPresenter extends Presenter
 {
 
     private array $display;
     private Event $currentEvent;
-    private EventModificationState $state;
+    private EventModificationStrategy $state;
 
     public function __construct(array $get, array $post)
     {
@@ -30,9 +30,9 @@ class EventModificationPresenter extends Presenter
     protected function checkProcess(): void
     {
         if (isset($this->get['event'])) {
-            $this->state = new UpdateEventModificationState();
+            $this->state = new UpdateEventModificationStrategy();
         } else {
-            $this->state = new DefaultEventModificationState();
+            $this->state = new DefaultEventModificationStrategy();
         }
         $this->display = $this->state->handle($this->get, $this->post);
         $this->currentEvent = $this->display['event'];
