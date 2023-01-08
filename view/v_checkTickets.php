@@ -49,10 +49,11 @@ require_once './application/display/errorDisplay.php';
         <h1>></h1>
     </div>
 </main>
+<button id="add">add ticket</button>
 <script>
     zInd = 100;
     rotate = "10deg";
-    const element = document.querySelector('.button');
+    const element = document.querySelector('#add');
 
     // Ajout de l'évènement au clic à l'élément
     element.addEventListener('click', function() {
