@@ -1,5 +1,4 @@
 <?php
-
 class EventPlace
 {
     private int $idLocation;
@@ -8,23 +7,16 @@ class EventPlace
     private string $street;
     private string $placeName;
 
-    private int $nbPlacesPit;
-    private int $nbPlacesStair;
-
-    public function __construct(int $id = -1,
+    public function __construct(int    $id = -1,
                                 string $country = "",
                                 string $city = "",
                                 string $hall = "",
-                                string $street = "",
-                                int $nbPlacesPit = -1,
-                                int $nbPlacesStair = -1)
+                                string $street = "")
     {
         $this->idLocation = $id;
         $this->country = $country;
         $this->city = $city;
         $this->street = $street;
-        $this->nbPlacesPit = $nbPlacesPit;
-        $this->nbPlacesStair = $nbPlacesStair;
         $this->placeName = $hall;
     }
 
@@ -74,38 +66,6 @@ class EventPlace
     public function setStreet(string $street): void
     {
         $this->street = $street;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNbPlacesPit(): int
-    {
-        return $this->nbPlacesPit;
-    }
-
-    /**
-     * @param int $nbPlacesPit
-     */
-    public function setNbPlacesPit(int $nbPlacesPit): void
-    {
-        $this->nbPlacesPit = $nbPlacesPit;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNbPlacesStair(): int
-    {
-        return $this->nbPlacesStair;
-    }
-
-    /**
-     * @param int $nbPlacesStair
-     */
-    public function setNbPlacesStair(int $nbPlacesStair): void
-    {
-        $this->nbPlacesStair = $nbPlacesStair;
     }
 
     /**

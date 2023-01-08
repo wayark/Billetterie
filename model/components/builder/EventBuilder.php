@@ -1,7 +1,5 @@
 <?php
 
-
-
 class EventBuilder
 {
     private Event $_event;
@@ -55,13 +53,6 @@ class EventBuilder
     public function withTypeEvent(EventType $typeEvent): EventBuilder
     {
         $this->_event->getEventInfo()->setEventType($typeEvent);
-        return $this;
-    }
-
-    public function withNbPlaces(int $nbPlacesPit, int $nbPlacesStair): EventBuilder
-    {
-        $this->_event->getEventPlace()->setNbPlacesPit($nbPlacesPit);
-        $this->_event->getEventPlace()->setNbPlacesStair($nbPlacesStair);
         return $this;
     }
 

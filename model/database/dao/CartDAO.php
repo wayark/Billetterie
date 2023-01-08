@@ -1,7 +1,5 @@
 <?php
 
-
-
 class CartDAO extends DAO implements IObjectDAO {
         private string $baseQuery = "SELECT * FROM cart
                             NATURAL JOIN event
@@ -26,16 +24,9 @@ class CartDAO extends DAO implements IObjectDAO {
             return $res;
         }
 
-        public function getCartByUserId($userId) : array
+        public function getCartByUserId($userId) : ?array
         {
-            $sql = $this->baseQuery . " WHERE ID_USER = ?";
-            $result = $this->queryAll($sql, [$userId]);
-            $events = array();
-            if ($result) {
-                foreach ($result as $row) {
-                    $events[] = new Ticket($row["USER_ID"], $row["EVENT_ID"], $row["IS_PIT"], $row["QUANTITY"]); 
-                }
-            }
-            return $events;
+            // TOFIX: The cart is not the same
+            return null;
         }
 }

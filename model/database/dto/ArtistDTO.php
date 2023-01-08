@@ -1,7 +1,5 @@
 <?php
 
-
-
 class ArtistDTO extends DTO implements IObjectDTO
 {
     /**

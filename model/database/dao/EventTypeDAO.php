@@ -1,7 +1,4 @@
 <?php
-
-
-
 class EventTypeDAO extends DAO implements IObjectDAO
 {
     public function getById(int $id) : ?EventType {

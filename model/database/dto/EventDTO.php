@@ -1,7 +1,4 @@
 <?php
-
-
-
 class EventDTO extends DTO implements IObjectDTO
 {
     /**

@@ -1,7 +1,5 @@
 <?php
 
-
-
 class EventInfo
 {
     private string $eventDate;
@@ -9,13 +7,12 @@ class EventInfo
     private Picture $picture;
     private string $eventName;
     private string $eventDescription;
-    private array $prices;
 
-    public function __construct(string  $eventName = "",
-                                string  $eventDate = "",
-                                EventType  $eventType = null,
-                                Picture $picture = null,
-                                string  $eventDescription = "")
+    public function __construct(string    $eventName = "",
+                                string    $eventDate = "",
+                                EventType $eventType = null,
+                                Picture   $picture = null,
+                                string    $eventDescription = "")
     {
         if ($picture == null) {
             $picture = new Picture();
@@ -29,8 +26,7 @@ class EventInfo
         $this->eventDate = $eventDate;
         $this->eventType = $eventType;
         $this->picture = $picture;
-        $this->eventDescription = $eventDescription;
-        $this->prices = array();
+        $this->eventDescription = $eventDescription;;
     }
 
     /**
@@ -84,7 +80,7 @@ class EventInfo
     /**
      * @return Picture
      */
-    public function getPicture() : Picture
+    public function getPicture(): Picture
     {
         return $this->picture;
     }
@@ -111,28 +107,6 @@ class EventInfo
     public function setEventDescription(string $eventDescription): void
     {
         $this->eventDescription = $eventDescription;
-    }
-
-    /**
-     * @param EventPricing $price
-     * @return void
-     */
-    public function addPrice(EventPricing $price) {
-        $this->prices[] = $price;
-    }
-
-    public function removePrice(EventPricing $price) {
-        $index = array_search($price, $this->prices);
-        if ($index !== false) {
-            unset($this->prices[$index]);
-        }
-    }
-
-    /**
-     * @return array<EventPricing> Prices of the event
-     */
-    public function getPrices() {
-        return $this->prices;
     }
 
 }

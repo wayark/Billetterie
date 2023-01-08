@@ -1,7 +1,5 @@
 <?php
 
-
-
 class CartDTO extends DTO implements IObjectDTO{
 
     function add($event): void

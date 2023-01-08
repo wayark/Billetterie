@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 class TicketDTO extends DTO implements IObjectDTO {
 
     public function add($object): void

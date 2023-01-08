@@ -1,9 +1,5 @@
 <?php
 
-use model\presenter\EventModificationPresenter;
-
-
-
 $presenter = new EventModificationPresenter($_GET, $_POST);
 
 $display = $presenter->formatDisplay();

@@ -1,4 +1,6 @@
 <?php
+
+use event\EventType;
 use PHPUnit\Framework\TestCase;
 
 require_once('./model/database/Connection.php');

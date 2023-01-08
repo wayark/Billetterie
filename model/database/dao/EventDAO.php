@@ -1,7 +1,5 @@
 <?php
 
-
-
 class EventDAO extends DAO implements IObjectDAO
 {
     private string $baseQuery = "SELECT * 
@@ -50,7 +48,6 @@ class EventDAO extends DAO implements IObjectDAO
             ->withCity($row['CITY'])
             ->withCountry($row['COUNTRY'])
             ->withPlaceName($row['PLACE_NAME'])
-            ->withNbPlaces($row['NB_PLACE_PIT'], $row['NB_PLACE_STAIRCASE'])
             ->withDate($row['EVENT_DATE'])
             ->withTypeEvent(new EventType($row['ID_EVENT_TYPE'], $row['EVENT_TYPE_NAME']))
             ->withPhoto(new Picture($row['PICTURE_PATH'], $row['PICTURE_DESCRIPTION']))
@@ -62,12 +59,6 @@ class EventDAO extends DAO implements IObjectDAO
             $tmp->withOrganizer($organizer);
         }
 
-        $prices = $this->queryAll("SELECT * FROM pricing WHERE ID_EVENT = ?", array($idEvent));
-        if ($prices) {
-            foreach ($prices as $price) {
-                $tmp->addPricing(new EventPricing($price['ID_PRICING'], $price['PRICING_NAME'], $price['PRICE_AMOUNT']));
-            }
-        }
         return $tmp->build();
     }
 

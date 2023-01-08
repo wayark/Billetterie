@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Event
 {
     private int $idEvent;
@@ -35,6 +33,8 @@ class Event
         $this->_eventPlace = $eventPlace;
         $this->organizer = $organizer;
         $this->artist = $artist;
+
+
     }
 
     /**

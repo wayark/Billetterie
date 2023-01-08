@@ -1,7 +1,5 @@
 <?php
 
-
-
 class PaymentMethodDAO extends DAO implements IObjectDAO
 {
 

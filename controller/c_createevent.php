@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 $artistDAO = new ArtistDAO();
 try {
     $allArtist = $artistDAO->getAllArtists();

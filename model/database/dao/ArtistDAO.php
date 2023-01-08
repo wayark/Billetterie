@@ -1,7 +1,5 @@
 <?php
 
-
-
 class ArtistDAO extends DAO implements IObjectDAO
 {
     /**

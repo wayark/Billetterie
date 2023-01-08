@@ -2,8 +2,12 @@
 
 class ReceptionPresenter extends Presenter
 {
+    /**
+     * @var array<Event>
+     */
     private array $events;
     private ?array $error = null;
+    private array $remainingTickets;
 
     /**
      * @inheritDoc
@@ -13,11 +17,30 @@ class ReceptionPresenter extends Presenter
         parent::__construct($get, $post);
     }
 
+    private function computeMaxNumberofPlace(PricingList $pricings) : int
+    {
+        $max = 0;
+        foreach ($pricings->getPricingList() as $pricing) {
+            $max += $pricing->getMaxQuantity();
+        }
+        return $max;
+    }
+
     protected function checkProcess(): void
     {
         try {
             $eventDAO = new EventDAO();
+            $ticketDAO = new TicketDAO();
+            $pricingDAO = new TicketPricingDAO();
+
             $this->events = $eventDAO->getAll();
+            $this->remainingTickets = array();
+            foreach ($this->events as $event) {
+                $pricings = $pricingDAO->getPricingsForEventId($event->getIdEvent());
+
+                $this->remainingTickets[$event->getIdEvent()] = $this->computeMaxNumberofPlace($pricings) - $ticketDAO->getNumberOfTicketsBought($event);
+            }
+
         } catch (Error $e) {
             $this->error = array(
                 "message" => "Une erreur est survenue lors de la récupération des événements",
@@ -40,6 +63,7 @@ class ReceptionPresenter extends Presenter
      */
     public function formatDisplay(): array
     {
+        print_r($this->error);
         if (!is_null($this->error)) return $this->error;
 
         $display = array();
@@ -61,7 +85,7 @@ class ReceptionPresenter extends Presenter
             $displayString .= '<div id="containertextright">';
             $displayString .= '<p class="eventplace eventtext">' . $event->getEventPlace()->getCountry() . '</p>';
             $displayString .= '<p class="eventcity eventext">' . $event->getEventPlace()->getCity() . '</p>';
-            $displayString .= '<p class="eventplacesremaining eventtext">' . strval($event->getEventPlace()->getNbPlacesPit() + $event->getEventPlace()->getNbPlacesStair()) . ' places restantes' . '</p>';
+            $displayString .= '<p class="eventplacesremaining eventtext">' . strval($this->remainingTickets[$event->getIdEvent()]) . ' places restantes' . '</p>';
             $displayString .= "</div>";
             $displayString .= "</div></div>";
         }

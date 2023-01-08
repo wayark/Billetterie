@@ -17,7 +17,6 @@
     </a>
     <div class="header-right-button">
         <?php
-        if (session_id() == '') session_start();
         if (isset($_SESSION) and isset($_SESSION['user'])) {
             echo '<a href="./index.php?page=deconnection">
                     <button class="headerButton cartButton">

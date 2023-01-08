@@ -1,7 +1,5 @@
 <?php
 
-
-
 class UserDTO extends DTO implements IObjectDTO
 {
     /**

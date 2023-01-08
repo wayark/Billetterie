@@ -1,4 +1,4 @@
-INSERT INTO payment_method(ID_PAYMENT_METHOD, PAYMENT_METHOD_NAME)
-VALUES (0, 'Aucun'),
-       (1, 'Carte'),
-       (2, 'Paypal');
+INSERT INTO payment_method(PAYMENT_METHOD_NAME)
+VALUES ('Aucun'),
+       ('Carte'),
+       ('Paypal');

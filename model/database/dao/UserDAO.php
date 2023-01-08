@@ -1,7 +1,5 @@
 <?php
 
-
-
 class UserDAO extends DAO
 {
 

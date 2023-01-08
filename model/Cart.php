@@ -1,35 +1,27 @@
 <?php
 
-
-
 class Cart {
 
-    private array $cart;
+    private int $userId;
+    /**
+     * @var array<int, array{pricing: TicketPricing, quantity: int}>
+     */
+    private array $inCartPricing;
 
-    public function __construct() {
+    public function __construct(int $userId, array $inCartPricing) {
+        $this->userId = $userId;
+        $this->inCartPricing = $inCartPricing;
     }
 
-    public function add(Ticket $item) {
-        $this->cart[] = $item;
+    public function getUserId(): int {
+        return $this->userId;
     }
 
-    public function remove(Ticket $ticket) {
-        $this->cart = array_diff($this->cart, [$ticket]);
+    /**
+     * @return array<int, array{pricing: TicketPricing, quantity: int}>
+     */
+    public function getInCartPricing(): array
+    {
+        return $this->inCartPricing;
     }
-
-    public function getCart(): array {
-        return $this->cart;
-    }
-
-    public function setCart(array $cart): void {
-        $this->cart = $cart;
-    }
-
-/*     public function getTotal(): float {
-        $total = 0;
-        foreach ($this->cart as $ticket) {
-            $total += $ticket->getPrice();
-        }
-        return $total;
-    } */
 }
