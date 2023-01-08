@@ -32,9 +32,15 @@ require_once './application/display/errorDisplay.php';
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
 <main>
+    <div>
+        <h1><</h1>
+    </div>
     <section>
 
     </section>
+    <div>
+        <h1>></h1>
+    </div>
 </main>
 
 <?php require_once(PATH_VIEWS . 'footer.php'); ?>
