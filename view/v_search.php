@@ -10,12 +10,13 @@
     <form method="get" action="./index.php">
         <input type="hidden" name="page" value="search">
         <div id="point"><div></div></div>
-        <input type="text" id="text-field" name="text-field">
+        <input type="text" id="text-field" name="text-field" placeholder="Recherche ...">
         <p>Filtre</p>
         <label id="select-trie-label" for="select-trie">Trier par</label>
         <select id="select-trie">
         </select>
-        <input type="text" id="text-city">
+        <div id="separator"></div>
+        <input type="text" id="text-city" placeholder="Ville ...">
         <div id="date-period">
             <label for="start-date" id="start-date-label">Du</label>
             <input type="date" id="start-date">
