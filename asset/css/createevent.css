@@ -1,0 +1,91 @@
+#pagecreateevent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #E7D9AB;
+    
+}
+.createeventForm{
+    width: 35vw;
+    min-width: 200px;
+    margin-top:1.5vw;
+    margin-bottom:1.5vw;
+    background-color: #2D2D2D;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius:10px;
+}
+.createeventForm>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin : 1vw;
+    width: 100%;
+}
+input,#Artist-select {
+    background-color: #454545;
+    border:none;
+    height:2vw;
+    min-height: 10px;
+    border-radius:10px;
+    text-align: center;
+    margin :10px;
+    color: #E7D9AB;
+}
+.createventButton{
+    background-color: #454545;
+    border: none;
+    font-size: 1.5vw;
+    padding: 10px;
+    border-radius: 20px;
+    color: #E7D9AB;
+}
+.createventButton:hover{
+    background-color: #767575;
+}
+.eventName{
+    width: 32.5vw;
+    min-width: 130px;
+    margin-bottom:1.5vw;
+    height:5vh;  
+}
+
+.description{
+    width: 32.5vw;
+    height:10vh;
+    min-width: 130px;
+    margin-bottom:1.5vw; 
+}
+.country,.city,.Hall,.street,.NbPlacesPit,.NbSeatsStaircase,#Artist-select,.Date {
+    width: 16vw;
+    margin-bottom:0.5vw;
+    min-width: 65px;
+    height:5vh;
+}
+.image{
+    z-index: -1;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+}
+#label-image{
+    cursor: pointer;
+    width: 16vw;
+    min-width: 75px;
+    height:5vh;
+    min-height: 10px;
+    margin :10px;
+    background-color: #454545;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

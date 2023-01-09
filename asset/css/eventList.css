@@ -1,0 +1,74 @@
+
+.eventList{
+    display: flex;
+    justify-content: center;
+    color: #E7D9AB;
+}
+
+.eventList-frame{
+    margin-top: 2vw;
+    width: 70vw;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.eventList-frame >h1{
+    margin-bottom: 1vw;
+}
+
+.eventList-exempleEvent{
+    background-color:#2D2D2D;
+    color: white;
+    height: 13vw;
+    padding-left:2.5vw;
+    padding-right: 2.5vw;
+    border-radius: 0.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.eventImg{
+    width: 15vw;
+    height: 10vw;
+    border-radius: 0.5vw;
+    overflow: hidden;
+}
+
+
+
+div.eventImg img{
+    width: 15vw;
+    height: 10vw;
+}
+
+.eventButton{
+    display: flex;
+    flex-direction: column;
+}
+
+.eventList button{
+    background-color: #5F5F5F;
+    color: #E7D9AB;
+    border: none;
+    font-size: 1.5vw;
+    width: 10vw;
+    border-radius: 20px;
+    margin-top: 1vw;
+}
+.addButton{
+    width: 68vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addButton button{
+    width: 15vw;
+}
+
+
+.eventList  h1{
+    font-size: 2vw;
+}
