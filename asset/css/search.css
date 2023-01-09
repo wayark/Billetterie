@@ -1,0 +1,58 @@
+form {
+    display: grid;
+    grid-template:
+            "bouton texte texte texte . . . filtre trie-par case-trie case-trie"
+            ". ville ville date  date date . disponibilite . . recherche";
+    background-color: #2D2D2D;
+}
+
+form > * {
+    align-self: start;
+}
+
+div#point {
+    grid-area: bouton;
+}
+
+#point div {
+    width: 1vw;
+    height: 1vw;
+    background-color: #e0d3a6;
+    border-radius: 100%;
+}
+
+input[type=text]#text-field {
+    grid-area: texte;
+}
+
+form p {
+    grid-area: filtre;
+}
+
+label#select-trie-label {
+    grid-area: trie-par;
+}
+
+form select#select-trie {
+    grid-area: case-trie;
+}
+
+form input[type=text]#text-city {
+    grid-area: ville;
+}
+
+div#date-period {
+    grid-area: date;
+}
+
+select#estDisponible {
+    grid-area: disponibilite;
+}
+
+form button[type=submit] {
+    grid-area: recherche;
+}
+
+
+
+
