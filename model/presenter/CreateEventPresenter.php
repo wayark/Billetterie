@@ -21,9 +21,9 @@ class CreateEventPresenter extends Presenter
             $this->state = new MakeCreateEventStrategy();
         } else {
             $this->state = new DefaultCreateEventStrategy();
+            echo "EwE";
         }
         
-        echo "EwE";
 
         $this->display = $this->state->handle($this->post);
     }

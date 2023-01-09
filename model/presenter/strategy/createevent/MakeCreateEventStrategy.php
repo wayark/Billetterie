@@ -5,17 +5,18 @@ class MakeCreateEventStrategy implements CreateEventStrategy
     private array $resultDisplay = array();
 
     public function handle(array $post): array
-    {
-        $eventName = htmlspecialchars($_POST['eventName']);
-        $description = htmlspecialchars($_POST['description']);
-        $country = htmlspecialchars($_POST['country']);
-        $city = htmlspecialchars($_POST['city']);
-        $Hall = htmlspecialchars($_POST['Hall']);
-        $street = htmlspecialchars($_POST['street']);
-        $Date = htmlspecialchars($_POST['Date']);
-        $Artist = htmlspecialchars($_POST['Artist']);
-        $NbPlacesPit = htmlspecialchars($_POST['NbPlacesPit']);
-        $NbSeatsStaircase = htmlspecialchars($_POST['NbSeatsStaircase']);
+    {   
+        echo'uwu'
+        $eventName = htmlspecialchars($post['eventName']);
+        $description = htmlspecialchars($post['description']);
+        $country = htmlspecialchars($post['country']);
+        $city = htmlspecialchars($post['city']);
+        $Hall = htmlspecialchars($post['Hall']);
+        $street = htmlspecialchars($post['street']);
+        $Date = htmlspecialchars($post['Date']);
+        $Artist = htmlspecialchars($post['Artist']);
+        $NbPlacesPit = htmlspecialchars($post['NbPlacesPit']);
+        $NbSeatsStaircase = htmlspecialchars($post['NbSeatsStaircase']);
         if (!empty($eventName) && !empty($description) && !empty($country) && !empty($city) && !empty($Hall)&& !empty($street)&& !empty($Date)&& !empty($Artist)) {
             $this->createEvent($eventName, $description, $country, $city, $Hall, $street, $Date, $Artist);
         } else {
