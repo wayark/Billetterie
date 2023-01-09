@@ -1,5 +1,5 @@
-<?php require_once(PATH_VIEWS . 'header.php'); //header of the page
-
+<?php 
+require_once(PATH_VIEWS . 'header.php'); //header of the page
 ?>
     <link rel="stylesheet" href=<?= PATH_CSS . "createevent.css" ?>>
     <div id="pagecreateevent">
@@ -16,13 +16,13 @@
                 <input name="street" type="text" class="street" placeholder="Adresse...">
             </div>
             <div>
-                <input name="Date" type="text" class="Date" placeholder="Date...">
+                <input name="Date" type="datetime-local" class="Date" placeholder="Date...">
                 <select name="Artist" id="Artist-select">
                     <?php
                     echo '<p>' . $allArtist . '</p>';
                     for ($i = 0; $i < count($allArtist); $i++) {
                         $artist = $allArtist[$i];
-                        echo '<option value="' . $artist->getFirstName() . '-' . $artist->getLastName() . '"> ' . $artist->getFirstName() . ' ' . $artist->getLastName() . '</option>';
+                        echo '<option value="' . $artist->getIdArtist(). '"> ' . $artist->getFirstName() . ' ' . $artist->getLastName() . '</option>';
                     }
                     ?>
                 </select>
@@ -37,7 +37,9 @@
             </div>
             <button name="createevent" type="submit" class="createventButton">Créer l'évènement</button>
         </form>
-        <?php
+        
+        <?= ErrorDisplayService::displayError($result['resultDisplayCreateevent'], "registerDisplay"); 
+        /*
         if (isset($resultDisplayCreateevent)) {
             $firstDiv = "<div class='registerDisplay' style='background: ";
             if ($resultDisplayCreateevent['type'] == 'success') {
@@ -50,7 +52,7 @@
             echo $resultDisplayCreateevent['message'];
 
             echo "</div>";
-        }
+        }*/
         ?>
     </div>
 
