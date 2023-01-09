@@ -85,7 +85,7 @@ select#estDisponible {
 form p, form label{
     align-self: center;
 }
-form button[type=submit], form select {
+form button[type=submit], form select, form input[type=date] {
     grid-area: recherche;
     color: #E7D9AB;
     width: 10vw;
@@ -101,4 +101,53 @@ form button[type=submit], form select {
     text-align: center;
 }
 
+.event{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 95vw;
+    height: 20vw;
+    background-color: #2d2d2d;
+    border-radius: 1.5vw;
+    color : white;
+    box-shadow: 0 1vw 0 0#2a2929;
+}
 
+.event img {
+    margin-left: 2vw;
+    width: 15vw;
+    width: 25vw;
+    margin-left: 3vw;
+    border-radius: 1vw;
+}
+
+.eventtext-container{
+    padding-top: 0;
+    margin-left: 45px;
+    display : grid;
+    /* La premiere grille prend 90% de la largeur du container la deuxieme 10% */
+    grid-template-columns: 40vw 20vw;
+}
+
+.eventtitle{
+    font-size: 3vw;
+    font-weight: bold;
+    margin-top: 1.5vw;
+}
+
+#eventsimages{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2vw;
+    height: 25vw;
+    align-items: center;
+    justify-content: center;
+}
+
+main > div {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 25px;
+}
