@@ -115,3 +115,9 @@
 .total-cart p{
     font-size: 2.3vw;
 }
+
+.cart-empty{
+    font-size: 2.4vw;
+    margin-bottom: 1vw;
+    font-weight: bold;
+}

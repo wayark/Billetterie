@@ -37,8 +37,11 @@ class CartPresenter extends Presenter
 
         $cart = $cartDAO->getById($_SESSION["user"]->getId());
 
+        $i = 0;
         foreach ($cart->getInCartPricing() as $item => $quantity) {
             $event = $ticketPricingDAO->getById($item)->getEvent();
+
+            if($i > 0) $display["items"] .= '<div class="cart-bar"></div>';
             $display["items"] .= '<div class="cart-item">';
             $display["items"] .= '<img src="'. PATH_IMAGES . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="">';
             $display["items"] .= '<div class="cart-item-title">';
@@ -52,7 +55,11 @@ class CartPresenter extends Presenter
             $display["items"] .= '<p>Prix</p>';
             $display["items"] .= '</div>';
             $display["items"] .= '</div>';
+
+            $i++;
         }
+
+        if ($i == 0) $display["items"] .= '<p class="cart-empty">Votre panier est vide</p>';
 
         $display['total'] = $this->totalPrice;
 
