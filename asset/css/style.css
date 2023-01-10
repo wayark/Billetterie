@@ -47,7 +47,7 @@ header{
     height: 3vw;
     min-height: 15px;
     background-color: #5F5F5F;
-    border-radius: 15px;
+    border-radius: 1vw;
     border: 0;
 }
 .accountButton{

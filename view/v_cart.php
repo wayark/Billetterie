@@ -15,10 +15,10 @@ require_once PATH_VIEWS.'header.php';
 </head>
 
     <section id="cart">
-        <div class="cart">
+        <div class="cartdisplayer">
             <div class="cart-header">
                 <div class="cart-header-title">
-                    <h1>Mon panier</h1>
+                    <h1>Panier</h1>
                 </div>
                 <div class="cart-header-price">
                     <h1>Prix</h1>
@@ -36,6 +36,9 @@ require_once PATH_VIEWS.'header.php';
                 </div>
             </div>
         </div>
+        <form action="payment.php">
+            <input type="submit" value="Payer" class="pay-button">
+        </form>
     </section>
 <?php
 
