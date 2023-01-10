@@ -29,7 +29,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
             <div class="line"></div>
 
             <div>
-                <form method="post" action="./index.php?page=connection" class="connectionForm">
+                <form method="post" action="./?page=connection" class="connectionForm">
                     <p>Inscription</p>
                     <div>
                         <input name="firstnameR" type="text" class="surname" placeholder="Prénom...">

@@ -4,7 +4,7 @@ class Cart {
 
     private int $userId;
     /**
-     * @var array<int, array{pricingId: int, quantity: int}>
+     * @var array<int, int>
      */
     private array $inCartPricing;
 
@@ -17,14 +17,15 @@ class Cart {
         return $this->userId;
     }
 
+
     public function add(int $pricingId, int $quantity) : bool
     {
-        if (array_key_exists($pricingId,$this->inCartPricing)) {
+        if (array_key_exists($pricingId, $this->inCartPricing)) {
             $this->inCartPricing[$pricingId] += $quantity;
             return true;
         } else {
             $this->inCartPricing[$pricingId] = $quantity;
-            return false;
+            return true;
         }
     }
 
@@ -37,7 +38,7 @@ class Cart {
     }
 
     /**
-     * @return array<int, array{pricingId: int, quantity: int}>
+     * @return array<int, int>
      */
     public function getInCartPricing(): array
     {

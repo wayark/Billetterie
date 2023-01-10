@@ -31,9 +31,9 @@ if (isset($_POST['type']) && isset($_POST['quantity'])) {
 
         $cartDTO = new CartDTO();
         if ($keyAlreadyExist) {
-            $cartDTO->update($_SESSION['user'], $pricing->getEvent(), $quantity);
+            $cartDTO->update($_SESSION['user'], $pricing, $quantity);
         } else {
-            $cartDTO->add($_SESSION['user'], $pricing->getEvent(), $quantity);
+            $cartDTO->add($_SESSION['user'], $pricing, $quantity);
         }
     }
 
