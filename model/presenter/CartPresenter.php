@@ -36,6 +36,7 @@ class CartPresenter extends Presenter
         $display['items'] = "";
 
         $i = 0;
+        $nbArticles = 0;
         foreach ($this->eventsInCart as $idPricing => $infos) {
             $event = $infos['pricing']->getEvent();
 
@@ -48,7 +49,7 @@ class CartPresenter extends Presenter
             $display['items'] .= '</a>';
             $display['items'] .= '<div class="cart-item-title">';
             $display['items'] .= '<h2>' . $event->getEventInfo()->getEventName() . '</h2>';
-            $display['items'] .= '<h3>Type de place : ' . $infos['pricing']->getName() . '</h3>';
+            $display['items'] .= '<h3>' . $infos['pricing']->getName() . '</h3>';
             $display['items'] .= '<p>' . $this->getNewFormatDate($event) . '</p>';
             $display['items'] .= '</div>';
             $display['items'] .= '<div class="cart-item-quantity">';
@@ -88,12 +89,13 @@ class CartPresenter extends Presenter
             $display['items'] .= '</div>';
 
             $i++;
+            $nbArticles += $quantity;
         }
 
         if ($i == 0) $display["items"] .= '<p class="cart-empty">Votre panier est vide</p>';
 
         $display['total'] = $this->totalPrice;
-        $display['numberArticles'] = $i;
+        $display['numberArticles'] = $nbArticles;
 
         return $display;
     }
