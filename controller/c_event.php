@@ -24,7 +24,7 @@ if (isset($_POST['type']) && isset($_POST['quantity'])) {
         de l'ancien */
 
         $ticketPricingDAO = new TicketPricingDAO();
-        echo $_POST['type'];
+
         $pricing = $ticketPricingDAO->getById($_POST['type']);
 
         $keyAlreadyExist = $_SESSION['cart']->add($pricing->getIdTicketPricing(), $quantity);

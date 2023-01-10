@@ -10,8 +10,6 @@ class CartDAO extends DAO implements IObjectDAO
 
     public function getAll(): array
     {
-        $res = array();
-        return $res;
     }
 
     /**
@@ -24,10 +22,10 @@ class CartDAO extends DAO implements IObjectDAO
         $result = $this->queryAll($sql, array($id));
         if ($result) {
             $inCartPricing = array();
-            foreach ($result as $row) {
+            foreach ($result as $row){
                 $inCartPricing[$row['ID_TICKET_PRICING']] = $row['QUANTITY'];
             }
-            return new Cart($id, $inCartPricing);
+            return new Cart($id);
         }
         return null;
     }

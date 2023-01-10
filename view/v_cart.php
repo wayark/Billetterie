@@ -20,19 +20,13 @@ require_once PATH_VIEWS.'header.php';
                 <div class="cart-header-title">
                     <h1>Panier</h1>
                 </div>
-                <div class="cart-header-price">
-                    <h1>Prix</h1>
-                </div>
             </div>
             <div class="cart-body">
-                <?= $display['items'] ?>
-            </div>
-            <div class="cart-footer">
-                <div class="cart-footer-total">
-                    <h1>Total</h1>
-                </div>
-                <div class="cart-footer-price">
-                    <h1><?= $display['total'] ?>€</h1>
+                <?php echo $display["items"] ?>
+                <div class="yellow-bar"></div>    
+                <div class="total-cart">
+                    <p>Total :</p>
+                    <p><?php echo $display['total']; ?>€</p>
                 </div>
             </div>
         </div>

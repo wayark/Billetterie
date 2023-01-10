@@ -24,11 +24,13 @@
                     </button>
                     </a>';
         }
+        if(!isset($_SESSION['user'])) $path = "./?page=connection";
+        else $path = "./?page=cart";
         ?>
         <a href="./?page=connection">
             <button class="headerButton accountButton">Mon compte</button>
         </a>
-        <a href="./?page=cart">
+        <a href="<?= $path?>">
             <button class="headerButton cartButton">
                 <img src="<?= PATH_IMAGES ?>/logos/panier.png" alt="cart" class="cart">
             </button>

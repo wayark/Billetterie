@@ -7,6 +7,8 @@ class CartPresenter extends Presenter
     */
     private array $ticketPrice;
     private float $totalPrice;
+    private CartDAO $cartDAO;
+    private TicketPricingDAO $ticketPricingDAO;
 
     public function __construct(?array $get, ?array $post)
     {
@@ -30,14 +32,26 @@ class CartPresenter extends Presenter
 
         $display['items'] = "";
 
-        foreach ($_SESSION['cart']->getInCartPricing() as $idPricing => $quantity) {
-            $display['items'] = "<div class=\"cart-body-item\">";
-            $display['items'] .= "<div class=\"cart-body-item-title\">";
-            $display['items'] .= "<h1>" . $this->ticketPrice[$idPricing]->getEvent()->getEventInfo()->getEventName() . "</h1>";
-            $display['items'] .= "</div>";
-            $display['items'] .= "<div class=\"cart-body-item-price\">";
-            $display['items'] .= "<h1>" . $this->ticketPrice[$idPricing]->getPrice() * $quantity . "€</h1>";
-            $display['items'] .= "</div></div>";
+        $cartDAO = new CartDAO();
+        $ticketPricingDAO = new TicketPricingDAO();
+
+        $cart = $cartDAO->getById($_SESSION["user"]->getId());
+
+        foreach ($cart->getInCartPricing() as $item => $quantity) {
+            $event = $ticketPricingDAO->getById($item)->getEvent();
+            $display["items"] .= '<div class="cart-item">';
+            $display["items"] .= '<img src="'. PATH_IMAGES . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="">';
+            $display["items"] .= '<div class="cart-item-title">';
+            $display["items"] .= '<h2>'.'</h2>';
+            $display["items"] .= '<p>Date</p>';
+            $display["items"] .= '</div>';
+            $display["items"] .= '<div class="cart-item-quantity">';
+            $display["items"] .= '<p>Quantité</p>';
+            $display["items"] .= '</div>';
+            $display["items"] .= '<div class="cart-item-price">';
+            $display["items"] .= '<p>Prix</p>';
+            $display["items"] .= '</div>';
+            $display["items"] .= '</div>';
         }
 
         $display['total'] = $this->totalPrice;
