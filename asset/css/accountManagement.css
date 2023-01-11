@@ -106,6 +106,7 @@ button.styleButton {
     border: none;
     border-radius: 20px;
     width: 10vw;
+    cursor: pointer;
 }
 
 #sides-container {

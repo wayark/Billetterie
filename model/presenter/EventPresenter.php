@@ -38,7 +38,8 @@ class EventPresenter extends Presenter
             'eventPlaceName' => $this->eventToDisplay->getEventPlace()->getPlaceName(),
             'eventPlaceStreet' => $this->eventToDisplay->getEventPlace()->getStreet(),
             'eventPlaceCity' => $this->eventToDisplay->getEventPlace()->getCity(),
-            'eventPlaceCountry' => $this->eventToDisplay->getEventPlace()->getCountry()
+            'eventPlaceCountry' => $this->eventToDisplay->getEventPlace()->getCountry(),
+            'eventId' => $this->eventToDisplay->getIdEvent(),
         );
 
         $this->display['pricings'] = $this->formatTicketDisplay($this->eventToDisplay);

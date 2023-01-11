@@ -292,3 +292,173 @@ div.ticket-pricing {
     display: grid;
     grid-template-columns: 10vw 10vw 15vw;
 }
+
+.comment-container{
+    margin-top: 3vw;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vw;
+}
+
+.comment{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6vh;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.colored-comment-part{
+    align-self: center;
+    width: 80%;
+    height: fit-content;
+    background-color: #2d2d2d;
+    display: flex;
+    flex-direction: row;
+    column-gap: 2vw;
+    align-items: center;
+    padding: 2vw;
+    color: white;
+    border-radius: 3vw;
+}
+
+#title{
+    margin-left: 7vw;
+    font-size: 2vw;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+}
+
+#title p {
+    text-align: start;
+    align-self: start;
+}
+
+.comment-author{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1vw;
+    text-decoration: none;
+}
+
+.comment-author p{
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 0.1vw;
+    list-style: none;
+}
+
+.comment-author img{
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+}
+
+.comment-content-date{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.7vw;
+    align-self: start;
+}
+
+.comment-content-date p:first-child{
+    font-size: 1.2vw;
+    color: #afafaf;
+}
+.comment-content-date p:last-child{
+    font-size: 1.5vw;
+}
+
+.like-btn-img{
+    transition: 0.3s;
+    width: 2vw;
+}
+
+#dislikebtn{
+    margin-left: 1vw;
+}
+
+#dislikebtn img{
+    transform: rotate(180deg);
+}
+
+.like-form{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5vw;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw;
+    background-color: #424141;
+    border-radius: 50px;
+}
+
+.like-form:hover{
+    background-color: #423e3e;
+}
+
+.like-form>button{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
+.like-form>button:hover{
+    transform: scale(1.2);
+    transition: 0.3s;
+    border: none;
+    background-color: transparent;
+}
+
+.like-form{
+    transition: 0.3s;
+}
+
+.like-comment-container{
+    position: absolute;
+    margin-left: 65vw;
+}
+
+
+.like-comment-container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+    align-items: center;
+    justify-content: center;
+    align-self: end;
+}
+
+.colored-comment-part{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+}
+
+.comment-answers{
+    align-self: start;
+    margin-left: 15vw;
+    font-size: 1.5vw;
+    color: #afafaf;
+}
+
+.comment-bar {
+    width: 60vw;
+    height: 0.6vw;
+    background-color: #afafaf;
+    border-radius: 1vw;
+    align-self: center;
+    margin-right: 10vw;
+}

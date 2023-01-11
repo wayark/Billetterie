@@ -119,7 +119,7 @@ class AccountManagementPresenter extends Presenter
             'pictureFileName' => substr($this->currentUser->getProfilePicture()->getPicturePath(), strlen(PATH_IMAGES . 'users/')),
             'favoritePaymentMethod' => $this->currentUser->getFavoriteMethod()->getPaymentMethodName()
         );
-        $path_file = PATH_ASSETS . "data/data-" . substr($this->currentUser->getMail(), 0, -4) . ".json";
+        $path_file = PATH_ASSETS . "data/data-" . $this->currentUser->getMail() . ".json";
         $file_name = basename($path_file);
         $content = json_encode($data['user']);
 

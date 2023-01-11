@@ -100,6 +100,63 @@
         </a>
     </div>
 <?php } ?>
+    <section class="comment-container">
+        <div id="title">
+            <h1>1</h1>
+            <h1> commentaire :</h1>
+        </div>
+        <div class="comment-bar"></div>
+        <div class="comment">
+            <div class="colored-comment-part">
+                <a href="?page=profile&profile=" class="comment-author">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                    <p>XXBGDU93XX</p>
+                </a>
+                <div class="comment-content-date">
+                    <p class="comment-date">Le 01/01/2021 à 00:00</p>
+                    <p>Ceci est un commentaire hahahhhaha</p>       
+                </div>
+                <div class="like-comment-container">
+                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" id="likebtn" class="like-form">
+                        <input type="hidden" value="like">
+                        <p>1</p>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/like.png" ?>" alt="like" class="like-btn-img"></button>
+                    </form>
+                    <form action="./?page=event&event=" method="post" id="dislikebtn" class="like-form">
+                        <input type="hidden" value="like">
+                        <p>0</p>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/like.png" ?>" alt="like" class="like-btn-img"></button>
+                    </form>
+                </div>
+            </div>
+            <p class="comment-answers">10 réponses ></p>
+        </div>
+        <div class="comment">
+            <div class="colored-comment-part">
+                <a href="?page=profile&profile=" class="comment-author">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                    <p>XXBGDU93XX</p>
+                </a>
+                <div class="comment-content-date">
+                    <p class="comment-date">Le 01/01/2021 à 00:00</p>
+                    <p>Ceci est un commentaire hahahhhaha</p>       
+                </div>
+                <div class="like-comment-container">
+                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" id="likebtn" class="like-form">
+                        <input type="hidden" value="like">
+                        <p>1</p>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/like.png" ?>" alt="like" class="like-btn-img"></button>
+                    </form>
+                    <form action="./?page=event&event=" method="post" id="dislikebtn" class="like-form">
+                        <input type="hidden" value="like">
+                        <p>0</p>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/like.png" ?>" alt="like" class="like-btn-img"></button>
+                    </form>
+                </div>
+            </div>
+            <p class="comment-answers">10 réponses ></p>
+        </div>
+    </section>
 <?php require_once PATH_VIEWS . 'footer.php'; ?>
 </body>
 </html>
