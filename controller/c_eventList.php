@@ -9,7 +9,7 @@ if (!isset($_SESSION) || !isset($_SESSION['user'])) {
     exit();
 }
 
-$presenter = new EventListPresenter($_GET, $_POST);
+$presenter = new EventListPresenter($_GET, array_merge($divError, $_POST));
 $display = $presenter->formatDisplay();
 
 require_once(PATH_VIEWS . "eventList.php");

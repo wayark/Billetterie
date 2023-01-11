@@ -1,8 +1,15 @@
 <?php
 $eventDTO = new EventDTO;
 $eventDAO = new EventDAO;
+$date = date("Y-m-d H:i:s", time());
+$divError = "";
 
 $event = $eventDAO->getById($_GET["event"]);
-$eventDTO->delete($event);
+if ($event->getEventInfo()->getEventDate() < $date) {
+    $eventDTO->delete($event);
+} else {
+    $divError = ErrorDisplayService::displayError();
+}
+
 
 require_once(PATH_CONTROLLERS . "eventList.php");
