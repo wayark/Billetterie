@@ -133,10 +133,17 @@
             </div>
             <div class="comment-answers" onclick="showReplies(this);">
                 <div>
+                    <p>Voir</p>
+                    <p>les</p>
                     <p>10</p>
                     <p>réponse</p>
                 </div>
                 <p class="invert-text">></p>
+            </div>
+            <div class="comment-answers-visible" style="display:none">
+                <div class="reply"></div>
+                <div class="reply"></div>
+                <div class="reply"></div>
             </div>
         </div>
         <div class="comment">
@@ -166,10 +173,17 @@
             </div>
             <div class="comment-answers" onclick="showReplies(this);">
                 <div>
+                    <p>Voir</p>
+                    <p>les</p>
                     <p>10</p>
                     <p>réponse</p>
                 </div>
                 <p class="invert-text">></p>
+            </div>
+            <div class="comment-answers-visible" style="display:none">
+                <div class="reply"></div>
+                <div class="reply"></div>
+                <div class="reply"></div>
             </div>
         </div>
         <div class="comment">
@@ -199,10 +213,17 @@
             </div>
             <div class="comment-answers" onclick="showReplies(this);">
                 <div>
+                    <p>Voir</p>
+                    <p>les</p>
                     <p>10</p>
                     <p>réponse</p>
                 </div>
                 <p class="invert-text">></p>
+            </div>
+            <div class="comment-answers-visible" style="display:none">
+                <div class="reply"></div>
+                <div class="reply"></div>
+                <div class="reply"></div>
             </div>
         </div>
     </section>

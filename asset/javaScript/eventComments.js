@@ -34,6 +34,19 @@ const showAllComment = (element) => {
 // Afficher les réponses lorsqu'on clique sur le bouton "X réponses"
 const showReplies = (element) => {
     element.classList.toggle('view-replies-active');
+
+    repliesContainer = element.parentNode.querySelector('.comment-answers-visible');
+    textButton = element.querySelector("p");
+
+    if (repliesContainer.style.display == "none") {
+        repliesContainer.style.display = "block";
+        textButton.innerText = "Masquer";
+    } else {
+        textButton.innerText = "Voir";
+        repliesContainer.style.display = "none";
+    }
+
+    
 }
 
     
