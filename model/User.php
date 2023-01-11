@@ -210,6 +210,11 @@ class User
         return $this->_personInfo->getPicture();
     }
 
+    public function getProfilePicturePath() : string
+    {
+        return $this->_personInfo->getPicture()->getPicturePath();
+    }
+
     public function setProfilePicture(string $target_file)
     {
         $this->_personInfo->getPicture()->setPicturePath($target_file);
