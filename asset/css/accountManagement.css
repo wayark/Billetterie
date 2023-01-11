@@ -10,6 +10,7 @@ section {
     background-color: #2D2D2D;
     width: 70%;
     height: 10%;
+    padding-bottom : 2vw;
     border-radius: 10px;
 }
 
@@ -115,4 +116,33 @@ div#actionButtons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 2vh;
+}
+
+.download-data{
+    width: 10vw;
+    color: #fff;
+    background-color: #525252;
+    border-radius: 1.2vw;
+    cursor: pointer;
+    padding: 0.5vw;
+    font-size: 1vw;
+    font-weight: bold;
+    margin-bottom : 1vw;
+}
+
+#form-download-data{
+    margin: 0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-account-mangement {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

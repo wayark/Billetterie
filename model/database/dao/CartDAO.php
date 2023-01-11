@@ -21,11 +21,11 @@ class CartDAO extends DAO implements IObjectDAO
         $sql = "SELECT * FROM cart WHERE ID_USER = ?";
         $result = $this->queryAll($sql, array($id));
         if ($result) {
-            $inCartPricing = array();
+            $cart = new Cart($id);
             foreach ($result as $row){
-                $inCartPricing[$row['ID_TICKET_PRICING']] = $row['QUANTITY'];
+                $cart->add($row['ID_TICKET_PRICING'], $row['QUANTITY']);
             }
-            return new Cart($id);
+            return $cart;
         }
         return null;
     }

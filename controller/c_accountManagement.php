@@ -10,4 +10,9 @@ if (!isset($_SESSION) || !isset($_SESSION['user'])) {
 $presenter = new AccountManagementPresenter($_GET, $_POST, $_FILES);
 $display = $presenter->formatDisplay();
 
+if(isset($_POST["dldata"])) {
+    $presenter = new AccountManagementPresenter($_GET, $_POST, $_FILES);
+    echo $presenter->getDataInJson();
+}
+
 require_once(PATH_VIEWS . 'accountManagement.php');

@@ -11,6 +11,7 @@ require_once PATH_VIEWS.'header.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo PATH_CSS.'cart.css'; ?>">
+    <script src="<?= PATH_SCRIPTS . "addToCart.js";?>" defer></script>
     <title>Panier</title>
 </head>
 
@@ -22,15 +23,15 @@ require_once PATH_VIEWS.'header.php';
                 </div>
             </div>
             <div class="cart-body">
-                <?php echo $display["items"] ?>
-                <div class="yellow-bar"></div>    
-                <div class="total-cart">
-                    <p>Total :</p>
-                    <p><?php echo $display['total']; ?>€</p>
-                </div>
+                <?= $display["items"] ?>
+            </div>
+            <div class="yellow-bar"></div>    
+            <div class="total-cart">
+                <p>Total (<?= $display['numberArticles'] . " article" . putCharS($display['numberArticles']); ?>) :</p>
+                <p><?php echo $display['total']; ?> €</p>
             </div>
         </div>
-        <form action="payment.php">
+        <form action="./?page=payment" method="post">
             <input type="submit" value="Payer" class="pay-button">
         </form>
     </section>

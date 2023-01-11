@@ -105,4 +105,34 @@ class AccountManagementPresenter extends Presenter
         }
         return $ans;
     }
+
+    public function getDataInJSON(){
+        $data['user'] = array(
+            'picturePath' => $this->currentUser->getProfilePicture()->getPicturePath(),
+            'pictureDescription' => $this->currentUser->getProfilePicture()->getPictureDescription(),
+            'firstName' => $this->currentUser->getFirstName(),
+            'lastName' => $this->currentUser->getLastName(),
+            'mail' => $this->currentUser->getMail(),
+            'birthDateNoFormat' => $this->currentUser->getBirthDate(),
+            'birthDate' => DateDisplayService::formatDate($this->currentUser->getBirthDate()),
+            'address' => $this->currentUser->getAddress(),
+            'pictureFileName' => substr($this->currentUser->getProfilePicture()->getPicturePath(), strlen(PATH_IMAGES . 'users/')),
+            'favoritePaymentMethod' => $this->currentUser->getFavoriteMethod()->getPaymentMethodName()
+        );
+        $path_file = PATH_ASSETS . "data/data-" . substr($this->currentUser->getMail(), 0, -4) . ".json";
+        $file_name = basename($path_file);
+        $content = json_encode($data['user']);
+
+        file_put_contents($path_file, $content);
+        
+        header("Content-type: application/force-download");
+        header("Content-Disposition: attachment; filename=".$file_name);
+        readfile($path_file);
+        
+        unlink($path_file);
+
+        Exit();
+    }
+
 }
+?>
