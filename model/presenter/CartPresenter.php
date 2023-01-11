@@ -71,7 +71,7 @@ class CartPresenter extends Presenter
             $display['items'] .= '<option value="7"' . $this->echoSelected(7, $quantity) . '>7</option>';
             $display['items'] .= '<option value="8"' . $this->echoSelected(8, $quantity) . '>8</option>';
             $display['items'] .= '<option value="9"' . $this->echoSelected(9, $quantity) . '>9</option>';
-            $display['items'] .= '<option value="10+"' . $this->echoSelected(10, $quantity) . '>10</option>';
+            $display['items'] .= '<option value="10+"' . $this->echoSelected(10, $quantity) . '>10+</option>';
             $display['items'] .= '</select>';
             $display['items'] .= '</form>';
             $display['items'] .= '<form action="./?page=cart" method="post">';

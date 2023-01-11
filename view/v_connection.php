@@ -27,7 +27,6 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
             </div>
 
             <div class="line"></div>
-
             <div>
                 <form method="post" action="./?page=connection" class="connectionForm">
                     <p>Inscription</p>

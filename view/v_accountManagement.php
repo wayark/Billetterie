@@ -32,7 +32,12 @@
 
 <main>
     <section>
-        <h1><?= $display['titre'] ?></h1>
+        <div class="title-account-mangement">
+            <h1><?= $display['titre'] ?></h1>
+        </div>
+        <form method="post" action="./?page=connection" id="form-download-data">
+            <button name="dldata" class="download-data">Generer mes données (JSON)</button>
+        </form>
         <div id="sides-container">
             <div id="coteG">
                 <button class="styleButton" id="account">Modifier mes informations</button>
