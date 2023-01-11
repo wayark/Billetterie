@@ -25,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./asset/css/event.css">
     <script src="<?php echo PATH_SCRIPTS . "justbought.js" ?>" defer></script>
+    <script src="<?php echo PATH_SCRIPTS . "eventComments.js" ?>" defer></script>
     <title><?= $display['eventName'] ?></title>
 </head>
 <body>
@@ -101,9 +102,9 @@
     </div>
 <?php } ?>
     <section class="comment-container">
-        <div id="title">
-            <h1>1</h1>
-            <h1> commentaire :</h1>
+        <div id="title-comment">
+            <h1>3</h1>
+            <h1> commentaires :</h1>
         </div>
         <div class="comment-bar"></div>
         <div class="comment">
@@ -114,47 +115,95 @@
                 </a>
                 <div class="comment-content-date">
                     <p class="comment-date">Le 01/01/2021 à 00:00</p>
-                    <p>Ceci est un commentaire hahahhhaha</p>       
+                    <p class="comment-content">Ceci est un commentaire hahahhhaha</p>
+                    <p class="comment-read-more" id="0" onclick="showAllComment(this)">Voir plus</p>         
                 </div>
                 <div class="like-comment-container">
                     <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" id="likebtn" class="like-form">
                         <input type="hidden" value="like">
                         <p>1</p>
-                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/like.png" ?>" alt="like" class="like-btn-img"></button>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="like-btn-img"></button>
                     </form>
                     <form action="./?page=event&event=" method="post" id="dislikebtn" class="like-form">
-                        <input type="hidden" value="like">
+                        <input type="hidden" value="dislike">
                         <p>0</p>
-                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/like.png" ?>" alt="like" class="like-btn-img"></button>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="like-btn-img"></button>
                     </form>
                 </div>
             </div>
-            <p class="comment-answers">10 réponses ></p>
+            <div class="comment-answers" onclick="showReplies(this);">
+                <div>
+                    <p>10</p>
+                    <p>réponse</p>
+                </div>
+                <p class="invert-text">></p>
+            </div>
         </div>
         <div class="comment">
             <div class="colored-comment-part">
                 <a href="?page=profile&profile=" class="comment-author">
-                    <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
-                    <p>XXBGDU93XX</p>
+                    <!-- image de naps -->
+                    <img src="<?= PATH_IMAGES . 'users/'?>naps.jpg" alt="avatar">
+                    <p>OKAYOKAYNAPS</p>
                 </a>
                 <div class="comment-content-date">
-                    <p class="comment-date">Le 01/01/2021 à 00:00</p>
-                    <p>Ceci est un commentaire hahahhhaha</p>       
+                    <p class="comment-date">Le 02/02/2022 à 11:11</p>
+                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus quia alias qui, incidunt cupiditate reiciendis, quibusdam ex repellendus molestiae, voluptas consectetur! Dolore optio molestiae laudantium nulla quod ipsam possimus dolor. Asperiores magnam hic maxime, veritatis atque, soluta incidunt pariatur maiores recusandae harum voluptatem ab porro quaerat commodi id illum? Repudiandae dolor necessitatibus rem consectetur aut odit, excepturi possimus nam eveniet, doloremque dignissimos mollitia amet velit soluta nemo qui dolores reprehenderit explicabo consequatur! Quisquam facilis ullam cum veritatis corrupti iste aliquam at! Molestiae soluta excepturi aspernatur fugiat laborum amet provident eligendi animi asperiores neque, voluptate enim minus officia, sed ex porro dolorum quasi non dicta? Dignissimos modi fugit quas corrupti saepe eos a! Optio dicta earum asperiores esse reprehenderit nemo tempore, pariatur quam libero quos commodi distinctio obcaecati voluptatibus ipsa. Minus ut incidunt blanditiis ratione voluptatibus velit rerum sunt ad! Sed unde fugit labore aspernatur magnam. Accusamus quos quidem perferendis eligendi.</p>     
+                    <p class="comment-read-more" id="1" onclick="showAllComment(this)">Voir plus</p>  
                 </div>
                 <div class="like-comment-container">
                     <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" id="likebtn" class="like-form">
                         <input type="hidden" value="like">
                         <p>1</p>
-                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/like.png" ?>" alt="like" class="like-btn-img"></button>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="like-btn-img"></button>
                     </form>
                     <form action="./?page=event&event=" method="post" id="dislikebtn" class="like-form">
-                        <input type="hidden" value="like">
+                        <input type="hidden" value="dislike">
                         <p>0</p>
-                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/like.png" ?>" alt="like" class="like-btn-img"></button>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="like-btn-img"></button>
                     </form>
                 </div>
             </div>
-            <p class="comment-answers">10 réponses ></p>
+            <div class="comment-answers" onclick="showReplies(this);">
+                <div>
+                    <p>10</p>
+                    <p>réponse</p>
+                </div>
+                <p class="invert-text">></p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="colored-comment-part">
+                <a href="?page=profile&profile=" class="comment-author">
+                    <!-- image de naps -->
+                    <img src="<?= PATH_IMAGES . 'users/'?>naps.jpg" alt="avatar">
+                    <p>OKAYOKAYNAPS</p>
+                </a>
+                <div class="comment-content-date">
+                    <p class="comment-date">Le 02/02/2022 à 11:11</p>
+                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus quia alias qui, incidunt cupiditate reiciendis, quibusdam ex repellendus molestiae, voluptas consectetur! Dolore optio molestiae laudantium nulla quod ipsam possimus dolor. Asperiores magnam hic maxime, veritatis atque, soluta incidunt pariatur maiores recusandae harum voluptatem ab porro quaerat commodi id illum? Repudiandae dolor necessitatibus rem consectetur aut odit, excepturi possimus nam eveniet, doloremque dignissimos mollitia amet velit soluta nemo qui dolores reprehenderit explicabo consequatur! Quisquam facilis ullam cum veritatis corrupti iste aliquam at! Molestiae soluta excepturi aspernatur fugiat laborum amet provident eligendi animi asperiores neque, voluptate enim minus officia, sed ex porro dolorum quasi non dicta? Dignissimos modi fugit quas corrupti saepe eos a! Optio dicta earum asperiores esse reprehenderit nemo tempore, pariatur quam libero quos commodi distinctio obcaecati voluptatibus ipsa. Minus ut incidunt blanditiis ratione voluptatibus velit rerum sunt ad! Sed unde fugit labore aspernatur magnam. Accusamus quos quidem perferendis eligendi.</p>     
+                    <p class="comment-read-more" id="2" onclick="showAllComment(this)">Voir plus</p>  
+                </div>
+                <div class="like-comment-container">
+                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" id="likebtn" class="like-form">
+                        <input type="hidden" value="like">
+                        <p>1</p>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="like-btn-img"></button>
+                    </form>
+                    <form action="./?page=event&event=" method="post" id="dislikebtn" class="like-form">
+                        <input type="hidden" value="dislike">
+                        <p>0</p>
+                        <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="like-btn-img"></button>
+                    </form>
+                </div>
+            </div>
+            <div class="comment-answers" onclick="showReplies(this);">
+                <div>
+                    <p>10</p>
+                    <p>réponse</p>
+                </div>
+                <p class="invert-text">></p>
+            </div>
         </div>
     </section>
 <?php require_once PATH_VIEWS . 'footer.php'; ?>
