@@ -45,7 +45,7 @@ class CartPresenter extends Presenter
             if($i > 0) $display["items"] .= '<div class="cart-bar"></div>';
             $display['items'] .= '<div class="cart-item">';
             $display['items'] .= '<a href="?page=event&event=' . $event->getIdEvent() . '">';
-            $display['items'] .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="">';
+            $display['items'] .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="" draggable="false">';
             $display['items'] .= '</a>';
             $display['items'] .= '<div class="cart-item-title">';
             $display['items'] .= '<h2>' . $event->getEventInfo()->getEventName() . '</h2>';
@@ -54,11 +54,12 @@ class CartPresenter extends Presenter
             $display['items'] .= '</div>';
             $display['items'] .= '<div class="cart-item-quantity">';
             $display['items'] .= '<div class="cart-item-quantity-container">';
-            $display['items'] .= '<form action="?page=cart" method="post">';
+            $display['items'] .= '<form action="./?page=cart" method="post">';
+            $display['items'] .= '<input type="hidden" name="id" value="' . $infos['pricing']->getIdTicketPricing() . '">';
             $display['items'] .= '<input type="hidden" name="rmone" value="rm">';
             $display['items'] .= '<button class="onemoreless" type="submit" class="quantity-button" id="oneless">-</button>';
             $display['items'] .= '</form>';
-            $display['items'] .= '<form action="?page=cart" method="post">';
+            $display['items'] .= '<form action="./?page=cart" method="post">';
             $display['items'] .= '<select name="quantity" id="quantity-select" onchange="displayInput(this)">';
             $display['items'] .= '<option value="0"' . $this->echoSelected(0, $quantity) . '>0 (Supprimer)</option>';
             $display['items'] .= '<option value="1"' . $this->echoSelected(1, $quantity) . '>1</option>';
@@ -73,12 +74,13 @@ class CartPresenter extends Presenter
             $display['items'] .= '<option value="10+"' . $this->echoSelected(10, $quantity) . '>10</option>';
             $display['items'] .= '</select>';
             $display['items'] .= '</form>';
-            $display['items'] .= '<form action="?page=cart" method="post">';
+            $display['items'] .= '<form action="./?page=cart" method="post">';
+            $display['items'] .= '<input type="hidden" name="id" value="' . $infos['pricing']->getIdTicketPricing() . '">';
             $display['items'] .= '<input type="hidden" name="addone" value="add">';
             $display['items'] .= '<button class="onemoreless" type="submit" class="quantity-button" id="onemore">+</button>';
             $display['items'] .= '</form>';
             $display['items'] .= '</div>';
-            $display['items'] .= '<form action="?page=cart" method="post" class="form-10more">';
+            $display['items'] .= '<form action="./?page=cart" method="post" class="form-10more">';
             $display['items'] .= '<input name="quantity" type="number" value="10" class="quantity-input">';
             $display['items'] .= '<button type="submit" class="quantity-button">Modifier</button>';
             $display['items'] .= '</form>';
@@ -143,7 +145,7 @@ class CartPresenter extends Presenter
                 $date[1] = "décembre";
                 break;
         }
-        return "Le " . $date[2] . " " . $date[1] . " " . $date[0] . " à " . $hour;
+        return $date[2] . " " . $date[1] . " " . $date[0] . " à " . $hour;
     }
 
     private function echoSelected($i, $quantity){

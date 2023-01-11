@@ -29,6 +29,23 @@ class CartDTO extends DTO {
             [$user->getId(), $ticketPricing->getIdTicketPricing()]);
     
     }
+
+    function addOne(User $user, $ticketId){
+        $userId = $user->getId();
+        
+        $this->updateQuery("cart", ["QUANTITY"], ["QUANTITY + 1"], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+    }
+
+    function removeOne(User $user,$ticketId){
+        $userId = $user->getId();
+
+        $this->updateQuery("cart", ["QUANTITY"], ["QUANTITY - 1"], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+    }
+
+    function setQuantity(User $user, $ticketId, int $quantity){
+        $userId = $user->getId();
+        $this->updateQuery("cart", ["QUANTITY"], [$quantity], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+    }
     
     function delete($object): void
     {

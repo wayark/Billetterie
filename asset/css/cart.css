@@ -258,12 +258,26 @@ button:hover {
     font-size: 2vw;
 }
 
-.cart-header-title h3{
-    font-size: 1.3vw;
+.cart-item-title h3{
+    font-size: 1.5vw;
 }
 
 .cart-item-price{
     color : #e0d3a6;
     font-size: 1.5vw;
     font-weight: bold;
+}
+
+.quantity-button{
+    color: #e0d3a6;
+    background-color: pink;
+    font-size: 3vw;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.quantity-button:hover{
+    color: white;
+    background-color: #423f3f;
+    transition: all 0.2s ease;
 }

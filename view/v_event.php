@@ -94,7 +94,7 @@
            onmouseout="unchangeImgButtonColor(this);">
             <img draggable="false" src="<?php echo PATH_IMAGES . "useful/cart.png"; ?>">Voir mon panier
         </a>
-        <a href="?" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);"
+        <a href="./" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);"
            onmouseout="unchangeImgButtonColor(this);">
             Continuer mes achats<img draggable="false" src="<?= PATH_IMAGES . "useful/doublearrow.png"; ?>">
         </a>
