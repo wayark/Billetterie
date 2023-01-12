@@ -48,7 +48,7 @@ class EventListPresenter extends Presenter
             $ans .= '<div class="eventList-exempleEvent" id="eventList-exempleEvent">';
             $ans .= '<div class="eventImg">';
             $ans .= '<a href="index.php?page=event&event=' . $event->getIdEvent() . '">';
-            $ans .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="' . $event->getEventInfo()->getPicture()->getPictureDescription() . '">';
+            $ans .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="' . $event->getEventInfo()->getPicture()->getPictureDescription() . '" draggable="false">';
             $ans .= '</a>';
             $ans .= '</div>';
             $ans .= '<div class="eventTitre">';

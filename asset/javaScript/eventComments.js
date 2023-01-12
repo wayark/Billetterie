@@ -39,13 +39,11 @@ const shortReplies = () => {
         });
         shortsReplies.push(new Array());
     });
-    console.log(shortsReplies);
 };
 shortReplies();
 
 const showAllReply = (element, nbrComment) => {
     let nbrReply = getReplyNumberId(element);
-    console.log(element.parentNode.parentNode);
     element.parentNode.parentNode.style.height = "fit-content";
     element.innerText = "Voir moins";
     element.parentNode.querySelector('.reply-content').innerText = shortsReplies[nbrComment][nbrReply];
@@ -55,7 +53,6 @@ const showAllReply = (element, nbrComment) => {
 const shrinkReply = (element, nbrComment) => {
     let nbrReply = getReplyNumberId(element);
     document.querySelectorAll('.reply')[nbrReply].style.removeProperty('height');
-    console.log(document.querySelectorAll('.reply')[nbrReply])
     element.innerText = "Voir plus";
     element.parentNode.querySelector('.reply-content').innerText = shortsReplies[nbrComment][nbrReply].substring(0, 220) + '...';
     element.setAttribute('onclick', `showAllReply(this, ${nbrComment})`);
@@ -94,7 +91,11 @@ const showAllComment = (element) => {
 }
 
 // Afficher les réponses lorsqu'on clique sur le bouton "X réponses"
+var canShowReply = true;
 const showReplies = (element) => {
+    if (!canShowReply) return;
+    canShowReply = false;
+
     element.classList.toggle('view-replies-active');
 
     repliesContainer = element.parentNode.parentNode.querySelector('.comment-answers-visible');
@@ -144,6 +145,9 @@ const showReplies = (element) => {
                 replies[i].style.opacity = "0";
             }, 40);
     }
+    setTimeout(() => {
+        canShowReply = true;
+    }, 500);
 }
 
 // Lorsque l'on clique sur la barre du champ on déclenche une animation
@@ -252,9 +256,6 @@ const showTextArea = (element) => {
         }, 20);
         element.querySelector('p:last-child').style.transform = "rotate(90deg)";
         answersContainer = element.parentNode.parentNode.querySelector('.comment-answers-visible');
-
-        console.log(answersContainer);
-        console.log(answersContainer.parentNode);
 
         answersContainer.parentNode.insertBefore(form, answersContainer);
     }

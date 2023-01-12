@@ -34,8 +34,7 @@
     <div id="container">
         <div id="container-description-event">
             <div id="img-title-date">
-                <img src="<?= $display['eventPicture'] ?>"
-                     alt="<?= $display['eventPictureDescription'] ?>">
+                <img src="<?= $display['eventPicture'] ?>" draggable="false" alt="<?= $display['eventPictureDescription'] ?>">
                 <div id="title-date">
                     <h1><?= $display['eventName'] ?></h1>
                     <p><?= $display['eventDate'] ?></p>
@@ -88,24 +87,7 @@
             </div>
         </div>
     </div>
-<?php } else { ?>
-    <div id="addtocarttextcontainer">
-        <div id="imgandtextaddtocart">
-            <img src="<?= PATH_IMAGES . "/useful/justbought.png" ?>" alt="justbought" draggable="false">
-            <h1 id="thankstoaddtocart" class="addtocarttext"><?php echo $textToDisplay; ?></h1>
-        </div>
-        <?= $ticketAddedToCart["event"] ?>
-        <a href="?page=cart" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);"
-           onmouseout="unchangeImgButtonColor(this);">
-            <img draggable="false" src="<?php echo PATH_IMAGES . "useful/cart.png"; ?>">Voir mon panier
-        </a>
-        <a href="./" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);"
-           onmouseout="unchangeImgButtonColor(this);">
-            Continuer mes achats<img draggable="false" src="<?= PATH_IMAGES . "useful/doublearrow.png"; ?>">
-        </a>
-    </div>
-<?php } 
-    if (isset($_SESSION['user'])) { ?>
+            <?php if (isset($_SESSION['user'])) { ?>
         <form action="./?page=event&event=<?= $display["eventId"]; ?>" class="send-comment-form" method="post">
             <a href="./?page=profile&user=">
                 <img src="<?= $_SESSION["user"]->getProfilePicturePath(); ?>" alt="avatar" class="user-img">
@@ -468,7 +450,24 @@
             </div>
         </div>
     </div>
-    </section>
-<?php require_once PATH_VIEWS . 'footer.php'; ?>
+</section>
 </body>
 </html>
+<?php } else { ?>
+    <div id="addtocarttextcontainer">
+        <div id="imgandtextaddtocart">
+            <img src="<?= PATH_IMAGES . "/useful/justbought.png" ?>" alt="justbought" draggable="false">
+            <h1 id="thankstoaddtocart" class="addtocarttext"><?php echo $textToDisplay; ?></h1>
+        </div>
+        <?= $ticketAddedToCart["event"] ?>
+        <a href="?page=cart" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);"
+           onmouseout="unchangeImgButtonColor(this);">
+            <img draggable="false" src="<?php echo PATH_IMAGES . "useful/cart.png"; ?>">Voir mon panier
+        </a>
+        <a href="./" class="buttonwherebuy" onmouseover="changeImgButtonColor(this);"
+           onmouseout="unchangeImgButtonColor(this);">
+            Continuer mes achats<img draggable="false" src="<?= PATH_IMAGES . "useful/doublearrow.png"; ?>">
+        </a>
+    </div>
+<?php } ?>
+<?php require_once PATH_VIEWS . 'footer.php'; ?>
