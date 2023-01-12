@@ -107,7 +107,7 @@
 <?php } 
     if (isset($_SESSION['user'])) { ?>
         <form action="./?page=event&event=<?= $display["eventId"]; ?>" class="send-comment-form" method="post">
-            <a href="./?page=connection">
+            <a href="./?page=profile&user=">
                 <img src="<?= $_SESSION["user"]->getProfilePicturePath(); ?>" alt="avatar" class="user-img">
                 <p><?= $_SESSION["user"]->getFirstName(); ?></p>
             </a>

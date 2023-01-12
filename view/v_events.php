@@ -8,12 +8,12 @@
     <div class="colored-part-profile">
         <div class="menu">
             <ul>
-                <li class="actual-page">
-                    <a class="menu-text" href="?page=profile" onmouseover="colorBar(this)" onmouseout="uncolorBar(this)">Profil</a>
+                <li>
+                    <a class="menu-text" href="?page=profile" onmouseover="extendBar(this)" onmouseout="shrinkBar(this)">Profil</a>
                     <div class="menu-bar"></div>
                 </li>
-                <li>
-                    <a class="menu-text" href="?page=profile&part=events" onmouseover="extendBar(this)" onmouseout="shrinkBar(this)">Evenements</a>
+                <li class="actual-page">
+                    <a class="menu-text" href="?page=profile&part=events" onmouseover="colorBar(this)" onmouseout="uncolorBar(this)">Evenements</a>
                     <div class="menu-bar"></div>
                 </li>
                 <li>

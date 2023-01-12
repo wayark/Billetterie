@@ -231,6 +231,8 @@ var formTextAreaContainer = document.querySelector(".send-comment-form");
 const disappearTextArea = (element) => {
     element.parentNode.parentNode.querySelector('.answer-container').remove();
 }
+
+var lastIndex = null;
 const showTextArea = (element) => {
     if (element.parentNode.parentNode.querySelector('.answer-container') != null){
         element.parentNode.parentNode.querySelector('.answer-container').style.removeProperty('opacity');
