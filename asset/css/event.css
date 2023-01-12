@@ -314,14 +314,14 @@ div.ticket-pricing {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    row-gap: 1.7vw;
+    row-gap: 0.8vw;
 }
 
 .comment{
     width: 100%;
     display: flex;
     flex-direction: column;
-    row-gap: 1vw;
+    row-gap: 0.4vw;
     align-items: center;
     justify-content: center;
 }
@@ -471,7 +471,7 @@ div.ticket-pricing {
     flex-direction: row;
     column-gap: 1vw;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 
 .comment-answers>p{
@@ -529,6 +529,7 @@ div.ticket-pricing {
     column-gap: 3vw;
     align-items: center;
     justify-content: center;
+    margin-bottom: 0.4vw;
 }
 
 .send-comment-form input[type="text"]{
@@ -600,23 +601,17 @@ div.ticket-pricing {
 
 .see-more-answers-and-reply-container{
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 0.42fr 0.17fr;
     align-items: center;
-    column-gap: 27vw;
+    justify-content: start;
+    column-gap: 20vw;
+    margin-bottom: 0.4vw;
 }
 
 .see-more-answers-and-reply-container form{
     margin-bottom: 5vw;
     margin-top: 0;
-}
-
-.to-reply{
-    font-size: 1.5vw;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.1s;
 }
 
 .to-reply:hover{
@@ -679,9 +674,83 @@ div.ticket-pricing {
     flex-direction: row;
     column-gap: 1vw;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    font-size: 1.5vw;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.1s;
+    margin-left: 4vw;
 }
 
 .to-reply p:last-child{
     font-size: 2vw;
+}
+
+/* CSS des réponses */
+
+.comment-answers-visible{
+    height: fit-content;
+    display: none;
+    flex-direction: column;
+    row-gap: 2vw;
+    margin-bottom: 1.7vw;
+}
+
+.reply{
+    display: none;
+    flex-direction: row;
+    column-gap: 2vw;
+    opacity: 0;
+    width: 70vw;
+    height: 11.3vw;
+    border-radius: 1.5vw;
+    background-color: #302e2e;
+    box-shadow: 0 0.6vw 0 0#2a2929; 
+    transition: transform 0.3s, opacity 0.2s;
+}
+
+.reply-content{
+    color: rgb(216, 211, 211);
+}
+
+.like-reply-container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+    align-items: center;
+    width: 5vw;
+    position: absolute;
+    margin-left: 55vw;
+    margin-top: 8.85vw;
+}
+
+.reply-like-form {
+    width: 2.6vw;
+    height: 1.8vw;
+}
+
+.reply-like-form img{
+    width: 1.7vw;
+}
+
+.reply-read-more{
+    color: #a19090;
+    cursor: pointer;
+    font-size: 1.3vw;
+    margin-left: 0.7vw;
+    text-decoration: underline;
+    width: fit-content;
+}
+
+.reply-read-more:hover{
+    color: #c9bebe;
+}
+
+.reply-content-date{
+    padding-top: 0.8vw;
+}
+
+.reply-like-form p{
+    color: #ece1e1;
 }

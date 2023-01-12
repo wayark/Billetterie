@@ -8,13 +8,13 @@ const shortUsernames = () => {
 shortUsernames();
 
 var commentsShorted = new Array();
-const shortComments = (element) => {
+const shortComments = () => {
     document.querySelectorAll('.comment-content').forEach((comment) => {
         if (comment.innerText.length > 100) {
             commentsShorted.push(comment.innerText);
             comment.innerText = comment.innerText.substring(0, 330) + '...';
         } else {
-            comment.parentNode.querySelector('p:last-child').style.display = "none";
+            comment.parentNode.querySelector('p:last-child').remove();
             commentsShorted.push(null);
         }
     });
@@ -25,9 +25,46 @@ const shortComment = (element, nbr) => {
 };
 shortComments();
 
+var shortsReplies = new Array(new Array());
+const shortReplies = () => {
+    document.querySelectorAll(".comment").forEach((comment, index) => {
+        comment.querySelectorAll('.reply-content').forEach((reply, index2) => {
+            if (reply.innerText.length > 220) {
+                shortsReplies[index][index2] = reply.innerText;
+                reply.innerText = reply.innerText.substring(0, 220) + '...';
+            } else {
+                shortsReplies[index][index2] = null;
+                reply.parentNode.querySelector('p:last-child').remove();
+            }
+        });
+        shortsReplies.push(new Array());
+    });
+};
+shortReplies();
+
+const showAllReply = (element, nbrComment) => {
+    let nbrReply = getReplyNumberId(element);
+    document.querySelectorAll('.reply')[nbrReply].style.height = "fit-content";
+    element.innerText = "Voir moins";
+    element.parentNode.querySelector('.reply-content').innerText = shortsReplies[nbrComment][nbrReply];
+    element.setAttribute('onclick', `shrinkReply(this, ${nbrComment})`);
+}
+
+const shrinkReply = (element, nbrComment) => {
+    let nbrReply = getReplyNumberId(element);
+    document.querySelectorAll('.reply')[nbrReply].style.removeProperty('height');
+    element.innerText = "Voir plus";
+    element.parentNode.querySelector('.reply-content').innerText = shortsReplies[nbrComment][nbrReply].substring(0, 220) + '...';
+    element.setAttribute('onclick', `showAllReply(this, ${nbrComment})`);
+}
+
 // Fonction qui retourne le nombre associé à l'élément
 const getCommentNumberId = (element) => {
-    return parseInt(element.id.replace('cmr', ''));
+    return parseInt(element.id.replace('crm', ''));
+}
+
+const getReplyNumberId = (element) => {
+    return parseInt(element.id.replace('rrm', ''));
 }
 
 // Fonction qui désaffiche les commentaires trop longs en entier lorsqu'on clique sur le bouton "Voir moins"
@@ -59,13 +96,50 @@ const showReplies = (element) => {
 
     repliesContainer = element.parentNode.parentNode.querySelector('.comment-answers-visible');
     textButton = element.querySelector('p');
+    let replies = repliesContainer.querySelectorAll('.reply');
+    let valueOpacity = 0;
 
     if (repliesContainer.style.display == "none") {
-        repliesContainer.style.display = "block";
+        repliesContainer.style.display = "flex";
         textButton.innerText = "Masquer";
+
+        let i = 0;
+        let intervalAppear = setInterval(() => {
+            replies[i].style.display = "flex";
+            replies[i].style.opacity = "1";
+            replies[i].style.transform = "scale(0.97)";
+            if(i > 0) replies[i-1].style.removeProperty('transform')
+            if(i == replies.length-1) {
+                clearInterval(intervalAppear);
+                setTimeout(() => {
+                    replies[i].style.removeProperty('transform');
+                }, 100);
+                return;
+            }
+            i++;
+        }, 50);
+
     } else {
         textButton.innerText = "Voir";
-        repliesContainer.style.display = "none";
+
+        let i = replies.length-1;
+        let intervalAppear = setInterval(() => {
+            replies[i].style.transform = "scale(0.97)";
+                setTimeout(() => {
+                    replies[i].style.opacity = "0";
+                    if(i < replies.length-1) replies[i+1].style.removeProperty('transform');
+                    if(i == 0) {
+                        clearInterval(intervalAppear);
+                        setTimeout(() => {
+                            replies[i].style.removeProperty('transform');
+                            repliesContainer.style.display = "none";
+                        }, 100);
+                        return;
+                    }
+                    i--;
+                }, 70);
+                replies[i].style.opacity = "0";
+            }, 40);
     }
 }
 
@@ -151,7 +225,7 @@ const initForm = (form) => {
     form.querySelector(".comment-field").classList.remove('comment-field');
 }
 
-// Fonction qui fait apparaitre le champ commentaire {
+// Fonction qui fait apparaitre le champ commentaire
 var formTextAreaContainer = document.querySelector(".send-comment-form");
 
 const disappearTextArea = (element) => {
@@ -172,9 +246,12 @@ const showTextArea = (element) => {
             form.style.opacity = "1";
         }, 20);
         element.querySelector('p:last-child').style.transform = "rotate(90deg)";
-        answersContainer = element.parentNode.parentNode.parentNode.querySelector('.comment-answers-visible');
+        answersContainer = element.parentNode.parentNode.querySelector('.comment-answers-visible');
 
-        element.parentNode.parentNode.insertBefore(form, answersContainer);
+        console.log(answersContainer);
+        console.log(answersContainer.parentNode);
+
+        answersContainer.parentNode.insertBefore(form, answersContainer);
     }
 }
 

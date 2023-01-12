@@ -134,16 +134,16 @@
                 </a>
                 <div class="comment-content-date">
                     <p class="comment-date">Le 01/01/2021 à 00:00</p>
-                    <p class="comment-content">Ceci est un commentaire hahahhhaha</p>
-                    <p class="comment-read-more" id="0" onclick="showAllComment(this)">Voir plus</p>         
+                    <p class="comment-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, harum rerum dolor suscipit id labore asperiores quod non repellendus ipsam eum eveniet, velit reiciendis architecto sunt placeat eaque culpa ratione. Dolorem corrupti repellat optio, labore natus dignissimos sequi sed, eligendi cumque neque, illo numquam ab quos velit sapiente non! Fugit, fuga. Tenetur ea perspiciatis voluptatem ipsum ut cum inventore, minus rerum expedita, quo fuga ipsa. Enim molestias temporibus cum deserunt, qui dolores consequuntur maxime molestiae, in aliquid, distinctio cumque! Amet nesciunt temporibus atque illo officiis sint? Excepturi ex quibusdam pariatur, ullam et expedita fugit, tempore voluptas sit quae, nihil quod?</p>
+                    <p class="comment-read-more" id="crm0" onclick="showAllComment(this)">Voir plus</p>         
                 </div>
                 <div class="like-comment-container">
-                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" id="likebtn" class="like-form">
+                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="like-form">
                         <input type="hidden" value="like">
                         <p>1</p>
                         <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="like-btn-img"></button>
                     </form>
-                    <form action="./?page=event&event=" method="post" id="dislikebtn" class="like-form">
+                    <form action="./?page=event&event=" method="post" class="like-form">
                         <input type="hidden" value="dislike">
                         <p>0</p>
                         <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="like-btn-img"></button>
@@ -155,102 +155,319 @@
                     <div>
                         <p>Voir</p>
                         <p>les</p>
-                        <p>10</p>
+                        <p>3</p>
                         <p>réponse</p>
                     </div>
                     <p class="invert-text">></p>
                 </div>
-                <div class="to-reply" onclick="showTextArea(this)">
-                    <p>Répondre</p>
-                    <p>></p>
-                </div>
+                <?php if (isset($_SESSION["user"])) { ?>
+                    <div class="to-reply" onclick="showTextArea(this)">
+                        <p>Répondre</p>
+                        <p>></p>
+                    </div>
+                <?php } ?>
             </div>
             <div class="comment-answers-visible" style="display:none">
-                <div class="reply"></div>
-                <div class="reply"></div>
-                <div class="reply"></div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">C'est ton gars coco jojo</p>
+                        <p class="reply-read-more" id="rrm0" onclick="showAllReply(this, 0)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus voluptatem odit nam officia quasi officiis optio totam ad dolor eligendi fugit fuga error, sunt id magni! Id minima quia consectetur enim, maiores voluptatem beatae numquam maxime rerum libero eligendi, dolorum debitis tenetur atque, recusandae neque! Explicabo est praesentium dolore eligendi ex aliquid nam ipsam tempore sit voluptatum officia nemo ratione ad animi, quidem recusandae eum maxime distinctio expedita delectus fuga. Numquam deleniti quam nesciunt laboriosam corrupti unde dolorem sequi ipsam maxime hic delectus error, placeat tenetur, eum consectetur vero cupiditate ab, ducimus asperiores! Perferendis quibusdam iusto totam facere, sequi eos nostrum iste dignissimos, voluptatem tempore fugiat! Nisi quia, aspernatur laudantium illum voluptate exercitationem ab. Tempora, ipsum sequi molestiae ducimus voluptatum libero vero, placeat cumque reprehenderit cum architecto fugiat deleniti aut dicta expedita quis sapiente enim nihil quo natus similique dolor accusantium. Rem perspiciatis quod voluptatem laboriosam vel, mollitia pariatur quis aperiam incidunt id culpa dolores accusantium delectus. Illo harum qui accusamus tempora cum recusandae rerum voluptates consequatur dolorem illum, facilis, officia, magnam sit necessitatibus nesciunt dignissimos! Laborum corrupti repellat nihil numquam quasi assumenda, consequuntur molestiae animi quam, veniam voluptates asperiores blanditiis pariatur? A nulla pariatur officia dolores rem, iure ab deleniti distinctio ex. Quo impedit corrupti reprehenderit, in non, est nihil esse repellat nemo atque dolor error explicabo! Dolorem blanditiis ab tenetur incidunt, consectetur aliquam eos aperiam impedit fugiat error modi? Distinctio at rem dolore doloremque nam laudantium laboriosam harum eligendi, molestias expedita porro iusto ipsa rerum libero asperiores non incidunt. Inventore eveniet recusandae expedita asperiores? Laudantium at reiciendis obcaecati, soluta voluptatum eveniet veniam labore ut quis molestias suscipit similique fuga! Architecto nemo debitis repudiandae pariatur omnis eius cupiditate magni minima nisi excepturi facere distinctio, aliquam incidunt consequuntur sint nobis iusto dolor adipisci sapiente quia, eveniet deserunt perspiciatis repellat commodi!</p>
+                        <p class="reply-read-more" id="rrm1" onclick="showAllReply(this, 0)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">C'est ton gars coco jojo</p>
+                        <p class="reply-read-more" id="rrm2" onclick="showAllReply(this, 0)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
         <div class="comment">
             <div class="colored-comment-part">
-                <a href="?page=profile&profile=" class="comment-author">
-                    <!-- image de naps -->
-                    <img src="<?= PATH_IMAGES . 'users/'?>naps.jpg" alt="avatar">
-                    <p>OKAYOKAYNAPS</p>
+                <a href="?page=profile&user=" class="comment-author">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                    <p>XXBGDU93XX</p>
                 </a>
                 <div class="comment-content-date">
-                    <p class="comment-date">Le 02/02/2022 à 11:11</p>
-                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus quia alias qui, incidunt cupiditate reiciendis, quibusdam ex repellendus molestiae, voluptas consectetur! Dolore optio molestiae laudantium nulla quod ipsam possimus dolor. Asperiores magnam hic maxime, veritatis atque, soluta incidunt pariatur maiores recusandae harum voluptatem ab porro quaerat commodi id illum? Repudiandae dolor necessitatibus rem consectetur aut odit, excepturi possimus nam eveniet, doloremque dignissimos mollitia amet velit soluta nemo qui dolores reprehenderit explicabo consequatur! Quisquam facilis ullam cum veritatis corrupti iste aliquam at! Molestiae soluta excepturi aspernatur fugiat laborum amet provident eligendi animi asperiores neque, voluptate enim minus officia, sed ex porro dolorum quasi non dicta? Dignissimos modi fugit quas corrupti saepe eos a! Optio dicta earum asperiores esse reprehenderit nemo tempore, pariatur quam libero quos commodi distinctio obcaecati voluptatibus ipsa. Minus ut incidunt blanditiis ratione voluptatibus velit rerum sunt ad! Sed unde fugit labore aspernatur magnam. Accusamus quos quidem perferendis eligendi.</p>     
-                    <p class="comment-read-more" id="1" onclick="showAllComment(this)">Voir plus</p>  
+                    <p class="comment-date">Le 01/01/2021 à 00:00</p>
+                    <p class="comment-content">Ceci est un commentaire hahahhhaha</p>
+                    <p class="comment-read-more" id="crm1" onclick="showAllComment(this)">Voir plus</p>         
                 </div>
                 <div class="like-comment-container">
-                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" id="likebtn" class="like-form">
+                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="like-form">
                         <input type="hidden" value="like">
                         <p>1</p>
                         <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="like-btn-img"></button>
                     </form>
-                    <form action="./?page=event&event=" method="post" id="dislikebtn" class="like-form">
+                    <form action="./?page=event&event=" method="post" class="like-form">
                         <input type="hidden" value="dislike">
                         <p>0</p>
                         <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="like-btn-img"></button>
                     </form>
                 </div>
             </div>
-            <div class="comment-answers" onclick="showReplies(this);">
-                <div>
-                    <p>Voir</p>
-                    <p>les</p>
-                    <p>10</p>
-                    <p>réponse</p>
+            <div class="see-more-answers-and-reply-container">
+                <div class="comment-answers" onclick="showReplies(this);">
+                    <div>
+                        <p>Voir</p>
+                        <p>les</p>
+                        <p>3</p>
+                        <p>réponse</p>
+                    </div>
+                    <p class="invert-text">></p>
                 </div>
-                <p class="invert-text">></p>
+                <?php if (isset($_SESSION["user"])) { ?>
+                    <div class="to-reply" onclick="showTextArea(this)">
+                        <p>Répondre</p>
+                        <p>></p>
+                    </div>
+                <?php } ?>
             </div>
             <div class="comment-answers-visible" style="display:none">
-                <div class="reply"></div>
-                <div class="reply"></div>
-                <div class="reply"></div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat natus voluptates fugit beatae ad vero, delectus sunt accusamus eveniet, ea obcaecati, sequi aspernatur voluptatum officia quam necessitatibus a porro facilis veniam eaque? Excepturi incidunt, aut culpa tempore dolore ex molestiae veniam aliquid eligendi eius veritatis magni illum nihil assumenda ipsam dolorem nisi eos saepe officiis et. Id, asperiores mollitia? Dolores saepe blanditiis dolor! Aspernatur sapiente inventore iste a alias eveniet, atque illo ab suscipit accusamus ipsa expedita et impedit ea tempora recusandae, soluta voluptas amet harum numquam in magni animi. Tempore quae similique enim. Dolores corporis ea porro facilis, sed incidunt eius minus minima dolor est architecto quod voluptates accusantium itaque quisquam sit temporibus deleniti? Blanditiis autem molestiae exercitationem eligendi dignissimos soluta amet quia esse sequi fuga enim fugiat, alias quisquam nesciunt odit laborum, tempora maxime minus aliquam est? Provident animi nemo tempora alias aliquam, omnis quos eligendi quidem unde deserunt obcaecati earum nobis quibusdam architecto sit doloremque distinctio eum? Dolores eligendi nam odit, error, vero dicta, rem harum dolorum iure blanditiis iusto cupiditate molestias laudantium fugiat ipsum! Laboriosam, velit sint perferendis itaque est laborum autem provident ea eius quia tempore facere sed vero nihil dolorum repudiandae quis nobis sequi? Qui voluptates consequatur quod laboriosam, sint quaerat quis quam repellendus mollitia aut eveniet deleniti fugiat accusamus est accusantium molestias adipisci ea molestiae. Quo maxime assumenda amet doloribus velit, aperiam odit pariatur ad quibusdam, eaque nesciunt quidem maiores, animi temporibus ipsum accusantium impedit repellat? Eveniet pariatur minima ut ex libero sapiente expedita nobis rem iste! Dolores cupiditate natus quaerat laboriosam nostrum consequatur? Voluptatum minima reiciendis eos perferendis et. Eaque libero dolorem error dignissimos similique quam dolores quasi? Tempore nihil eligendi voluptatibus impedit omnis inventore voluptas iusto, blanditiis facilis aliquam nisi ipsum beatae placeat neque amet. Porro accusantium nisi quidem consectetur id?</p>
+                        <p class="reply-read-more" id="rrm0" onclick="showAllReply(this, 1)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">C'est ton gars coco jojo</p>
+                        <p class="reply-read-more" id="rrm1" onclick="showAllReply(this, 2)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus architecto corporis beatae ipsum, porro veritatis laudantium libero nobis quis corrupti amet ad nesciunt ullam, hic veniam ex labore, reiciendis accusantium vel saepe optio. Iure eos quas beatae porro quidem rem repellendus fugiat sapiente libero repudiandae blanditiis, omnis placeat deleniti similique exercitationem fugit quos vel ducimus assumenda facere. Commodi, natus? Vel alias animi eveniet corporis non, maiores sunt. Fugiat magni, expedita aut voluptatibus quam dolorum sequi laborum velit molestias accusamus necessitatibus debitis fuga reiciendis odit totam? Porro sed consequuntur autem accusantium quod vitae aspernatur, natus dolores ratione alias neque. Dolorum accusamus rem voluptatibus assumenda sapiente labore at quibusdam doloremque id inventore perspiciatis tenetur, obcaecati ipsum quidem esse reiciendis porro, officiis recusandae totam illum ad natus vero deserunt. Itaque porro consequatur aperiam qui iste eius aspernatur laudantium sequi architecto perspiciatis magni, beatae, quo a aliquid, labore exercitationem ratione! Dolorum, sequi cumque! Alias repudiandae consequuntur est iusto eius porro, libero officiis quasi doloribus eaque facilis! Laudantium architecto, corrupti, quasi iure soluta aperiam vero quaerat consequatur minima ad incidunt. Natus sed atque mollitia animi voluptates dolor dolores debitis non numquam eos laborum perferendis sit qui tempore, amet quis voluptatem unde at id veritatis delectus aspernatur similique. Provident ratione, alias earum quae quod, ducimus eveniet est assumenda voluptate, libero iusto quasi. Quidem maxime veritatis quod explicabo aspernatur deserunt necessitatibus vitae.</p>
+                        <p class="reply-read-more" id="rrm2" onclick="showAllReply(this, 3)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
         <div class="comment">
             <div class="colored-comment-part">
-                <a href="?page=profile&profile=" class="comment-author">
-                    <!-- image de naps -->
-                    <img src="<?= PATH_IMAGES . 'users/'?>naps.jpg" alt="avatar">
-                    <p>OKAYOKAYNAPS</p>
+                <a href="?page=profile&user=" class="comment-author">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                    <p>XXBGDU93XX</p>
                 </a>
                 <div class="comment-content-date">
-                    <p class="comment-date">Le 02/02/2022 à 11:11</p>
-                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus quia alias qui, incidunt cupiditate reiciendis, quibusdam ex repellendus molestiae, voluptas consectetur! Dolore optio molestiae laudantium nulla quod ipsam possimus dolor. Asperiores magnam hic maxime, veritatis atque, soluta incidunt pariatur maiores recusandae harum voluptatem ab porro quaerat commodi id illum? Repudiandae dolor necessitatibus rem consectetur aut odit, excepturi possimus nam eveniet, doloremque dignissimos mollitia amet velit soluta nemo qui dolores reprehenderit explicabo consequatur! Quisquam facilis ullam cum veritatis corrupti iste aliquam at! Molestiae soluta excepturi aspernatur fugiat laborum amet provident eligendi animi asperiores neque, voluptate enim minus officia, sed ex porro dolorum quasi non dicta? Dignissimos modi fugit quas corrupti saepe eos a! Optio dicta earum asperiores esse reprehenderit nemo tempore, pariatur quam libero quos commodi distinctio obcaecati voluptatibus ipsa. Minus ut incidunt blanditiis ratione voluptatibus velit rerum sunt ad! Sed unde fugit labore aspernatur magnam. Accusamus quos quidem perferendis eligendi.</p>     
-                    <p class="comment-read-more" id="2" onclick="showAllComment(this)">Voir plus</p>  
+                    <p class="comment-date">Le 01/01/2021 à 00:00</p>
+                    <p class="comment-content">Jesuisnaps okay okay Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima delectus laborum illum rerum beatae error sapiente eveniet, doloribus qui iste dolorum odio, facere quos veritatis in similique quas quibusdam unde maiores quod voluptatibus repudiandae. Laborum facere repudiandae consequuntur sapiente perferendis error, obcaecati voluptas maxime cum? Sequi voluptatum deserunt quam mollitia, soluta odit exercitationem quos, obcaecati minus esse id minima nesciunt quaerat temporibus veniam dignissimos ducimus suscipit architecto non. Cum accusantium unde vitae ab praesentium sequi nulla quae fugiat, inventore voluptate. Necessitatibus labore obcaecati aliquam quisquam. Ab odio tempora dolorum nostrum aliquam distinctio cumque illo dolor aliquid libero. Accusantium, quas. Itaque exercitationem, officiis adipisci sunt neque ab id autem dolorem mollitia enim explicabo quaerat illo quasi at corporis eum pariatur? Ipsum corrupti sit voluptate iure aut eveniet quasi eos fuga ad saepe dignissimos illum accusantium officia, pariatur ducimus natus hic non inventore. Dolorem sequi autem nemo fugit blanditiis, hic sint officiis excepturi atque ex quas repudiandae exercitationem ab nihil et, consectetur explicabo voluptatum fuga sed! Suscipit ea labore maiores eaque inventore, ipsam alias eius totam aliquam ad similique facere soluta ab perferendis debitis voluptatum vero iusto aut expedita ratione, dolor deleniti maxime. Ipsam blanditiis quisquam cumque, dicta, consequatur ab voluptate nemo a, eum enim nihil aliquid iusto mollitia. Quam dicta non repellat nobis molestias quidem alias! Vitae blanditiis consequuntur nobis illum dicta ducimus laudantium delectus, quisquam quasi. Quod odio provident velit explicabo at atque facilis iure, repellendus voluptates esse rerum laudantium perferendis molestiae sunt aspernatur cumque excepturi eveniet commodi cum dicta quis dolorum? Laboriosam tempora error incidunt. Explicabo, nostrum corrupti debitis eligendi provident adipisci ipsa quo error aut. Fugit ex sunt dolores incidunt a, ad, corrupti voluptatum deleniti aspernatur consequatur necessitatibus iste cumque optio ipsum? Perspiciatis nulla vitae dolorum quas quasi nemo, dolorem rerum reiciendis dicta mollitia ducimus quod qui facere fugit ratione? Vel nisi dolor ipsa consequuntur magni, corporis sunt molestias deserunt ab fugiat soluta quasi accusamus aliquam rem! Totam minus, rem molestiae sit iusto dicta quasi dolore nesciunt, ipsam iste accusamus ducimus maiores! Sit a animi deserunt quisquam aliquam rerum sint facilis quo dolor voluptatum nihil, ex, et accusamus ullam magnam! At consequatur perspiciatis esse voluptatem minima fugiat facere quas, deleniti reiciendis similique ipsam iure blanditiis, animi, quae nulla eligendi ab molestias cupiditate porro quod odit! Ex odit aspernatur cupiditate nisi eveniet sint exercitationem repellat, similique ab nemo voluptates nam porro natus vitae? Asperiores odio maxime vitae earum rerum?</p>
+                    <p class="comment-read-more" id="crm2" onclick="showAllComment(this)">Voir plus</p>         
                 </div>
                 <div class="like-comment-container">
-                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" id="likebtn" class="like-form">
+                    <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="like-form">
                         <input type="hidden" value="like">
                         <p>1</p>
                         <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="like-btn-img"></button>
                     </form>
-                    <form action="./?page=event&event=" method="post" id="dislikebtn" class="like-form">
+                    <form action="./?page=event&event=" method="post" class="like-form">
                         <input type="hidden" value="dislike">
                         <p>0</p>
                         <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="like-btn-img"></button>
                     </form>
                 </div>
             </div>
-            <div class="comment-answers" onclick="showReplies(this);">
-                <div>
-                    <p>Voir</p>
-                    <p>les</p>
-                    <p>10</p>
-                    <p>réponse</p>
+            <div class="see-more-answers-and-reply-container">
+                <div class="comment-answers" onclick="showReplies(this);">
+                    <div>
+                        <p>Voir</p>
+                        <p>les</p>
+                        <p>3</p>
+                        <p>réponse</p>
+                    </div>
+                    <p class="invert-text">></p>
                 </div>
-                <p class="invert-text">></p>
+                <?php if (isset($_SESSION["user"])) { ?>
+                    <div class="to-reply" onclick="showTextArea(this)">
+                        <p>Répondre</p>
+                        <p>></p>
+                    </div>
+                <?php } ?>
             </div>
             <div class="comment-answers-visible" style="display:none">
-                <div class="reply"></div>
-                <div class="reply"></div>
-                <div class="reply"></div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas, fuga, incidunt tenetur assumenda cum voluptate rem ea quidem dolores dolor consequuntur? Animi maiores, nisi sequi dolorum non ad tenetur iure nam omnis totam, soluta tempora culpa quis accusamus laborum earum! Iure impedit porro dolore perferendis asperiores quidem consequatur id excepturi, ea, odio ex. Possimus eos ab veniam eius esse soluta. Deserunt, consequuntur cum quo delectus esse consectetur reprehenderit minima suscipit impedit, dicta explicabo animi distinctio eligendi voluptates nihil unde repellendus quas, dolor praesentium? Quasi similique earum quia natus, sunt doloribus deserunt fugit pariatur cumque corporis enim impedit rem quidem deleniti in repellendus doloremque! Odit unde, suscipit fugiat sapiente nisi blanditiis porro quisquam quis pariatur, aliquid molestiae nostrum, libero consequatur? Reprehenderit praesentium natus cumque sapiente esse ducimus quidem aperiam itaque quas autem delectus voluptates ipsa a assumenda, in commodi laborum nemo odio magnam explicabo ullam! Mollitia molestiae hic fugiat magni ipsum commodi unde. Ducimus perspiciatis rerum ipsam expedita totam incidunt praesentium asperiores placeat consequatur aliquam facere id quo, est dolorum voluptatum culpa consequuntur, distinctio qui maiores delectus laborum! Corporis impedit expedita odio enim, quasi nulla repudiandae animi est aspernatur accusamus voluptate, tenetur in nisi. Velit quibusdam voluptatibus inventore dignissimos quam voluptatum, corrupti deleniti! Veritatis minima, animi nesciunt officiis voluptatem itaque possimus maiores ex assumenda odit, dolore libero. Recusandae, sunt, deleniti corrupti aperiam voluptate cum accusamus iusto repellendus quo obcaecati, totam nihil?</p>
+                        <p class="reply-read-more" id="rrm0" onclick="showAllReply(this, 2)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">Petit Fumier que tu es</p>
+                        <p class="reply-read-more" id="rrm1" onclick="showAllReply(this, 2)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="reply">
+                    <a href="?page=profile&user=" class="reply-author comment-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
+                        <p>XXBGDU93XX</p>
+                    </a>
+                    <div class="reply-content-date comment-content-date">
+                        <p class="reply-date">Le 01/01/2021 à 00:00</p>
+                        <p class="reply-content">C'est ton gars coco jojo</p>
+                        <p class="reply-read-more" id="rrm2" onclick="showAllReply(this, 2)">Voir plus</p>         
+                    </div>
+                    <div class="like-reply-container">
+                        <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="like">
+                            <p>1</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likeblack.png" ?>" alt="like" class="reply-like-btn-img"></button>
+                        </form>
+                        <form action="./?page=event&event=" method="post" class="reply-like-form like-form">
+                            <input type="hidden" value="dislike">
+                            <p>0</p>
+                            <button type="submit"><img src="<?= PATH_IMAGES . "useful/likered.png" ?>" alt="dislike" class="reply-like-btn-img"></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
     </section>
 <?php require_once PATH_VIEWS . 'footer.php'; ?>
 </body>
