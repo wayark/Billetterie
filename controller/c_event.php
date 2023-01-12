@@ -2,10 +2,8 @@
 /**
  * @var $_SESSION array{user: User, cart: Cart}
  */
-$presenter = new EventPresenter($_GET, $_POST);
-
-$display = $presenter->formatDisplay();
-
+$presenter = null;
+$display = null;
 $posted = false;
 if (isset($_POST['type']) && isset($_POST['quantity'])) {
     session_start();
@@ -36,7 +34,17 @@ if (isset($_POST['type']) && isset($_POST['quantity'])) {
             $cartDTO->add($_SESSION['user'], $pricing, $quantity);
         }
     }
+} 
 
+if (isset($_GET['page']) && !isset($_GET['event']) || isset($_GET['page']) && $_GET['event'] == "") {
+    require_once PATH_VIEWS . "404.php";
+} else {
+    $presenter = new EventPresenter($_GET, $_POST);
+
+    $display = $presenter->formatDisplay();
+
+    require_once PATH_VIEWS . "event.php";
 }
 
-require_once PATH_VIEWS . "event.php";
+
+        

@@ -313,7 +313,7 @@
                     <div class="reply-content-date comment-content-date">
                         <p class="reply-date">Le 01/01/2021 à 00:00</p>
                         <p class="reply-content">C'est ton gars coco jojo</p>
-                        <p class="reply-read-more" id="rrm1" onclick="showAllReply(this, 2)">Voir plus</p>         
+                        <p class="reply-read-more" id="rrm1" onclick="showAllReply(this, 1)">Voir plus</p>         
                     </div>
                     <div class="like-reply-container">
                         <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">
@@ -336,7 +336,7 @@
                     <div class="reply-content-date comment-content-date">
                         <p class="reply-date">Le 01/01/2021 à 00:00</p>
                         <p class="reply-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus architecto corporis beatae ipsum, porro veritatis laudantium libero nobis quis corrupti amet ad nesciunt ullam, hic veniam ex labore, reiciendis accusantium vel saepe optio. Iure eos quas beatae porro quidem rem repellendus fugiat sapiente libero repudiandae blanditiis, omnis placeat deleniti similique exercitationem fugit quos vel ducimus assumenda facere. Commodi, natus? Vel alias animi eveniet corporis non, maiores sunt. Fugiat magni, expedita aut voluptatibus quam dolorum sequi laborum velit molestias accusamus necessitatibus debitis fuga reiciendis odit totam? Porro sed consequuntur autem accusantium quod vitae aspernatur, natus dolores ratione alias neque. Dolorum accusamus rem voluptatibus assumenda sapiente labore at quibusdam doloremque id inventore perspiciatis tenetur, obcaecati ipsum quidem esse reiciendis porro, officiis recusandae totam illum ad natus vero deserunt. Itaque porro consequatur aperiam qui iste eius aspernatur laudantium sequi architecto perspiciatis magni, beatae, quo a aliquid, labore exercitationem ratione! Dolorum, sequi cumque! Alias repudiandae consequuntur est iusto eius porro, libero officiis quasi doloribus eaque facilis! Laudantium architecto, corrupti, quasi iure soluta aperiam vero quaerat consequatur minima ad incidunt. Natus sed atque mollitia animi voluptates dolor dolores debitis non numquam eos laborum perferendis sit qui tempore, amet quis voluptatem unde at id veritatis delectus aspernatur similique. Provident ratione, alias earum quae quod, ducimus eveniet est assumenda voluptate, libero iusto quasi. Quidem maxime veritatis quod explicabo aspernatur deserunt necessitatibus vitae.</p>
-                        <p class="reply-read-more" id="rrm2" onclick="showAllReply(this, 3)">Voir plus</p>         
+                        <p class="reply-read-more" id="rrm2" onclick="showAllReply(this, 1)">Voir plus</p>         
                     </div>
                     <div class="like-reply-container">
                         <form action="./?page=event&event=<?= $display["eventId"]; ?>" method="post" class="reply-like-form like-form">

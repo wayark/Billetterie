@@ -39,12 +39,14 @@ const shortReplies = () => {
         });
         shortsReplies.push(new Array());
     });
+    console.log(shortsReplies);
 };
 shortReplies();
 
 const showAllReply = (element, nbrComment) => {
     let nbrReply = getReplyNumberId(element);
-    document.querySelectorAll('.reply')[nbrReply].style.height = "fit-content";
+    console.log(element.parentNode.parentNode);
+    element.parentNode.parentNode.style.height = "fit-content";
     element.innerText = "Voir moins";
     element.parentNode.querySelector('.reply-content').innerText = shortsReplies[nbrComment][nbrReply];
     element.setAttribute('onclick', `shrinkReply(this, ${nbrComment})`);
@@ -53,6 +55,7 @@ const showAllReply = (element, nbrComment) => {
 const shrinkReply = (element, nbrComment) => {
     let nbrReply = getReplyNumberId(element);
     document.querySelectorAll('.reply')[nbrReply].style.removeProperty('height');
+    console.log(document.querySelectorAll('.reply')[nbrReply])
     element.innerText = "Voir plus";
     element.parentNode.querySelector('.reply-content').innerText = shortsReplies[nbrComment][nbrReply].substring(0, 220) + '...';
     element.setAttribute('onclick', `showAllReply(this, ${nbrComment})`);
