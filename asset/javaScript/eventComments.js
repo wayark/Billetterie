@@ -57,8 +57,8 @@ const showAllComment = (element) => {
 const showReplies = (element) => {
     element.classList.toggle('view-replies-active');
 
-    repliesContainer = element.parentNode.querySelector('.comment-answers-visible');
-    textButton = element.querySelector("p");
+    repliesContainer = element.parentNode.parentNode.querySelector('.comment-answers-visible');
+    textButton = element.querySelector('p');
 
     if (repliesContainer.style.display == "none") {
         repliesContainer.style.display = "block";
@@ -101,9 +101,75 @@ const displayCancelButton = (element) => {
         cancelButton.style.cursor = "pointer";
     }
 }
-    
+
 // Fonction qui vide le champ de commentaire lorsqu'on clique dessus
 const emptyCommentField = (element) => {
-    element.parentNode.querySelector('.comment-field').value = "";
-    displayCancelButton(element);
+element.parentNode.querySelector('.comment-field').value = "";
+displayCancelButton(element);
 }
+
+// Fonction qui affiche le bouton "Annuler" lorsque le champ n'est pas vide
+const displayReplyCancelButton = (element) => {
+    if (element.value == "") {
+        element.parentNode.parentNode.querySelector('.cancel-reply').removeAttribute('style');
+    } else {
+        element.parentNode.parentNode.querySelector('.cancel-reply').style.opacity = "1";
+        element.parentNode.parentNode.querySelector('.cancel-reply').style.cursor = "pointer";
+    }
+}
+
+const emptyReplyField = (element) => {
+    element.parentNode.querySelector('.reply-field').value = "";
+    displayReplyCancelButton(element);
+}
+
+// Fonction qui agrandit la barre mais pour le champ reponses
+const extendReplyBar = (element) => {
+    element.parentNode.querySelector('.white-reply-bar').style.width = "90%";
+    element.parentNode.querySelector('.white-reply-bar').style.opacity = "1";
+}
+
+// Fonction qui retrecit la barre mais pour le champ reponses
+const shrinkReplyBar = (element) => {
+    element.parentNode.querySelector('.white-reply-bar').style.removeProperty('width');
+    element.parentNode.querySelector('.white-reply-bar').style.removeProperty('opacity');
+}
+
+// Fonction qui initialise le form des réponses
+const initForm = (form) => {
+    form.classList.add('answer-container');
+    form.querySelector('.white-comment-bar').classList.add('white-reply-bar');
+    form.querySelector('.white-comment-bar').classList.remove('white-comment-bar');
+    form.querySelector('.comment-field').setAttribute('placeholder', 'Ecrivez votre réponse ici ..');
+    form.querySelector('.comment-field').setAttribute('onfocus', 'extendReplyBar(this)');
+    form.querySelector('.comment-field').setAttribute('onblur', 'shrinkReplyBar(this)');
+    form.querySelector('.comment-field').setAttribute('oninput', 'displayReplyCancelButton(this)');
+    form.querySelector("#cancel-comment").setAttribute('onclick', 'emptyReplyField(this)');
+    form.querySelector("#cancel-comment").classList.add('cancel-reply');
+    form.querySelector("#cancel-comment").removeAttribute('id');
+    form.querySelector(".comment-field").classList.add('reply-field');
+    form.querySelector(".comment-field").classList.remove('comment-field');
+}
+
+// Fonction qui fait apparaitre le champ commentaire {
+var formTextAreaContainer = document.querySelector(".send-comment-form");
+
+const disappearTextArea = (element) => {
+    element.parentNode.parentNode.querySelector('.answer-container').remove();
+}
+const showTextArea = (element) => {
+    // Savoir si l'élément contient la classe "oui"
+    if (element.parentNode.parentNode.querySelector('.answer-container') != null){
+        element.querySelector('p:last-child').style.removeProperty('transform');
+        disappearTextArea(element);
+    } else {
+        element.querySelector('p:last-child').style.transform = "rotate(90deg)";
+        answersContainer = element.parentNode.parentNode.parentNode.querySelector('.comment-answers-visible');
+
+        let form = formTextAreaContainer.cloneNode(true);
+        initForm(form);
+
+        element.parentNode.parentNode.insertBefore(form, answersContainer);
+    }
+}
+

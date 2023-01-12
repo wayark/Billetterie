@@ -51,14 +51,18 @@
                         <h1 class="title-section">Informations</h1>
                         <div id="place">
                             <h3 class="title-desc">Lieu</h3>
-                            <p><?= $display['eventPlaceName'] ?></p>
-                            <p><?= $display['eventPlaceStreet'] ?></p>
-                            <p><?= $display['eventPlaceCity'] ?></p>
-                            <p><?= $display['eventPlaceCountry'] ?></p>
+                            <div class="info-events-container">
+                                <p><?= $display['eventPlaceName'] ?></p>
+                                <p><?= $display['eventPlaceStreet'] ?></p>
+                                <p><?= $display['eventPlaceCity'] ?></p>
+                                <p><?= $display['eventPlaceCountry'] ?></p>
+                            </div>
                         </div>
                         <div id="places">
                             <h3 class="title-desc">Nombre de places restantes</h3>
-                            <?= $display['pricings'] ?>
+                            <div class="info-events-container">
+                                <?= $display['pricings'] ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,7 +107,7 @@
 <?php } 
     if (isset($_SESSION['user'])) { ?>
         <form action="./?page=event&event=<?= $display["eventId"]; ?>" class="send-comment-form" method="post">
-            <a href="./?page=profile&profile=<?= $_SESSION['user']->getId(); ?>">
+            <a href="./?page=connection">
                 <img src="<?= $_SESSION["user"]->getProfilePicturePath(); ?>" alt="avatar" class="user-img">
                 <p><?= $_SESSION["user"]->getFirstName(); ?></p>
             </a>
@@ -146,14 +150,20 @@
                     </form>
                 </div>
             </div>
-            <div class="comment-answers" onclick="showReplies(this);">
-                <div>
-                    <p>Voir</p>
-                    <p>les</p>
-                    <p>10</p>
-                    <p>réponse</p>
+            <div class="see-more-answers-and-reply-container">
+                <div class="comment-answers" onclick="showReplies(this);">
+                    <div>
+                        <p>Voir</p>
+                        <p>les</p>
+                        <p>10</p>
+                        <p>réponse</p>
+                    </div>
+                    <p class="invert-text">></p>
                 </div>
-                <p class="invert-text">></p>
+                <div class="to-reply" onclick="showTextArea(this)">
+                    <p>Répondre</p>
+                    <p>></p>
+                </div>
             </div>
             <div class="comment-answers-visible" style="display:none">
                 <div class="reply"></div>

@@ -73,18 +73,20 @@ body{
 
 #title-date {
     margin-top : 3vw;
-    margin-left: 2vw;
+    margin-left: 3vw;
     justify-self: center;
 }
 
 #title-date h1{
-    font-size: 4vw;
+    font-size: 3.3vw;
     margin-right: 4vw;
 }
 
 #title-date p{
     font-size: 1.5vw;
     margin-top: 1.5vw;
+    color: #afafaf;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -100,7 +102,8 @@ body{
 
 #summary p {
     margin-right : 3vw;
-    font-size: 1vw;
+    margin-left: 1.2vw;
+    font-size: 1.4vw;
     padding: 1vw;
 }
 
@@ -128,23 +131,31 @@ body{
 
 .title-section{
     font-size: 2.5vw;
+    margin-top: 1vw;
+    font-style: italic;
+    letter-spacing: 0.1vw;
+    color: #e0d3a6;
 }
 
 #informations-event{
     display: flex;
     flex-direction: column;
-    row-gap: 2vh;
+    row-gap: 2vw;
 }
 
 .title-desc{
     font-size: 2vw;
+    color: #afafaf;
+    margin-bottom: 1vw;
 }
 
-#informations-event * *:not(.title-desc){
-    /* margin-left: 3vw; */
-    font-size: 1vw;
+.info-events-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.7vw;
+    font-size: 1.5vw;
+    justify-content: center;
 }
-
 
 #informations-event div{
     margin-left: 2vw;
@@ -303,7 +314,7 @@ div.ticket-pricing {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    row-gap: 1.5vw;
+    row-gap: 1.7vw;
 }
 
 .comment{
@@ -585,4 +596,86 @@ div.ticket-pricing {
     display: flex;
     flex-direction: column;
     row-gap: 0vw;
+}
+
+.see-more-answers-and-reply-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 27vw;
+}
+
+.see-more-answers-and-reply-container form{
+    margin-bottom: 5vw;
+    margin-top: 0;
+}
+
+.to-reply{
+    font-size: 1.5vw;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.1s;
+}
+
+.to-reply:hover{
+    color: rgb(190, 182, 182);
+    transition: 0.1s;
+}
+
+.to-reply p:last-child{
+    transition: 0.1s;
+}
+
+.answer-container{
+    margin-top: 0;
+    margin-left: 3vw;
+}
+
+.answer-container img{
+    width: 4vw;
+}
+
+.answer-container p{
+    font-size: 1.4vw !important;
+}
+
+.answer-container input[type="text"]{
+    width: 40vw;
+}
+
+.answer-container input[type="submit"], .answer-container button{
+    font-size: 1.3vw !important;
+}
+
+.white-reply-bar{
+    background-color: #c9bebe;
+    width: 10%;
+    height: 0.4vw;
+    border-radius: 1vw;
+    align-self: center;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.cancel-reply{
+    opacity: 0;
+    transition: 0.3s;
+    color: #9a8b8b;
+    background-color: transparent;
+    border: none;
+    transition: opacity 0.3s;
+}
+
+.cancel-reply:hover{
+    background-color: transparent;
+}
+
+.to-reply{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+    align-items: center;
+    justify-content: center;
 }

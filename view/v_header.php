@@ -28,7 +28,9 @@
         else $path = "./?page=cart";
         ?>
         <a href="./?page=connection">
-            <button class="headerButton accountButton">Mon compte</button>
+            <?php if(!isset($_SESSION['user'])) $title = "Se connecter";
+            else $title = "Mon compte"; ?>
+            <button class="headerButton accountButton"><?= $title ?></button>
         </a>
         <a href="<?= $path?>">
             <button class="headerButton cartButton">
