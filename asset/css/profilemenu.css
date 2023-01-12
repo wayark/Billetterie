@@ -9,6 +9,9 @@
 }
 
 .menu ul li a{
+    width: fit-content;
+    padding-left: 2vw;
+    padding-right: 2vw;
     text-decoration: none;
     color: #FFFFFF;
     font-size: 1.5vw;
@@ -28,7 +31,7 @@
     align-self: start;
     margin-left: 3vw;
     height: 0.4vw;
-    width: 10%;
+    width: 20%;
     background-color: #FFFFFF;
     border-radius: 1vw;
     transition: width 0.5s, background-color 0.3s;
@@ -42,9 +45,10 @@
 
 .menu-text {
     transition: color 0.3s;
+    align-self: center;
 }
 
 .menu-text:hover{
-    color: #c7b7b7;
+    color: #a59494;
     transition: color 0.3s;
 }

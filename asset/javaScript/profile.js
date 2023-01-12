@@ -1,6 +1,6 @@
 const extendBar = (element) => {
     element.parentNode.querySelector(".menu-bar").style.width = "70%";
-    element.parentNode.querySelector(".menu-bar").style.backgroundColor = "#c7b7b7";
+    element.parentNode.querySelector(".menu-bar").style.backgroundColor = "#a59494";
 }   
 
 const shrinkBar = (element) => {
@@ -9,7 +9,7 @@ const shrinkBar = (element) => {
 }
 
 const colorBar = (element) => {
-    element.parentNode.querySelector(".menu-bar").style.backgroundColor = "#c7b7b7";
+    element.parentNode.querySelector(".menu-bar").style.backgroundColor = "#a59494";
     element.parentNode.querySelector(".menu-bar").style.width = "25%";
 }
 

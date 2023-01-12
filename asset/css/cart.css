@@ -254,8 +254,11 @@ button:hover {
     font-size: 1.3vw;
 }
 
-.cart-item-title h2{
+.cart-item-title a{
     font-size: 2vw;
+    color: #e0dcce;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .cart-item-title h3{

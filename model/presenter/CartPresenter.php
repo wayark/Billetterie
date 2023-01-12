@@ -44,11 +44,11 @@ class CartPresenter extends Presenter
 
             if($i > 0) $display["items"] .= '<div class="cart-bar"></div>';
             $display['items'] .= '<div class="cart-item">';
-            $display['items'] .= '<a href="?page=event&event=' . $event->getIdEvent() . '">';
+            $display['items'] .= '<a href="./?page=event&event=' . $event->getIdEvent() . '">';
             $display['items'] .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="" draggable="false">';
             $display['items'] .= '</a>';
             $display['items'] .= '<div class="cart-item-title">';
-            $display['items'] .= '<h2>' . $event->getEventInfo()->getEventName() . '</h2>';
+            $display['items'] .= '<a href="./?page=event&event=' . $event->getIdEvent() . '">' . $event->getEventInfo()->getEventName() . '</a>';
             $display['items'] .= '<h3>' . $infos['pricing']->getName() . '</h3>';
             $display['items'] .= '<p>' . $this->getNewFormatDate($event) . '</p>';
             $display['items'] .= '</div>';
