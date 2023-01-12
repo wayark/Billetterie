@@ -631,6 +631,8 @@ div.ticket-pricing {
 .answer-container{
     margin-top: 0;
     margin-left: 3vw;
+    opacity: 0;
+    transition: 0.2s;
 }
 
 .answer-container img{
@@ -678,4 +680,8 @@ div.ticket-pricing {
     column-gap: 1vw;
     align-items: center;
     justify-content: center;
+}
+
+.to-reply p:last-child{
+    font-size: 2vw;
 }

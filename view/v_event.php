@@ -128,7 +128,7 @@
         <div class="comment-bar"></div>
         <div class="comment">
             <div class="colored-comment-part">
-                <a href="?page=profile&profile=" class="comment-author">
+                <a href="?page=profile&user=" class="comment-author">
                     <img src="https://i.pravatar.cc/150?img=1" alt="avatar">
                     <p>XXBGDU93XX</p>
                 </a>

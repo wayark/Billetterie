@@ -158,16 +158,21 @@ const disappearTextArea = (element) => {
     element.parentNode.parentNode.querySelector('.answer-container').remove();
 }
 const showTextArea = (element) => {
-    // Savoir si l'élément contient la classe "oui"
     if (element.parentNode.parentNode.querySelector('.answer-container') != null){
+        element.parentNode.parentNode.querySelector('.answer-container').style.removeProperty('opacity');
         element.querySelector('p:last-child').style.removeProperty('transform');
-        disappearTextArea(element);
-    } else {
-        element.querySelector('p:last-child').style.transform = "rotate(90deg)";
-        answersContainer = element.parentNode.parentNode.parentNode.querySelector('.comment-answers-visible');
-
+        setTimeout(() => {
+            disappearTextArea(element);
+        }, 100);
+    } else {;
         let form = formTextAreaContainer.cloneNode(true);
         initForm(form);
+
+        setTimeout(function() {
+            form.style.opacity = "1";
+        }, 20);
+        element.querySelector('p:last-child').style.transform = "rotate(90deg)";
+        answersContainer = element.parentNode.parentNode.parentNode.querySelector('.comment-answers-visible');
 
         element.parentNode.parentNode.insertBefore(form, answersContainer);
     }
