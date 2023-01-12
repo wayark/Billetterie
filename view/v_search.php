@@ -32,6 +32,7 @@
             <input type="date" id="end-date">
         </div>
         <select id="estDisponible">
+            <option value="none">-</option>
             <option value="disponible">Disponible</option>
             <option value="passee">Passé</option>
         </select>
