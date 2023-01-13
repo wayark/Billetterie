@@ -254,7 +254,7 @@ body{
     transition: background-image 1s;
 }
 
-.tendancies div:hover {
+.tendancies:hover {
     filter: brightness(0.8);
     transition: 0.2s;
 }
@@ -326,4 +326,30 @@ body{
 #searchbutton img{
     width: 3vw;
     height: 3vw;
+}
+
+.t2 div p{
+    font-size: 2.4vw;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.t2 {
+    text-decoration: none;
+    color: rgb(201, 119, 37);
+    letter-spacing: 0.1vw;
+}
+
+.t2 div:last-child{
+    position: absolute;
+    background-color: rgba(229, 222, 186, 0.7);
+    width: 27vw;
+    height: 7vw;
+    border-radius: 0 0 3vw 3vw;
+    transform: translateY(-7vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(0.2vw);
 }

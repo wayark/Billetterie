@@ -20,13 +20,16 @@ require_once PATH_VIEWS . 'header.php';
             <div></div>
         </div>
         <a class="tendancies t1" href="?page=event&event=<?php echo $tendancies[1]->getIdEvent() ?>">
-            <div style="background-image:url(<?php echo $tendancies[1]->getEventInfo()->getPicture()->getPicturePath(); ?>);" draggable="false"></div>
+            <div style="background-image:url(<?php echo $tendancies[1]->getEventInfo()->getPicture()->getPicturePath(); ?>);"></div>
+            <div style="display:none"><p><?= $tendancies[1]->getEventInfo()->getEventName() ;?><p></div>
         </a>
         <a class="tendancies t2" href="?page=event&event=<?php echo $tendancies[0]->getIdEvent() ?>">
-            <div style="background-image:url(<?php echo $tendancies[0]->getEventInfo()->getPicture()->getPicturePath(); ?>);" draggable="false"></div>
+            <div style="background-image:url(<?php echo $tendancies[0]->getEventInfo()->getPicture()->getPicturePath(); ?>);"></div>
+            <div><p><?= $tendancies[0]->getEventInfo()->getEventName() ;?><p></div>
         </a>
         <a class="tendancies t3" href="?page=event&event=<?php echo $tendancies[2]->getIdEvent() ?>">
-            <div style="background-image: url(<?php echo $tendancies[2]->getEventInfo()->getPicture()->getPicturePath(); ?>);" draggable="false"></div>
+            <div style="background-image: url(<?php echo $tendancies[2]->getEventInfo()->getPicture()->getPicturePath(); ?>);"></div>
+            <div style="display:none"><p><?= $tendancies[1]->getEventInfo()->getEventName() ;?></p></div>
         </a>
         <div id="moveCarouselRight" class="moveCarousel" onclick="moveCarousel(this);" onmouseover="colorArrow(this);" onmouseleave="uncolorArrow(this);">
             <div></div>
