@@ -25,6 +25,8 @@
 ?>
 <header>
     <link href="<?= PATH_CSS ?>accountManagement.css" rel="stylesheet">
+    <link href="<?= PATH_CSS ?>menuProfileAndAccountManagement.css" rel="stylesheet">
+    <script src="<?= PATH_SCRIPTS ?>menuProfileAccountManagement.js"></script>
     <title>Mon compte</title>
 </header>
 <body>
@@ -32,6 +34,18 @@
 
 <main>
     <section>
+        <div class="menu-account menu">
+            <ul>
+                <li class="actual-page">
+                    <a class="menu-text" href="?page=connection" onmouseover="colorBar(this)" onmouseout="uncolorBar(this)">Compte</a>
+                    <div class="menu-bar"></div>
+                </li>
+                <li>
+                    <a class="menu-text" href="?page=connection&part=profile" onmouseover="extendBar(this)" onmouseout="shrinkBar(this)">Profil</a>
+                    <div class="menu-bar"></div>
+                </li>
+            </ul>
+        </div>
         <div class="title-account-mangement">
             <h1><?= $display['titre'] ?></h1>
         </div>
@@ -103,7 +117,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 </main>
 <script src="<?= PATH_SCRIPTS ?>accountManagement.js"></script>

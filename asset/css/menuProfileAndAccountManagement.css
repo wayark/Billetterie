@@ -8,6 +8,11 @@
     list-style-type: none;
 }
 
+.menu-account ul {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
 .menu ul li a{
     width: fit-content;
     padding-left: 2vw;
