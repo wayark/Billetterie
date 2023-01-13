@@ -1,23 +1,26 @@
-const extendBar = (element) => {
-    element.parentNode.querySelector(".menu-bar").style.width = "70%";
-    element.parentNode.querySelector(".menu-bar").style.backgroundColor = "#dbd0c7";
-}   
+displayPhoneNumber();
 
-const shrinkBar = (element) => {
-    element.parentNode.querySelector(".menu-bar").style.removeProperty("width");
-    element.parentNode.querySelector(".menu-bar").style.removeProperty("background-color");
+var oldDescription = null;
+const descriptionText = document.querySelector(".text-user-desc");
+const readMoreButton = document.querySelector("#see-more-description");
+const shrinkDescription = () => {
+    if (descriptionText.innerHTML.length > 650) {
+        oldDescription = descriptionText.textContent;
+        descriptionText.innerHTML = descriptionText.innerHTML.substring(0, 600) + "...";
+        readMoreButton.style.display = "block";
+    }
 }
+shrinkDescription();
 
-const colorBar = (element) => {
-    element.parentNode.querySelector(".menu-bar").style.backgroundColor = "#dbd0c7";
-    element.parentNode.querySelector(".menu-bar").style.width = "25%";
+var isFullDescription = false;
+const showMoreText = () => {
+    if (!isFullDescription) {
+        descriptionText.innerHTML = oldDescription;
+        readMoreButton.innerHTML = "Voir moins";
+        isFullDescription = true;
+    } else {
+        shrinkDescription();
+        readMoreButton.innerHTML = "Voir plus";
+        isFullDescription = false;
+    }
 }
-
-const uncolorBar = (element) => {
-    element.parentNode.querySelector(".menu-bar").style.removeProperty("background-color");
-    element.parentNode.querySelector(".menu-bar").style.removeProperty("width");
-}
-
-// Afficher le numéro avec des espaces 
-let phonenumbertext = document.querySelector(".phone-number");
-phonenumbertext.textContent = phonenumbertext.textContent.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4 $5");

@@ -2,7 +2,7 @@
 <head>
     <title>Nom</title>
     <link rel="stylesheet" href="<?= PATH_CSS ;?>profile.css">
-    <link rel="stylesheet" href="<?= PATH_CSS ;?>profilemenu.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ;?>menuProfileAndAccountManagement.css">
     <script src="<?= PATH_SCRIPTS ;?>profile.js"></script>
 </head>
 <section id="main-container">
