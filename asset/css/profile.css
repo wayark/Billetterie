@@ -15,3 +15,53 @@
     background-color: #2D2D2D;
     border-radius: 1vw;
 }
+
+.grid-section{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1.2fr 2fr;
+    grid-template-areas: "img-user-container " 
+                         "info-user-container ";
+    column-gap: 4vw;
+    width: 100%;
+    height: 100%;
+    padding-top: 3vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    padding-bottom: 4vw;
+}
+
+.img-user-container>.profile-picture{
+    width: 95%;
+    height: 95%;
+    background-color: #2D2D2D;
+    border-radius: 0.6vw;
+}
+
+.img-user-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 0.6vw;
+}
+
+.personal-informations-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    grid-area: info-user-container;
+    font-size: 2vw;
+    color: #dbd0c7;
+    padding-top: 1.5vw;
+    font-weight: bold;
+}
+
+.adress {
+    align-self: start;
+}

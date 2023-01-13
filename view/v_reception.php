@@ -29,7 +29,7 @@ require_once PATH_VIEWS . 'header.php';
         </a>
         <a class="tendancies t3" href="?page=event&event=<?php echo $tendancies[2]->getIdEvent() ?>">
             <div style="background-image: url(<?php echo $tendancies[2]->getEventInfo()->getPicture()->getPicturePath(); ?>);"></div>
-            <div style="display:none"><p><?= $tendancies[1]->getEventInfo()->getEventName() ;?></p></div>
+            <div style="display:none"><p><?= $tendancies[2]->getEventInfo()->getEventName() ;?></p></div>
         </a>
         <div id="moveCarouselRight" class="moveCarousel" onclick="moveCarousel(this);" onmouseover="colorArrow(this);" onmouseleave="uncolorArrow(this);">
             <div></div>

@@ -1,3 +1,4 @@
+<?php require_once PATH_VIEWS . "header.php"; ?>
 <head>
     <title>Nom</title>
     <link rel="stylesheet" href="<?= PATH_CSS ;?>profile.css">
@@ -9,18 +10,19 @@
         <div class="menu">
             <ul>
                 <li>
-                    <a class="menu-text" href="?page=profile" onmouseover="extendBar(this)" onmouseout="shrinkBar(this)">Profil</a>
+                    <a class="menu-text" href="?page=profile&user=" onmouseover="extendBar(this)" onmouseout="shrinkBar(this)">Profil</a>
                     <div class="menu-bar"></div>
                 </li>
                 <li class="actual-page">
-                    <a class="menu-text" href="?page=profile&part=events" onmouseover="colorBar(this)" onmouseout="uncolorBar(this)">Evenements</a>
+                    <a class="menu-text" href="?page=profile&part=events&user=" onmouseover="colorBar(this)" onmouseout="uncolorBar(this)">Evenements</a>
                     <div class="menu-bar"></div>
                 </li>
                 <li>
-                    <a class="menu-text" href="?page=profile&part=comments" onmouseover="extendBar(this)" onmouseout="shrinkBar(this)">Commentaires</a>
+                    <a class="menu-text" href="?page=profile&part=comments&user=" onmouseover="extendBar(this)" onmouseout="shrinkBar(this)">Commentaires</a>
                     <div class="menu-bar"></div>
                 </li>
             </ul>
         </div>
     </div>
 </section>
+<?php require_once PATH_VIEWS . "footer.php"; ?>
