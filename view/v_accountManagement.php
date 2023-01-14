@@ -49,15 +49,15 @@
         <div class="title-account-mangement">
             <h1><?= $display['titre'] ?></h1>
         </div>
-        <form method="post" action="./?page=connection" id="form-download-data">
-            <button name="dldata" class="download-data">Generer mes données (JSON)</button>
-        </form>
         <div id="sides-container">
             <div id="coteG">
                 <button class="styleButton" id="account">Modifier mes informations</button>
                 <img src="<?= $display['user']['picturePath'] ?>"
                      alt="<?= $display['user']['pictureDescription'] ?>">
                 <?= ErrorDisplayService::displayError($display['resultDisplay'], 'registerDisplay') ?>
+                <form method="post" action="./?page=connection" id="form-download-data" style="">
+                    <button name="dldata" class="download-data">Generer mes données (JSON)</button>
+                </form>
             </div>
             <div id="coteD">
                 <form action="./index.php?page=accountManagement" method="POST" enctype="multipart/form-data">
