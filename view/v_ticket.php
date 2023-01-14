@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="qr-code">
-                    <img class="qr-code-img" src="./asset/image/qrcode/photo.jpg" alt="qr-code">
+                    <img class="qr-code-img" src="<?= $filepath ?>" alt="qr-code">
                     <p>Ce QR-code ne pourra être utilisé qu'une fois. Il vous permettra d'accéder à votre évènement.</p>
                     <img class="photo-event-img" src="./asset/image/events/wayark.jpg" alt="qr-code">
             </div>
