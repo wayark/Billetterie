@@ -5,7 +5,7 @@ session_start();
 require_once PATH_MODELS . "QRCodeGenerator.php";
 
 /* $qrcodetext = $_SESSION['user']->getId();  */
-$qrcodetext = rand(1, 10);
+$qrcodetext = rand(1, 9);
 
 $filepath = QRCodeGenerator::generate($qrcodetext);
 

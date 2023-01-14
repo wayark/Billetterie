@@ -19,24 +19,45 @@
             <div class="ticket">
                 <div class="ticket-header">
                     <img class="ticket-header-logo" src="./asset/image/logos/logoWatiGold.png" alt="logo">
-                    <div class="ticket-header-left">
-                        <h2 class="ticket-header-title">Ticket</h2>
-                        <p class="ticket-header-subtitle">Transbordeur</p>
-                    </div>
                 </div>
                 <div class="ticket-body">
-                    <div class="ticket-body-left">
-                        <p class="ticket-body-date">Date: 12/12/2021</p>
-                        <p class="ticket-body-time">Heure: 20:00</p>
-                        <p class="ticket-body-place">Lieu: Transbordeur</p>
-                        <p class="ticket-body-place">Adresse: 6 rue de la République, 69002 Lyon</p>
+                    <div class="ticket-info">
+                        <p class="ticket-header-nb-places to-modify">1</p>
+                        <p class="ticket-header-nb-places">place</p>
+                        <p class="ticket-header-nb-places">pour</p>
+                        <p class="ticket-header-name-event to-modify">Damso - concert</p>
                     </div>
-                    <div class="ticket-body-right">
-                        <p class="ticket-body-name">Nom: Damso</p>
-                        <p class="ticket-body-price">Prix: 20€</p>
-                        <p class="ticket-body-place">Catégorie: 1</p>
-                        <p class="ticket-body-place">Rang: 1</p>
-                        <p class="ticket-body-place">Place: 1</p>
+                    <div class="ticket-info">
+                        <p class="ticket-header-place">Lieu : </p>
+                        <p class="ticket-header-place to-modify">Tranbordeur</p>
+                    </div>
+                    <div class="ticket-info">
+                        <p class="ticket-header-city">Ville : </p>
+                        <p class="ticket-header-city to-modify">Lyon</p>
+                    </div>
+                    <div class="ticket-info">
+                        <p class="ticket-header-adress">Adresse : </p>
+                        <p class="ticket-header-adress to-modify">6 rue de la République</p>
+                    </div>
+                    <div class="ticket-info">
+                        <p class="ticket-header-city">Ville : </p>
+                        <p class="ticket-header-city to-modify">Lyon</p>
+                    </div>
+                    <div class="ticket-info">
+                        <p class="ticket-body-date">Date : </p>
+                        <p class="ticket-body-date to-modify">14/01/2023</p>
+                    </div>
+                    <div class="ticket-info">
+                        <p class="ticket-body-time">Heure : </p>
+                        <p class="ticket-body-time to-modify">21h30</p>
+                    </div>
+                    <div class="ticket-info">
+                        <p class="ticket-body-price-unit">Prix unité :</p>
+                        <p class="ticket-body-price-unit to-modify">20 €</p>
+                    </div>
+                    <div class="ticket-info">
+                        <p class="ticket-body-type-event">Vous avez choisi :</p>
+                        <p class="ticket-body-type-event to-modify">Fosse</p>
                     </div>
                 </div>
             </div>
