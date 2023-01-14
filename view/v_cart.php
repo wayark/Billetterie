@@ -31,7 +31,7 @@ require_once PATH_VIEWS.'header.php';
                 <p><?php echo $display['total']; ?> €</p>
             </div>
         </div>
-        <form action="./?page=payment" method="post">
+        <form action="./?page=summary" method="post">
             <input type="submit" value="Payer" class="pay-button">
         </form>
     </section>

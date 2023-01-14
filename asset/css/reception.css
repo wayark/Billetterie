@@ -337,7 +337,8 @@ body{
 
 .t2 {
     text-decoration: none;
-    color: rgb(201, 119, 37);
+    color: white;	
+    text-shadow:0.12vw 0 0 #000, 0.12vw 0.12vw 0 #000, 0 0.12vw 0 #000, -0.12vw 0.12vw 0 #000, -0.12vw 0 0 #000, -0.12vw -0.12vw 0 #000, 0 -0.12vw 0 #000, 0.12vw -0.12vw 0 #000;
     letter-spacing: 0.1vw;
 }
 
