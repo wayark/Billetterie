@@ -41,7 +41,7 @@
 </header>
 <nav>
     <div class="concert-nav">
-        <p>Concert</p>
+        <p>Accueil</p>
     </div>
     <div class="search-nav">
         <p>Recherche</p>

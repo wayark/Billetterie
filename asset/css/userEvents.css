@@ -17,11 +17,15 @@
     font-weight: bold;
 }
 
+.events-page-container {
+    margin-top: 0.8;
+}
+
 .events-container {
     display : flex;
     flex-direction: column;
     row-gap: 0.7vw;
-    margin-top: 1vw;
+    margin-top: 1.5vw;
     margin-bottom: 1vw;
     align-items: center;
     margin-right: 3.5vw;

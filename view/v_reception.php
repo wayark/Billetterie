@@ -38,7 +38,7 @@ require_once PATH_VIEWS . 'header.php';
     <div id="titlepage">
         <p>Tous nos événements</p>
     </div>
-    <form id="searchconcert" action="" method="get">
+    <form id="searchconcert" action="" method="post">
         <div id="point">
             <div></div>
         </div>
