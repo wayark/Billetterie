@@ -8,13 +8,13 @@ class QRCodeGenerator {
         $size = 500;
         $margin = 1;
         $level = QR_ECLEVEL_L;
-        $filepath = PATH_IMAGES . "qrcode/qrcode-user". $text . "-"  . $rand .".png";
+        $filepath = PATH_IMAGES . "qrcodes/qrcode-user". $text . "-"  . $rand .".png";
         QRcode::png($text, $filepath, $level, $size, $margin);
 
         // A chaque creation de QRCode, on supprime le fichier d'erreur
         $filename = basename($filepath);
         unlink(PATH_APPLICATION . "phpqrcode/" . $filename . "-errors.txt");
         
-        return $filepath;
+        return $filename;
     }
 }

@@ -32,7 +32,7 @@ require_once PATH_VIEWS.'header.php';
             </div>
         </div>
         <form action="./?page=summary" method="post">
-            <input type="submit" value="Payer" class="pay-button">
+            <input type="submit" name="pay" value="Payer" class="pay-button">
         </form>
     </section>
 <?php
