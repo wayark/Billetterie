@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="<?= PATH_CSS ?>style.css" rel="stylesheet">
+    <link href="<?= PATH_CSS ?>header.css" rel="stylesheet">
     <link href="<?= PATH_CSS ?>reception.css" rel="stylesheet">
     <title>Waticket</title>
 </head>
@@ -42,7 +42,7 @@
         <p>Concert</p>
     </div>
     <div class="search-nav">
-        <p>Recherche</p>
+        <a href="./index.php?page=search">Recherche</a>
     </div>
     <div class="contact-nav">
         <p>Contact</p>

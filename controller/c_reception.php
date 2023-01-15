@@ -1,6 +1,6 @@
 <?php
 
-$presenter = new ReceptionPresenter(null, null);
+$presenter = new ReceptionPresenter($_GET, null);
 
 $displayArray = $presenter->formatDisplay();
 

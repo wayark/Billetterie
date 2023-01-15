@@ -1,22 +1,21 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
     font-family: 'Arial';
 }
 
-body{
+body {
     background-color: #383737;
 }
 
-body button:hover{
+body button:hover {
     background-color: #767575;
 }
 
 /*--------------Header---------------*/
 
 
-
-header{
+header {
     background-color: #2D2D2D;
     display: flex;
     justify-content: space-between;
@@ -25,7 +24,7 @@ header{
 }
 
 
-.logo{
+.logo {
     width: 10vw;
     min-width: 90px;
     min-height: 32px;
@@ -33,7 +32,7 @@ header{
     margin: 1vw;
 }
 
-.header-right-button{
+.header-right-button {
     display: flex;
     justify-content: space-around;
     width: 14vw;
@@ -43,23 +42,24 @@ header{
 
 }
 
-.headerButton{
+.headerButton {
     height: 3vw;
     min-height: 15px;
     background-color: #5F5F5F;
     border-radius: 15px;
     border: 0;
 }
-.accountButton{
+
+.accountButton {
     color: #E7D9AB;
     width: 10vw;
     min-width: 70px;
     padding: 0.5vh;
-    font-size:calc(6px + 0.7vw);
+    font-size: calc(6px + 0.7vw);
     cursor: pointer;
 }
 
-.cartButton{
+.cartButton {
     width: 3vw;
     min-width: 17px;
     display: flex;
@@ -68,7 +68,7 @@ header{
     cursor: pointer;
 }
 
-.cart{
+.cart {
     width: 2vw;
     height: 2vw;
     min-width: 15px;
@@ -77,7 +77,7 @@ header{
 
 /*--------------navBar---------------*/
 
-nav{
+nav {
     display: flex;
     justify-content: space-evenly;
     background-color: #424141;
@@ -85,17 +85,27 @@ nav{
     min-height: 25px;
 }
 
-nav > div{
+nav a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #E7D9AB;
+    align-items: center;
+}
+
+nav > div {
     display: flex;
     align-items: center;
-    color: #E7D9AB ;
+    color: #E7D9AB;
     cursor: pointer;
-    font-size:calc(6px + 1.2vw);
+    font-size: calc(6px + 1.2vw);
     min-height: 25px;
     padding-left: 2vw;
     padding-right: 2vw;;
 }
-nav>div:hover{
+
+nav > div:hover {
     background-color: #555555;
 }
 
@@ -107,7 +117,7 @@ nav>div:hover{
 }
 
 /*----------------footer--------------*/
-footer{
+footer {
     margin-top: 4vw;
     background-color: #2D2D2D;
     display: flex;
@@ -116,7 +126,7 @@ footer{
     height: 4vw;
 }
 
-.footerButton{
+.footerButton {
     color: #E7D9AB;
     margin-right: 6vw;
     font-size: 1.7vw;

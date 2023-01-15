@@ -2,7 +2,7 @@
 
 class StringService
 {
-    private static function endsWith($haystack, $needle): bool
+    public static function endsWith($haystack, $needle): bool
     {
         $length = strlen($needle);
         if ($length == 0) {
@@ -11,4 +11,10 @@ class StringService
 
         return (substr($haystack, -$length) === $needle);
     }
+
+    public static function cutAtFirstParagraph($text) {
+        $splitted = explode("<br>", $text);
+        return $splitted[0];
+    }
+
 }
