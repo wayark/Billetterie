@@ -87,21 +87,21 @@
             </div>
         </div>
     </div>
-            <?php if (isset($_SESSION['user'])) { ?>
+        <?php if (isset($_SESSION['user'])) { ?>
         <form action="./?page=event&event=<?= $display["eventId"]; ?>" class="send-comment-form" method="post">
-            <a href="./?page=profile&user=">
+            <a href="./?page=connection&part=profile">
                 <img src="<?= $_SESSION["user"]->getProfilePicturePath(); ?>" alt="avatar" class="user-img">
                 <p><?= $_SESSION["user"]->getFirstName(); ?></p>
             </a>
             <div class="field-comment-and-bar">
-                <input type="text" name="sendcomment" class="comment-field" placeholder="Ecrivez votre commentaire ici .." onfocus="extendBar(this)" onblur="shrinkBar(this)" oninput="displayCancelButton(this)"></input>
+                <input type="text" name="sendcomment" class="comment-field" placeholder="Ecrivez votre commentaire ici .." onfocus="extendBar(this)" onblur="shrinkBar(this)" oninput="displayCancelButton(this)" required></input>
                 <div class="white-comment-bar"></div>
             </div>
             <input type="hidden" name="eventid" value="<?= $display['eventId'] ?>">
             <input type="submit" value="Envoyer">
             <button type="button" id="cancel-comment" onclick="emptyCommentField(this)">Annuler</button>
         </form>
-<?php } ?>
+        <?php } ?>
     <section class="comment-container">
         <div id="title-comment">
             <h1>3</h1>

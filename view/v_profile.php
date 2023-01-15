@@ -1,6 +1,6 @@
 <?php require_once PATH_VIEWS . "header.php"; ?>
 <head>
-    <title>Nom</title>
+    <title>@NapsDeMarseille</title>
     <link rel="stylesheet" href="<?= PATH_CSS ;?>profile.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>menuProfileAndAccountManagement.css">
     <script src="<?= PATH_SCRIPTS ;?>menuProfileAccountManagement.js" defer></script>
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="register-date-container">
-                        <h3 class="register-date">Inscrit le</h3>
+                        <h3 class="register-date">Inscrit depuis le</h3>
                         <h3 class="register-date">12/12/2012</h3>
                 </div>
             </div>

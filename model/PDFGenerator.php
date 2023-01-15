@@ -114,7 +114,7 @@ class PDFGenerator{
                                     </div>
                                 </div>
                                 <div class="qr-code">
-                                        <img class="qr-code-img" src="<?= $this->qrcodefilepath ?>'">
+                                        <img class="qr-code-img" src="<?= PATH_IMAGES . "qrcodes/" . $this->qrcodefilename ?>'">
                                         <p>Ce QR-code ne pourra être utilisé qu'une fois. Il vous permettra d'accéder à votre évènement.</p>
                                         <img class="photo-event-img" src="<?= getcwd() ?>'images\events\wayark.jpg">
                                 </div>

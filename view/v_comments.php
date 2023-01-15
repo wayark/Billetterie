@@ -1,12 +1,13 @@
 <?php require_once PATH_VIEWS . "header.php"; ?>
 <head>
-    <title>Nom</title>
-    <link rel="stylesheet" href="<?= PATH_CSS ;?>profile.css">
+    <title>Commentaires - @NapsDeMarseille</title>
+    <link rel="stylesheet" href="<?= PATH_CSS ;?>userComments.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>menuProfileAndAccountManagement.css">
-    <script src="<?= PATH_SCRIPTS ;?>profile.js"></script>
+    <script src="<?= PATH_SCRIPTS ;?>menuProfileAccountManagement.js" defer></script>
+    <script src="<?= PATH_SCRIPTS ;?>comments.js" defer></script>
 </head>
 <section id="main-container">
-    <div class="colored-part-profile">
+    <div class="colored-part-comments">
         <div class="menu">
             <ul>
                 <li>
@@ -23,6 +24,12 @@
                 </li>
             </ul>
         </div>
+        <section class="flex-section">
+            <div class="username-container">
+                <p>@</p>
+                <p class="username-text">NapsDeMarseille</p>
+            </div>
+        </section>
     </div>
 </section>
 <?php require_once PATH_VIEWS . "footer.php"; ?>
