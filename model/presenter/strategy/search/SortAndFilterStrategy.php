@@ -8,13 +8,37 @@ class SortAndFilterStrategy implements SearchStrategy
         $this->get = $get;
     }
 
+    /**
+     * @param array<Event> $eventList
+     * @return array
+     */
     public function handleEventList(array $eventList): array
     {
-        $name = "";
-        $this->filter($eventList, function($event) {return strpos($event->getEventInfo()->getEventName(), $name) !== false;});
+        $sort = $this->get['sort'];
+
+        $eventList = $this->filterArray($eventList);
+
+        // Sort
+        if ($sort === 'date') {
+            usort($eventList, function ($a, $b) {
+                return $a->getEventInfo()->getEventDate() <=> $b->getEventInfo()->getEventDate();
+            });
+        } else if ($sort === 'name') {
+            usort($eventList, function ($a, $b) {
+                return $a->getEventInfo()->getEventName() <=> $b->getEventInfo()->getEventName();
+            });
+        } else if ($sort === 'remaining') {
+            usort($eventList, function ($a, $b) {
+                return NumberOfTicketsService::getTotalNumberOfRemainingTickets($a)
+                    <=> NumberOfTicketsService::getTotalNumberOfRemainingTickets($b);
+            });
+        }
+
+
+        return $eventList;
     }
 
-    private function filter(array $eventList, $boolCriteriaFunction)
+    private function filter(array $eventList, $boolCriteriaFunction): array
     {
         $ans = array();
 
@@ -25,60 +49,88 @@ class SortAndFilterStrategy implements SearchStrategy
         }
 
         return $ans;
+
     }
 
-    /**
-     * @param array<Event> $eventList
-     * @param string $name
-     * @return array List which only contains event with the given name
-     */
-    private function filterByName(array $eventList, string $name): array
+    private function filterArray(array $eventList) : array
     {
-        $ans = array();
 
-        foreach ($eventList as $event) {
-            if (strpos($event->getEventInfo()->getEventName(), $name) !== false) {
-                $ans[] = $event;
-            }
+        $name = $this->get['text-field'];
+        $artist = $this->get['artist-field'];
+        $city = $this->get['city'];
+        $startDate = $this->get['start-date'];
+        $endDate = $this->get['end-date'];
+        $available = $this->get['available'];
+
+        // Filter by name
+        if (!empty($name)) {
+            $eventList = $this->filter($eventList, function($event) use ($name)
+            {
+                if ($name === '') {
+                    return false;
+                }
+                $eventName = strtoupper($event->getEventInfo()->getEventName());
+                $name = strtoupper($name);
+                return strpos($eventName, $name) !== false;
+            });
         }
 
-        return $ans;
-    }
-
-    /**
-     * @param array<Event> $eventList
-     * @param string $city
-     * @return array
-     */
-    private function filterByCity(array $eventList, string $city)
-    {
-        $ans = array();
-
-        foreach ($eventList as $event) {
-            if (strpos($event->getEventPlace()->getCity(), $city) !== false) {
-                $ans[] = $event;
-            }
+        // Filter by artist
+        if (!empty($artist)) {
+            $eventList = $this->filter($eventList, function($event) use ($artist)
+            {
+                if ($artist === '') {
+                    return false;
+                }
+                $stageName = strtoupper($event->getArtist()->getStageName());
+                $firstName = strtoupper($event->getArtist()->getFirstName());
+                $lastName = strtoupper($event->getArtist()->getLastName());
+                $artist = strtoupper($artist);
+                return strpos($stageName, $artist) !== false
+                    || strpos($firstName, $artist) !== false
+                    || strpos($lastName, $artist) !== false;
+            });
         }
 
-        return $ans;
-    }
-
-    /**
-     * @param array<Event> $eventList
-     * @param string $start String with timestamp format
-     * @param string $end String with timestamp format
-     * @return array
-     */
-    private function filterByDate(array $eventList, string $start, string $end)
-    {
-        $ans = array();
-
-        foreach ($eventList as $event) {
-            if ($event->getEventInfo()->getEventDate() >= $start && $event->getEventInfo()->getEventDate() <= $end) {
-                $ans[] = $event;
-            }
+        // Filter by city
+        if (!empty($city)) {
+            $eventList = $this->filter($eventList, function($event) use ($city)
+            {
+                if ($city === '') {
+                    return false;
+                }
+                $city = strtoupper($city);
+                $eventCity = strtoupper($event->getEventPlace()->getCity());
+                return strpos($eventCity, $city) !== false;
+            });
         }
 
-        return $ans;
+        // Filter by date
+        if (!empty($startDate) && !empty($endDate)) {
+            $eventList = $this->filter($eventList, function($event) use ($startDate, $endDate)
+            {
+                if ($startDate === '' || $endDate === '') {
+                    return false;
+                }
+                $eventDate = $event->getEventInfo()->getEventDate();
+                return $eventDate >= $startDate && $eventDate <= $endDate;
+            });
+        }
+
+        // Filter by available
+        if ($available !== "none") {
+            $eventList = $this->filter($eventList, function($event) use ($available)
+            {
+                if ($available === 'available') {
+                    return NumberOfTicketsService::getTotalNumberOfRemainingTickets($event) > 0;
+                } else if ($available === 'not-available') {
+                    return NumberOfTicketsService::getTotalNumberOfRemainingTickets($event) <= 0;
+                }
+                return false;
+            });
+        }
+
+        return $eventList;
     }
+
 }

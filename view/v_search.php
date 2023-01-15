@@ -12,29 +12,37 @@
 <?php require_once PATH_VIEWS . 'header.php' ?>
 
 <main>
-    <form method="get" action="./index.php">
+    <form id="form-search" method="get" action="./index.php">
         <input type="hidden" name="page" value="search">
-        <div id="point">
+        <input type="hidden" name="reset" value="" id="resetSubmit">
+        <div id="point" onclick="{
+            document.getElementById('resetSubmit').value = 'true';
+            document.getElementById('form-search').submit();
+        }">
             <div></div>
         </div>
-        <input type="text" id="text-field" name="text-field" placeholder="Recherche par nom ...">
+        <input type="text" id="text-field" name="text-field" placeholder="Recherche par titre ...">
+        <input type="text" id="artist-field" name="artist-field" placeholder="Recherche par artiste ...">
         <p>Filtre</p>
         <label id="select-trie-label" for="select-trie">Trier par</label>
-        <select id="select-trie">
+        <select id="select-trie" name="sort">
             <option value="none">-</option>
+            <option value="date">Date</option>
+            <option value="name">Nom</option>
+            <option value="remaining">Places restantes</option>
         </select>
         <div id="separator"></div>
-        <input type="text" id="text-city" placeholder="Ville ...">
+        <input type="text" id="text-city" placeholder="Recherche par ville ..." name="city">
         <div id="date-period">
             <label for="start-date" id="start-date-label">Du</label>
-            <input type="date" id="start-date">
+            <input type="date" id="start-date" name="start-date">
             <label for="end-date">au</label>
-            <input type="date" id="end-date">
+            <input type="date" id="end-date" name="end-date">
         </div>
-        <select id="estDisponible">
+        <select id="estDisponible" name="available">
             <option value="none">-</option>
-            <option value="disponible">Disponible</option>
-            <option value="passee">Passé</option>
+            <option value="available">Disponible</option>
+            <option value="not-available">Passé</option>
         </select>
 
         <button name="submit-button" type="submit">Rechercher</button>
