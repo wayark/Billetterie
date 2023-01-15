@@ -2,6 +2,7 @@
 <head>
     <title>Commentaires - @NapsDeMarseille</title>
     <link rel="stylesheet" href="<?= PATH_CSS ;?>userComments.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ;?>userCommentsEventsCommon.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>menuProfileAndAccountManagement.css">
     <script src="<?= PATH_SCRIPTS ;?>menuProfileAccountManagement.js" defer></script>
     <script src="<?= PATH_SCRIPTS ;?>comments.js" defer></script>
@@ -28,6 +29,12 @@
             <div class="username-container">
                 <p>@</p>
                 <p class="username-text">NapsDeMarseille</p>
+            </div>
+            <div class="comments-container">
+                <div class="comments-title-section-container">
+                    <h1 class="comments-title-preset">-</p>
+                    <h1 class="comments-title">Ses commentaires</h1>
+                </div>
             </div>
         </section>
     </div>
