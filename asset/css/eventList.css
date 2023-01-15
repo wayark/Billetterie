@@ -37,7 +37,7 @@
     overflow: hidden;
 }
 
-img{
+.eventImg img{
     width: 15vw;
     height: 10vw;
 }
