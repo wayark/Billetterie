@@ -18,6 +18,5 @@ class ErrorDisplayService
             $ans .= "</div>";
         }
         return $ans;
-        ErrorDisplayService::displayError()
     }
 }
