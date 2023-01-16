@@ -17,27 +17,30 @@
         <?php
         if (session_id() == '') session_start();
         if (isset($_SESSION) and isset($_SESSION['user'])) {
-            echo '<a href="./?page=deconnection">
+              ?><a href="./?page=deconnection">
                     <button class="headerButton cartButton">
-                        <img src="' . PATH_IMAGES . 'logos/deconnection.png" alt="Deconnexion" class="cart">
+                        <img src="<?= PATH_IMAGES ?>logos/deconnection.png" alt="Deconnexion" class="deconnexion-img icon-img">
                     </button>
-                    </a>';
-        }
-        if(!isset($_SESSION['user'])) $path = "./?page=connection";
-        else $path = "./?page=cart";
-        ?>
+                </a>
+                <a href="./?page=notifications">
+                    <button class="headerButton notifications-button">
+                        <img src="<?= PATH_IMAGES ?>logos/black-bell.png" alt="Notifications" class="notification-img icon-img">
+                    </button>
+                    <div class="circle-nb-notifications">
+                        <h2 class="nb-notifications-text">3</h2>
+                    </div>
+                </a>
+                <a href="./?page=cart">
+                    <button class="headerButton cartButton">
+                        <img src="<?= PATH_IMAGES ?>/logos/panier.png" alt="cart" class="cart-img icon-img">
+                    </button>
+                </a>
+    <?php } ?>
         <a href="./?page=connection">
-            <?php if(!isset($_SESSION['user'])) $title = "Se connecter";
-            else $title = "Mon compte"; ?>
+            <?php if(!isset($_SESSION['user'])) $title = "Se connecter"; else $title = "Mon compte"; ?>
             <button class="headerButton accountButton"><?= $title ?></button>
         </a>
-        <a href="<?= $path?>">
-            <button class="headerButton cartButton">
-                <img src="<?= PATH_IMAGES ?>/logos/panier.png" alt="cart" class="cart">
-            </button>
-        </a>
     </div>
-
 </header>
 <nav>
     <div class="concert-nav">

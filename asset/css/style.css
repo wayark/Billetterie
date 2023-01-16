@@ -19,9 +19,28 @@ body button:hover{
 header{
     background-color: #2D2D2D;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 5vw;
     align-items: center;
+}
 
+header > a {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    min-width: 100px;
+    gap: 1vw;
+}
+
+header > .header-right-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    min-width: 100px;
+    margin-right: 0.6vw;
+    column-gap: 0.6vw;
 }
 
 
@@ -29,18 +48,7 @@ header{
     width: 10vw;
     min-width: 90px;
     min-height: 32px;
-    align-self: center;
     margin: 1vw;
-}
-
-.header-right-button{
-    display: flex;
-    justify-content: space-around;
-    width: 14vw;
-    min-width: 100px;
-    margin-right: 3vw;
-    gap: 1vw;
-
 }
 
 .headerButton{
@@ -49,6 +57,10 @@ header{
     background-color: #5F5F5F;
     border-radius: 1vw;
     border: 0;
+}
+
+.headerButton:not(.accountButton){
+    margin-right: 0.3vw;
 }
 .accountButton{
     color: #E7D9AB;
@@ -68,11 +80,22 @@ header{
     cursor: pointer;
 }
 
-.cart{
-    width: 2vw;
-    height: 2vw;
-    min-width: 15px;
-    min-height: 15px;
+.circle-nb-notifications {
+    position: absolute;
+    top: 0.4vw;
+    margin-left: 2.1vw;
+    width: 1.8vw;
+    height: 1.8vw;
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 50%;
+    background-color: rgb(179, 97, 97);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8vw;
+    font-weight: bold;
 }
 
 /*--------------navBar---------------*/
@@ -104,6 +127,26 @@ nav>div:hover{
     padding: 1vw;
     margin-top: 2vh;
     border-radius: 20px;
+}
+
+.icon-img{
+    width: 2vw;
+    height: 2vw;
+    min-width: 15px;
+    min-height: 15px;
+}
+
+.cart-img {
+    width: 2.4vw;
+    height: 2.4vw;
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.notifications-button {
+    padding-left: 0.6vw;
+    padding-right: 0.6vw;
+    cursor: pointer;
 }
 
 /*----------------footer--------------*/
