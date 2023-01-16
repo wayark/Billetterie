@@ -23,12 +23,12 @@
  * } $display Array containing all the data to display
  */
 ?>
-<header>
+<head>
     <link href="<?= PATH_CSS ?>accountManagement.css" rel="stylesheet">
     <link href="<?= PATH_CSS ?>menuProfileAndAccountManagement.css" rel="stylesheet">
     <script src="<?= PATH_SCRIPTS ?>menuProfileAccountManagement.js"></script>
     <title>Mon compte</title>
-</header>
+</head>
 <body>
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
