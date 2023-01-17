@@ -43,11 +43,17 @@
 
 .notifications-container {
     margin-bottom: 3vw;
+    width: 70vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .friend-request, .approaching-event{
     width: 60vw;
-    height: 7vw;
+    height: 8vw;
     background-color: transparent;
     border-radius: 1vw;
     display: flex;
@@ -84,10 +90,8 @@
     flex-direction: row;
     column-gap: 0.1vw;
     color: #ffffff;
-    position: absolute;
-    margin-left: 2.6vw;
-    transform: translateY(-2.2vw);
     transition: 0.2s;
+    transform: translateY(-0.2vw);
 }
 
 .user-sender-text:hover {
@@ -161,11 +165,11 @@
 }
 
 .bar {
-    width: 60vw;
+    width: 63vw;
     height: 0.15vw;
     border-radius: 2vw;
     background-color: #dbd0c7;
-    margin: 0.6vw 0;
+    margin: 0.3vw 0;
 }
 
 .approaching-event-first-line {
@@ -188,33 +192,35 @@
 }
 
 .approaching-event-date {
+    width: 46.5vw;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: end;
     align-items: center;
     column-gap: 0.2vw;
-    font-size: 1.2vw;
+    font-size: 1.4vw;
     color: #918f8c;
     margin-top: 0.6vw;
 }
 
-.friend-request-accepted, .friend-request-declined, .liked-comment-notification, .disliked-comment-notification{
+.friend-request-accepted, .friend-request-declined {
     display: grid;
     grid-template-columns: 1fr 7fr 1fr;
     grid-gap: 2vw;
     width: 60vw;
-    height: 7vw;
+    height: 8vw;
     background-color: transparent;
     padding: 0 1vw;
     align-items: center;
     justify-content: center;
 }
+
 .sold-ticket{
     display: grid;
     grid-template-columns: 1fr 7fr;
     grid-gap: 2vw;
     width: 60vw;
-    height: 7vw;
+    height: 8vw;
     background-color: transparent;
     padding: 0 1vw;
     align-items: center;
@@ -222,13 +228,13 @@
 
 
 .friend-request-accepted>img{
-    height:6.5vw;
-    width: 6.5vw;
+    height:4.2vw;
+    width: 4.2vw;
 }
 
 .friend-request-declined>img {
-    width: 5.5vw;
-    height: 5.5vw;
+    width: 3.5vw;
+    height: 3.5vw;
     margin-left: 0.5vw;
 }
 
@@ -277,8 +283,8 @@
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    column-gap: 14vw;
-    width: 100%;
+    column-gap: 17vw;
+    width: 50vw;
 }
 
 .see-tickets {
@@ -290,4 +296,100 @@
 .see-tickets:hover {
     color: #e5cbb4;
     transition: 0.3s;
+}
+
+.liked-comment-notification, .disliked-comment-notification{
+    display: grid;
+    grid-template-columns: 1fr 1fr 7fr 1fr;
+    grid-gap: 1vw;
+    width: 66vw;
+    height: 8vw;
+    background-color: transparent;
+    padding: 0 1vw;
+    align-items: center;
+}
+
+.flex-quotes {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    column-gap: 0.2vw;
+}
+
+.grid-content-text-likes-dislikes-answers {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.grid-content-text-likes-dislikes-answers > h1 {
+    color: #dbd0c7;
+    font-size: 1.8vw;
+}
+
+.answer-comment {
+    display: grid;
+    grid-template-columns: 1fr 1fr 7fr;
+    grid-gap: 1vw;
+    width: 66vw;
+    height: 8vw;
+    background-color: transparent;
+    padding: 0 1vw;
+    align-items: center;
+}
+
+.like-img, .dislike-img {
+    height: 4.5vw;
+    width: 4.5vw;
+}
+
+.row-flex-like-dislike-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    column-gap: 0.4vw;
+}
+
+.row-flex-like-dislike-text > h1 {
+    color: #dbd0c7;
+    font-size: 1.8vw
+}
+
+.commented-text {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.3vw;
+    font-size: 1.2vw;
+    transition: 0.3s;
+    height: 2vw;
+}
+
+.commented-text p:not(.commented-by) {
+    font-size: 2.3vw;
+    color: #dbd0c7;
+    transform: translateY(-0.3vw);
+}
+
+.commented-text h1 {
+    width: fit-content;
+    font-size: 1.7vw;
+    color: #ffffff;
+}
+
+.commented-by {
+    color: #dbd0c7;
+    font-size: 1.7vw;
+    transition: 0.3s;
+    font-weight: bold;
+    margin-right: 0.4vw;
+}
+
+.commented-text h2 {
+    color: #dbd0c7;
+    font-size: 2.5vw;
+    transition: 0.3s;
+    font-weight: bold;
+    transform: translateY(-0.7vw);
 }

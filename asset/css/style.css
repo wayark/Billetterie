@@ -59,9 +59,10 @@ header > .header-right-button {
     border: 0;
 }
 
-.headerButton:not(.accountButton){
+.headerButton{
     margin-right: 0.3vw;
 }
+
 .accountButton{
     color: #E7D9AB;
     width: 10vw;
