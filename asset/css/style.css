@@ -4,6 +4,18 @@
     font-family: 'Arial';
 }
 
+*::selection{
+    background-color: #E7D9AB;
+    color: #383737;
+}
+
+*::-moz-selection{
+    background-color: #E7D9AB;
+    color: #383737;
+}
+
+
+
 body{
     background-color: #383737;
 }
