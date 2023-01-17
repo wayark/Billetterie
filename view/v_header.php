@@ -34,11 +34,17 @@
                     <button class="headerButton orderButton">
                         <img src="<?= PATH_IMAGES ?>/logos/orders.png" alt="order-icon" class="cart-img icon-img">
                     </button>
+                    <div class="circle-nb-notifications">
+                        <h2 class="nb-notifications-text">2</h2>
+                    </div>
                 </a>
-                <a href="./?page=cart">
+                <a href="./?page=cart" class="last-right-button">
                     <button class="headerButton cartButton">
                         <img src="<?= PATH_IMAGES ?>/logos/dark-cart.png" alt="cart-icon" class="cart-img icon-img">
                     </button>
+                    <div class="circle-nb-notifications">
+                        <h2 class="nb-notifications-text">7</h2>
+                    </div>
                 </a>
     <?php } ?>
         <a href="./?page=connection">

@@ -99,6 +99,9 @@ header > .header-right-button {
     font-weight: bold;
 }
 
+.last-right-button {
+    margin-right: 0.8vw;
+}
 /*--------------navBar---------------*/
 
 nav{

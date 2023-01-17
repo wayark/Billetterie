@@ -161,6 +161,16 @@ select option {
     color: rgb(77, 72, 72);
 }
 
+.like>button, .dislike>button{
+    background-color: transparent;
+}
+
+.like>button:hover, .dislike>button:hover{
+    background-color: transparent;
+}
+
+
+
 button {
     border: none;
     background: none;
