@@ -28,6 +28,7 @@
     align-self: end;
     font-size: 1.7vw;
     color: #eee5c7;
+    margin-right: 2vw;
 }
 
 .flex-row {
@@ -162,7 +163,7 @@
 
 .date-event-container {
     margin-left: 1vw;
-    column-gap: 0.1vw;
+    column-gap: 0.3vw;
 }
 
 .bar {

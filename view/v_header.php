@@ -32,7 +32,7 @@
                 </a>
                 <a href="./?page=orders">
                     <button class="headerButton orderButton">
-                        <img src="<?= PATH_IMAGES ?>/logos/orders.png" alt="order-icon" class="cart-img icon-img">
+                        <img src="<?= PATH_IMAGES ?>/logos/ticket.png" alt="order-icon" class="cart-img icon-img">
                     </button>
                     <div class="circle-nb-notifications">
                         <h2 class="nb-notifications-text">2</h2>
