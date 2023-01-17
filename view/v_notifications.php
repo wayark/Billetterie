@@ -141,13 +141,13 @@
                     </div>
                     <div class="commented-text">
                         <p>"</p>
-                        <h1 class="part-comment">Je suis trop content de voir Wayark revenir !</h1>
+                        <h1 class="part-comment-more-longer">Je suis trop content de voir Wayark revenir Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita cupiditate dignissimos ipsum velit dicta, aspernatur iure aut nihil obcaecati fuga maxime, suscipit reiciendis commodi odit. Nam nobis quis rerum veniam asperiores esse ex distinctio sunt nesciunt quam vel necessitatibus eveniet, minus sint praesentium tenetur facere ipsam unde expedita! Nostrum consequuntur, reprehenderit at optio, iure vitae repudiandae autem natus soluta doloremque adipisci expedita quos exercitationem omnis dolorem rem officia odio in commodi. Ipsum dignissimos nobis est molestias ad accusantium consectetur sunt accusamus, debitis quibusdam numquam fuga, enim quis repudiandae saepe, voluptatem ullam inventore mollitia veritatis odit. Nam repellat eos in doloremque! Assumenda, animi modi? Placeat aliquid quibusdam dolore fugiat ut praesentium quae possimus eveniet. Illo commodi doloribus neque hic nisi minima voluptate optio atque voluptatem quos, error distinctio inventore omnis eius voluptatum molestias quasi tempore perspiciatis, ad dignissimos aspernatur repellat nobis nam! Quibusdam, deleniti adipisci. Odit rerum fuga eius deleniti eum alias enim officiis quidem impedit nisi corrupti, veniam, praesentium facilis tempore aliquid est? Animi, iste! Minima maiores, cum in, culpa est non consectetur dignissimos, autem aliquid rem corporis illum saepe! Obcaecati nulla temporibus a odio ipsa, maiores expedita iusto, placeat possimus saepe doloribus corporis minus. Quis facilis nobis repellat at voluptatem repellendus exercitationem ex! Et amet earum ea blanditiis numquam, ratione optio incidunt obcaecati aspernatur? Officiis dolores quo odit veniam? Quae est quaerat sequi, aspernatur aperiam neque expedita autem error odit inventore deserunt perspiciatis nemo necessitatibus modi alias repudiandae id? Molestias, assumenda tempora. Illum repudiandae error magnam sunt voluptates blanditiis consectetur debitis quam sequi eveniet numquam, mollitia culpa similique? Sequi atque similique possimus facere vero vitae suscipit delectus eos obcaecati voluptatem expedita, sit quia inventore nesciunt quas natus autem velit, sunt totam quasi adipisci a aperiam, repellendus veniam. Fuga numquam, tempore sint enim illo ut amet odit nulla veniam cupiditate?</h1>
                         <p>"</p>
                     </div>
                     <div class="commented-text">
                         <p class="commented-by"> par </p>
                         <p>"</p>
-                        <h1 class="part-comment">Je suis trop content de voir Wayark revenir !</h1>
+                        <h1 class="part-comment-bit-more-longer">Je suis trop content de voir Wayark revenir !</h1>
                         <p>"</p>
                         <p class="commented-by">.</p>
                     </div>

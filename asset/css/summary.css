@@ -1,0 +1,21 @@
+.main-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-page {
+    align-self: start;
+    font-size: 2.5vw;
+    color: #E7D9AB;
+    margin-top: 2vw;
+    margin-left: 2vw;
+}
+
+.subtitle-page {
+    align-self: end;
+    font-size: 1.7vw;
+    color: #eee5c7;
+}

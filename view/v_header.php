@@ -18,7 +18,7 @@
         if (session_id() == '') session_start();
         if (isset($_SESSION) and isset($_SESSION['user'])) {
               ?><a href="./?page=deconnection">
-                    <button class="headerButton cartButton">
+                    <button class="headerButton disconnectButton">
                         <img src="<?= PATH_IMAGES ?>logos/deconnection.png" alt="Deconnexion" class="deconnexion-img icon-img">
                     </button>
                 </a>
@@ -30,9 +30,14 @@
                         <h2 class="nb-notifications-text">3</h2>
                     </div>
                 </a>
+                <a href="./?page=orders">
+                    <button class="headerButton orderButton">
+                        <img src="<?= PATH_IMAGES ?>/logos/orders.png" alt="order-icon" class="cart-img icon-img">
+                    </button>
+                </a>
                 <a href="./?page=cart">
                     <button class="headerButton cartButton">
-                        <img src="<?= PATH_IMAGES ?>/logos/panier.png" alt="cart" class="cart-img icon-img">
+                        <img src="<?= PATH_IMAGES ?>/logos/dark-cart.png" alt="cart-icon" class="cart-img icon-img">
                     </button>
                 </a>
     <?php } ?>

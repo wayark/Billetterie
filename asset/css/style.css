@@ -72,7 +72,7 @@ header > .header-right-button {
     cursor: pointer;
 }
 
-.cartButton{
+.cartButton, .notificationsButton, .orderButton, .disconnectButton{ 
     width: 3vw;
     min-width: 17px;
     display: flex;

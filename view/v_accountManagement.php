@@ -55,7 +55,7 @@
                 <img src="<?= $display['user']['picturePath'] ?>"
                      alt="<?= $display['user']['pictureDescription'] ?>">
                 <?= ErrorDisplayService::displayError($display['resultDisplay'], 'registerDisplay') ?>
-                <form method="post" action="./?page=connection" id="form-download-data" style="">
+                <form method="post" action="./?page=connection" id="form-download-data">
                     <button name="dldata" class="download-data">Generer mes données (JSON)</button>
                 </form>
             </div>

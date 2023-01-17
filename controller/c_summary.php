@@ -10,7 +10,7 @@ $qrcodetext = rand(1, 9);
 $filename = QRCodeGenerator::generate($qrcodetext);
 
 /* require_once PATH_VIEWS . "summary.php"; */
-require_once PATH_VIEWS . "ticket.php"; 
+require_once PATH_VIEWS . "summary.php"; 
 
 require_once PATH_MODELS . "PDFGenerator.php";
 
