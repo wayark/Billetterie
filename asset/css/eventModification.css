@@ -137,13 +137,14 @@ textarea{
     color:rgb(206, 206, 206);
 }
 
-button{
+section button{
     background-color: #5F5F5F;
     color: #E7D9AB;
     border: none;
     font-size: 1.5vw;
     width: 10vw;
     min-width: 60px;
+    height:3vw ;
     min-height: 15px;
     border-radius: 20px;
     margin-top: 4vw;

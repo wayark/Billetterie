@@ -45,6 +45,6 @@
         <a href="./index.php?page=search">Recherche</a>
     </div>
     <div class="contact-nav">
-        <p>Contact</p>
+        <a href="./index.php?page=contact">Contact</a>
     </div>
 </nav>

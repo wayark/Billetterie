@@ -1,0 +1,39 @@
+.contact{
+    display: flex;
+    justify-content: center;
+}
+
+.contact-container{
+    width: 65vw;
+    height: 40vw;
+    min-width:300px;
+    min-height:200px;
+    background-color: #2D2D2D;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    border-radius: 10px;
+    padding: 4vw;
+    color: #E7D9AB;
+}
+
+.contact-container p{
+    color: white;
+    font-size: 1.5vw;
+    margin-bottom: 4vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
+}
+
+.contact-container h1{
+    font-size: 3vw;
+}
+
+.contactUS p{
+    margin-top: 1vw;
+    margin-bottom: 2vw;
+
+}
+
+.contactUs h1{
+    margin-bottom: 2vw;
+}
