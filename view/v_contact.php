@@ -12,7 +12,7 @@
             <h1>Contact</h1>
             <p>Téléphone : 06 07 08 09 10 </p>
             <p>Email : contact@wati-billetterie.com </p>
-            <p>adresse : 18 rue des potier, paris</p>
+            <p>adresse : 1 Rue de la Technologie Villeurbanne</p>
         </div>
     </div>
 </section>
