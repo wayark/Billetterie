@@ -23,7 +23,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./asset/css/event.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ?>event.css">
+    <link rel="stylesheet" href="<?= PATH_MEDIA ?>Event.css">
     <script src="<?php echo PATH_SCRIPTS . "justbought.js" ?>" defer></script>
     <script src="<?php echo PATH_SCRIPTS . "eventComments.js" ?>" defer></script>
     <title><?= $display['eventName'] ?></title>
@@ -70,7 +71,7 @@
                         <?= $display['pricingsSelect'] ?>
                         <div id="quantity">
                             <p for="quantity">Quantité</p>
-                            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+                            <input type="number" class="quantity-input" name="quantity" min="1" max="10" value="1" required>
                         </div>
                         <button id="btn-book" type="submit">Ajouter au panier</button>
                     </form>
@@ -79,9 +80,9 @@
                         <?= $display['pricingsSelect'] ?>
                         <div id="quantity">
                             <p for="quantity">Quantité</p>
-                            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+                            <input type="number" class="quantity-input" name="quantity" min="1" max="10" value="1" required>
                         </div>
-                        <a id="btn-book" href="?page=connection">Ajouter au panier</a>
+                        <a id="btn-book" href="./?page=connection">Ajouter au panier</a>
                     </div>
                 <?php } ?>
             </div>

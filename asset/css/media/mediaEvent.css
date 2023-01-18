@@ -1,0 +1,231 @@
+@media screen and (max-width:768px) {
+    #container-description-event {
+        width: 90%;
+    }
+
+    .colored-comment-part {
+        width: 95%;
+        height: fit-content;
+        column-gap: 3vw;
+    }
+
+    .like-comment-container {
+        margin-left: 76vw;
+    }
+
+    #img-title-date {
+        margin-right: 0;
+    }
+    #img-title-date img{
+        width: 35vw;
+        border-radius: 3vw;
+    }
+
+    #title-date h1{
+        font-size: 4vw;
+    }
+
+    #title-date p{
+        font-size: 3vw;
+    }
+
+    .title-section {
+        font-size: 3.7vw;
+    }
+
+    .title-desc {
+        font-size: 3.3vw;
+    }
+
+    #summary p {
+        font-size: 2.7vw;
+    }
+
+    .info-events-container p {
+        font-size: 2.7vw;
+    }
+
+    #form-event select {
+        font-size: 2.7vw;
+        height: 5vw;
+    }
+
+    #quantity p {
+        font-size: 2.7vw;
+    }
+
+    .quantity-input, #btn-book {
+        font-size: 2.9vw !important;
+        height: 5vw !important;
+        width: fit-content !important;
+    }
+
+    .quantity-input {
+        padding: 0 !important;
+    }
+
+    #btn-book {
+        padding: 0 2vw !important;
+    }
+    .comment {
+        height: fit-content;
+    }
+    .comment-content {
+        font-size: 2.2vw !important;
+    }
+
+    .comment-author {
+        width: 15vw;
+    }
+
+    .comment-author img, .user-img {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .comment-author p, .send-comment-form > a > p{
+        font-size: 2.2vw;
+    }
+
+    .comment-date, .comment-read-more {
+        font-size: 2.2vw !important;
+    }
+
+    .comment-answers > div, .to-reply p {
+        font-size: 2.3vw;
+        margin-top: 0.4vw;
+    }
+
+    .comment-bar {
+        height: 0.7vw;
+        margin-bottom: 2vw;
+    }
+
+    #title-comment {
+        font-size: 3.3vw;
+    }
+
+    .send-comment-form  {
+        column-gap: 2vw;
+    }
+
+    .comment-field {
+        height: 100% !important;
+        font-size: 3vw !important;
+    }
+
+    .send-comment-form input[type="submit"], #cancel-comment {
+        font-size: 2.7vw !important;
+        height: 5vw !important;
+        width: fit-content !important;
+    }
+
+    .white-comment-bar {
+        margin-top: 1vw;
+    }
+
+    .answer-container{
+        width: 80%;
+    }
+
+    .answer-container > a {
+        width: 10vw;
+    }
+
+    .answer-container > a > img {
+        width: 8.5vw;
+        height: 8.5vw;
+    }
+
+    .answer-container > a > p {
+        font-size: 2.2vw !important;
+    }
+
+    .reply-field {
+        font-size: 2.7vw !important;
+        height: 5vw !important;
+    }
+
+    .answer-container > input[type="submit"] {
+        font-size: 2.7vw !important;
+        height: 5vw !important;
+        width: fit-content !important;
+    }
+
+    .cancel-reply {
+        font-size: 2.7vw !important;
+        height: 5vw !important;
+        width: fit-content !important;
+    }
+
+    .like-comment-container form{
+        padding: 1vw;
+        padding-left: 1.4vw;
+        padding-right: 1.4vw;
+        border-radius: 3vw;
+    }
+
+    .like-form {
+        column-gap: 1vw;
+    }
+
+    .like-form > p {
+        font-size: 2.7vw;
+    }
+
+    .like-form > button[type="submit"] {
+        height: 5vw !important;
+        width: fit-content !important;
+    }
+
+    .like-btn-img {
+        width: 3vw;
+    }
+
+    .reply {
+        width: 85vw;
+        height: fit-content;
+    }
+
+    .reply-like-form p {
+        font-size: 2.2vw;
+    }
+
+    .reply-like-form {
+        column-gap: 1.4vw;
+        padding-top: 1.4vw;
+        padding-bottom: 1vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
+    .reply-like-btn-img {
+        width: 2.5vw !important;
+    }
+
+    .reply-author img{
+        width: 7vw;
+        height: 7vw;
+    }
+
+    .reply-author p {
+        font-size: 1.8vw;
+    }
+
+    .reply-date {
+        font-size: 1.7vw !important;
+    }
+
+    .reply-content {
+        font-size: 2vw !important;
+    }
+
+    .reply-read-more {
+        font-size: 1.7vw !important;
+    }
+
+    .comment-answers-visible {
+        margin-top: 1vw;
+    }
+}
+

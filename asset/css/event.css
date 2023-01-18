@@ -721,8 +721,8 @@ div.ticket-pricing {
     align-items: center;
     width: 5vw;
     position: absolute;
-    margin-left: 55vw;
-    margin-top: 8.85vw;
+    margin-left: 73vw;
+    transform: translateY(-1.7vw);
 }
 
 .reply-like-form {
