@@ -210,6 +210,10 @@ class User
         return $this->_personInfo->getPicture();
     }
 
+    /**
+     * @param string $target_file Path to the picture file without the PATH_IMAGE constant
+     * @return void
+     */
     public function setProfilePicture(string $target_file)
     {
         $this->_personInfo->getPicture()->setPicturePath($target_file);
