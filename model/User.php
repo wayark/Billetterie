@@ -43,7 +43,7 @@ class User
         $roleDAO = new RoleDAO();
 
         if (is_null($role)) $role = $roleDAO->getRoleByName("User");
-        if (is_null($favoriteMethod)) $favoriteMethod = new PaymentMethod(0, "Aucun");
+        if (is_null($favoriteMethod)) $favoriteMethod = new PaymentMethod(1, "Aucun");
         if (is_null($photoPath)) $photoPath = 'users/unnamed.jpg';
         $this->_id = $id;
         $this->_password = $hashed_password;

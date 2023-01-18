@@ -52,6 +52,7 @@ abstract class DAO
         } catch (PDOException $e) {
             $this->_error = 'query';
             $res = false;
+        } catch (NoDatabaseException $e) {
         }
         return $res;
     }
