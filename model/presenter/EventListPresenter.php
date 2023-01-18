@@ -64,6 +64,7 @@ class EventListPresenter extends Presenter
             $ans .= '</a>';
             $ans .= '<a href="./index.php?page=delete&&event=' . $event->getIdEvent() . '">';
             $ans .= '<button>Supprimer</button>';
+            $ans .= $this->post[0];
             $ans .= '</a>';
             $ans .= '</div>';
             $ans .= '</div>';
