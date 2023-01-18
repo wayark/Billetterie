@@ -11,7 +11,7 @@
     width: 80%;
     height: fit-content;
     margin: 0 auto;
-    padding: 2vw;
+    padding: 4vw;
     background-color: #2D2D2D;
     border-radius: 1vw;
     margin-top: 3vw;
@@ -19,9 +19,9 @@
 
 .main-wrapper>h2 {
     font-family: "Roboto", sans-serif;
-    font-size: 2.2vw;
+    font-size: 2.7vw;
     color: #E7D9AB;
-    margin-bottom: 2vw;
+    margin-bottom: 4vw;
     text-align: center;
 }
 
@@ -365,7 +365,7 @@
 }
 
 .grid-left {
-    row-gap: 0.6vw;
+    row-gap: 2.7vw;
 }
 
 .grid-right {
@@ -380,9 +380,14 @@
 }
 
 .container-input-file > h2 {
+    cursor: pointer;
     font-size: 1.5vw;
     font-weight: 600;
-    color: #fff;
+    color: rgb(213, 211, 211);
+}
+
+.container-input-file > h2:hover {
+    color: rgb(255, 255, 255);
 }
 
 .container-input-file > img {
@@ -421,14 +426,12 @@
 }
 
 input:not(.my-username-input), select, textarea{
-  width: 13vw;
   background-color: #454545;
   border: none;
   height: 2vw;
   min-height: 10px;
   border-radius: 10px;
   color: #E7D9AB;
-  text-align: center;
 }
 
 textarea {
@@ -465,4 +468,48 @@ input::placeholder {
 .container-input-change-text-content .optional {
     margin-left: 3vw;
     margin-bottom: 0;
+}
+
+.first-optional {
+    margin-left: 1vw;
+}
+
+.phone-input-container .numformat {
+  color: #E7D9AB;
+  font-size: 1.1vw;
+  text-align: center;
+  margin-top: 0.3vw;
+}
+
+
+.input-postal-code {
+  width: 12vw;
+  text-align: center;
+}
+
+input:not(.my-username-input):not(.input-postal-code):not(.input-phone-number):not(.input-age), textarea{
+  width: 20vw;
+}
+
+.input-phone-number {
+  width: 10vw;
+  text-align: center;
+}
+
+.input-age {
+  width: 9vw;
+  text-align: center;
+}
+
+select {
+  text-align: center;
+}
+
+/* Decaler le placeholder de input-city */
+.input-city, .input-desc{
+  padding-left: 0.5vw;
+}
+
+.input-desc {
+  padding-top: 0.3vw;
 }

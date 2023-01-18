@@ -10,9 +10,15 @@
     <div class="main-wrapper">
         <h2>Créer votre profil utilisateur pour valider votre inscription !</h2>
         <form class="signup-form" action="./" method="POST">
-            <div class="input-username-container flex-row">
-                <h1>@</h1>
-                <input type="text" class="my-username-input"name="username" placeholder="Mon nom d'utilisateur .." oninput="changeInputTextCopy(this)" maxlength="25" required>
+            <div class="flex-column">
+                <div class="optional first-optional flex-row">
+                    <h1>*</h1>
+                    <h1>Obligatoire</h1>
+                </div>
+                <div class="input-username-container flex-row">
+                    <h1>@</h1>
+                    <input type="text" class="my-username-input"name="username" placeholder="Mon nom d'utilisateur .." oninput="changeInputTextCopy(this)" maxlength="25" required>
+                </div>
             </div>
             <div class="url-container flex-row">  
                 <img src="<?= PATH_IMAGES ;?>logos/yellowurl.png" alt=""> 
@@ -33,7 +39,7 @@
                         </div>
                         <div class="container-input-file flex-row">
                             <img src="<?= PATH_IMAGES ;?>users/unnamed.jpg" alt="profile-picture" draggable="false">              
-                            <h2 style="cursor:pointer;color:white;">Choisir une image ..</h2>
+                            <h2>Choisir une image ..</h2>
                         </div>
                     </div>
                     <input type="file" name="photo" placeholder="Photo de profil" style="opacity:0;position:absolute;z-index:-1;" class="input-file-signup">
@@ -42,14 +48,15 @@
                             <h1>*</h1>
                             <h1>Facultatif</h1>
                         </div>
-                        <input type="phone" name="tel" placeholder="Mon téléphone ..">
+                        <input type ="tel" name="tel"class="input-phone-number" pattern="[0-9]{10}" size="10" placeholder="Mon numéro .."minlength="10" maxlength="10" required/>
+                        <h1 class="numformat">Format : 0707070707</h1>
                     </div>
                     <div class="flex-column">
                         <div class="optional flex-row">
                             <h1>*</h1>
                             <h1>Obligatoire</h1>
                         </div>
-                        <input type="number" name="age" placeholder="19" required max="130" min="13">
+                        <input type="number" class="input-age" name="age" placeholder="Mon âge .." required max="130" min="13">
                     </div>
                 </div>
                 <div class="grid-right flex-column">
@@ -58,21 +65,21 @@
                             <h1>*</h1>
                             <h1>Obligatoire</h1>
                         </div>
-                        <input type="text" name="ville" placeholder="Ma ville .." required>
+                        <input type="text" name="ville" placeholder="Ma ville .." class="input-city" maxlength="50" required>
                     </div>
                     <div class="flex-column">
                         <div class="optional flex-row">
                             <h1>*</h1>
                             <h1>Obligatoire</h1>
                         </div>
-                        <input type="number" name="postal-code" placeholder="69140" required>
+                        <input type="number" name="postal-code" class="input-postal-code"placeholder="Mon code postal .." max="98000"required>
                     </div>
                     <div class="flex-column">
                         <div class="optional flex-row">
                             <h1>*</h1>
                             <h1>Facultatif</h1>
                         </div>
-                        <textarea name="description" placeholder="Ma description.." resizeable="false" style="resize: none;" maxlength="600"></textarea>
+                        <textarea name="description" class="input-desc" placeholder="Ma description .." resizeable="false" style="resize: none;" maxlength="600"></textarea>
                     </div>
                     <div class="flex-column">
                         <div class="optional flex-row">
