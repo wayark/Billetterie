@@ -1,316 +1,128 @@
 <?php
 
-require PATH_APPLICATION . '/dompdf/vendor/autoload.php';
+require_once PATH_APPLICATION . '/fpdf/vendor/autoload.php';
+use Fpdf\Fpdf;
+class PDFGenerator extends FPDF {
 
-use Dompdf\Dompdf;
-use Dompdf\Options;
+    private $orientation;
+    private $size;
+    private $unit;
 
-class PDFGenerator{
-    
-    private $pdf;
-    private $options;
-    private $html;
-    private $qrcodefilename;
+    function __construct() {
+        // Paramètres de la page de base
+        $this->orientation = 'P';
+        $this->size = 'A4';
+        // unités en mm
+        $this->unit = 'mm';
+        parent::__construct($this->orientation, $this->unit, $this->size);
 
-    public function __construct($qrcodefilename){
-
-        $this->qrcodefilename = $qrcodefilename;
-        $this->getHtml();
-        $this->html = ob_get_clean();
-        $this->setOptions();
-
-        $this->pdf = new Dompdf($this->options);
-        $this->options->set( 'chroot', __DIR__ );
-        $this->pdf->loadHtml($this->html);
-        $this->pdf->render();
+        $this->AddPage();
+        $this->initPDF();
     }
 
-    public function showPDF(){
-        $this->pdf->stream("ticket.pdf", array("Attachment" => false));
+    function initPDF() {
+        $this->header();
+        $this->body();
+        $this->footer();
     }
 
-    public function savePDF(){
-        $file = $this->pdf->output();
-        file_put_contents(PATH_ASSETS . "ticket/newticket.pdf", $file);
+    function header() {
+        $this->SetFont('Arial', 'BU', 22);
+        $this->Cell(0, 0, "Damso - Transbordeur", 0, 1, 'C');
+        // Mettre un trait horizontal noir de 1mm 
+        $this->SetDrawColor(156, 146, 146);
+        $this->SetLineWidth(1);
+        $this->Line(0, 20, 210, 20);
     }
 
-    private function setOptions(){
-        $this->options = new Options();
-        $this->options->set('isPhpEnabled', true);
-        $this->options->set('isRemoteEnabled', true);
-        $this->options->set("defaultFont", "Courier");
-        $this->options->set("defaultPaperSize", "a4");
-        $this->options->set("defaultPaperOrientation", "portrait");	
-        $this->options->set("fontHeightRatio", 1.3);
+    function body() {
+        $this->bodyRight();
+        $this->bodyLeft();
     }
 
-    public function initHtml(){
-        ob_start();
-        require_once PATH_VIEWS . "ticket.php";
-        $this->html = ob_get_contents();
-        ob_end_clean();
-    }
+    function bodyRight() {
+        // Mettre une image à droite en bas du titre
+        $this->Image(PATH_IMAGES . "qrcodes/qrcode-user2--277622.png", 120, 25, 85, 90);
 
-    public function getHtml(){
-        ob_start(); ?>
-        <!DOCTYPE html>
-                <html lang="fr">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Document</title>
-                    </head>
-                    <body>
-                        <section class="main-container">
-                            <div class="event-name-container">
-                                <h1 class="event-name">Damso - Concert Transbordeur</h1>
-                                <div class="bar-decoration"></div>
-                            </div>
-                            <div class="ticket-container">
-                                <div class="ticket">
-                                    <div class="ticket-header">
-                                        <img class="ticket-header-logo" src="{{ url('/asset/images/qrcode/<?= $this->qrcodefilename ?>.png') }}">
-                                    </div>
-                                    <div class="ticket-body">
-                                        <div class="ticket-info">
-                                            <p class="ticket-header-nb-places to-modify">1</p>
-                                            <p class="ticket-header-nb-places">place</p>
-                                            <p class="ticket-header-nb-places">pour</p>
-                                            <p class="ticket-header-name-event to-modify">Damso - concert</p>
-                                        </div>
-                                        <div class="ticket-info">
-                                            <p class="ticket-header-place">Lieu : </p>
-                                            <p class="ticket-header-place to-modify">Tranbordeur</p>
-                                        </div>
-                                        <div class="ticket-info">
-                                            <p class="ticket-header-city">Ville : </p>
-                                            <p class="ticket-header-city to-modify">Lyon</p>
-                                        </div>
-                                        <div class="ticket-info">
-                                            <p class="ticket-header-adress">Adresse : </p>
-                                            <p class="ticket-header-adress to-modify">6 rue de la République</p>
-                                        </div>
-                                        <div class="ticket-info">
-                                            <p class="ticket-header-city">Ville : </p>
-                                            <p class="ticket-header-city to-modify">Lyon</p>
-                                        </div>
-                                        <div class="ticket-info">
-                                            <p class="ticket-body-date">Date : </p>
-                                            <p class="ticket-body-date to-modify">14/01/2023</p>
-                                        </div>
-                                        <div class="ticket-info">
-                                            <p class="ticket-body-time">Heure : </p>
-                                            <p class="ticket-body-time to-modify">21h30</p>
-                                        </div>
-                                        <div class="ticket-info">
-                                            <p class="ticket-body-price-unit">Prix unité :</p>
-                                            <p class="ticket-body-price-unit to-modify">20 €</p>
-                                        </div>
-                                        <div class="ticket-info">
-                                            <p class="ticket-body-type-event">Vous avez choisi :</p>
-                                            <p class="ticket-body-type-event to-modify">Fosse</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="qr-code">
-                                        <img class="qr-code-img" src="<?= PATH_IMAGES . "qrcodes/" . $this->qrcodefilename ?>'">
-                                        <p>Ce QR-code ne pourra être utilisé qu'une fois. Il vous permettra d'accéder à votre évènement.</p>
-                                        <img class="photo-event-img" src="<?= getcwd() ?>'images\events\wayark.jpg">
-                                </div>
-                            </section>
-                            <div class="ticket-footer">
-                                <p class="ticket-footer-text">Merci de votre confiance</p>
-                            </div>
-                        <div class="informations">
-                            <p class="informations-text">Pour toute question, veuillez nous contacter par les informations disponibles sur notre page contact.</p>
-                            <p class="informations-text2">waticket.com</p>
-                        </div>
-                    </body>
-                    <style class="main style" type="text/css">
-                        ::after, ::before {
-                            box-sizing: border-box;
-                        }
-                    
-                        body {
-                            margin: 0;
-                            padding: 0;
-                            width: 100%;
-                            height: 100%;
-                            font-family: sans-serif;
-                        }
-                    
-                        .main-container{
-                            width: 100%;
-                            height: 100%;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                        }
-                    
-                        .event-name{
-                            font-size: 5vw;
-                            color: #000000;
-                            letter-spacing: 0.1vw;
-                            margin:2.7vw;
-                            text-decoration: underline;
-                            text-align: center;
-                        }
-                    
-                        .ticket-container{
-                            display: grid;
-                            grid-template-columns: 1fr 1fr;
-                            width: 95%;
-                            height: max-content;
-                            padding-top: 5vw;
-                            padding-bottom: 5vw;
-                        }
-                    
-                        .ticket-header{
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: space-between;
-                            width: 100%;
-                            height: fit-content;
-                        }
-                    
-                        .ticket-header-logo{
-                            width: 30vw; 
-                            align-self: center;
-                            margin-top: 3vw;
-                        }
-                    
-                        .ticket-footer{
-                            position: absolute;
-                            bottom: 1vw;
-                            right: 3vw;
-                            font-size: 2.2vw;
-                            color: #000000;
-                        }
-                    
-                        .ticket-footer-text{
-                            font-style: italic;
-                        }
-                    
-                        .qr-code-img{
-                            width: 70%;
-                            object-fit: contain;
-                        }
-                    
-                        .qr-code {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            width: 100%;
-                            height: 100%;
-                            flex-direction: column;
-                            margin-left: 2vw;
-                            margin-right: 2vw;
-                        }
-                    
-                        .qr-code p {
-                            font-size: 2.5vw;
-                            color: #000000;
-                            font-weight: bold;
-                            margin: 0;
-                            margin-top: 1vw;
-                            text-align: center;
-                            line-height: 1.6;
-                            margin-left: 5vw;
-                            margin-right: 5vw;
-                        }
-                    
-                        .event-name-container{
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            width: 100%;
-                            flex-direction: column;
-                            row-gap: 0vw;
-                        }
-                    
-                        .bar-decoration {
-                            width: 100vw;
-                            height: 1vw;
-                            background-color: #9c9292;
-                        }
-                    
-                        .ticket{
-                            display: flex;
-                            flex-direction: column;
-                            row-gap: 3vw;
-                            align-items: center;
-                            width: 100%;
-                            height: 95%;
-                            background-color: #ffffff;
-                            border: 2vw solid #e8d8aab3;
-                            border-radius: 1vw;
-                        }
-                    
-                        .ticket-body{
-                            margin: 0;
-                        }
-                    
-                        .qr-code{
-                            margin-left: 3vw;
-                        }
-                    
-                        .photo-event-img{
-                            margin-top: 3.5vw;
-                            border-radius: 1vw;
-                            width: 35vw;
-                            background-color: #e8d8aab3;
-                            padding: 1.2vw;
-                        }
-                    
-                        .informations{
-                            display: flex;
-                            flex-direction: column;
-                            width: 100vw;
-                            height: 28vh;
-                            margin: 0;
-                        }
-                    
-                        .informations-text{
-                            font-size: 2.2vw;
-                            font-weight: bold;
-                            color: #c0a38b;
-                            margin-left: 3vw;
-                            text-decoration: underline;
-                            text-align: center;
-                        }
-                    
-                        .informations-text2{
-                            font-size: 2.2vw;
-                            font-weight: bold;
-                            color: #d0baa9;
-                            margin-left: 3vw;
-                            position: absolute;
-                            bottom: 0.7vw;
-                            left: 1.5vw;
-                        }
-                    
-                        .ticket-info {
-                            display: flex;
-                            flex-direction: row;
-                            font-size: 2vw;
-                            column-gap: 0.6vw;
-                            margin: 0;
-                            font-weight: normal;
-                        }
-                    
-                        .to-modify{
-                            font-weight: bold;
-                            color: #9a6969;
-                        }
-                    
-                        .ticket-body{
-                            align-self: start;
-                            margin-left: 3vw;
-                        }
-                    </style>
-            </html>
-        <?php
+        // Placer le texte en dessous de l'image
+        $initialY = 120;
+        $text = ["Ce QR-code ne pourra etre", "utilise qu'une seule fois.", "Il vous permettra", " d'acceder a votre evenement."];
+        $margin = [8, 10, 18, 5];
+        $initialX = 122;
+        $this->SetY($initialY);
+        $this->SetFont('Arial', 'B', 14);
+
+        $i = 0;
+
+        foreach ($text as $line) {
+            $newX = $initialX + $margin[$i];
+            $this->SetX($newX);
+
+            $this->Cell(0, 0, $line);
+
+            $initialY += 10;
+            $this->SetY($initialY);
+
+            $i++;
         }
+
+        // Trait juste en dessous du texte
+        $this->SetDrawColor(224, 216, 211);
+        $this->SetLineWidth(1.5);
+        $this->Line(118, $initialY, 205, $initialY);
+        
+        // Faire un carré avec bords arrondis
+        $this->SetLineWidth(7);
+        $this->Rect($initialX - 5, 170, 90, 50, 10, 'DF');
+        // Remplir le carré avec une image
+        $this->SetX($initialX);
+        $this->Image(PATH_IMAGES . "events/wayark.jpg", $initialX - 5, 170, 90, 50);
+
+        $this->SetY(232);
+        $this->SetFont('Arial', 'BU', 13);
+        $this->SetTextColor(192, 163, 139);
+        $this->Cell(0, 0, "Pour toute question, veuillez nous contacter par les informations disponibles sur notre page", 0, 1, 'C');
+        $this->SetY(238);
+        $this->Cell(0, 0, "contact", 0, 1, 'C');
     }
+
+    function bodyLeft() {
+        // Rectangle de base
+        $this->SetY(25);
+        $this->SetX(10);
+        $this->SetLineWidth(4.5);
+        $this->Rect(5, 28, 104, 193, 10, 'D');
+
+        // Image waticket 
+        $this->Image(PATH_IMAGES . "/logos/logoWatiGold.png", 17, 32, 80, 30);
+
+        $informations = [
+            [1, "place pour ", "Damso - Concert"],
+            ["Lieu : ", "Transbordeur"],
+            ["Ville : ", "Lyon"],
+            ["Adresse : ", "6 rue de la République"],
+            ["Date : ", "12/12/2019"],
+            ["Heure : ", "21h30"],
+            ["Prix unité :", "20€"],
+            ["Vous avez choisi :", "Fosse"]
+        ];
+
+        
+    }
+
+    function footer() {
+        $this->SetY(275);
+
+        $this->SetFont('Arial', '', 15);
+        $this->SetTextColor(0, 0, 0);
+        $this->Cell(0, 0, "Merci pour votre confiance.", 0, 1, 'R');
+
+        $this->SetFont('Arial', 'BI', 14);
+        $this->SetTextColor(208, 186, 169);
+        $this->Cell(0, 0, "Waticket.com", 0, 1, 'L');
+    }
+
+    function savePDF() {
+        $this->Output('F', PATH_ASSETS . "ticket/ticket.pdf");
+    }
+}

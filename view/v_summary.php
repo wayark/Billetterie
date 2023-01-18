@@ -1,6 +1,7 @@
 <?php require_once PATH_VIEWS . 'header.php'; ?>
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ;?>/summary.css">
+    <title>Récapitulatif de votre achat</title>
 </head>
 <section class="main-container">
     <div class="title-page flex-row">
@@ -63,7 +64,7 @@
                     <h1 class="adress-event">Adresse Evenement</h1>
                     <h1 class="city-event">Ville Evenement</h1>
                     <form action="./?page=summary" method="post" class="button-generate-pdf">
-                        <button type="submit" name="generate-pdf" class="flex-row">
+                        <button type="submit" name="generate-pdf" value="idTicket" class="flex-row">
                             <p>Télécharger mon billet</p>
                             <img src="<?= PATH_IMAGES ;?>/logos/pdf-icon.png" alt="">
                         </button>
