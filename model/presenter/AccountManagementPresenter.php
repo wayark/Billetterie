@@ -55,7 +55,7 @@ class AccountManagementPresenter extends Presenter
         $this->display['paymentMethods'] = $this->displayStringPaymentMethods();
         $this->display['buttons'] = $this->displayStringButtons();
 
-        if ($this->currentUser->getRole()->getId() == 1) {
+        if ($this->currentUser->getRole()->getName() == "Organizer") {
             $this->display['titre'] = 'Gestion du compte organisateur';
         } else {
             $this->display['titre'] = 'Gestion du compte client';
@@ -97,7 +97,7 @@ class AccountManagementPresenter extends Presenter
         $ans = createButton("Changer mon mot de passe", "./index.php?page=accountManagement");
         $ans .= createButton("Supprimer mon compte", "./index.php?page=accountManagement");
 
-        if ($this->currentUser->getRole()->getId() == 1) {
+        if ($this->currentUser->getRole()->getName() == "Organizer") {
             $ans .= createButton("Gérer mes événements", "./index.php?page=eventList");
         } else {
             $ans .= createButton("Gérer mes billets", "./index.php");
