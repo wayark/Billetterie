@@ -110,12 +110,14 @@ class UpdateAccountManagementStrategy implements AccountManagementStrategy
         // Déplacement du fichier du répertoire temporaire vers le répertoire de destination
         $file_destination = $path . '/' . $file_name;
         if (move_uploaded_file($file_tmp, $file_destination)) {
-            if (!endsWith($user->getProfilePicture()->getPicturePath(), "unnamed.jpg") &&
+            if (!StringService::endsWith($user->getProfilePicture()->getPicturePath(), "unnamed.jpg") &&
                 !unlink($user->getProfilePicture()->getPicturePath())) {
                 $result['type'] = 'error';
                 $result['message'] = "Une erreur est survenue lors de la suppression de l'ancienne photo.";
             }
+
             $user->setProfilePicture(substr($file_destination, strlen(PATH_IMAGES)));
+
         } else {
             $result['type'] = 'error';
             $result['message'] = "Une erreur est survenue lors du déplacement du fichier.";

@@ -64,6 +64,7 @@ class UserDAO extends DAO
 
         $tmp->setFavoriteMethod(new PaymentMethod($user['ID_PAYMENT_METHOD'], $user['PAYMENT_METHOD_NAME']));
         $tmp->setRole(new Role($user['ID_ROLE_TYPE'], $user['ROLE_NAME']));
+        $tmp->setProfilePicture($user['PICTURE_PATH']);
 
         return $tmp;
     }
