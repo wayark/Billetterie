@@ -5,16 +5,14 @@
 }
 
 *::selection{
-    background-color: #E7D9AB;
-    color: #383737;
+    background-color: #e4c98774;
+    color: white;
 }
 
 *::-moz-selection{
-    background-color: #E7D9AB;
-    color: #383737;
+    background-color: #e4c98774;
+    color: white;
 }
-
-
 
 body{
     background-color: #383737;

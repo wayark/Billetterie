@@ -25,7 +25,7 @@
     text-align: center;
 }
 
-.main-wrapper form {
+.main-wrapper > form {
     margin-top: 0.5vw;
     display: flex;
     flex-direction: column;
@@ -35,32 +35,6 @@
     height: fit-content;
 }
 
-/* CSS du switcher */
-.cl-switch {
-    /*
-    Switcher Style
-     */
-    /*
-    When Checked
-     */
-    /*
-    Switch large style
-     */
-    /*
-    Switch xlarge style
-     */
-    /*
-    Switch Black color style
-     */
-    /*
-    Switch Red color style
-     */
-    /*
-    Switch green color style
-     */
-    /*
-    Switch green color style
-     */ }
     .cl-switch input[type="checkbox"] {
       display: none;
       visibility: hidden; }
@@ -168,31 +142,6 @@
   /* ---------------------------------------------
   ------------------[IOS style]----------------------------
    --------------------------------------------- */
-  .cl-switch.ios {
-    /*
-  Switcher Style
-   */
-    /*
-    When Checked
-     */
-    /*
-    Switch large style
-     */
-    /*
-    Switch xlarge style
-     */
-    /*
-    Switch Black color style
-     */
-    /*
-    Switch Red color style
-     */
-    /*
-    Switch green color style
-     */
-    /*
-    Switch green color style
-     */ }
     .cl-switch.ios .switcher {
       width: 45px;
       height: 24px;
@@ -383,4 +332,137 @@
     align-items: center;
     column-gap: 0.2vw;
     color: #b3b2b0;
+}
+
+.input-username-container > h1 {
+    font-size: 1.5vw;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.grid-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.grid-container {
+  margin: 3vw 0;
+  grid-gap: 2.5vw;
+  width: 65%;
+  height: fit-content;
+}
+
+.grid-left, .grid-right {
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-left {
+    row-gap: 0.6vw;
+}
+
+.grid-right {
+
+    row-gap: 1.5vw;
+}
+
+.container-input-file {
+    column-gap: 1vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-input-file > h2 {
+    font-size: 1.5vw;
+    font-weight: 600;
+    color: #fff;
+}
+
+.container-input-file > img {
+    width: 4.5vw;
+    height: 4.5vw;
+    border-radius: 50%;
+}
+
+.container-input-change-text-content {
+  row-gap: 1vw;
+}
+
+.container-input-change-text-content h1 {
+    font-size: 1.6vw;
+    font-weight: 600;
+    color: rgb(228, 214, 195);
+}
+
+.my-username-input {
+    border-radius: 0.5vw;
+    font-size: 1.7vw;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    background-color:  transparent;
+    color: #b3b2b0;
+}
+
+.my-username-input::placeholder {
+    color: #b3b2b0;
+
+}
+
+.my-username-input:focus {
+  color: #8d8a85;
+}
+
+input:not(.my-username-input), select, textarea{
+  width: 13vw;
+  background-color: #454545;
+  border: none;
+  height: 2vw;
+  min-height: 10px;
+  border-radius: 10px;
+  color: #E7D9AB;
+  text-align: center;
+}
+
+textarea {
+  height: 5vw;
+  min-height: 10px;
+  resize: none;
+}
+
+*::placeholder {
+  color: #E7D9AB;
+}
+
+input::placeholder {
+  color: #E7D9AB;
+}
+
+.optional {
+  column-gap: 0.4vw;
+  text-align: center;
+  margin-left: 1vw;
+}
+
+.optional > h1:first-child {
+    font-size: 1.5vw;
+    font-weight: 600;
+    color: #e0c284;
+}
+
+.optional > h1:last-child {
+    font-size: 1.1vw;
+    font-weight: 600;
+    color: #ffffff;
+}
+.container-input-change-text-content .optional {
+    margin-left: 3vw;
+    margin-bottom: 0;
 }

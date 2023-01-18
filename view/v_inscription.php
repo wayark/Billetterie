@@ -12,7 +12,7 @@
         <form class="signup-form" action="./" method="POST">
             <div class="input-username-container flex-row">
                 <h1>@</h1>
-                <input type="text" name="username" placeholder="Nom d'utilisateur.." oninput="changeInputTextCopy(this)" maxlength="25" required>
+                <input type="text" class="my-username-input"name="username" placeholder="Mon nom d'utilisateur .." oninput="changeInputTextCopy(this)" maxlength="25" required>
             </div>
             <div class="url-container flex-row">  
                 <img src="<?= PATH_IMAGES ;?>logos/yellowurl.png" alt=""> 
@@ -21,20 +21,45 @@
                     <h1 class="inputTextCopy"></h1>
                 </div>           
             </div>
-            <input type="file" name="photo" placeholder="Photo de profil">
-            <input type="phone" name="tel" placeholder="Numéro de téléphone">
-            <input type="number" name="age" placeholder="19" required max="130" min="13">
-            <input type="text" name="ville" placeholder="Ville" required>
-            <input type="number" name="postal-code" placeholder="69140" required>
-            <textarea name="description" placeholder="Ma description.." resizeable="false" style="resize: none;" maxlength="600"></textarea>
-            <!-- Input type oui ou non -->
-            <select name="account-type" id="user-type">
-                <option value="user" selected>Particulier</option>
-                <option value="admin">Organisateur</option>
-            </select>
-            <input type="hidden" name="shareMyEvents" id="shareMyEventsInput" value="false">
+            <div class="grid-container grid-row">
+                <div class="grid-left flex-column">
+                    <div class="container-input-change-text-content flex-column">
+                        <div class="title-image-profile">
+                            <div class="optional flex-row">
+                                <h1>*</h1>
+                                <h1>Facultatif</h1>
+                            </div>
+                            <h1 style="text-align:center;">Ma photo de profil :</h1> 
+                        </div>
+                        <div class="container-input-file flex-row">
+                            <img src="<?= PATH_IMAGES ;?>users/unnamed.jpg" alt="profile-picture" draggable="false">              
+                            <h2 style="cursor:pointer;color:white;">Choisir une image ..</h2>
+                        </div>
+                    </div>
+                    <input type="file" name="photo" placeholder="Photo de profil" style="opacity:0;position:absolute;z-index:-1;" class="input-file-signup">
+                    <div class="phone-input-container flex-column">
+                        <div class="optional flex-row">
+                            <h1>*</h1>
+                            <h1>Facultatif</h1>
+                        </div>
+                        <input type="phone" name="tel" placeholder="Mon téléphone ..">
+                    </div>
+                    <input type="number" name="age" placeholder="19" required max="130" min="13">
+                </div>
+                <div class="grid-right flex-column">
+                    <input type="text" name="ville" placeholder="Ma ville .." required>
+                    <input type="number" name="postal-code" placeholder="69140" required>
+                    <textarea name="description" placeholder="Ma description.." resizeable="false" style="resize: none;" maxlength="600"></textarea>
+                    <!-- Input type oui ou non -->
+                    <select name="account-type" id="user-type" required>
+                        <option value="user" selected>Particulier</option>
+                        <option value="admin">Organisateur</option>
+                    </select>
+                </div>
+            </div>
             <div class="share-input-container">
                 <div class="wants-to-share">
+                    <input type="hidden" name="shareMyEvents" id="shareMyEventsInput" value="false">
                     <p>Souhaitez-vous partager vos évènements publiquement ?</p>
                     <label class="cl-switch cl-switch-large">
                         <input type="checkbox" onclick="changeValueShareInput()">

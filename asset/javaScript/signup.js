@@ -121,8 +121,84 @@ const changeInputTextCopy = (element) => {
             text[index] = "%C5%92";
         } else if (char == "Æ") {
             text[index] = "%C3%86";
+        } else if (char == "§") {
+            text[index] = "%C2%A7";
+        } else if (char == "°") {
+            text[index] = "%C2%B0";
+        } else if (char == "€") {
+            text[index] = "%E2%82%AC";
+        } else if (char == "£") {
+            text[index] = "%C2%A3";
+        } else if (char == "¤") {
+            text[index] = "%C2%A4";
+        } else if (char == "¥") {
+            text[index] = "%C2%A5";
+        } else if (char == "µ") {
+            text[index] = "%C2%B5";
+        } else if (char == "¶") {
+            text[index] = "%C2%B6";
+        } else if (char == "•") {
+            text[index] = "%E2%80%A2";
+        } else if (char == "¶") {
+            text[index] = "%C2%B6";
+        } else if (char == "·") {
+            text[index] = "%C2%B7";
+        } else if (char == "¹") {
+            text[index] = "%C2%B9";
+        } else if (char == "²") {
+            text[index] = "%C2%B2";
+        } else if (char == "³") {
+            text[index] = "%C2%B3";
+        } else if (char == "¼") {
+            text[index] = "%C2%BC";
+        } else if (char == "½") {
+            text[index] = "%C2%BD";
+        } else if (char == "¾") {
+            text[index] = "%C2%BE";
+        } else if (char == "¿") {
+            text[index] = "%C2%BF";
+        } else if (char == "¡") {
+            text[index] = "%C2%A1";
+        } else if (char == "}") {
+            text[index] = "%7D";
+        } else if (char == "{") {
+            text[index] = "%7B";
+        } else if (char == "<") {
+            text[index] = "%3C";
+        } else if (char == ">") {
+            text[index] = "%3E";
+        } else if (char == "^") {
+            text[index] = "%5E";
+        } else if (char == "`") {
+            text[index] = "%60";
+        } else if (char == "|") {
+            text[index] = "%7C";
         }
     });
     text = text.join("");
     inputTextCopy.textContent = text;
 }
+
+const changeImage = () => {
+    // Lorsqu'on change l'image on change l'image du profil
+    inputImage.addEventListener('change', () => {
+        profileImage.src = URL.createObjectURL(inputImage.files[0]);
+        if (inputImage.files[0].size > 1000000) {
+            inputImage.value = "";
+            profileImage.src = "./asset/image/users/unnamed.jpg";
+            alert("L'image est trop lourde !");
+        }
+        if (inputImage.files.length > 0) {
+            chooseImage.textContent = "Changer mon image ..";
+        }
+    });
+}
+
+// Lorsqu'on clique sur le texte "Choisir une image" on simule un click sur l'input file
+var chooseImage = document.querySelector('.container-input-file > h2');
+var inputImage = document.querySelector('.input-file-signup');
+var profileImage = document.querySelector('.container-input-file > img');
+chooseImage.addEventListener('click', () => {
+    inputImage.click();
+    changeImage();
+});
