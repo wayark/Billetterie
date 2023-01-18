@@ -1,7 +1,4 @@
 <?php
-require_once PATH_DTO . 'EventDTO.php';
-require_once PATH_DAO . 'EventDAO.php';
-
 $eventDTO = new EventDTO;
 $eventDAO = new EventDAO;
 $date = date("Y-m-d H:i:s", time());

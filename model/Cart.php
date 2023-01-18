@@ -8,9 +8,10 @@ class Cart {
      */
     private array $inCartPricing;
 
-    public function __construct(int $userId) {
+    public function __construct(int $userId, array $inCartPricing = null) {
+        if ($inCartPricing == null) $inCartPricing = array();
         $this->userId = $userId;
-        $this->inCartPricing = array();
+        $this->inCartPricing = $inCartPricing;
     }
 
     public function getUserId(): int {

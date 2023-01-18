@@ -41,6 +41,7 @@ class SignUpConnectionStrategy implements ConnectionStrategy
             $user = new User($userDAO->getLastId() + 1, $lastname, $firstname, $email,
                 password_hash($password, PASSWORD_DEFAULT));
 
+            $user->setRole(new Role(1, 'User'));
 
             $userDTO->add($user);
 
@@ -50,8 +51,6 @@ class SignUpConnectionStrategy implements ConnectionStrategy
                 $tmp = new Cart($user->getId());
             }
             $_SESSION['cart'] = $tmp;
-
-            print_r($_SESSION);
 
             $this->resultDisplay['message'] = "Le compte a bien été créé";
             $this->resultDisplay['type'] = "success";
