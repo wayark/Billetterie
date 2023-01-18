@@ -1,5 +1,4 @@
 <?php
-if (session_id() == '') session_start();
 
 if(isset($_POST["addone"]) && isset($_POST["id"])){
     echo "Add One : ".$_POST["id"];

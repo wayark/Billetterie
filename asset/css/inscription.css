@@ -487,7 +487,7 @@ input::placeholder {
   text-align: center;
 }
 
-input:not(.my-username-input):not(.input-postal-code):not(.input-phone-number):not(.input-age), textarea{
+input:not(.my-username-input):not(.input-postal-code):not(.input-phone-number):not(.input-age):not(.name-input), textarea{
   width: 20vw;
 }
 
@@ -512,4 +512,14 @@ select {
 
 .input-desc {
   padding-top: 0.3vw;
+}
+
+.name-input-container > input {
+  width: 12vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.phone-input-container {
+  transform: translateY(-1.2vw);
 }

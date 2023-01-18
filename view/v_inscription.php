@@ -29,6 +29,20 @@
             </div>
             <div class="grid-container grid-row">
                 <div class="grid-left flex-column">
+                    <div class="name-input-container flex-column">
+                        <div class="optional flex-row">
+                            <h1>*</h1>
+                            <h1>Obligatoire</h1>
+                        </div>
+                        <input class="name-input" type="text" placeholder="Mon nom .." name="name" required/>
+                    </div>
+                    <div class="name-input-container flex-column">
+                        <div class="optional flex-row">
+                            <h1>*</h1>
+                            <h1>Obligatoire</h1>
+                        </div>
+                        <input class="name-input" type ="text" placeholder="Mon prénom .." name="first-name" required/>
+                    </div>
                     <div class="container-input-change-text-content flex-column">
                         <div class="title-image-profile">
                             <div class="optional flex-row">
@@ -42,6 +56,7 @@
                             <h2>Choisir une image ..</h2>
                         </div>
                     </div>
+                    
                     <input type="file" name="photo" placeholder="Photo de profil" style="opacity:0;position:absolute;z-index:-1;" class="input-file-signup">
                     <div class="phone-input-container flex-column">
                         <div class="optional flex-row">
@@ -51,15 +66,15 @@
                         <input type ="tel" name="tel"class="input-phone-number" pattern="[0-9]{10}" size="10" placeholder="Mon numéro .."minlength="10" maxlength="10" required/>
                         <h1 class="numformat">Format : 0707070707</h1>
                     </div>
-                    <div class="flex-column">
+                </div>
+                <div class="grid-right flex-column">
+                    <div class="flex-column age-input-container">
                         <div class="optional flex-row">
                             <h1>*</h1>
                             <h1>Obligatoire</h1>
                         </div>
                         <input type="number" class="input-age" name="age" placeholder="Mon âge .." required max="130" min="13">
                     </div>
-                </div>
-                <div class="grid-right flex-column">
                     <div class="flex-column">
                         <div class="optional flex-row">
                             <h1>*</h1>

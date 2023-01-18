@@ -15,8 +15,9 @@
     </a>
     <div class="header-right-button">
         <?php
-        if (session_id() == '') session_start();
         if (isset($_SESSION) and isset($_SESSION['user'])) {
+            $menu_initialiser = new MenuInitialiser();
+            $nbInteractions = $menu_initialiser->export();
               ?><a href="./?page=deconnection">
                     <button class="headerButton disconnectButton">
                         <img src="<?= PATH_IMAGES ?>logos/deconnection.png" alt="Deconnexion" class="deconnexion-img icon-img">
@@ -27,15 +28,15 @@
                         <img src="<?= PATH_IMAGES ?>logos/black-bell.png" alt="Notifications" class="notification-img icon-img">
                     </button>
                     <div class="circle-nb-notifications">
-                        <h2 class="nb-notifications-text">3</h2>
+                        <h2 class="nb-notifications-text"><?//= $nbInteractions["nbNotifications"];?></h2>
                     </div>
                 </a>
                 <a href="./?page=orders">
                     <button class="headerButton orderButton">
-                        <img src="<?= PATH_IMAGES ?>/logos/ticket.png" alt="order-icon" class="cart-img icon-img">
+                        <img src="<?= PATH_IMAGES ?>/logos/ticket.png" alt="order-icon" class="ticket-img icon-img">
                     </button>
                     <div class="circle-nb-notifications">
-                        <h2 class="nb-notifications-text">2</h2>
+                        <h2 class="nb-notifications-text"><?//= $nbInteractions["nbTickets"];?></h2>
                     </div>
                 </a>
                 <a href="./?page=cart" class="last-right-button">
@@ -43,7 +44,7 @@
                         <img src="<?= PATH_IMAGES ?>/logos/dark-cart.png" alt="cart-icon" class="cart-img icon-img">
                     </button>
                     <div class="circle-nb-notifications">
-                        <h2 class="nb-notifications-text">7</h2>
+                        <h2 class="nb-notifications-text"><?= $nbInteractions["nbCartItems"] ;?></h2>
                     </div>
                 </a>
     <?php } ?>

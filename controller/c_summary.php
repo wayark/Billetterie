@@ -1,7 +1,5 @@
 <?php 
 
-session_start();
-
 require_once PATH_MODELS . "QRCodeGenerator.php";
 
 require_once PATH_MODELS . "PDFGenerator.php";
@@ -25,8 +23,5 @@ if(isset($_POST['generate-pdf'])){
     }
 }
 
-require_once PATH_VIEWS . "summary.php"; 
-
-/* // Une fois qu'on a affiché le QRCode, on le supprime
-unlink($filepath); */
+require_once PATH_VIEWS . "summary.php";
 

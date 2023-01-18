@@ -1,7 +1,5 @@
 <?php
 
-if (session_id() == '') session_start();
-
 if (!isset($_SESSION['user'])) {
     require_once PATH_VIEWS . '404.php';
 } else if(!isset($_GET["part"]) || $_GET["part"]=="account"){

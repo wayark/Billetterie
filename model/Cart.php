@@ -44,4 +44,8 @@ class Cart {
     {
         return $this->inCartPricing;
     }
+
+    public function getNbItems(){
+        return count($this->inCartPricing);
+    }
 }

@@ -2,7 +2,6 @@
 /**
  * @var $_SESSION array{user: User, cart: Cart}
  */
-session_start();
 
 if (!isset($_GET['event']) || $_GET['event'] == "") {
     require_once PATH_VIEWS . "404.php";
