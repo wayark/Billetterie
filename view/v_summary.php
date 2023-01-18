@@ -1,6 +1,7 @@
 <?php require_once PATH_VIEWS . 'header.php'; ?>
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ;?>/summary.css">
+    <link rel="stylesheet" href="<?= PATH_MEDIA ;?>Summary.css">
     <title>Récapitulatif de votre achat</title>
 </head>
 <section class="main-container">
