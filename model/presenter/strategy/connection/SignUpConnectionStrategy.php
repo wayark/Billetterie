@@ -52,8 +52,6 @@ class SignUpConnectionStrategy implements ConnectionStrategy
             }
             $_SESSION['cart'] = $tmp;
 
-            print_r($_SESSION);
-
             $this->resultDisplay['message'] = "Le compte a bien été créé";
             $this->resultDisplay['type'] = "success";
 

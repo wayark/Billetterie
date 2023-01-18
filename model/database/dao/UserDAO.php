@@ -12,6 +12,7 @@ class UserDAO extends DAO
      * @param $email string The email of the user to retrieve.
      * @param $raw_pass string The hashed password of the user to retrieve.
      * @return ?User Returns the user, null otherwise.
+     * @throws WrongPasswordException
      */
     public function getUserByEmail(string $email, string $raw_pass) : ?User
     {
@@ -47,6 +48,9 @@ class UserDAO extends DAO
         }
     }
 
+    /**
+     * @throws WrongPasswordException
+     */
     private function processRow(array $user, string $raw_pass = null) : ?User {
         if (!$user) return null;
 
@@ -55,7 +59,7 @@ class UserDAO extends DAO
             $user['HASHED_PASSWORD'], $user['DATE_OF_BIRTH'], $user['USER_ADDRESS']);
 
         if (!is_null($raw_pass)) {
-            if (!password_verify($raw_pass, $tmp->getPassword())) return null;
+            if (!password_verify($raw_pass, $tmp->getPassword())) throw new WrongPasswordException();
         }
 
         $tmp->setFavoriteMethod(new PaymentMethod($user['ID_PAYMENT_METHOD'], $user['PAYMENT_METHOD_NAME']));
