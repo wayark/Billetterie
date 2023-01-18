@@ -44,17 +44,46 @@
                         </div>
                         <input type="phone" name="tel" placeholder="Mon téléphone ..">
                     </div>
-                    <input type="number" name="age" placeholder="19" required max="130" min="13">
+                    <div class="flex-column">
+                        <div class="optional flex-row">
+                            <h1>*</h1>
+                            <h1>Obligatoire</h1>
+                        </div>
+                        <input type="number" name="age" placeholder="19" required max="130" min="13">
+                    </div>
                 </div>
                 <div class="grid-right flex-column">
-                    <input type="text" name="ville" placeholder="Ma ville .." required>
-                    <input type="number" name="postal-code" placeholder="69140" required>
-                    <textarea name="description" placeholder="Ma description.." resizeable="false" style="resize: none;" maxlength="600"></textarea>
-                    <!-- Input type oui ou non -->
-                    <select name="account-type" id="user-type" required>
-                        <option value="user" selected>Particulier</option>
-                        <option value="admin">Organisateur</option>
-                    </select>
+                    <div class="flex-column">
+                        <div class="optional flex-row">
+                            <h1>*</h1>
+                            <h1>Obligatoire</h1>
+                        </div>
+                        <input type="text" name="ville" placeholder="Ma ville .." required>
+                    </div>
+                    <div class="flex-column">
+                        <div class="optional flex-row">
+                            <h1>*</h1>
+                            <h1>Obligatoire</h1>
+                        </div>
+                        <input type="number" name="postal-code" placeholder="69140" required>
+                    </div>
+                    <div class="flex-column">
+                        <div class="optional flex-row">
+                            <h1>*</h1>
+                            <h1>Facultatif</h1>
+                        </div>
+                        <textarea name="description" placeholder="Ma description.." resizeable="false" style="resize: none;" maxlength="600"></textarea>
+                    </div>
+                    <div class="flex-column">
+                        <div class="optional flex-row">
+                            <h1>*</h1>
+                            <h1>Obligatoire</h1>
+                        </div>
+                        <select name="account-type" id="user-type" required>
+                            <option value="user" selected>Particulier</option>
+                            <option value="admin">Organisateur</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="share-input-container">
