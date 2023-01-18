@@ -41,6 +41,7 @@ class SignUpConnectionStrategy implements ConnectionStrategy
             $user = new User($userDAO->getLastId() + 1, $lastname, $firstname, $email,
                 password_hash($password, PASSWORD_DEFAULT));
 
+            $user->setRole(new Role(1, 'User'));
 
             $userDTO->add($user);
 
