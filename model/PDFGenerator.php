@@ -4,11 +4,15 @@ require_once PATH_APPLICATION . '/fpdf/vendor/autoload.php';
 use Fpdf\Fpdf;
 class PDFGenerator extends FPDF {
 
+    private $qrcodefilepath;
+
     private $orientation;
     private $size;
     private $unit;
 
-    function __construct() {
+    function __construct(string $qrcodefilepath) {
+        $this->qrcodefilepath = $qrcodefilepath;
+
         // Paramètres de la page de base
         $this->orientation = 'P';
         $this->size = 'A4';
@@ -42,7 +46,7 @@ class PDFGenerator extends FPDF {
 
     function bodyRight() {
         // Mettre une image à droite en bas du titre
-        $this->Image(PATH_IMAGES . "qrcodes/qrcode-user2--277622.png", 120, 25, 85, 90);
+        $this->Image($this->qrcodefilepath, 120, 25, 85, 90);
 
         // Placer le texte en dessous de l'image
         $initialY = 120;
@@ -91,13 +95,13 @@ class PDFGenerator extends FPDF {
         $this->SetY(25);
         $this->SetX(10);
         $this->SetLineWidth(4.5);
-        $this->Rect(5, 28, 104, 193, 10, 'D');
+        $this->Rect(5, 28.25, 104, 193, 10, 'D');
 
         // Image waticket 
         $this->Image(PATH_IMAGES . "/logos/logoWatiGold.png", 17, 32, 80, 30);
 
         $informations = [
-            [["1", 0], ["place pour ", 5], ["Damso - Concert", 30]],
+            [["1", 0], ["place pour ", 5], ["- Damso - Concert", 0]],
             [["Nom : ", 0], ["Dupont", 15]],
             [["Prenom : ", 0], ["Jean", 21]],
             [["Lieu : ", 0], ["Transbordeur", 14]],
@@ -109,25 +113,33 @@ class PDFGenerator extends FPDF {
             [["Vous avez choisi :"], ["- Fosse"]]
         ];
 
-        $j = 0;
-        $initialY = 70;
+        $initialY = 67;
         $initialX = 12;
         $gap = 13;
-
+        $margin = 5;
+        
+        $j = 0;
         foreach ($informations as $info) {
             $sizeTab = count($informations);
             if ($j == 0) {
                 $i = 0;
                 $this->SetY($initialY);
                 foreach ($info as $newtext) {
-                    if($i == 0 || $i == 2) {
-                    $this->SetFont('Arial', 'B', 14);
-                    $this->SetTextColor(154, 105, 105);
-                    } else {
+                    if($i == 0) {
+                        $this->SetX($initialX);
+                        $this->SetFont('Arial', 'B', 14);
+                        $this->SetTextColor(154, 105, 105);
+                    } else if($i == 1) {
                         $this->SetFont('Arial', '', 14);
+                        $this->SetX($initialX + $newtext[1]);
                         $this->SetTextColor(0, 0, 0);
+                    } else {
+                        $initialY += $gap;
+                        $this->SetY($initialY);
+                        $this->setX($initialX + $margin);
+                        $this->SetFont('Arial', 'B', 14);
+                        $this->SetTextColor(154, 105, 105);
                     }
-                    $this->setX($initialX + $newtext[1]);
                     $this->Cell(0, 0, $newtext[0], 0, 1, 'L');
                     $i++;
                 }
@@ -157,6 +169,7 @@ class PDFGenerator extends FPDF {
                 $this->Cell(0, 0, $info[0][0], 0, 1, 'L');
 
                 $this->SetY($initialY + ($gap * $j) + $gap);
+                $this->SetX($initialX + $margin);
                 $this->SetFont('Arial', 'B', 14);
                 $this->SetTextColor(154, 105, 105);
                 $this->Cell(0, 0, $info[1][0], 0, 1, 'L');
@@ -168,16 +181,31 @@ class PDFGenerator extends FPDF {
     function footer() {
         $this->SetY(275);
 
-        $this->SetFont('Arial', '', 15);
+        $this->SetFont('Arial', 'I', 13);
         $this->SetTextColor(0, 0, 0);
         $this->Cell(0, 0, "Merci pour votre confiance.", 0, 1, 'R');
 
-        $this->SetFont('Arial', 'BI', 14);
+        $this->SetFont('Arial', 'B', 14);
         $this->SetTextColor(208, 186, 169);
         $this->Cell(0, 0, "Waticket.com", 0, 1, 'L');
     }
 
     function savePDF() {
         $this->Output('F', PATH_ASSETS . "ticket/ticket.pdf");
+        $this->removeQRCode();
+    }
+
+    function downloadPDF() {
+        $this->Output("D", "ticket.pdf");
+        $this->removeQRCode();
+    }
+
+    function showPDF() {
+        $this->Output("I", "ticket.pdf");
+        $this->removeQRCode();
+    }
+
+    function removeQRCode() {
+        unlink($this->qrcodefilepath);
     }
 }
