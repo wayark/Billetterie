@@ -97,17 +97,72 @@ class PDFGenerator extends FPDF {
         $this->Image(PATH_IMAGES . "/logos/logoWatiGold.png", 17, 32, 80, 30);
 
         $informations = [
-            [1, "place pour ", "Damso - Concert"],
-            ["Lieu : ", "Transbordeur"],
-            ["Ville : ", "Lyon"],
-            ["Adresse : ", "6 rue de la République"],
-            ["Date : ", "12/12/2019"],
-            ["Heure : ", "21h30"],
-            ["Prix unité :", "20€"],
-            ["Vous avez choisi :", "Fosse"]
+            [["1", 0], ["place pour ", 5], ["Damso - Concert", 30]],
+            [["Nom : ", 0], ["Dupont", 15]],
+            [["Prenom : ", 0], ["Jean", 21]],
+            [["Lieu : ", 0], ["Transbordeur", 14]],
+            [["Ville : ", 0], ["Lyon", 14]],
+            [["Adresse : ", 0], ["6 rue de la Republique", 22]],
+            [["Date : ", 0], ["12/12/2019", 14]],
+            [["Heure : ", 0], ["21h30", 18]],
+            [["Prix unite :", 0], ["20 euros", 26]],
+            [["Vous avez choisi :"], ["- Fosse"]]
         ];
 
-        
+        $j = 0;
+        $initialY = 70;
+        $initialX = 12;
+        $gap = 13;
+
+        foreach ($informations as $info) {
+            $sizeTab = count($informations);
+            if ($j == 0) {
+                $i = 0;
+                $this->SetY($initialY);
+                foreach ($info as $newtext) {
+                    if($i == 0 || $i == 2) {
+                    $this->SetFont('Arial', 'B', 14);
+                    $this->SetTextColor(154, 105, 105);
+                    } else {
+                        $this->SetFont('Arial', '', 14);
+                        $this->SetTextColor(0, 0, 0);
+                    }
+                    $this->setX($initialX + $newtext[1]);
+                    $this->Cell(0, 0, $newtext[0], 0, 1, 'L');
+                    $i++;
+                }
+            } else if($j != $sizeTab - 1) {
+                $this->SetY($initialY + ($gap * $j));
+                $i = 0;
+                foreach ($info as $newtext) {
+                    if($i == 1) {
+                        $this->SetFont('Arial', 'B', 14);
+                        $this->SetTextColor(154, 105, 105);
+                    } else {
+                        $this->SetFont('Arial', '', 14);
+                        $this->SetTextColor(0, 0, 0);
+                    }
+                    $this->setX($initialX + $newtext[1]);
+                    $this->Cell(0, 0, $newtext[0], 0, 1, 'L');
+                    $i++;
+                }
+            } else {
+                $this->SetY($initialY + (13 * $j));
+                $i = 0;
+
+                // On ecrit la derniere case du tableau
+                $this->setX($initialX);
+                $this->SetFont('Arial', '', 14);
+                $this->SetTextColor(0, 0, 0);
+                $this->Cell(0, 0, $info[0][0], 0, 1, 'L');
+
+                $this->SetY($initialY + ($gap * $j) + $gap);
+                $this->SetFont('Arial', 'B', 14);
+                $this->SetTextColor(154, 105, 105);
+                $this->Cell(0, 0, $info[1][0], 0, 1, 'L');
+            }
+            $j++;
+        }
     }
 
     function footer() {
