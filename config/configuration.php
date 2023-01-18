@@ -19,5 +19,6 @@ define('PATH_DAO', PATH_MODELS . 'database/dao/');
 define('PATH_DTO', PATH_MODELS . 'database/dto/');
 
 define('PATH_CSS', PATH_ASSETS . 'css/');
+define('PATH_MEDIA', PATH_CSS . 'media/media');
 define('PATH_IMAGES', PATH_ASSETS . 'image/');
 define('PATH_SCRIPTS', PATH_ASSETS . 'javascript/');

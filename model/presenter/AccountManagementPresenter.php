@@ -107,6 +107,7 @@ class AccountManagementPresenter extends Presenter
     }
 
     public function getDataInJSON(){
+        $cart = $_SESSION["cart"];
         $data['user'] = array(
             'picturePath' => $this->currentUser->getProfilePicture()->getPicturePath(),
             'pictureDescription' => $this->currentUser->getProfilePicture()->getPictureDescription(),
@@ -117,7 +118,11 @@ class AccountManagementPresenter extends Presenter
             'birthDate' => DateDisplayService::formatDate($this->currentUser->getBirthDate()),
             'address' => $this->currentUser->getAddress(),
             'pictureFileName' => substr($this->currentUser->getProfilePicture()->getPicturePath(), strlen(PATH_IMAGES . 'users/')),
-            'favoritePaymentMethod' => $this->currentUser->getFavoriteMethod()->getPaymentMethodName()
+            'favoritePaymentMethod' => $this->currentUser->getFavoriteMethod()->getPaymentMethodName(),
+            'role' => $this->currentUser->getRole()->__toString(),
+            'nb-items-cart' => $cart->getNbItems(),
+            'total-price-cart' => $cart->getTotalPrice(),
+
         );
         $path_file = PATH_ASSETS . "data/data-" . $this->currentUser->getMail() . ".json";
         $file_name = basename($path_file);

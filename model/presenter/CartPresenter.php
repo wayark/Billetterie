@@ -57,10 +57,10 @@ class CartPresenter extends Presenter
             $display['items'] .= '<form action="./?page=cart" method="post">';
             $display['items'] .= '<input type="hidden" name="id" value="' . $infos['pricing']->getIdTicketPricing() . '">';
             $display['items'] .= '<input type="hidden" name="rmone" value="rm">';
-            $display['items'] .= '<button class="onemoreless" type="submit" class="quantity-button" id="oneless">-</button>';
+            $display['items'] .= '<button class="onemoreless oneless" type="submit" class="quantity-button">-</button>';
             $display['items'] .= '</form>';
             $display['items'] .= '<form action="./?page=cart" method="post">';
-            $display['items'] .= '<select name="quantity" id="quantity-select" onchange="displayInput(this)">';
+            $display['items'] .= '<select name="quantity" class="quantity-select" onchange="displayInput(this)">';
             $display['items'] .= '<option value="0">0 (Supprimer)</option>';
             if ($quantity <= 10) {
                 $display['items'] .= '<option value="1"' . $this->echoSelected(1, $quantity)[0] . '>1</option>';
@@ -91,7 +91,7 @@ class CartPresenter extends Presenter
             $display['items'] .= '<form action="./?page=cart" method="post">';
             $display['items'] .= '<input type="hidden" name="id" value="' . $infos['pricing']->getIdTicketPricing() . '">';
             $display['items'] .= '<input type="hidden" name="addone" value="add">';
-            $display['items'] .= '<button class="onemoreless" type="submit" class="quantity-button" id="onemore">+</button>';
+            $display['items'] .= '<button class="onemoreless onemore" type="submit" class="quantity-button">+</button>';
             $display['items'] .= '</form>';
             $display['items'] .= '</div>';
             $display['items'] .= '<form action="./?page=cart" method="post" class="form-10more">';

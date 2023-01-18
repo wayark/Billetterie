@@ -12,6 +12,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     require_once(PATH_VIEWS . 'accountManagement.php');
+    
 } else if ($_GET["part"]=="profile") {
     require_once PATH_VIEWS . 'profileManager.php';
 } else {

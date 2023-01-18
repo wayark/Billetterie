@@ -163,6 +163,10 @@ nav>div:hover{
     cursor: pointer;
 }
 
+.accountButton img {
+    display: none;
+}
+
 /*----------------footer--------------*/
 footer{
     margin-top: 4vw;

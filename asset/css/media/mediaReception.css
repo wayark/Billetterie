@@ -1,0 +1,95 @@
+@media screen and (max-width : 800px) {
+
+    .eventtext-container {
+        margin-left: 2vh;
+    }
+
+    @media screen and (max-width: 425px) {
+        .t2 {
+            font-size: 2.5vh;
+        }
+
+        .t2 > div:first-child{
+            width: 17vh;
+            height: 12vh;
+        }
+
+        .t2 > div:last-child{
+            width: 17vh;
+            margin-top: 12vh;
+        }
+
+        .t2 > div:last-child p {
+            font-size: 1.5vh;
+        }
+
+        .t2 {
+            display: flex;
+
+        }
+
+        #eventsimages {
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+        }
+
+        .moveCarousel {
+            width: 2.8vh;
+            height: 5vh;
+        }
+
+        .moveCarousel div {
+            width: 2.8vh;
+            height: 2.8vh;
+        }
+
+        .t1 div:first-child, .t3 div:first-child {
+            width: 10vh;
+            height: 7vh;
+        }
+
+        #titlepage p{
+            font-size:1.6vh;
+        }
+
+        #titlepage {
+            height: 3vh;
+        }
+
+        #searchconcert, #searchbutton{
+            height: 3.5vh;
+        }
+
+        #searchbutton{
+            width: 7vh;
+        }
+
+        #searchbutton img{
+            width: 2.5vh;
+            height: 2.5vh;
+        }
+
+        #searchconcert > input[type="text"]{
+            font-size: 1.7vh;
+        }
+
+        #point {
+            width: 2.5vh;
+            height: 2vh;
+        }
+
+        #point div {
+            width: 0.7vh;
+            height: 0.7vh;
+        }
+
+        #events-container {
+            margin-top: 3vh;
+            margin-bottom: 2vh;
+        }
+
+        .eventtext-container{
+            margin-left: 2vh;
+        }
+    }
+}

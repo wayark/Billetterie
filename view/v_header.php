@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= PATH_CSS ?>style.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>Header.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>Footer.css" rel="stylesheet">
 </head>
 
 <body>
@@ -50,7 +52,10 @@
     <?php } ?>
         <a href="./?page=connection">
             <?php if(!isset($_SESSION['user'])) $title = "Se connecter"; else $title = "Mon compte"; ?>
-            <button class="headerButton accountButton"><?= $title ?></button>
+            <button class="headerButton accountButton">
+                <?= "<p>" . $title . "</p>"?>
+                <img src="<?= PATH_IMAGES ?>/logos/myaccount.png" alt="account-icon" class="account-img icon-img">
+            </button>
         </a>
     </div>
 </header>

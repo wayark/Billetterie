@@ -26,6 +26,7 @@
 <head>
     <link href="<?= PATH_CSS ?>accountManagement.css" rel="stylesheet">
     <link href="<?= PATH_CSS ?>menuProfileAndAccountManagement.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>AccountManagement.css" rel="stylesheet">
     <script src="<?= PATH_SCRIPTS ?>menuProfileAccountManagement.js"></script>
     <title>Mon compte</title>
 </head>
@@ -61,6 +62,9 @@
             </div>
             <div id="coteD">
                 <form action="./index.php?page=accountManagement" method="POST" enctype="multipart/form-data">
+                    <div class="container-left">
+                        
+                    </div>
                     <label for="prenomE">Prénom</label>
                     <div>
                         <p id="prenomA"><?= $display['user']['firstName'] ?></p>
@@ -106,6 +110,9 @@
                         <select id="paymentMethodE" name="paymentMethod1">
                             <?= $display['paymentMethods'] ?>
                         </select>
+                    </div>
+                    <div class="container-right">
+
                     </div>
 
                     <button name="submit" type="submit" class="styleButton" id="submit" style="display: none">

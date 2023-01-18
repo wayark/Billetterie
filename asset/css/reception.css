@@ -92,14 +92,6 @@ body{
     border-radius: 1vw;
 }
 
-.eventtext-container{
-    padding-top: 0;
-    margin-left: 45px;
-    display : grid;
-    /* La premiere grille prend 90% de la largeur du container la deuxieme 10% */
-    grid-template-columns: 40vw 20vw;
-}
-
 .eventtitle{
     font-size: 3vw;
     font-weight: bold;

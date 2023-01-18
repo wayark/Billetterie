@@ -7,6 +7,7 @@ class Cart {
      * @var array<int, int>
      */
     private array $inCartPricing;
+    private int $totalPrice = 0;
 
     public function __construct(int $userId) {
         $this->userId = $userId;
@@ -47,5 +48,10 @@ class Cart {
 
     public function getNbItems(){
         return count($this->inCartPricing);
+    }
+
+    public function getTotalPrice(): int
+    {
+        return $this->totalPrice;
     }
 }

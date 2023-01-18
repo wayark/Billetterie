@@ -86,12 +86,12 @@ h1, label, p {
 }
 
 h1 {
-    font-size: xx-large;
+    font-size: 2.7vw;
     margin-bottom: 4%;
 }
 
-label {
-    font-size: larger;
+label, p {
+    font-size: 1.8vw;
 }
 
 
@@ -110,6 +110,10 @@ button.styleButton {
 
 #sides-container {
     display: flex;
+}
+
+button {
+    font-size: 1.5vw;
 }
 
 div#actionButtons {
