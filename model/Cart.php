@@ -26,7 +26,7 @@ class Cart {
             return true;
         } else {
             $this->inCartPricing[$pricingId] = $quantity;
-            return true;
+            return false;
         }
     }
 
