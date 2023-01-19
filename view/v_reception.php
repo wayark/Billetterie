@@ -44,7 +44,7 @@ require_once PATH_VIEWS . 'header.php';
             <div></div>
         </div>
         <input type="text" placeholder="Rechercher un concert..." name="search" required>
-        <button type="submit" id="searchbutton">
+        <button type="submit" id="searchbutton" name="submit">
             <img src="<?php echo PATH_IMAGES . 'useful/glass.png';?>" alt="">
         </button>
     </form>

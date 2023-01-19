@@ -6,8 +6,7 @@ class ReceptionPresenter extends Presenter
      * @var array<Event>
      */
     private array $events;
-    private ?array $error = null;
-    private array $remainingTickets;
+    private ReceptionStrategy $strategy;
 
     /**
      * @inheritDoc
@@ -17,32 +16,18 @@ class ReceptionPresenter extends Presenter
         parent::__construct($get, $post);
     }
 
+    /**
+     * @throws Exception
+     */
     protected function checkProcess(): void
     {
-        try {
-            $eventDAO = new EventDAO();
-
-            $this->events = $eventDAO->getAll();
-            $this->remainingTickets = array();
-            foreach ($this->events as $event) {
-                $this->remainingTickets[$event->getIdEvent()] = NumberOfTicketsService::getTotalNumberOfRemainingTickets($event);
-            }
-
-        } catch (Error $e) {
-            $this->error = array(
-                "message" => "Une erreur est survenue lors de la récupération des événements",
-                "type" => "error",
-                "trace" => $e->getTraceAsString(),
-                "events" => ""
-            );
-        } catch (Exception $e) {
-            $this->error = array(
-                "message" => "Une erreur est survenue lors de la récupération des événements",
-                "type" => "error",
-                "trace" => $e->getTraceAsString(),
-                "events" => ""
-            );
+        if (isset($this->get['submit'])) {
+            $this->strategy = new SearchReceptionStrategy($this->get);
+        } else {
+            $this->strategy = new DefaultReceptionStrategy();
         }
+
+        $this->events = $this->strategy->filterEvents();
     }
 
     /**
@@ -50,9 +35,6 @@ class ReceptionPresenter extends Presenter
      */
     public function formatDisplay(): array
     {
-        print_r($this->error);
-        if (!is_null($this->error)) return $this->error;
-
         $display = array();
         $displayString = "";
         for ($i = 0; $i < count($this->events) && $i <= 5; $i++) {
