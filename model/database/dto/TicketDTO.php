@@ -2,12 +2,18 @@
 
 class TicketDTO extends DTO implements IObjectDTO {
 
+    /**
+     * @param Ticket $object
+     * @return void
+     * @throws UserAlreadyInBaseException
+     */
     public function add($object): void
     {
-        $fields = ["ID_EVENT", "ID_USER", "IS_PIT", "QUANTITY"];
-        $values = [$object->getIdEvent(), $object->getIdUser(), $object->getIsPit(), $object->getQuantity()];
+        $fields = ["ID_TICKET", "ID_EVENT", "ID_PAYMENT_METHOD", "ID_TICKET_PRICING", "ID_USER", "TICKET_NUMBER"];
+        $values = [$object->getIdTicket(), $object->getEvent()->getIdEvent(), $object->getPaymentMethod()->getIdPaymentMethod(),
+            $object->getTicketPricing()->getIdTicketPricing(), $object->getOwner()->getId(), $object->getCode()];
         try {
-            $this->insertQuery('Cart', $fields, $values);
+            $this->insertQuery('Ticket', $fields, $values);
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) {
                 throw new UserAlreadyInBaseException($e->getMessage());

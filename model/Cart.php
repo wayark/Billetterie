@@ -35,6 +35,9 @@ class Cart {
     {
         if (array_key_exists($pricingId,$this->inCartPricing)) {
             $this->inCartPricing[$pricingId] -= $quantity;
+            if ($this->inCartPricing[$pricingId] <= 0) {
+                unset($this->inCartPricing[$pricingId]);
+            }
         }
     }
 
