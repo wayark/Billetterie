@@ -135,6 +135,11 @@ nav > div{
     padding-left: 2vw;
     padding-right: 2vw;;
 }
+
+nav > div > a {
+    color: #E7D9AB;
+    text-decoration: none;
+}
 nav>div:hover{
     background-color: #555555;
 }

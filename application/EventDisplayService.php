@@ -7,7 +7,7 @@ class EventDisplayService
         $picture = $event->getEventInfo()->getPicture();
         $place = $event->getEventPlace();
         $ans = "";
-        $ans .= '<div class="event">';
+        $ans .= '<div class="events">';
         $ans .= '<div class="eventimg"><a href="?page=event&event=' . $event->getIdEvent() . '"><img src="' . $picture->getPicturePath() .
             '." alt="' . $picture->getPictureDescription() . '"></a></div>';
         $ans .= '<div class="eventtext-container">';

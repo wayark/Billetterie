@@ -64,7 +64,7 @@ class EventPresenter extends Presenter
 
         if ($event->getIdEvent() == $id) {
             $event = $this->eventToDisplay;
-            $displayString .= '<div class=event>';
+            $displayString .= '<div class=events>';
             $displayString .= '<div class=eventimg>';
             $displayString .= '<a href="?page=event&event=' . $event->getIdEvent() . '">';
             $displayString .= '<img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" draggable="false">';

@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="<?= PATH_CSS ;?>userEvents.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>userCommentsEventsCommon.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>menuProfileAndAccountManagement.css">
-    <link rel="stylesheet" href="<?= PATH_CSS ;?>MenuProfileAndAccountManagementCommon.css">
+    <link rel="stylesheet" href="<?= PATH_MEDIA ;?>MenuProfileAndAccountManagement.css">
     <link rel="stylesheet" href="<?= PATH_MEDIA ;?>UserEvents.css">
     <script src="<?= PATH_SCRIPTS ;?>menuProfileAccountManagement.js" defer></script>
     <script src="<?= PATH_SCRIPTS ;?>events.js" defer></script>

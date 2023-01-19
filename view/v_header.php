@@ -61,12 +61,12 @@
 </header>
 <nav>
     <div class="concert-nav">
-        <p>Accueil</p>
+        <a href="./">Accueil</a>
     </div>
     <div class="search-nav">
-        <a href="./index.php?page=search">Recherche</a>
+        <a href="./?page=search">Recherche</a>
     </div>
     <div class="contact-nav">
-        <a href="./index.php?page=contact">Contact</a>
+        <a href="./?page=contact">Contact</a>
     </div>
 </nav>
