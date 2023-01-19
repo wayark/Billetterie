@@ -3,21 +3,27 @@ const moveCarousel = (button) => {
     if(canClick){
         let tendancies = document.querySelectorAll('.tendancies div:first-child');
         let tendanciesContainer = document.querySelectorAll('.tendancies');
-        
+        let tendanciesText = new Array();
+
+        tendanciesContainer.forEach((tendancy) => {
+            tendanciesText.push(tendancy.querySelector('div:last-child p').innerText);
+        });
+
         if (button.id.includes('Left')) {
+
             let tmp = tendancies[0].cloneNode(true);
             let tmpContainer = tendanciesContainer[0].cloneNode(true);
 
             tendancies[0].style.backgroundImage = tendancies[1].style.backgroundImage;
             tendanciesContainer[0].href = tendanciesContainer[1].href;
-            console.log(tendancies[0].parentNode.querySelector("div:last-child p"));
-            tendancies[0].parentNode.querySelector("div:last-child p").innerText = tendancies[1].parentNode.querySelector("div:last-child p").innerText;
+            tendanciesContainer[0].querySelector('div:last-child p').innerText = tendanciesText[1];
             tendancies[1].style.backgroundImage = tendancies[2].style.backgroundImage;
             tendanciesContainer[1].href = tendanciesContainer[2].href;
-            tendancies[1].parentNode.querySelector("div:last-child p").innerText = tendancies[2].parentNode.querySelector("div:last-child p").innerText;
+            tendanciesContainer[1].querySelector('div:last-child p').innerText = tendanciesText[2];
             tendancies[2].style.backgroundImage = tmp.style.backgroundImage;
             tendanciesContainer[2].href = tmpContainer.href;
-            tendancies[2].parentNode.querySelector("div:last-child p").innerText = tmp.parentNode.querySelector("div:last-child p").innerText;
+            tendanciesContainer[2].querySelector('div:last-child p').innerText = tendanciesText[0];
+            
 
         } else {
 
@@ -26,21 +32,18 @@ const moveCarousel = (button) => {
 
             tendancies[2].style.backgroundImage = tendancies[1].style.backgroundImage;
             tendanciesContainer[2].href = tendanciesContainer[1].href;
-
-            console.log(tendancies[2].parentNode.querySelector("div:last-child p"));
-            console.log(tendancies[1].parentNode.querySelector("div:last-child p"));
-            tendancies[2].parentNode.querySelector("div:last-child p").innerText = tendancies[1].parentNode.querySelector("div:last-child p").innerText;
+            tendanciesContainer[2].querySelector('div:last-child p').innerText = tendanciesText[1];
             tendancies[1].style.backgroundImage = tendancies[0].style.backgroundImage;
             tendanciesContainer[1].href = tendanciesContainer[0].href;
-            tendancies[1].parentNode.querySelector("div:last-child p").innerText = tendancies[0].parentNode.querySelector("div:last-child p").innerText;
+            tendanciesContainer[1].querySelector('div:last-child p').innerText = tendanciesText[0];
             tendancies[0].style.backgroundImage = tmp.style.backgroundImage;
             tendanciesContainer[0].href = tmpContainer.href;
-            tendancies[0].parentNode.querySelector("div:last-child p").innerText = tmp.parentNode.querySelector("div:last-child p").innerText;
+            tendanciesContainer[0].querySelector('div:last-child p').innerText = tendanciesText[2];
         }
         canClick = false;
         setTimeout(() => {
             canClick = true;
-        }, 1000);
+        }, 1200);
     }
 }
 
