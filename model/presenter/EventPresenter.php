@@ -95,7 +95,7 @@ class EventPresenter extends Presenter
         foreach ($pricings->getPricingList() as $pricing) {
             $displayString .= "<p>" . $pricing->getName() . " : " . $pricing->getPrice() . "€ - " .
                 NumberOfTicketsService::getNumberOfRemainingTicketsForPricing($pricing) .
-                " / " . NumberOfTicketsService::getNumberOfRemainingTicketsForPricing($pricing) . " places restantes</p>";
+                " / " . $pricing->getMaxQuantity() . " places restantes</p>";
         }
         return $displayString;
     }

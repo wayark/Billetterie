@@ -30,7 +30,7 @@
     width: 100%;
 }
 
-input, #Artist-select, textarea {
+input, #Artist-select, textarea, select {
     background-color: #454545;
     border: none;
     height: 2vw;

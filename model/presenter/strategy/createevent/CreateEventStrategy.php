@@ -1,4 +1,5 @@
 <?php
-interface CreateEventStrategy {
-    public function createEvent($event);
+interface CreateEventStrategy
+{
+    public function handle(array $post): array;
 }

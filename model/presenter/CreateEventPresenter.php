@@ -4,7 +4,7 @@
 class CreateEventPresenter extends Presenter
 {
 
-    private ConnectionStrategy $state;
+    private CreateEventStrategy $strategy;
     private array $display;
 
     public function __construct($get, $post)
@@ -17,17 +17,13 @@ class CreateEventPresenter extends Presenter
      */
     protected function checkProcess(): void
     {
-        /*
-        if (isset($_POST['createevent'])) {
-            $this->state = new MakeCreateEventStrategy();
+        if (isset($this->post['createevent'])) {
+            $this->strategy = new MakeCreateEventStrategy();
         } else {
-            $this->state = new DefaultCreateEventStrategy();
-            echo "EwE";
+            $this->strategy = new DefaultCreateEventStrategy();
         }
-        
 
-        $this->display = $this->state->handle($this->post);
-        */
+        $this->display = $this->strategy->handle($this->post);
     }
 
 
@@ -36,7 +32,20 @@ class CreateEventPresenter extends Presenter
      */
     public function formatDisplay(): array
     {
-        $this->display = array();
-        return $this->display;
+        $display = array();
+        $display['event-types'] = $this->generateHTMLEventType();
+        return $display;
+    }
+
+    private function generateHTMLEventType() : string
+    {
+        $eventTypeDAO = new EventTypeDAO();
+        $eventTypes = $eventTypeDAO->getAll();
+        $ans = "";
+
+        foreach ($eventTypes as $eventType) {
+            $ans .= "<option value='" . $eventType->getId() . "'>" . $eventType->getName() . "</option>";
+        }
+        return $ans;
     }
 }

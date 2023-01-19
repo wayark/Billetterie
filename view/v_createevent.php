@@ -1,4 +1,9 @@
-<?php 
+<?php
+/**
+ * @var array{
+ *     'event-types': string
+ * } $display
+ */
 require_once(PATH_VIEWS . 'header.php'); //header of the page
 ?>
     <link rel="stylesheet" href=<?= PATH_CSS . "createevent.css" ?>>
@@ -18,6 +23,9 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
             </div>
             <div>
                 <input name="Date" type="datetime-local" class="Date" placeholder="Date...">
+                <select name="event-type">
+                    <?= $display['event-types'] ?>
+                </select>
             </div>
             <div>
                 <input name="artist-stage" type="text" id="artist-select" placeholder="Nom de scène de l'artiste ...">
@@ -28,12 +36,14 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
                 <textarea name="biographie" class="description" placeholder="Biographie ...">
                     </textarea>
             </div>
-            <input type="hidden" name="last-pricing-id" id="last-pricing-id" value="1">
+            <input type="hidden" name="last-pricing-id" id="max-pricing-id" value="1">
             <div id="pricings">
                 <div id="example-pricing">
+                    <button class="createventButton" style="display: none" onclick="removePricing(event)" type="button">-</button>
                     <button class="createventButton" onclick="addPricing()" type="button">+</button>
                     <input name="pricing-name-0" type="text" placeholder="Nom du tarif">
                     <input name="pricing-price-0" type="number" placeholder="Prix">
+                    <input name="pricing-max-quantity-0" type="number" placeholder="Nombre de places max">
                 </div>
             </div>
             <div>

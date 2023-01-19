@@ -4,24 +4,15 @@ class EventPricingDTO extends DTO implements IObjectDTO
 {
 
     /**
-     * @param Event $object The event of the pricing
+     * @param TicketPricing $object The event of the pricing
      * @return void Add all the pricings of the event to the database
      */
     function add($object): void
     {
-        $prices = $object->getEventInfo()->getPrices();
-
         $fields = ["ID_PRICING" ,"ID_EVENT","PRICING_NAME", "PRICE_AMOUNT"];
+        $values = [$object->getIdTicketPricing(), $object->getEvent()->getIdEvent(), $object->getName(), $object->getPrice()];
 
-        foreach ($prices as $price) {
-            $values = [
-                $price->getIdEventPricing(),
-                $object->getIdEvent(),
-                $price->getPricingName(),
-                $price->getPrice()
-            ];
-            $this->insertQuery("pricing", $fields, $values);
-        }
+        $this->insertQuery("pricing", $fields, $values);
     }
 
     /**
