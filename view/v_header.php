@@ -29,25 +29,31 @@
                     <button class="headerButton notifications-button">
                         <img src="<?= PATH_IMAGES ?>logos/black-bell.png" alt="Notifications" class="notification-img icon-img">
                     </button>
-                    <div class="circle-nb-notifications">
-                        <h2 class="nb-notifications-text"><?//= $nbInteractions["nbNotifications"];?></h2>
-                    </div>
+                     <?php if($nbInteractions["nbNotifications"] > 0){ ?>
+                        <div class="circle-nb-notifications">
+                            <h2 class="nb-notifications-text"><? $nbInteractions["nbNotifications"];?></h2>
+                        </div>
+                    <?php } ?>
                 </a>
-                <a href="./?page=orders">
+                <a href="./?page=checktickets">
                     <button class="headerButton orderButton">
                         <img src="<?= PATH_IMAGES ?>/logos/ticket.png" alt="order-icon" class="ticket-img icon-img">
                     </button>
-                    <div class="circle-nb-notifications">
-                        <h2 class="nb-notifications-text"><?//= $nbInteractions["nbTickets"];?></h2>
-                    </div>
+                    <?php if($nbInteractions["nbNotifications"] > 0){ ?>
+                        <div class="circle-nb-notifications">
+                            <h2 class="nb-notifications-text"><?= $nbInteractions["nbTickets"];?></h2>
+                        </div>
+                    <?php } ?>
                 </a>
                 <a href="./?page=cart" class="last-right-button">
                     <button class="headerButton cartButton">
                         <img src="<?= PATH_IMAGES ?>/logos/dark-cart.png" alt="cart-icon" class="cart-img icon-img">
                     </button>
-                    <div class="circle-nb-notifications">
-                        <h2 class="nb-notifications-text"><?= $nbInteractions["nbCartItems"] ;?></h2>
-                    </div>
+                    <?php if($nbInteractions["nbNotifications"] > 0){ ?>
+                        <div class="circle-nb-notifications">
+                            <h2 class="nb-notifications-text"><?= $nbInteractions["nbCartItems"] ;?></h2>
+                        </div>
+                    <?php } ?>
                 </a>
     <?php } ?>
         <a href="./?page=connection">
