@@ -1,6 +1,7 @@
 <?php require_once PATH_VIEWS . "header.php"; ?>
 <head>
     <title>Evenements - @NapsDeMarseille</title>
+    <link rel="stylesheet" href="<?= PATH_CSS . 'event.css' ?>">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>userEvents.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>userCommentsEventsCommon.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>menuProfileAndAccountManagement.css">

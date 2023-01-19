@@ -1,6 +1,6 @@
 <?php
 
-require_once PATH_APPLICATION . '/fpdf/vendor/autoload.php';
+require_once PATH_APPLICATION . 'fpdf/vendor/autoload.php';
 use Fpdf\Fpdf;
 class PDFGenerator extends FPDF {
 
