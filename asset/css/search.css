@@ -109,7 +109,7 @@ form button[type=submit], form select, form input[type=date] {
     text-align: center;
 }
 
-.event{
+.events{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -121,7 +121,7 @@ form button[type=submit], form select, form input[type=date] {
     box-shadow: 0 1vw 0 0#2a2929;
 }
 
-.event img {
+.events img {
     margin-left: 2vw;
     width: 15vw;
     width: 25vw;
