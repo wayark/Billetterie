@@ -157,7 +157,6 @@ body{
     justify-content: center;
 }
 
-
 #informations-event div{
     margin-left: 2vw;
 }
@@ -318,7 +317,7 @@ div.ticket-pricing {
     row-gap: 0.8vw;
 }
 
-.comment {
+.comment{
     width: 100%;
     display: flex;
     flex-direction: column;

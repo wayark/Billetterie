@@ -3,6 +3,14 @@
         height: 5.5vh;
     }
 
+    nav {
+        height: 4vh;
+    }
+
+    nav p {
+        font-size: 1.8vh;
+    }
+
     .header-right-button button:not(.accountButton) {
         width: 4vh;
         height: 4vh;
@@ -12,10 +20,6 @@
     .deconnexion-img {
         width: 3.2vh;
         height: 3.2vh;
-    }
-
-    .accountButton {
-        font-size: 1.4vh;
     }
 
     .notification-img {
@@ -34,25 +38,26 @@
     }
 
     .accountButton {
-        width: fit-content;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 4vh;
+        width: 6vh;
         height: 4vh;
-        padding-left: 2.5vh;
-        padding-right: 2.5vh;
+        padding-left: 1.5vh;
+        padding-right: 1.5vh;
         border-radius: 1.5vh;
         min-width: 0;
+        font-size: 1.4vh;
     }
+
     .accountButton p {
         display: none;
     }
 
     .accountButton img {
         display: block;
-        width: 2vh;
-        height: 2vh;
+        width: 3vh;
+        height: 3vh;
     }
 
     .logo {

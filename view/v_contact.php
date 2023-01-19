@@ -1,6 +1,10 @@
 <?php require_once(PATH_VIEWS . "header.php"); ?>
 
-<link rel="stylesheet" href=<?= PATH_CSS . "contact.css" ?>>
+<head>
+    <link rel="stylesheet" href=<?= PATH_CSS . "contact.css" ?>>
+    <link rel="stylesheet" href=<?= PATH_MEDIA . "Contact.css" ?>>
+    <title>Nous contacter</title>
+</head>
 
 <section class="contact">
     <div class="contact-container">

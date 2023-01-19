@@ -1,9 +1,9 @@
 <?php
 const BD_HOST = 'localhost';
-const BD_PORT = '3306';
-const BD_DBNAME = 'billeterie';
+const BD_PORT = 8889;
+const BD_DBNAME = 'e_ticket';
 const BD_USER = 'root';
-const BD_PWD = '';
+const BD_PWD = 'root';
 const GOOGLE_API_TOKEN = 'AIzaSyC87bEs-lrBLIUbatB3rebtVbp2eBbgdqw';
 
 const PATH_AUTOLOAD = './config/autoload.php';

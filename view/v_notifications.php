@@ -1,6 +1,7 @@
 <?php require_once PATH_VIEWS . "header.php"; ?>
 <head>
     <link href="<?= PATH_CSS ?>notifications.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>Notifications.css" rel="stylesheet">
     <script src="<?= PATH_SCRIPTS ?>notifications.js" defer></script>
     <title>Notifications (3)</title>
 </head>

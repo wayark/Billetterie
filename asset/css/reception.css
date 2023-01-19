@@ -1,11 +1,11 @@
-body {
+body{
     background-color: #383737;
     top: 0;
     left: 0;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-#container {
+#container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,17 +24,17 @@ body {
     background-color: #424141;
 }
 
-#options li {
-    list-style-type: none;
+#options li{
+    list-style-type : none;
 }
 
-#options li a {
+#options li a{
     text-decoration: none;
     color: #e0d3a6;
     font-size: 2.1vw;
 }
 
-#options li a:hover {
+#options li a:hover{
     color: #e0d3a6;
     /* Placer le border plus bas */
     border-bottom: 3px solid #e0d3a6;
@@ -72,7 +72,7 @@ body {
     row-gap: 25px;
 }
 
-.event {
+.events{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -84,7 +84,7 @@ body {
     box-shadow: 0 1vw 0 0#2a2929;
 }
 
-.event img {
+.events img {
     margin-left: 2vw;
     width: 15vw;
     width: 25vw;
@@ -121,7 +121,7 @@ body{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-#container {
+#container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -140,23 +140,23 @@ body{
     background-color: #424141;
 }
 
-#options li {
-    list-style-type: none;
+#options li{
+    list-style-type : none;
 }
 
-#options li a {
+#options li a{
     text-decoration: none;
     color: #e0d3a6;
     font-size: 2.1vw;
 }
 
-#options li a:hover {
+#options li a:hover{
     color: #e0d3a6;
     /* Placer le border plus bas */
     border-bottom: 3px solid #e0d3a6;
 }
 
-#titlepage {
+#titlepage{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -174,7 +174,7 @@ body{
     background-color: #2d2d2d;
 }
 
-#searchconcert input {
+#searchconcert input{
     width: 100%;
     height: 100%;
     border: none;
@@ -196,7 +196,7 @@ body{
 .eventtext-container{
     padding-top: 0;
     margin-left: 45px;
-    display: grid;
+    display : grid;
     /* La premiere grille prend 90% de la largeur du container la deuxieme 10% */
     grid-template-columns: 40vw 20vw;
 }
@@ -345,29 +345,4 @@ body{
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(0.2vw);
-}
-
-#moveCarouselLeft div {
-    transform: rotate(180deg);
-}
-
-#searchbutton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 8vw;
-    height: 4vw;
-    background-color: #676767;
-    border: none;
-    cursor: pointer;
-    border-left: 0.5vw solid #141414;
-}
-
-#searchbutton:hover {
-    filter: brightness(0.8);
-}
-
-#searchbutton img {
-    width: 3vw;
-    height: 3vw;
 }

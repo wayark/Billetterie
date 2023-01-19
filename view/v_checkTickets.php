@@ -25,6 +25,8 @@
 ?>
 <header>
     <link href="<?= PATH_CSS ?>checkTickets.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>CheckTickets.css" rel="stylesheet">
+    <title>Mes tickets</title>
 </header>
 <body>
 <?php require_once(PATH_VIEWS . 'header.php'); ?>

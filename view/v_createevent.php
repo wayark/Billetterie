@@ -6,7 +6,10 @@
  */
 require_once(PATH_VIEWS . 'header.php'); //header of the page
 ?>
+<head>
     <link rel="stylesheet" href=<?= PATH_CSS . "createevent.css" ?>>
+    <link rel="stylesheet" href=<?= PATH_MEDIA . "CreateEvent.css" ?>>
+</head>
     <div id="pagecreateevent">
         <form method="post" action="./index.php?page=createevent" class="createeventForm" enctype="multipart/form-data">
             <h1>Création évènement</h1>

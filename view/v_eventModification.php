@@ -12,7 +12,11 @@ require_once(PATH_VIEWS . 'header.php');
  * } $display
  */
 ?>
-<link href="<?= PATH_CSS ?>eventModification.css" rel="stylesheet">
+<head>
+    <link href="<?= PATH_CSS ?>eventModification.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>EventModification.css" rel="stylesheet">
+    <title>Modification d'événement</title>
+</head>
 
 <main>
     <section class="eventModification">
