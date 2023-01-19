@@ -10,8 +10,6 @@ $divError = "";
 $event = $eventDAO->getById($_GET["event"]);
 if ($event->getEventInfo()->getEventDate() < $date) {
     $eventDTO->delete($event);
-} else {
-    $divError = ErrorDisplayService::displayError();
 }
 
 
