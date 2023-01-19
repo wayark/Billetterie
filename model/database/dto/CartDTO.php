@@ -45,9 +45,14 @@ class CartDTO extends DTO {
         $userId = $user->getId();
         $this->sendTextQuery("UPDATE cart set QUANTITY = $quantity WHERE ID_USER = $userId AND ID_TICKET_PRICING = $ticketId");
     }
-    
-    function delete($object): void
+
+    /**
+     * @param TicketPricing $object
+     * @return void
+     */
+    function delete(TicketPricing $object): void
     {
+        $this->deleteQuery("CART", "ID_TICKET_PRICING", $object->getIdTicketPricing());
     }
     
     function getById(int $id)
