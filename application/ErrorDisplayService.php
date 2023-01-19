@@ -7,7 +7,7 @@ class ErrorDisplayService
         $ans = "";
         if (isset($errorArray)) {
             $ans .= "<div class='" . $class ."' style='background: ";
-            if ($errorArray['type'] == 'success') {
+            if ($class == 'success') {
                 $ans .= "lightgreen'>";
             } else {
                 $ans .= "lightcoral'>";

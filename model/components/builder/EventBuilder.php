@@ -92,9 +92,9 @@ class EventBuilder
         return $this;
     }
 
-    public function addPricing(EventPricing $pricing) : EventBuilder
+    public function withLocation(EventPlace $location) : EventBuilder
     {
-        $this->_event->getEventInfo()->addPrice($pricing);
+        $this->_event->setEventPlace($location);
         return $this;
     }
 

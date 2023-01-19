@@ -4,44 +4,33 @@ class EventPricingDTO extends DTO implements IObjectDTO
 {
 
     /**
-     * @param Event $object The event of the pricing
+     * @param TicketPricing $object The event of the pricing
      * @return void Add all the pricings of the event to the database
      */
     function add($object): void
     {
-        $prices = $object->getEventInfo()->getPrices();
+        $fields = ["ID_TICKET_PRICING" ,"ID_EVENT","NAME_TICKET_PRICING", "PRICE", "MAX_TICKET_NUMBER"];
+        $values = [$object->getIdTicketPricing(), $object->getEvent()->getIdEvent(), $object->getName(),
+            $object->getPrice(), $object->getMaxQuantity()];
 
-        $fields = ["ID_PRICING" ,"ID_EVENT","PRICING_NAME", "PRICE_AMOUNT"];
-
-        foreach ($prices as $price) {
-            $values = [
-                $price->getIdEventPricing(),
-                $object->getIdEvent(),
-                $price->getPricingName(),
-                $price->getPrice()
-            ];
-            $this->insertQuery("pricing", $fields, $values);
-        }
+        $this->insertQuery("TICKET_PRICING", $fields, $values);
     }
 
     /**
-     * @param Event $object The event of the pricing
+     * @param TicketPricing $object The event of the pricing
      * @return void Update all the pricings of the event to the database
      */
     function update($object): void
     {
-        $prices = $object->getEventInfo()->getPrices();
-        $fields = ["ID_PRICING" ,"ID_EVENT","PRICING_NAME", "PRICE_AMOUNT"];
-
-        foreach ($prices as $price) {
-            $values = [
-                $price->getIdEventPricing(),
-                $object->getIdEvent(),
-                $price->getPricingName(),
-                $price->getPrice()
-            ];
-            $this->updateQuery("pricing", $fields, $values, "ID_PRICING", $price->getIdEventPricing());
-        }
+        $fields = ["ID_TICKET_PRICING" ,"ID_EVENT","NAME_TICKET_PRICING", "PRICE", "MAX_TICKET_NUMBER"];
+        $values = [
+            $object->getIdTicketPricing(),
+            $object->getEvent()->getIdEvent(),
+            $object->getName(),
+            $object->getPrice(),
+            $object->getMaxQuantity()
+        ];
+        $this->updateQuery("pricing", $fields, $values, "ID_PRICING", $object->getIdTicketPricing());
     }
 
     /**

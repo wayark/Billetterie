@@ -50,6 +50,7 @@ abstract class DAO
             $res = $pdo->fetch();
             $pdo->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
             $this->_error = 'query';
             $res = false;
         } catch (NoDatabaseException $e) {
@@ -80,7 +81,7 @@ abstract class DAO
 
     public function getTableLastId(string $table, string $id_field_name): int
     {
-        $sql = 'SELECT MAX($id_field_name) FROM $table';
+        $sql = 'SELECT MAX('. $id_field_name .') FROM ' . $table;
         $id = $this->queryRow($sql, []);
         if ($id[0] == null) {
             return 0;
