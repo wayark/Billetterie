@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="<?= PATH_CSS ;?>profile.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>menuProfileAndAccountManagement.css">
     <link rel="stylesheet" href="<?= PATH_MEDIA ;?>Profile.css">
+    <link rel="stylesheet" href="<?= PATH_MEDIA ;?>MenuProfileAndAccountManagement.css">
     <script src="<?= PATH_SCRIPTS ;?>menuProfileAccountManagement.js" defer></script>
     <script src="<?= PATH_SCRIPTS ;?>profile.js" defer></script>
 </head>

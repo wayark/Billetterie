@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="<?= PATH_CSS ;?>userComments.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>userCommentsEventsCommon.css">
     <link rel="stylesheet" href="<?= PATH_CSS ;?>menuProfileAndAccountManagement.css">
+    <link rel="stylesheet" href="<?= PATH_MEDIA ;?>UserComments.css">
+    <link rel="stylesheet" href="<?= PATH_MEDIA ;?>MenuProfileAndAccountManagement.css">
     <script src="<?= PATH_SCRIPTS ;?>menuProfileAccountManagement.js" defer></script>
     <script src="<?= PATH_SCRIPTS ;?>comments.js" defer></script>
 </head>

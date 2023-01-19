@@ -31,6 +31,10 @@
     .nb-friends {
         font-size: 3.8vw;
     }
+
+    .is-your-friend, .is-not-your-friend {
+        font-size: 3.3vw;
+    }
     @media screen and (max-width: 480px) {
         .username-text {
             font-size: 4.2vw;
@@ -55,6 +59,14 @@
 
         .user-desc {
             font-size: 3.5vw;
+        }
+
+        .is-your-friend, .is-not-your-friend {
+            font-size: 3.8vw;
+        }
+
+        #see-more-description {
+            font-size: 3.8vw;
         }
     }
 }
