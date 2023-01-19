@@ -531,3 +531,10 @@ select {
 .phone-input-container {
   transform: translateY(-1.2vw);
 }
+
+.account-type {
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: #E7D9AB;
+  margin-bottom: 1vw;
+}
