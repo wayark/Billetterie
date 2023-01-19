@@ -63,6 +63,15 @@
                     <div id="date">
                         <h3 class="title-desc">Date</h3>
                         <p><?= $display['eventDate'] ?></p>
+                        <iframe
+                        width="100%"
+                        height="80%"
+                        style="border:0"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $display['eventPlaceName'] ?>+<?= $display['eventPlaceStreet'] ?>+<?= $display['eventPlaceCity'] ?>+<?= $display['eventPlaceCountry'] ?>">
+                        </iframe>
                     </div>
                 </div>
                 <?php if (isset($_SESSION['user'])) { ?>
