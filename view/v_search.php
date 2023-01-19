@@ -6,6 +6,7 @@
 <html lang="fr">
 <head>
     <title>Recherche</title>
+    <link rel="stylesheet" href="<?= PATH_CSS ?>reception.css">
     <link rel="stylesheet" href="<?= PATH_CSS . 'search.css' ?>">
     <link rel="stylesheet" href="<?= PATH_MEDIA . 'Search.css' ?>">
 </head>
