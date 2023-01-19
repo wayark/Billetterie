@@ -33,19 +33,17 @@ class CartDTO extends DTO {
 
     function addOne(User $user, $ticketId){
         $userId = $user->getId();
-        
-        $this->updateQuery("cart", ["QUANTITY"], ["QUANTITY + 1"], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+        $this->sendTextQuery("UPDATE cart set QUANTITY = QUANTITY + 1 WHERE ID_USER = $userId AND ID_TICKET_PRICING = $ticketId");
     }
 
     function removeOne(User $user,$ticketId){
         $userId = $user->getId();
-
-        $this->updateQuery("cart", ["QUANTITY"], ["QUANTITY - 1"], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+        $this->sendTextQuery("UPDATE cart set QUANTITY = QUANTITY - 1 WHERE ID_USER = $userId AND ID_TICKET_PRICING = $ticketId");  
     }
 
     function setQuantity(User $user, $ticketId, int $quantity){
         $userId = $user->getId();
-        $this->updateQuery("cart", ["QUANTITY"], [$quantity], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+        $this->sendTextQuery("UPDATE cart set QUANTITY = $quantity WHERE ID_USER = $userId AND ID_TICKET_PRICING = $ticketId");
     }
     
     function delete($object): void
@@ -53,18 +51,6 @@ class CartDTO extends DTO {
     }
     
     function getById(int $id)
-    {
-    }
-    
-    function getAll(): array
-    {
-    }
-    
-    function getLastId(): int
-    {
-    }
-    
-    private function createObject($row): Cart
     {
     }
 }

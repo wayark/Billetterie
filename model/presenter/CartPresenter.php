@@ -60,9 +60,10 @@ class CartPresenter extends Presenter
             $display['items'] .= '<button class="onemoreless oneless" type="submit" class="quantity-button">-</button>';
             $display['items'] .= '</form>';
             $display['items'] .= '<form action="./?page=cart" method="post">';
+            $display['items'] .= '<input type="hidden" name="id" value="' . $infos['pricing']->getIdTicketPricing() . '">';
             $display['items'] .= '<select name="quantity" class="quantity-select" onchange="displayInput(this)">';
             $display['items'] .= '<option value="0">0 (Supprimer)</option>';
-            if ($quantity <= 10) {
+            if ($quantity < 10) {
                 $display['items'] .= '<option value="1"' . $this->echoSelected(1, $quantity)[0] . '>1</option>';
                 $display['items'] .= '<option value="2"' . $this->echoSelected(2, $quantity)[0] . '>2</option>';
                 $display['items'] .= '<option value="3"' . $this->echoSelected(3, $quantity)[0] . '>3</option>';
@@ -72,7 +73,6 @@ class CartPresenter extends Presenter
                 $display['items'] .= '<option value="7"' . $this->echoSelected(7, $quantity)[0] . '>7</option>';
                 $display['items'] .= '<option value="8"' . $this->echoSelected(8, $quantity)[0] . '>8</option>';
                 $display['items'] .= '<option value="9"' . $this->echoSelected(9, $quantity)[0] . '>9</option>';
-                $display['items'] .= '<option value="10"' . $this->echoSelected(10, $quantity)[0] . '>10</option>';
             } else {
                 $display['items'] .= '<option value="1">1</option>';
                 $display['items'] .= '<option value="2">2</option>';
@@ -95,6 +95,7 @@ class CartPresenter extends Presenter
             $display['items'] .= '</form>';
             $display['items'] .= '</div>';
             $display['items'] .= '<form action="./?page=cart" method="post" class="form-10more">';
+            $display['items'] .= '<input type="hidden" name="id" value="' . $infos['pricing']->getIdTicketPricing() . '">';
             $display['items'] .= '<input name="quantity" type="number" value="10" class="quantity-input">';
             $display['items'] .= '<button type="submit" class="quantity-button">Modifier</button>';
             $display['items'] .= '</form>';

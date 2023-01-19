@@ -38,6 +38,12 @@ class Cart {
         }
     }
 
+    public function set(int $pricingId, int $quantity)
+    {
+        if (array_key_exists($pricingId,$this->inCartPricing)) {
+            $this->inCartPricing[$pricingId] = $quantity;
+        }
+    }
     /**
      * @return array<int, int>
      */
