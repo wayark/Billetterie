@@ -39,7 +39,7 @@
                     <button class="headerButton orderButton">
                         <img src="<?= PATH_IMAGES ?>/logos/ticket.png" alt="order-icon" class="ticket-img icon-img">
                     </button>
-                    <?php if($nbInteractions["nbNotifications"] > 0){ ?>
+                    <?php if($nbInteractions["nbTickets"] > 0){ ?>
                         <div class="circle-nb-notifications">
                             <h2 class="nb-notifications-text"><?= $nbInteractions["nbTickets"];?></h2>
                         </div>
@@ -49,7 +49,7 @@
                     <button class="headerButton cartButton">
                         <img src="<?= PATH_IMAGES ?>/logos/dark-cart.png" alt="cart-icon" class="cart-img icon-img">
                     </button>
-                    <?php if($nbInteractions["nbNotifications"] > 0){ ?>
+                    <?php if($nbInteractions["nbCartItems"] > 0){ ?>
                         <div class="circle-nb-notifications">
                             <h2 class="nb-notifications-text"><?= $nbInteractions["nbCartItems"] ;?></h2>
                         </div>
