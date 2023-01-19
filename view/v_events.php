@@ -87,7 +87,7 @@
                 </div>
                 <div class="participated">
                     <div class="events-title-section-container">
-                        <h1 class="events-title-preset">-</p>
+                        <h1 class="events-title-preset">-</h1>
                         <h1 class="events-title">Evenements recents :</h1>
                     </div>
                     <div class="events-container">

@@ -7,7 +7,7 @@
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>reception.css">
     <link rel="stylesheet" href="<?= PATH_MEDIA ?>Reception.css">
-    <script src="<?php echo PATH_SCRIPTS ?>reception.js" defer></script>
+    <script src="<?= PATH_SCRIPTS ?>reception.js" defer></script>
     <title>Waticket</title>
 </head>
 <body>
