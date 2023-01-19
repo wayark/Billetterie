@@ -13,6 +13,8 @@ if(isset($_POST["addone"]) && isset($_POST["id"])){
     $cartDTO = new CartDTO();
     $cartDTO->setQuantity($_SESSION["user"], $_POST["id"], $newQuantity);
     $_SESSION["cart"]->set($_POST["id"], $newQuantity);
+} else if(isset($_POST["delete"]) && isset($_POST["id"])) {
+    $cartDTO = new CartDTO();
 }
 
 $presenter = new CartPresenter($_GET, $_POST);

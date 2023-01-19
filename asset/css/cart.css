@@ -66,10 +66,10 @@
 }
 
 .cart-item{
-    width: 90%;
+    width: 95%;
     height: fit-content;
     display: grid;
-    grid-template-columns: 20% 40% 20% 20%;
+    grid-template-columns: 20% 35% 15% 5% 5%;
     column-gap: 3vw;
     align-items: center;
 }
@@ -180,7 +180,7 @@ input[type="number"] {
     transition: all 0.2s ease;
 }
 
-button:not(.onemoreless, .headerButton){
+button:not(.onemoreless, .headerButton, .cart-delete-button){
     width: fit-content;
     padding-left: 1vw;
     padding-right: 1vw;
@@ -283,4 +283,23 @@ button:hover {
     color: white;
     background-color: #423f3f;
     transition: all 0.2s ease;
+}
+
+.cart-delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cart-delete-button:hover {
+    background-color: transparent;
+    border: none;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+.cart-delete-button img{
+    width: 4vw;
+    height: 3.5vw;
 }
