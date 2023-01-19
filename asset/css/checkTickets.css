@@ -42,7 +42,7 @@ h1{
     margin-right: auto;
     color: white;
 }
-h2, h3{
+h2:not(.nb-notifications-text), h3{
     margin-top: auto;
     margin-bottom: auto;
     color: white;

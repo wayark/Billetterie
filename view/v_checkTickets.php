@@ -23,11 +23,11 @@
  * } $display Array containing all the data to display
  */
 ?>
-<header>
+<head>
     <link href="<?= PATH_CSS ?>checkTickets.css" rel="stylesheet">
     <link href="<?= PATH_MEDIA ?>CheckTickets.css" rel="stylesheet">
     <title>Mes tickets</title>
-</header>
+</head>
 <body>
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
