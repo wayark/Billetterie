@@ -125,7 +125,6 @@ class MakeCreateEventStrategy implements CreateEventStrategy
             ->build();
 
         $picture = $this->processFileInput($event, PATH_IMAGES . "events");
-        echo "Added picture : " . $picture . '<br>';
         $event->getEventInfo()->setPicture(new Picture(substr($picture, strlen(PATH_IMAGES)), $event->getEventInfo()->getEventName()));
         $locationDTO = new EventLocationDTO();
         $locationDTO->add($event->getEventPlace());
