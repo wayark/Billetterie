@@ -3,9 +3,13 @@
 class MakeCreateEventStrategy implements CreateEventStrategy
 {
     private string $error = '';
+    private array $files;
+    private array $post;
 
-    public function handle(array $post): array
+    public function handle(array $post, array $files): array
     {
+        $this->files = $files;
+        $this->post = $post;
         try {
             $data = $this->gatherData($post);
             $event = $this->createEvent($data);
@@ -42,7 +46,8 @@ class MakeCreateEventStrategy implements CreateEventStrategy
         $maxPricingId = intval($post['last-pricing-id']);
 
         for ($i = 0; $i < $maxPricingId; $i++) {
-            if (isset($post['pricing-name-' . $i]) && isset($post['pricing-price-' . $i])) {
+            if (isset($post['pricing-name-' . $i]) && isset($post['pricing-price-' . $i]) && isset($post['pricing-max-quantity-' . $i]))
+            {
                 if ($post['pricing-name-' . $i] != "" && $post['pricing-price-' . $i] != "") {
                     $infos['pricings'][$i]['name'] = htmlspecialchars($post['pricing-name-' . $i]);
                     $infos['pricings'][$i]['price'] = htmlspecialchars($post['pricing-price-' . $i]);
@@ -54,30 +59,46 @@ class MakeCreateEventStrategy implements CreateEventStrategy
         return $infos;
     }
 
-    /**
-     * Saves the image in the server in PATH_IMAGES . 'events'
-     * @param int $maxSizeInMb
-     * @return string The path to the saved image without the PATH_IMAGES part
-     */
-    private function processFileInput(int $maxSizeInMb): string
+    private function processFileInput(Event $event, string $path, int $max_size_megaoctet = 5): ?string
     {
-        $maxSize = $maxSizeInMb * 1024 * 1024;
-        $extensions = array('jpg', 'jpeg', 'png', 'gif');
-        $path = PATH_IMAGES . 'events' . DIRECTORY_SEPARATOR;
+        // Récupération des données du fichier
+        $file = $this->files['image-event'];
+        $file_name = $file['name'];
+        $file_tmp = $file['tmp_name'];
+        $file_size = $file['size'];
+        $file_error = $file['error'];
 
-        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-            if ($_FILES['image']['size'] <= $maxSize) {
-                $fileInfo = pathinfo($_FILES['image']['name']);
-                $extension = $fileInfo['extension'];
-                if (in_array($extension, $extensions)) {
-                    $name = $fileInfo['filename'] . '_' . time() . '.' . $extension;
-                    move_uploaded_file($_FILES['image']['tmp_name'], $path . $name);
-                    return 'events' . DIRECTORY_SEPARATOR . $name;
-                }
-            }
+        // Vérification de l'extension du fichier
+        $file_ext = explode('.', $file_name);
+        $file_ext = strtolower(end($file_ext));
+        $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
+        if (!in_array($file_ext, $allowed_extensions)) {
+            $this->error = "L'extension du fichier n'est pas valide.";
+            return null;
         }
-        $this->error = "L'image n'a pas été envoyée";
-        return '';
+
+        // Vérification de la taille du fichier
+        if ($file_size > $max_size_megaoctet * 1048576) {
+            $this->error = "Fichier trop volumineux";
+            return null;
+        }
+
+        // Vérification des erreurs de chargement du fichier
+        if ($file_error !== 0) {
+            $this->error = "Une erreur est survenue lors du chargement du fichier.";
+            return null;
+        }
+
+        // Déplacement du fichier du répertoire temporaire vers le répertoire de destination
+        $file_destination = $path . '/' . $file_name;
+        if (move_uploaded_file($file_tmp, $file_destination)) {
+            $event->getEventInfo()->setPicture(new Picture(substr($file_destination, strlen(PATH_IMAGES)), $file_name));
+            return $file_destination;
+        } else {
+            $this->error = "Une erreur est survenue lors du déplacement du fichier.";
+        }
+
+        return null;
     }
 
     /**
@@ -101,9 +122,11 @@ class MakeCreateEventStrategy implements CreateEventStrategy
             ->withName($data['name'])
             ->withDescription($data['description'])
             ->withDate($data['date'])
-            ->withPhoto(new Picture($this->processFileInput(10), $data['name']))
             ->build();
 
+        $picture = $this->processFileInput($event, PATH_IMAGES . "events");
+        echo "Added picture : " . $picture . '<br>';
+        $event->getEventInfo()->setPicture(new Picture(substr($picture, strlen(PATH_IMAGES)), $event->getEventInfo()->getEventName()));
         $locationDTO = new EventLocationDTO();
         $locationDTO->add($event->getEventPlace());
 

@@ -1,5 +1,5 @@
 <?php
 interface CreateEventStrategy
 {
-    public function handle(array $post): array;
+    public function handle(array $post, array $files): array;
 }

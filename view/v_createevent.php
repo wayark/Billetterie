@@ -8,7 +8,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
 ?>
     <link rel="stylesheet" href=<?= PATH_CSS . "createevent.css" ?>>
     <div id="pagecreateevent">
-        <form method="post" action="./index.php?page=createevent" class="createeventForm">
+        <form method="post" action="./index.php?page=createevent" class="createeventForm" enctype="multipart/form-data">
             <h1>Création évènement</h1>
             <input name="eventName" type="text" class="eventName" placeholder="Nom de l'évènement...">
             <textarea name="description" class="description" placeholder="Description ...">
@@ -47,7 +47,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
                 </div>
             </div>
             <div>
-                <input name="image" type="file" id="image" hidden/>
+                <input name="image-event" type="file" id="image" hidden/>
                 <label id="label-image" for="image"><p>Choisissez une image</p></label>
             </div>
             <button name="createevent" type="submit" class="createventButton">Créer l'évènement</button>

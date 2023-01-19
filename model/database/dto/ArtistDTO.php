@@ -9,7 +9,7 @@ class ArtistDTO extends DTO implements IObjectDTO
     public function add($object) : void
     {
         $fields = [
-            "ID_ARTIST", "ARTIST_LAST_NAME", "ARTIST_FIRST_NAME", "ARTIST_STAGE_NAME", "BIOGRAPHY"
+            "ID_ARTIST", "ARTIST_LAST_NAME", "ARTIST_FIRST_NAME", "STAGE_NAME", "BIOGRAPHY"
         ];
         $values = [
             $object->getIdArtist(),

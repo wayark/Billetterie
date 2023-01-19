@@ -20,6 +20,9 @@ class EventDTO extends DTO implements IObjectDTO
             "PICTURE_DESCRIPTION"
         ];
 
+        echo $object->getEventInfo()->getPicture()->getPicturePath() . '<br>';
+        echo substr($object->getEventInfo()->getPicture()->getPicturePath(), strlen(PATH_IMAGES)) . '<br>';
+
         $values = [
             $object->getIdEvent(),
             $object->getEventPlace()->getIdLocation(),

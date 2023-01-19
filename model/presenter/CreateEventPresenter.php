@@ -5,10 +5,12 @@ class CreateEventPresenter extends Presenter
 {
 
     private CreateEventStrategy $strategy;
+    private array $files;
     private array $display;
 
-    public function __construct($get, $post)
+    public function __construct($get, $post, $files)
     {
+        $this->files = $files;
         parent::__construct($get, $post);
     }
 
@@ -23,7 +25,7 @@ class CreateEventPresenter extends Presenter
             $this->strategy = new DefaultCreateEventStrategy();
         }
 
-        $this->display = $this->strategy->handle($this->post);
+        $this->display = $this->strategy->handle($this->post, $this->files);
     }
 
 
