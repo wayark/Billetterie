@@ -59,4 +59,14 @@ class TicketPricing
     {
         return $this->maxQuantity;
     }
+
+    public function setMaxQuantity(int $newQuantity)
+    {
+        $this->maxQuantity = $newQuantity;
+    }
+
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
 }

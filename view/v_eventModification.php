@@ -54,14 +54,12 @@ require_once(PATH_VIEWS . 'header.php');
                                             <input type="date" class="textDate" name="date">
                                         </div>
                                         <div>
-                                            <h3>Nombre de ticket</h3>
-                                            <input type="number" name="ticketNumberP" placeholder="fosse">
-                                            <input type="number" name="ticketNumberS" placeholder="gradin">
+                                            <h3>Nombre de ticket max</h3>
+                                            <?= $display['pricing-name'] ?>
                                         </div>
                                         <div>
                                             <h3>Prix des tickets</h3>
-                                            <input type="number" name="ticketPriceP" placeholder="fosse">
-                                            <input type="number" name="ticketPriceS" placeholder="gradin">
+                                            <?= $display['pricing-price'] ?>
                                         </div>
 
                                     </div>
