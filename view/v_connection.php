@@ -10,6 +10,7 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
 ?>
 <head>
     <link rel="stylesheet" href=<?= PATH_CSS . "connection.css" ?>>
+    <link rel="stylesheet" href=<?= PATH_MEDIA . "Connection.css" ?>>
     <title>Connexion</title>
 </head>    
 

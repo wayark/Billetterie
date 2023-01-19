@@ -52,6 +52,10 @@
         height: 5vw;
         border-radius: 3vw;
     }
+
+    .cart-body {
+        width: 110%;
+    }
     @media screen and (max-width: 425px) {
         .quantity-select {
             margin-bottom: 1.5vw;

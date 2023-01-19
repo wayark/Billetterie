@@ -8,20 +8,20 @@
 .connection-register-frame{
     background-color: #2D2D2D;
     margin-top: 10vh;
-    min-width: 400px;
-    min-height:230px;
     width: 50vw;
     height: 30vw;
-    padding-top: 3vw;
     display: flex;
+    align-items: center;
+    flex-direction: row;
     justify-content: space-evenly;
     border-radius:10px;
-    
 }
 
 .connectionForm{
     display: flex;
     flex-direction: column;
+    align-self: center;
+    justify-self: center;
     align-items: center;
     color: #E7D9AB;
     width:20vw;
@@ -36,7 +36,7 @@
 ::placeholder{
     color: #E7D9AB;
     opacity:0.69;
-    font-size:calc(5px + 0.8vw);
+    font-size: 1.9;
     text-align:center;
 }
 
@@ -53,20 +53,17 @@ input {
 .name, .surname{
     width: 8vw;
     margin-bottom:1.5vw;
-    min-width: 50px;
 }
 
 .connectionForm>input{
     width: 16.5vw;
-    min-width: 130px;
     margin-bottom:1.5vw;
-
 }
 
 .line{
     width:3px ;
-    height: 25vw;
-    min-height:210px;
+    height: 75%;
+    border-radius: 1vw;
     background-color: #E7D9AB;
 }
 
@@ -78,6 +75,12 @@ input {
     width: 10vw;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.line-container {
+    height: 100%;
+    width: fit-content;
+    align-items: start;
 }
 
 

@@ -95,7 +95,7 @@
                 <p><?= $_SESSION["user"]->getFirstName(); ?></p>
             </a>
             <div class="field-comment-and-bar">
-                <input type="text" name="sendcomment" class="comment-field" placeholder="Ecrivez votre commentaire ici .." onfocus="extendBar(this)" onblur="shrinkBar(this)" oninput="displayCancelButton(this)" required></input>
+                <input type="text" name="sendcomment" class="comment-field" placeholder="Ecrivez votre commentaire ici .." onfocus="extendBar(this)" onblur="shrinkBar(this)" oninput="displayCancelButton(this)" maxlength="600"required></input>
                 <div class="white-comment-bar"></div>
             </div>
             <input type="hidden" name="eventid" value="<?= $display['eventId'] ?>">

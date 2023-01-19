@@ -418,7 +418,15 @@
 
 .my-username-input::placeholder {
     color: #b3b2b0;
+}
 
+*::placeholder {
+    font-size: 1.2vw;
+}
+
+select {
+    width: 9vw;
+    font-size: 1.2vw;
 }
 
 .my-username-input:focus {

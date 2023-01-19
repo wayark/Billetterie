@@ -2,6 +2,8 @@
     margin: 0px;
     padding: 0px;
     font-family: 'Arial';
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 *::selection{
@@ -16,6 +18,7 @@
 
 body{
     background-color: #383737;
+    margin-bottom: 9vw;
 }
 
 body button:hover{
@@ -105,7 +108,7 @@ header > .header-right-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8vw;
+    font-size: 0.9vw;
     font-weight: bold;
 }
 
@@ -169,16 +172,24 @@ nav>div:hover{
 
 /*----------------footer--------------*/
 footer{
+    width: 100%;
     margin-top: 4vw;
     background-color: #2D2D2D;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 4vw;
+    position: relative;
+    bottom: 0;
 }
 
 .footerButton{
     color: #E7D9AB;
     margin-right: 6vw;
     font-size: 1.7vw;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
 }
