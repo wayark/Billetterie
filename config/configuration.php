@@ -2,8 +2,8 @@
 const BD_HOST = 'localhost';
 const BD_PORT = '3306';
 const BD_DBNAME = 'billeterie';
-const BD_USER = 'julien';
-const BD_PWD = '(c8nbe4las0aQMTM';
+const BD_USER = 'root';
+const BD_PWD = '';
 const GOOGLE_API_TOKEN = 'AIzaSyC87bEs-lrBLIUbatB3rebtVbp2eBbgdqw';
 
 const PATH_AUTOLOAD = './config/autoload.php';

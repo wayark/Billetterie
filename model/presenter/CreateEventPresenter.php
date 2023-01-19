@@ -17,6 +17,7 @@ class CreateEventPresenter extends Presenter
      */
     protected function checkProcess(): void
     {
+        /*
         if (isset($_POST['createevent'])) {
             $this->state = new MakeCreateEventStrategy();
         } else {
@@ -26,6 +27,7 @@ class CreateEventPresenter extends Presenter
         
 
         $this->display = $this->state->handle($this->post);
+        */
     }
 
 
@@ -34,6 +36,7 @@ class CreateEventPresenter extends Presenter
      */
     public function formatDisplay(): array
     {
+        $this->display = array();
         return $this->display;
     }
 }
