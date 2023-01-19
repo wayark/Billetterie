@@ -16,8 +16,7 @@ class TicketDAO extends DAO implements IObjectDAO {
 
     function getLastId(): int
     {   
-        // TODO: Implement getLastId() method for TicketDAO.
-        return 0;
+        return $this->getTableLastId("TICKET", "ID_TICKET");
     }
 
     function getNumberOfTicketsBought(Event $evt, TicketPricing $pricing = null): int

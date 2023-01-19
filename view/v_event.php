@@ -41,6 +41,15 @@
                 <div id="title-date">
                     <h1><?= $display['eventName'] ?></h1>
                     <p><?= $display['eventDate'] ?></p>
+                    <iframe
+                            width="100%"
+                            height="80%"
+                            style="border:0"
+                            loading="lazy"
+                            allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed/v1/place?key=<?= GOOGLE_API_TOKEN ?>&q=<?= $display['eventPlaceName'] ?>+<?= $display['eventPlaceStreet'] ?>+<?= $display['eventPlaceCity'] ?>+<?= $display['eventPlaceCountry'] ?>">
+                    </iframe>
                 </div>
             </div>
             <div id="summary-and-informations">
