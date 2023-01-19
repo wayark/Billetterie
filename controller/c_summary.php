@@ -77,14 +77,22 @@ if(isset($_POST['generate-pdf'])){
         // On genere le QRCode
         $idUser = $_SESSION['user']->getId();
         $idTicket = $_POST['generate-pdf'];
-        $qrcodetext = rand(1, 9);
 
         // On genere le PDF avec l'emplacement du QRCode
-        $qrcodefilepath = QRCodeGenerator::generate($idUser, $idTicket); 
+/*         $qrcodefilepath = QRCodeGenerator::generate($idUser, $idTicket);  */
+        $qrcodefilepath = QRCodeGenerator::generate(4, 6); 
+
+        // On demarre la temporisation de sortie (ne marche pas sans)
+        ob_start();
+
+        // On genere le PDF
         $generator = new PDFGenerator($qrcodefilepath);
 
         // On telecharge le PDF
         $generator->downloadPDF();
+
+        // On vide le tampon de sortie et desactive la temporisation de sortie
+        ob_end_flush();
     }catch(Exception $e){
         die($e->getMessage());
     }

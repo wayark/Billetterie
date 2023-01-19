@@ -66,10 +66,10 @@
 }
 
 .cart-item{
-    width: 95%;
+    width: 97%;
     height: fit-content;
     display: grid;
-    grid-template-columns: 20% 35% 15% 5% 5%;
+    grid-template-columns: 20% 35% 15% 7% 10%;
     column-gap: 3vw;
     align-items: center;
 }
@@ -290,16 +290,21 @@ button:hover {
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
+    transform: none;
 }
 
 .cart-delete-button:hover {
     background-color: transparent;
     border: none;
-    transform: scale(1.05);
     transition: all 0.2s ease;
+    transform: scale(1.05);
 }
 
 .cart-delete-button img{
-    width: 4vw;
-    height: 3.5vw;
+    width: 3vw;
+    height: 2.6vw;
+}
+
+.cart-delete-button img:hover{
+    transform: brightness(2);
 }
