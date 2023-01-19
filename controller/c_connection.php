@@ -1,7 +1,5 @@
 <?php
 
-if (session_id() == '') session_start();
-
 $presenter = new ConnectionPresenter($_GET, $_POST);
 $result = $presenter->formatDisplay();
 

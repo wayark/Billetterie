@@ -1,46 +1,68 @@
 <?php
 
-class CartDTO extends DTO implements IObjectDTO{
+class CartDTO extends DTO {
 
-    function add($event): void
+    function add(User $user, TicketPricing $ticketPricing, int $quantity): void
     {
         $fields = [
-            "ID_EVENT",
             "ID_USER",
-            "IS_PIT",
+            "ID_TICKET_PRICING",
             "QUANTITY"
         ];
-
+    
         $values = [
-            $event->getIdEvent(),
-            $event->getUser()->getIdUser(),
-            $event->getEvent()->getIdEvent(),
-            $event->getQuantity()
+            $user->getId(),
+            $ticketPricing->getIdTicketPricing(),
+            $quantity
         ];
-
+    
         $this->insertQuery("cart", $fields, $values);
     }
-
-    function update($object): void
+    
+    /**
+     * @throws NoDatabaseException
+     */
+    function update(User $user, TicketPricing $ticketPricing, int $quantity): void
     {
+    
+        $this->_sendQuery("UPDATE CART SET QUANTITY = $quantity WHERE ID_USER = ? AND ID_TICKET_PRICING = ?",
+            [$user->getId(), $ticketPricing->getIdTicketPricing()]);
+    
     }
 
+    function addOne(User $user, $ticketId){
+        $userId = $user->getId();
+        
+        $this->updateQuery("cart", ["QUANTITY"], ["QUANTITY + 1"], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+    }
+
+    function removeOne(User $user,$ticketId){
+        $userId = $user->getId();
+
+        $this->updateQuery("cart", ["QUANTITY"], ["QUANTITY - 1"], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+    }
+
+    function setQuantity(User $user, $ticketId, int $quantity){
+        $userId = $user->getId();
+        $this->updateQuery("cart", ["QUANTITY"], [$quantity], "ID_USER", $userId, "ID_TICKET_PRICING", $ticketId);
+    }
+    
     function delete($object): void
     {
     }
-
+    
     function getById(int $id)
     {
     }
-
+    
     function getAll(): array
     {
     }
-
+    
     function getLastId(): int
     {
     }
-
+    
     private function createObject($row): Cart
     {
     }

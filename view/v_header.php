@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="<?= PATH_CSS ?>header.css" rel="stylesheet">
-    <link href="<?= PATH_CSS ?>reception.css" rel="stylesheet">
-    <title>Waticket</title>
+    <link href="<?= PATH_CSS ?>style.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>Header.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>Footer.css" rel="stylesheet">
 </head>
 
 <body>
@@ -17,29 +17,51 @@
     </a>
     <div class="header-right-button">
         <?php
-        if (session_id() == '') session_start();
         if (isset($_SESSION) and isset($_SESSION['user'])) {
-            echo '<a href="./?page=deconnection">
-                    <button class="headerButton cartButton">
-                        <img src="' . PATH_IMAGES . 'logos/deconnection.png" alt="Deconnexion" class="cart">
+            $menu_initialiser = new MenuInitialiser();
+            $nbInteractions = $menu_initialiser->export();
+              ?><a href="./?page=deconnection">
+                    <button class="headerButton disconnectButton">
+                        <img src="<?= PATH_IMAGES ?>logos/deconnection.png" alt="Deconnexion" class="deconnexion-img icon-img">
                     </button>
-                    </a>';
-        }
-        ?>
+                </a>
+                <a href="./?page=notifications">
+                    <button class="headerButton notifications-button">
+                        <img src="<?= PATH_IMAGES ?>logos/black-bell.png" alt="Notifications" class="notification-img icon-img">
+                    </button>
+                    <div class="circle-nb-notifications">
+                        <h2 class="nb-notifications-text"><?//= $nbInteractions["nbNotifications"];?></h2>
+                    </div>
+                </a>
+                <a href="./?page=orders">
+                    <button class="headerButton orderButton">
+                        <img src="<?= PATH_IMAGES ?>/logos/ticket.png" alt="order-icon" class="ticket-img icon-img">
+                    </button>
+                    <div class="circle-nb-notifications">
+                        <h2 class="nb-notifications-text"><?//= $nbInteractions["nbTickets"];?></h2>
+                    </div>
+                </a>
+                <a href="./?page=cart" class="last-right-button">
+                    <button class="headerButton cartButton">
+                        <img src="<?= PATH_IMAGES ?>/logos/dark-cart.png" alt="cart-icon" class="cart-img icon-img">
+                    </button>
+                    <div class="circle-nb-notifications">
+                        <h2 class="nb-notifications-text"><?= $nbInteractions["nbCartItems"] ;?></h2>
+                    </div>
+                </a>
+    <?php } ?>
         <a href="./?page=connection">
-            <button class="headerButton accountButton">Mon compte</button>
-        </a>
-        <a href="./?page=cart">
-            <button class="headerButton cartButton">
-                <img src="<?= PATH_IMAGES ?>/logos/panier.png" alt="cart" class="cart">
+            <?php if(!isset($_SESSION['user'])) $title = "Se connecter"; else $title = "Mon compte"; ?>
+            <button class="headerButton accountButton">
+                <?= "<p>" . $title . "</p>"?>
+                <img src="<?= PATH_IMAGES ?>/logos/myaccount.png" alt="account-icon" class="account-img icon-img">
             </button>
         </a>
     </div>
-
 </header>
 <nav>
     <div class="concert-nav">
-        <p>Concert</p>
+        <p>Accueil</p>
     </div>
     <div class="search-nav">
         <a href="./index.php?page=search">Recherche</a>

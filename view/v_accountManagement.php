@@ -23,24 +23,48 @@
  * } $display Array containing all the data to display
  */
 ?>
-<header>
+<head>
     <link href="<?= PATH_CSS ?>accountManagement.css" rel="stylesheet">
-</header>
+    <link href="<?= PATH_CSS ?>menuProfileAndAccountManagement.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>AccountManagement.css" rel="stylesheet">
+    <script src="<?= PATH_SCRIPTS ?>menuProfileAccountManagement.js"></script>
+    <title>Mon compte</title>
+</head>
 <body>
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
 <main>
     <section>
-        <h1><?= $display['titre'] ?></h1>
+        <div class="menu-account menu">
+            <ul>
+                <li class="actual-page">
+                    <a class="menu-text" href="?page=connection" onmouseover="colorBar(this)" onmouseout="uncolorBar(this)">Compte</a>
+                    <div class="menu-bar"></div>
+                </li>
+                <li>
+                    <a class="menu-text" href="?page=connection&part=profile" onmouseover="extendBar(this)" onmouseout="shrinkBar(this)">Profil</a>
+                    <div class="menu-bar"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="title-account-mangement">
+            <h1><?= $display['titre'] ?></h1>
+        </div>
         <div id="sides-container">
             <div id="coteG">
                 <button class="styleButton" id="account">Modifier mes informations</button>
                 <img src="<?= $display['user']['picturePath'] ?>"
                      alt="<?= $display['user']['pictureDescription'] ?>">
                 <?= ErrorDisplayService::displayError($display['resultDisplay'], 'registerDisplay') ?>
+                <form method="post" action="./?page=connection" id="form-download-data">
+                    <button name="dldata" class="download-data">Generer mes données (JSON)</button>
+                </form>
             </div>
             <div id="coteD">
                 <form action="./index.php?page=accountManagement" method="POST" enctype="multipart/form-data">
+                    <div class="container-left">
+                        
+                    </div>
                     <label for="prenomE">Prénom</label>
                     <div>
                         <p id="prenomA"><?= $display['user']['firstName'] ?></p>
@@ -87,6 +111,9 @@
                             <?= $display['paymentMethods'] ?>
                         </select>
                     </div>
+                    <div class="container-right">
+
+                    </div>
 
                     <button name="submit" type="submit" class="styleButton" id="submit" style="display: none">
                         Enregistrer les modifications
@@ -97,7 +124,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 </main>
 <script src="<?= PATH_SCRIPTS ?>accountManagement.js"></script>

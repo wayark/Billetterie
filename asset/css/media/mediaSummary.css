@@ -1,0 +1,53 @@
+@media screen and (max-width:768px){
+    .title-page p {
+        font-size: 3.7vw;
+    }
+
+    .bar {
+        height: 0.7vw;
+    }
+
+    .last-bar {
+        height: 0.9vw;
+    }
+
+    .nb-tickets-purchased {
+        font-size: 2.5vw;
+    }
+
+    .right-part-event {
+        margin: 0 2vw 0 5vw;
+        column-gap: 3vw;
+    }
+
+    .link-to-event img{
+        height: 20vw;
+    }
+
+    .type-event {
+        font-size: 2.5vw;
+    }
+
+    .button-generate-pdf > button{    
+        font-size: 2.5vw;
+        width: 20vw;
+        margin-top: 2vw;
+    }
+
+    .button-generate-pdf > button > img {
+        height: 4.5vw;
+        width: fit-content;
+    }
+
+    .subtitle-page {
+        font-size: 3.1vw;
+    }
+
+    .date-event-container > h1, .adress-event, .city-event {
+        font-size: 2.5vw;
+    }
+
+    .date-event-container {
+        margin-top: 2vw;
+    }
+}

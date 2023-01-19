@@ -55,7 +55,7 @@ class AccountManagementPresenter extends Presenter
         $this->display['paymentMethods'] = $this->displayStringPaymentMethods();
         $this->display['buttons'] = $this->displayStringButtons();
 
-        if ($this->currentUser->getRole()->getName() == "Organizer") {
+        if ($this->currentUser->getRole()->getId() == 1) {
             $this->display['titre'] = 'Gestion du compte organisateur';
         } else {
             $this->display['titre'] = 'Gestion du compte client';
@@ -97,7 +97,7 @@ class AccountManagementPresenter extends Presenter
         $ans = createButton("Changer mon mot de passe", "./index.php?page=accountManagement");
         $ans .= createButton("Supprimer mon compte", "./index.php?page=accountManagement");
 
-        if ($this->currentUser->getRole()->getName() == "Organizer") {
+        if ($this->currentUser->getRole()->getId() == 1) {
             $ans .= createButton("Gérer mes événements", "./index.php?page=eventList");
         } else {
             $ans .= createButton("Gérer mes billets", "./index.php");
@@ -105,4 +105,39 @@ class AccountManagementPresenter extends Presenter
         }
         return $ans;
     }
+
+    public function getDataInJSON(){
+        $cart = $_SESSION["cart"];
+        $data['user'] = array(
+            'picturePath' => $this->currentUser->getProfilePicture()->getPicturePath(),
+            'pictureDescription' => $this->currentUser->getProfilePicture()->getPictureDescription(),
+            'firstName' => $this->currentUser->getFirstName(),
+            'lastName' => $this->currentUser->getLastName(),
+            'mail' => $this->currentUser->getMail(),
+            'birthDateNoFormat' => $this->currentUser->getBirthDate(),
+            'birthDate' => DateDisplayService::formatDate($this->currentUser->getBirthDate()),
+            'address' => $this->currentUser->getAddress(),
+            'pictureFileName' => substr($this->currentUser->getProfilePicture()->getPicturePath(), strlen(PATH_IMAGES . 'users/')),
+            'favoritePaymentMethod' => $this->currentUser->getFavoriteMethod()->getPaymentMethodName(),
+            'role' => $this->currentUser->getRole()->__toString(),
+            'nb-items-cart' => $cart->getNbItems(),
+            'total-price-cart' => $cart->getTotalPrice(),
+
+        );
+        $path_file = PATH_ASSETS . "data/data-" . $this->currentUser->getMail() . ".json";
+        $file_name = basename($path_file);
+        $content = json_encode($data['user']);
+
+        file_put_contents($path_file, $content);
+        
+        header("Content-type: application/force-download");
+        header("Content-Disposition: attachment; filename=".$file_name);
+        readfile($path_file);
+        
+        unlink($path_file);
+
+        Exit();
+    }
+
 }
+?>
