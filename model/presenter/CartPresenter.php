@@ -103,6 +103,15 @@ class CartPresenter extends Presenter
             $display['items'] .= '<div class="cart-item-price">';
             $display['items'] .= '<p>' . $infos['pricing']->getPrice() . ' €</p>';
             $display['items'] .= '</div>';
+            $display['items'] .= '<div class="cart-delete-item">';
+            $display['items'] .= '<form action="./?page=cart" method="post">';
+            $display['items'] .= '<input type="hidden" name="delete" value="true">';
+            $display['items'] .= '<input type="hidden" name="id" value="' . $infos['pricing']->getIdTicketPricing() . '">';
+            $display['items'] .= '<button type="submit" class="cart-delete-button">';
+            $display['items'] .= '<img src="' . PATH_IMAGES . 'logos/light-grey-bin.png" alt="delete">';
+            $display["items"] .= '</button>';
+            $display['items'] .= '</form>';
+            $display['items'] .= '</div>';
             $display['items'] .= '</div>';
 
             $i++;
