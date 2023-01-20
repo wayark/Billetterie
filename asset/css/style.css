@@ -1,0 +1,193 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Arial';
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+*::selection{
+    background-color: #e4c98774;
+    color: white;
+}
+
+*::-moz-selection{
+    background-color: #e4c98774;
+    color: white;
+}
+
+body{
+    background-color: #383737;
+}
+
+body button:hover{
+    background-color: #767575;
+}
+
+/*--------------Header---------------*/
+
+
+
+header{
+    background-color: #2D2D2D;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 5vw;
+    align-items: center;
+}
+
+header > a {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    min-width: 100px;
+    gap: 1vw;
+}
+
+header > .header-right-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    min-width: 100px;
+    margin-right: 0.6vw;
+    column-gap: 0.6vw;
+}
+
+
+.logo{
+    width: 10vw;
+    min-width: 90px;
+    min-height: 32px;
+    margin: 1vw;
+}
+
+.headerButton{
+    height: 3vw;
+    min-height: 15px;
+    background-color: #5F5F5F;
+    border-radius: 1vw;
+    border: 0;
+}
+
+.headerButton{
+    margin-right: 0.3vw;
+}
+
+.accountButton{
+    color: #E7D9AB;
+    width: 10vw;
+    min-width: 70px;
+    padding: 0.5vh;
+    font-size:calc(6px + 0.7vw);
+    cursor: pointer;
+}
+
+.cartButton, .notificationsButton, .orderButton, .disconnectButton{ 
+    width: 3vw;
+    min-width: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.circle-nb-notifications {
+    position: absolute;
+    top: 0.4vw;
+    margin-left: 2.1vw;
+    width: 1.8vw;
+    height: 1.8vw;
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 50%;
+    background-color: rgb(179, 97, 97);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9vw;
+    font-weight: bold;
+}
+
+.last-right-button {
+    margin-right: 0.8vw;
+}
+/*--------------navBar---------------*/
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #424141;
+    height: 4vw;
+    min-height: 25px;
+}
+
+nav > div{
+    display: flex;
+    align-items: center;
+    color: #E7D9AB ;
+    cursor: pointer;
+    font-size:calc(6px + 1.2vw);
+    min-height: 25px;
+    padding-left: 2vw;
+    padding-right: 2vw;;
+}
+
+nav > div > a {
+    color: #E7D9AB;
+    text-decoration: none;
+}
+nav>div:hover{
+    background-color: #555555;
+}
+
+.registerDisplay {
+    text-align: center;
+    padding: 1vw;
+    margin-top: 2vh;
+    border-radius: 20px;
+}
+
+.icon-img{
+    width: 2vw;
+    height: 2vw;
+    min-width: 15px;
+    min-height: 15px;
+}
+
+.cart-img, .ticket-img{
+    width: 2.4vw;
+    height: 2.4vw;
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.notifications-button {
+    padding-left: 0.6vw;
+    padding-right: 0.6vw;
+    cursor: pointer;
+}
+
+.accountButton img {
+    display: none;
+}
+
+/*----------------footer--------------*/
+footer{
+    width: 100%;
+    background-color: #2D2D2D;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 4vw;
+    margin-top: 4vw;
+    position: block;
+}
+
+.footerButton{
+    color: #E7D9AB;
+    margin-right: 6vw;
+    font-size: 1.7vw;
+}

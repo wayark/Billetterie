@@ -1,0 +1,20 @@
+@media screen and (max-width:768px) {
+    .connection-register-frame {
+        width: 80vw;
+        height: 45vw;
+        min-width: 0;
+        min-height: 0;
+    }
+
+    .connectionForm > input {
+        width: 25vw;
+        font-size: 1.9vw;
+    }
+
+    @media screen and (max-width: 425px) {
+        .connection-register-frame {
+            width: 95vw;
+            height: 50vw;
+        } 
+    }
+}

@@ -1,0 +1,185 @@
+.sort-form-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+    align-items: center;
+    margin-left: 3.5vw;
+    margin-top: 1.4vw;
+    margin-bottom: 1vw;
+}
+
+.sort-form-container select {
+    width: fit-content;
+    height: 3vw;
+    border: none;
+    border-radius: 1.3vw;
+    background-color: #757575;
+    color: white;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    cursor: pointer;
+    text-align-last: center;
+    text-align: center;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.sort-form-container img {
+    width: 3vw;
+    margin-left: 0.5vw;
+}
+
+select:hover {
+    background-color: #dbd0c7;
+    color: rgb(77, 72, 72);
+}
+
+select option {
+    text-align: center;
+}
+
+.sort-form-name {
+    font-size: 2.3vw;
+}
+
+.all-comments-container {
+    margin-top: 1vw;
+    margin-left: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1vw;
+    align-items: center;
+}
+
+.comment {
+    display: grid;
+    width: 90%;
+    height: 10.1vw;
+    grid-template-columns: 1fr 3fr;
+    margin-right: 7vw;
+}
+
+
+.commented-event {
+    height: 9.5vw;
+}
+
+.comment-content {
+    width: 100%;
+    border-radius: 1vw;
+    height: 9.5vw;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5vw;
+    background-color: #403b3b;
+    padding: 1vw;
+}
+
+.comment-content p {
+    margin: 0;
+}
+
+.commented-event img {
+    max-width: 15vw;
+    height: 100%;
+    border-radius: 1vw;
+}
+
+.event-title {
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-bottom: 0.5vw;
+    color : white;
+}
+
+.comment-text-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+}
+
+.comment-text-container .quotation-mark:first-child {
+    align-self: start;
+    transform: translateY(-0.5vw);
+}
+
+.comment-text-container .quotation-mark:last-child {
+    align-self: end;
+    transform: translateY(1.3vw);
+}
+
+.quotation-mark {
+    font-size: 2.3vw;
+    margin: 0;
+    color: white;
+}
+
+.comment-text{
+    font-size: 1.1vw;
+    text-align: justify;
+}
+
+.comment-date {
+    align-self: end;
+    font-size: 1.1vw;
+    color: rgb(199, 197, 197);
+}
+
+.comment-like-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5vw;
+    align-items: center;
+    position: absolute;
+    margin-left: 35%;
+    transform: translateY(-1.7vw);
+}
+
+.comment-like-container img {
+    width: 1.5vw;
+    cursor: pointer;
+}
+
+.like, .dislike {
+    height: 3vw;
+    width: 5vw;
+    border-radius: 3vw;
+    background-color: #756d6d;
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.6vw;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.like:hover, .dislike:hover {
+    background-color: #c0b1a4;
+    color: rgb(77, 72, 72);
+}
+
+.like>button, .dislike>button{
+    background-color: transparent;
+}
+
+.like>button:hover, .dislike>button:hover{
+    background-color: transparent;
+}
+
+
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s;
+}
+
+.like button:hover, .dislike button:hover {
+    transition: 0.2s;
+    transform: scale(1.3);
+}

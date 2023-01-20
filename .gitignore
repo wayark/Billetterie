@@ -1,0 +1,7 @@
+/.phpunit.result.cache
+.idea/
+vendor/*/
+vendor/
+/vendor/composer/
+/asset/image/users/
+!/asset/image/users/unnamed.jpg

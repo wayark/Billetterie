@@ -1,0 +1,152 @@
+main {
+    margin-top: 50px;
+    display: flex;
+}
+
+section {
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    background-color: #2D2D2D;
+    width: 70%;
+    height: 10%;
+    padding-bottom : 2vw;
+    border-radius: 10px;
+}
+
+
+form {
+    display: grid;
+}
+
+form > div {
+    text-align: center;
+    align-self: center;
+}
+
+input, select {
+    text-align: center;
+    display: none;
+    align-self: center;
+}
+
+input, select{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5vw;
+    color: #E7D9AB;
+    padding: 0.3vw;
+    background-color: #5F5F5F;
+}
+
+input::placeholder{
+    color: #ffffff;
+}
+
+button[type=submit] {
+    height: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-self: center;
+}
+
+p {
+    align-self: center;
+}
+
+form {
+    width: 100%;
+    margin: 1%;
+    display: grid;
+    grid-template-columns: auto 25vw;
+    grid-column-gap: 3vw;
+}
+
+#coteD, #coteG {
+    display: flex;
+    flex-direction: column
+}
+
+div > img {
+    align-self: center;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 5px;
+    padding-top: 5vw;
+    padding-bottom: 3vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+h1, label, p {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 4%;
+    color: #E7D9AB;
+}
+
+h1 {
+    font-size: 2.7vw;
+    margin-bottom: 4%;
+}
+
+label, p:not(.accountButton > p) {
+    font-size: 1.8vw;
+}
+
+
+button.styleButton {
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 5px;
+    color: #E7D9AB;
+    background-color: #5F5F5F;
+    border: none;
+    border-radius: 20px;
+    width: 10vw;
+    cursor: pointer;
+}
+
+#sides-container {
+    display: flex;
+}
+
+button {
+    font-size: 1.5vw;
+}
+
+div#actionButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 2vh;
+}
+
+.download-data{
+    width: 10vw;
+    color: #fff;
+    background-color: #525252;
+    border-radius: 1.2vw;
+    cursor: pointer;
+    padding: 0.5vw;
+    font-size: 1vw;
+    font-weight: bold;
+    margin-bottom : 1vw;
+}
+
+#form-download-data{
+    margin-left: 10vw;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-account-mangement {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,162 @@
+.eventModification{
+    display: flex;
+    justify-content: center;
+}
+
+.event-modification-frame{
+    background-color: #2D2D2D;
+    margin-top: 5vh;
+    min-width: 300px;
+    min-height:450px;
+    width: 50vw;
+    border-radius:10px;
+    padding: 3vw;
+    color: white;
+}
+
+.event-modification-title{
+    margin-bottom: 3vw;
+}
+
+.event-modification-name{
+    color: #E7D9AB;
+    margin-left: 3vw;
+    width: 30vw;
+    min-width: 170px;
+}
+
+
+.event-modification-name>h1{
+    font-size: calc(6px + 1.6vw);
+}
+.event-modification-name>h2{
+    font-size: calc(4px + 1.3vw);
+}
+.imageFrame{
+    width: 16vw;
+    height: 10vw;
+    min-width: 100px;
+    min-height: 63px;
+    overflow: hidden;
+    margin-right: 2vw;
+    border-radius: 15px;
+}
+
+.imageEvent{
+    width: 16vw;
+    min-width:100px ;
+}
+
+.event-modification-summary{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4vw;
+}
+
+.event-modification-summary>h2{
+    margin-bottom: 2vw;
+}
+
+
+.event-modification-information{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-modification-place{
+    margin-top: 1vw;  
+    width: 43vw;  
+}
+
+.event-modification-place>input{
+    margin-top: 1vw;
+    height: 5vw;
+    width: 45vw;
+    min-width: 270px;
+    
+}
+
+.event-modification-ticket{
+    margin-top: 3vw;
+    width: 45vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.event-modification-ticket div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 13vw;
+}
+.event-modification-ticket div input{
+    margin-top: 1vw;
+    height: 2vw;
+    width: 10vw;
+    min-width: 60px;
+    
+}
+
+
+
+
+
+input{
+    background-color: #262626;
+    border:none;
+    border-radius:10px;
+    color:rgb(206, 206, 206);
+}
+
+.textPlace-container{
+    padding-left: 1vw;
+    padding-right: 1vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.textPlace-container > input{
+        margin-top: 1vw;
+        height: 2vw;
+        width: 10vw;
+        min-width: 60px;
+}
+
+textarea{
+    background-color: #262626;
+    border:none;
+    height:10vw;
+    width: 45vw;
+    min-width: 270px;
+    min-height:70px;
+    min-height: 100px;
+    border-radius:10px;
+    resize: none;
+    color:rgb(206, 206, 206);
+}
+
+button{
+    background-color: #5F5F5F;
+    color: #E7D9AB;
+    border: none;
+    font-size: 1.5vw;
+    width: 10vw;
+    min-width: 60px;
+    min-height: 15px;
+    border-radius: 20px;
+    margin-top: 4vw;
+}
+
+button:hover{
+    background-color: #767575;
+}
+
+h3{
+    font-size: calc(4px + 1.3vw);
+}
+
+h2{
+    font-size: calc(6px + 1.6vw);
+}

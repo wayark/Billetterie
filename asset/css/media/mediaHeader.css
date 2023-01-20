@@ -1,0 +1,77 @@
+@media screen and (max-width: 767px) {
+    header {
+        height: 5.5vh;
+    }
+
+    nav {
+        height: 4vh;
+    }
+
+    nav p {
+        font-size: 1.8vh;
+    }
+
+    .header-right-button button:not(.accountButton) {
+        width: 4vh;
+        height: 4vh;
+        border-radius: 1.4vh;
+    }
+
+    .deconnexion-img {
+        width: 3.2vh;
+        height: 3.2vh;
+    }
+
+    .notification-img {
+        width: 2.9vh;
+        height: 2.9vh;
+    }
+
+    .ticket-img {
+        width: 3.3vh;
+        height: 3.3vh;
+    }
+
+    .cart-img {
+        width: 3.5vh;
+        height: 3.5vh;
+    }
+
+    .accountButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 6vh;
+        height: 4vh;
+        padding-left: 1.5vh;
+        padding-right: 1.5vh;
+        border-radius: 1.5vh;
+        min-width: 0;
+        font-size: 1.4vh;
+    }
+
+    .accountButton p {
+        display: none;
+    }
+
+    .accountButton img {
+        display: block;
+        width: 3vh;
+        height: 3vh;
+    }
+
+    .logo {
+        width: 9vh;
+        height: 4vh;
+        min-height: 0;
+        min-width: 0;
+        margin-left: 1.3vh;
+    }
+
+    .circle-nb-notifications {
+        width: 1.7vh;
+        height: 1.7vh;
+        font-size: 1vh;
+        margin-left: 2.8vh;
+    }
+}

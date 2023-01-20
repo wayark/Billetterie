@@ -1,0 +1,348 @@
+body{
+    background-color: #383737;
+    top: 0;
+    left: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+    column-gap: 7vw;
+    width: 95%;
+    height: 50px;
+    background-color: #424141;
+}
+
+#options li{
+    list-style-type : none;
+}
+
+#options li a{
+    text-decoration: none;
+    color: #e0d3a6;
+    font-size: 2.1vw;
+}
+
+#options li a:hover{
+    color: #e0d3a6;
+    /* Placer le border plus bas */
+    border-bottom: 3px solid #e0d3a6;
+}
+
+#titlepage p {
+    color: #e0d3a6;
+    font-size: 2vw;
+    margin-left: 2vw;
+}
+
+#point{
+    margin-left: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3vw;
+    height: 2.8vw;
+    background-color: #757575;
+    border-radius: 100%;
+}
+
+#point div {
+    width: 1vw;
+    height: 1vw;
+    background-color: #e0d3a6;
+    border-radius: 100%;
+}
+
+#events-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 25px;
+}
+
+.events{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 95vw;
+    height: 20vw;
+    background-color: #2d2d2d;
+    border-radius: 1.5vw;
+    color : white;
+    box-shadow: 0 1vw 0 0#2a2929;
+}
+
+.events img {
+    margin-left: 2vw;
+    width: 15vw;
+    width: 25vw;
+    margin-left: 3vw;
+    border-radius: 1vw;
+}
+
+.eventtitle{
+    font-size: 3vw;
+    font-weight: bold;
+    margin-top: 1.5vw;
+}
+
+#eventsimages{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2vw;
+    height: 25vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.t2 div{
+    width: 27vw;
+    height : 21vw;
+}
+
+.t3 div{
+    width: 24vw;
+}
+
+body{
+    background-color: #383737;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+    column-gap: 7vw;
+    width: 95%;
+    height: 50px;
+    background-color: #424141;
+}
+
+#options li{
+    list-style-type : none;
+}
+
+#options li a{
+    text-decoration: none;
+    color: #e0d3a6;
+    font-size: 2.1vw;
+}
+
+#options li a:hover{
+    color: #e0d3a6;
+    /* Placer le border plus bas */
+    border-bottom: 3px solid #e0d3a6;
+}
+
+#titlepage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 4vw;
+    background-color: #424141;
+}
+
+#searchconcert{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 4vw;
+    background-color: #2d2d2d;
+}
+
+#searchconcert input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #2d2d2d;
+    color: #757575;
+    font-size: 1.8vw;
+    outline: none;
+    margin-left: 2vw;
+}
+
+#events-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 4vw;
+}
+
+.eventtext-container{
+    padding-top: 0;
+    margin-left: 45px;
+    display : grid;
+    /* La premiere grille prend 90% de la largeur du container la deuxieme 10% */
+    grid-template-columns: 40vw 20vw;
+}
+
+.eventdate{
+    font-size: 1.4vw;
+    margin-top: 1vw;
+}
+
+.eventdesc{
+    font-size: 1.4vw;
+    margin-left: 1vw;
+    margin-top: 1vh;
+    color: #949494;
+}
+
+.eventplace{
+    font-size: 2.1vw;
+    text-align: end;
+    color: #afafaf;
+    font-weight: bold;
+}
+
+.eventcity{
+    font-size: 1.5vw;
+    text-align: end;
+    color: #afafaf;
+    font-weight: bold;
+}
+
+.eventplacesremaining{
+    font-size: 1.4vw;
+    text-align: end;
+    color: #8a8a8a;
+}
+.tendancies{
+    box-shadow: 0 1vw 0 0#2a2929;
+    border-radius: 3vw;
+}
+
+.tendancies div {
+    transition: 0.2s;
+    border-radius: 3vw;
+    cursor: pointer;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transition: background-image 1s;
+}
+
+.tendancies:hover {
+    filter: brightness(0.8);
+    transition: 0.2s;
+}
+
+.t1 div, .t3 div{
+    height: 17vw;
+    width: 23vw;
+}
+
+.moveCarousel{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5vw;
+    height: 8vw;
+    background-color: #191818;
+    border-radius: 1vw;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.moveCarousel div{
+    transition: 0.15s;
+    background-image: url("../image/useful/arrow.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 4vw;
+    height: 4vw;
+}
+
+.moveCarousel div:hover{
+    transition: 0.15s;
+}
+
+.moveCarousel:hover{
+    transition: 0.2s;
+    background-color: #1f1e1e;
+}
+
+#moveCarouselRight{
+    right: 0.7vw;
+}
+
+#moveCarouselLeft{
+    left: 0.7vw;
+}
+
+#moveCarouselLeft div{
+    transform: rotate(180deg);
+}
+
+#searchbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8vw;
+    height: 4vw;
+    background-color: #676767;
+    border: none;
+    cursor: pointer;
+    border-left: 0.5vw solid #141414;
+}
+
+#searchbutton:hover{
+    filter: brightness(0.8);
+}
+
+#searchbutton img{
+    width: 3vw;
+    height: 3vw;
+}
+
+.t2 div p{
+    font-size: 2.4vw;
+    font-weight: bold;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.t2 {
+    text-decoration: none;
+    color: white;	
+    text-shadow: 0 0 0.8vw #000000;
+    letter-spacing: 0.1vw;
+}
+
+.t2 div:last-child{
+    position: absolute;
+    background-color: rgba(229, 222, 186, 0.7);
+    width: 27vw;
+    height: 7vw;
+    border-radius: 0 0 3vw 3vw;
+    transform: translateY(-7vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(0.2vw);
+}
