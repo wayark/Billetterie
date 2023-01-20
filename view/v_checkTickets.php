@@ -26,64 +26,41 @@
 <head>
     <link href="<?= PATH_CSS ?>checkTickets.css" rel="stylesheet">
     <link href="<?= PATH_MEDIA ?>CheckTickets.css" rel="stylesheet">
+    <script src="<?= PATH_SCRIPTS ?>checkTickets.js" defer></script>
     <title>Mes tickets</title>
 </head>
 <body>
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
-<main>
-    <div class="button">
-        <h1><</h1>
+<main class="main-container">
+    <div class="btn-container">
+        <?php if ($presetDisplay['nb-tickets'] > 1) { ?>
+        <div class="button" onclick="checkOtherTicket(-1)">
+            <h1><</h1>
+        </div>
+        <?php } ?>
     </div>
-    <section class="transparent">
-        <h2></h2>
-        <h3></h3>
-        <h3></h3>
-    </section>
-    <section id="ticket">
-        <h2>Soirée mousse</h2>
-        <h3>nombres de places achetées : 3</h3>
-        <h3>Position : Gradin</h3>
-    </section>
-    <div class="button">
-        <h1>></h1>
+    <section class="ticket-container">
+        <div class="ticket-elements-container">
+            <?= $display['initial-ticket'] ?>
+        </div>
+        <?= $presetDisplay['preset-tickets'] ?>
+        </section>
+        <div class="btn-container">
+        <?php if ($presetDisplay['nb-tickets'] > 1) { ?>
+        <div class="button" onclick="checkOtherTicket(+1)">
+            <h1>></h1>
+        </div>
+        <?php } ?>
     </div>
 </main>
-<button id="add">add ticket</button>
-<script>
-    zInd = 100;
-    rotate = "10deg";
-    const element = document.querySelector('#add');
+<div class="nb-tickets-container">
+    <p class="to-modify">1</p>
+    <p>/</p>
+    <p class="to-modify"><?= $presetDisplay['nb-tickets'] ?></p>
+</div>
 
-    // Ajout de l'évènement au clic à l'élément
-    element.addEventListener('click', function() {
+<?= $display['tickets'] ?>
 
-
-
-        const sectionToDuplicate = document.querySelector('#ticket');
-        // Création d'une copie de la section
-        const sectionCopy = sectionToDuplicate.cloneNode(true);
-        zInd = zInd - 1;
-        if(rotate == "-10deg"){
-            rotate = "10deg"
-            console.log("ok1");
-        }
-        else {
-            rotate = "-10deg";
-            console.log("ok")
-        }
-        console.log(rotate)
-        sectionCopy.style.transform = "rotate("+rotate+")";
-        sectionCopy.style.zIndex = zInd;
-        // Ajout de la copie de la section au DOM
-        const parentElement = document.querySelector('main');
-        parentElement.appendChild(sectionCopy);
-
-
-
-        console.log('L\'évènement au clic s\'est produit!');
-    });
-
-</script>
 <?php require_once(PATH_VIEWS . 'footer.php'); ?>
 </body>
