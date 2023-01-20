@@ -16,14 +16,14 @@ class MenuInitialiser{
     }
 
     public function setNbTickets(){
-        $this->nbTickets = count($_SESSION['tickets']);
+        /* $this->nbTickets = count($_SESSION['tickets']); */
         return 0;
     }
 
     public function setNbCartItems(){
         $nbItems = $_SESSION['cart']->getNbItems();
         $this->nbCartItems = $nbItems;
-        return 0;
+        return $nbItems;
     }
 
     public function export(){

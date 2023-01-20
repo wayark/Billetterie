@@ -161,7 +161,7 @@ const checkOtherTicket = (direction) => {
         textEventName.innerHTML = alltexts[index][0];
         textTicketType.innerHTML = alltexts[index][1];
         textNbPlaces.innerHTML = alltexts[index][2];
-        textEventName.style.color = colors[0];
+        textEventName.style.color = colors[index];
     
         hiddenInput.value = alltexts[index][3];
     }
