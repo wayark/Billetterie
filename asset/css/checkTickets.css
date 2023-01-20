@@ -60,6 +60,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    row-gap: 0.5vw;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -72,6 +73,7 @@
     align-items: center;
     justify-content: center;
     font-size: 3vw;
+    row-gap: 1vw;
     color: white;
 }
 
@@ -183,4 +185,8 @@
     font-size: 5vw;
     font-weight: bolder;
     color: white;
+}
+
+.hidden-text-container {
+    display: none;
 }
