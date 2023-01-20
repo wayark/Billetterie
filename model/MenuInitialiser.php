@@ -16,7 +16,7 @@ class MenuInitialiser{
     }
 
     public function setNbTickets(){
-        $this->nbTickets = 0;
+        $this->nbTickets = count($_SESSION['tickets']);
     }
 
     public function setNbCartItems(){
