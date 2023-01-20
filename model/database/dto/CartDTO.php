@@ -24,8 +24,6 @@ class CartDTO extends DTO {
      */
     function update(User $user, TicketPricing $ticketPricing, int $quantity): void
     {
-        echo "UPDATE CART SET QUANTITY = $quantity WHERE ID_USER = ? AND ID_TICKET_PRICING = ?";
-    
         $this->_sendQuery("UPDATE CART SET QUANTITY = $quantity WHERE ID_USER = ? AND ID_TICKET_PRICING = ?",
             [$user->getId(), $ticketPricing->getIdTicketPricing()]);
     
