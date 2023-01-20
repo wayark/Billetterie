@@ -1,0 +1,133 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Arial';
+}
+
+body {
+    background-color: #383737;
+}
+
+body button:hover {
+    background-color: #767575;
+}
+
+/*--------------Header---------------*/
+
+
+header {
+    background-color: #2D2D2D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+.logo {
+    width: 10vw;
+    min-width: 90px;
+    min-height: 32px;
+    align-self: center;
+    margin: 1vw;
+}
+
+.header-right-button {
+    display: flex;
+    justify-content: space-around;
+    width: 14vw;
+    min-width: 100px;
+    margin-right: 3vw;
+    gap: 1vw;
+
+}
+
+.headerButton {
+    height: 3vw;
+    min-height: 15px;
+    background-color: #5F5F5F;
+    border-radius: 15px;
+    border: 0;
+}
+
+.accountButton {
+    color: #E7D9AB;
+    width: 10vw;
+    min-width: 70px;
+    padding: 0.5vh;
+    font-size: calc(6px + 0.7vw);
+    cursor: pointer;
+}
+
+.cartButton {
+    width: 3vw;
+    min-width: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cart {
+    width: 2vw;
+    height: 2vw;
+    min-width: 15px;
+    min-height: 15px;
+}
+
+/*--------------navBar---------------*/
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #424141;
+    height: 4vw;
+    min-height: 25px;
+}
+
+nav a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #E7D9AB;
+    align-items: center;
+}
+
+nav > div {
+    display: flex;
+    align-items: center;
+    color: #E7D9AB;
+    cursor: pointer;
+    font-size: calc(6px + 1.2vw);
+    min-height: 25px;
+    padding-left: 2vw;
+    padding-right: 2vw;;
+}
+
+nav > div:hover {
+    background-color: #555555;
+}
+
+.registerDisplay {
+    text-align: center;
+    padding: 1vw;
+    margin-top: 2vh;
+    border-radius: 20px;
+}
+
+/*----------------footer--------------*/
+footer {
+    margin-top: 4vw;
+    background-color: #2D2D2D;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 4vw;
+}
+
+.footerButton {
+    color: #E7D9AB;
+    margin-right: 6vw;
+    font-size: 1.7vw;
+}

@@ -1,0 +1,161 @@
+form {
+    display: grid;
+    grid-template:
+            "bouton artiste artiste . texte texte texte filtre trie-par case-trie case-trie"
+            "bouton ville ville . date date date disponibilite . . recherche";
+    background-color: #2D2D2D;
+    gap: 1.5vh;
+    padding: 2vw;
+    align-items: center;
+    justify-items: center;
+}
+
+form > * {
+    align-self: center;
+    justify-self: center;
+}
+
+input[type=text]{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #424141;
+    color: #757575;
+    /* font-size: 1.8vw; */
+    outline: none;
+    margin-left: 2vw;
+    border-radius: 50px;
+    padding: 1vh;
+}
+
+form > * {
+    align-self: start;
+    color: #E7D9AB;
+}
+
+form select {
+    background-color: #424141;
+}
+
+form buton {
+    background-color: #424141;
+}
+
+div#point {
+    grid-area: bouton;
+    align-self: center;
+}
+
+input[type=text]#artist-field {
+    grid-area: artiste;
+}
+
+#point div {
+    width: 1vw;
+    height: 1vw;
+    background-color: #e0d3a6;
+    border-radius: 100%;
+}
+
+input[type=text]#text-field {
+    grid-area: texte;
+}
+
+form p {
+    grid-area: filtre;
+}
+
+label#select-trie-label {
+    grid-area: trie-par;
+}
+
+form select#select-trie {
+    grid-area: case-trie;
+}
+
+form input[type=text]#text-city {
+    grid-area: ville;
+}
+
+div#date-period {
+    grid-area: date;
+}
+
+select#estDisponible {
+    grid-area: disponibilite;
+}
+
+
+form p, form label{
+    align-self: center;
+}
+
+form button[type=submit] {
+    grid-area: recherche;
+}
+
+form button[type=submit], form select, form input[type=date] {
+    color: #E7D9AB;
+    width: 10vw;
+    min-width: 70px;
+    padding: 0.5vh;
+    font-size: calc(6px + 0.7vw);
+    cursor: pointer;
+    height: 2vw;
+    min-height: 15px;
+    background-color: #5F5F5F;
+    border-radius: 15px;
+    border: 0;
+    text-align: center;
+}
+
+.events{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 95vw;
+    height: 20vw;
+    background-color: #2d2d2d;
+    border-radius: 1.5vw;
+    color : white;
+    box-shadow: 0 1vw 0 0#2a2929;
+}
+
+.events img {
+    margin-left: 2vw;
+    width: 15vw;
+    width: 25vw;
+    margin-left: 3vw;
+    border-radius: 1vw;
+}
+
+.eventtext-container{
+    padding-top: 0;
+    margin-left: 45px;
+    display : grid;
+    /* La premiere grille prend 90% de la largeur du container la deuxieme 10% */
+    grid-template-columns: 40vw 20vw;
+}
+
+.eventtitle{
+    font-size: 3vw;
+    font-weight: bold;
+    margin-top: 1.5vw;
+}
+
+#eventsimages{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2vw;
+    height: 25vw;
+    align-items: center;
+    justify-content: center;
+}
+
+main > div {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 25px;
+}

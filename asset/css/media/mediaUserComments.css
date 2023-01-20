@@ -1,0 +1,138 @@
+@media screen and (max-width: 767px) {
+    .colored-part-comments {
+        width: 95vw;
+    }
+
+    .username-container p {
+        font-size: 4.3vw;
+    }
+
+    .sort-form-container {
+        margin-top: 3.5vw;
+        margin-bottom: 3.5vw;
+        column-gap: 3vw;
+    }
+
+    .sort-form-container img {
+        width: 5vw;
+    }
+
+    .sort-form-container p {
+        font-size: 4.3vw;
+    }
+
+    .sort-form-container select {
+        font-size: 3.7vw;
+        height: 5vw;
+        border-radius: 2vw;
+    }
+
+    .comments-title-section-container > h1:first-child {
+        font-size: 5.5vw;
+    }
+
+    .comments-title-section-container > h1:last-child {
+        font-size: 4.3vw;
+    }
+
+    .comment {
+        height: fit-content;
+    }
+
+    .commented-event img {
+        max-width: none;
+        width: fit-content;
+        height: 15vw;
+    }
+
+    .all-comments-container {
+        margin-left: 0;
+        margin-top: 3.5vw;
+        row-gap: 3.5vw;
+    }
+
+    .comment-content {
+        margin-left: 2vw;
+        width: 103%;
+        height: 15vw;
+    }
+
+    .event-title {
+        font-size: 2.5vw;
+    }
+
+    .quotation-mark {
+        font-size: 4vw;
+    }
+
+    .comment-text {
+        font-size: 1.8vw;
+    }
+
+    .comment-date {
+        font-size: 1.8vw;
+        transform: translateY(-1.2vw);
+    }
+
+    .comment-like-container {
+        margin-left: 50%;
+        transform: translateY(-2.7vw);
+    }
+
+    .like, .dislike {
+        width: 6vw;
+        height: 4.5vw;
+    }
+
+    .like-number, .dislike-number {
+        font-size: 2.7vw;
+    }
+
+    .comment-like-container img {
+        width: 2.5vw;
+    }
+    @media screen and (max-width: 480px) {
+        .username-container {
+            margin-top: 2vw;
+        }
+
+        .username-container p {
+            font-size: 7.5vw;
+        }
+
+        .comments-title-section-container {
+            margin-bottom: 3vw;
+        }
+
+        .comments-title-section-container > h1:first-child {
+            font-size: 8vw;
+        }
+
+        .comments-title-section-container > h1:last-child {
+            font-size: 6.5vw;
+        }
+
+        .sort-form-container {
+            margin-top: 7vw;
+            margin-bottom: 5vw;
+        }
+
+        .sort-form-container img {
+            width: 8vw;
+        }
+
+        .sort-form-container p {
+            font-size: 6.5vw;
+        }
+
+        .sort-form-container select {
+            font-size: 5.5vw;
+            height: 8vw;
+            border-radius: 3vw;
+        }
+
+        .colored-part-comments {
+            padding-bottom: 3vw;
+        }
+    }
+}
