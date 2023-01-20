@@ -2,13 +2,15 @@
 /**
  * @var Cart $cart
  * @var User $user
+ * @var Ticket $ticket
  */
 require_once PATH_MODELS . "QRCodeGenerator.php";
 
 require_once PATH_MODELS . "PDFGenerator.php";
 
-function generateHTMLEvent(Event $event, int $quantity, bool $isLast) : string
+function generateHTMLEvent(Ticket $ticket, int $quantity, bool $isLast) : string
 {
+    $event = $ticket->getEvent();
     $result = '<div class="event-purchased flex-column">
             <div class="nb-tickets-purchased flex-row">
                 <h1 class="to-modify">'. $quantity .'</h1>
@@ -22,7 +24,7 @@ function generateHTMLEvent(Event $event, int $quantity, bool $isLast) : string
                     <img src="' . $event->getEventInfo()->getPicture()->getPicturePath() . '" alt="event" class="event-img">
                 </a>
                 <div class="event-info flex-column">
-                    <h1 class="type-event">'. StringService::cutAtFirstParagraph($event->getEventInfo()->getEventDescription()) .'</h1>
+                    <h1 class="type-event">'. $ticket->getTicketPricing()->getName() .'</h1>
                     <div class="date-event-container flex-row">
                         <h1 class="date-event">Le</h1>
                         <h1 class="date-event">'. DateDisplayService::formatDatetime($event->getEventInfo()->getEventDate()) .'</h1>
@@ -30,6 +32,7 @@ function generateHTMLEvent(Event $event, int $quantity, bool $isLast) : string
                     <h1 class="adress-event">'. $event->getEventPlace()->getStreet() .'</h1>
                     <h1 class="city-event">' . $event->getEventPlace()->getCity() .'</h1>
                     <form action="./?page=summary" method="post" class="button-generate-pdf">
+                        <input type="hidden" name="event_id" value="'. $ticket->getIdTicket() .'">
                         <button type="submit" name="generate-pdf" class="flex-row">
                             <p>Télécharger mon billet</p>
                             <img src="./asset/image//logos/pdf-icon.png" alt="">
@@ -42,51 +45,42 @@ function generateHTMLEvent(Event $event, int $quantity, bool $isLast) : string
     return $result;
 }
 
-if (isset($_SESSION['cart']))
-{
-    $ticketDAO = new TicketDAO();
-    $ticketDTO = new TicketDTO();
-    $pricingDAO = new TicketPricingDAO();
-
-    $resultDisplay = array('events' => "", 'numberArticles' => 0);
-
-    $cart = $_SESSION['cart'];
-    $user = $_SESSION['user'];
-    $lastEvent = array_keys($cart->getInCartPricing())[count($cart->getInCartPricing()) - 1];
-    foreach ($cart->getInCartPricing() as $pricingId => $quantity) {
-        $pricing = $pricingDAO->getById($pricingId);
-        $ticket = new Ticket($ticketDAO->getLastId() + 1, $pricing->getEvent(), $user->getFavoriteMethod(),$pricing, $user,
-            $pricing->getEvent()->getIdEvent() . '-' . ($ticketDAO->getLastId() + 1));
-        $cart->remove($pricingId, $quantity);
-
-        $ticketDTO->add($ticket);
-
-        if ($pricing->getEvent()->getIdEvent() == $lastEvent) {
-            $resultDisplay['events'] .= generateHTMLEvent($pricing->getEvent(), $quantity, true);
-        } else {
-            $resultDisplay['events'] .= generateHTMLEvent($pricing->getEvent(), $quantity, false);
-        }
-        $resultDisplay['numberArticles'] += $quantity;
-
-        unset($_SESSION['cart']->getInCartPricing()[$pricingId]);
-    }
-}
-
 if(isset($_POST['generate-pdf'])){
+
+    $resultDisplay['events'] = "";
+    $resultDisplay['numberArticles'] = 0;
+
+    foreach ($_SESSION['waiting-tickets'] as $info) {
+        $ticket = $info['ticket'];
+        $quantity = $info['quantity'];
+
+        $resultDisplay['events'] .= generateHTMLEvent($ticket, $quantity, false);
+        $resultDisplay['numberArticles'] += $quantity;
+    }
+
     try{
         // On genere le QRCode
         $idUser = $_SESSION['user']->getId();
-        $idTicket = $_POST['generate-pdf'];
-
+        $idTicket = $_POST['event_id'];
+        $ticketDAO = new TicketDAO();
+        $ticket = null;
+        $quantity = 0;
+        foreach ($_SESSION['waiting-tickets'] as $info) {
+            if($info['ticket']->getIdTicket() == $idTicket){
+                $ticket = $info['ticket'];
+                $quantity = $info['quantity'];
+                break;
+            }
+        }
         // On genere le PDF avec l'emplacement du QRCode
-/*         $qrcodefilepath = QRCodeGenerator::generate($idUser, $idTicket);  */
-        $qrcodefilepath = QRCodeGenerator::generate(4, 6); 
+        /*         $qrcodefilepath = QRCodeGenerator::generate($idUser, $idTicket);  */
+        $qrcodefilepath = QRCodeGenerator::generate($ticket->getEvent()->getIdEvent() . '-' . $idTicket . '-' . $idUser);
 
         // On demarre la temporisation de sortie (ne marche pas sans)
         ob_start();
 
         // On genere le PDF
-        $generator = new PDFGenerator($qrcodefilepath);
+        $generator = new PDFGenerator($qrcodefilepath, array('ticket' => $ticket, 'quantity' => $quantity));
 
         // On telecharge le PDF
         $generator->downloadPDF();
@@ -95,6 +89,44 @@ if(isset($_POST['generate-pdf'])){
         ob_end_flush();
     }catch(Exception $e){
         die($e->getMessage());
+    }
+} else if (isset($_SESSION['cart']))
+{
+    $ticketDAO = new TicketDAO();
+    $ticketDTO = new TicketDTO();
+    $pricingDAO = new TicketPricingDAO();
+
+    $resultDisplay = array('events' => "", 'numberArticles' => 0);
+
+    if (!isset($_SESSION['waiting-tickets'])) {
+        $_SESSION['waiting-tickets'] = array();
+    }
+
+    if (!isset($_SESSION['tickets'])) {
+        $_SESSION['tickets'] = array();
+    }
+
+    $cart = $_SESSION['cart'];
+    $user = $_SESSION['user'];
+    $lastEvent = array_keys($cart->getInCartPricing())[count($cart->getInCartPricing()) - 1];
+    foreach ($cart->getInCartPricing() as $pricingId => $quantity) {
+        $pricing = $pricingDAO->getById($pricingId);
+        $ticket = new Ticket($ticketDAO->getLastId() + 1, $pricing->getEvent(), $user->getFavoriteMethod(),$pricing, $user,
+            $pricing->getEvent()->getIdEvent() . '-' . ($ticketDAO->getLastId() + 1) . '-' . $user->getId());
+        $cart->remove($pricingId, $quantity);
+
+        $ticketDTO->add($ticket);
+
+        if ($pricing->getEvent()->getIdEvent() == $lastEvent) {
+            $resultDisplay['events'] .= generateHTMLEvent($ticket, $quantity, true);
+        } else {
+            $resultDisplay['events'] .= generateHTMLEvent($ticket, $quantity, false);
+        }
+        $resultDisplay['numberArticles'] += $quantity;
+
+        $_SESSION['waiting-tickets'][] = array('ticket' => $ticket, 'quantity' => $quantity);
+        $_SESSION['tickets'][] = $ticket;
+        unset($_SESSION['cart']->getInCartPricing()[$pricingId]);
     }
 }
 

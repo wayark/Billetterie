@@ -3,13 +3,11 @@
 require_once PATH_APPLICATION . '/phpqrcode/qrlib.php';
 
 class QRCodeGenerator {
-    static function generate($idUser, $idTicket) {
+    static function generate(string $text) {
 
         $size = 500;
         $margin = 1;
         $level = QR_ECLEVEL_L;
-
-        $text = strval($idUser) . "-" . strval($idTicket);
 
         $filepath = PATH_IMAGES . "qrcodes/qrcode" . $text . ".png";
         $filename = basename($filepath);

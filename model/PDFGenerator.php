@@ -9,8 +9,13 @@ class PDFGenerator extends FPDF {
     private $orientation;
     private $size;
     private $unit;
+    /**
+     * @var array{ticket: Ticket, quantity: int}
+     */
+    private array $tickets_quantity;
 
-    function __construct(string $qrcodefilepath) {
+    function __construct(string $qrcodefilepath, array $tickets) {
+        $this->tickets_quantity = $tickets;
         $this->qrcodefilepath = $qrcodefilepath;
 
         // Paramètres de la page de base
@@ -32,7 +37,7 @@ class PDFGenerator extends FPDF {
 
     function header() {
         $this->SetFont('Arial', 'BU', 22);
-        $this->Cell(0, 0, "Damso - Transbordeur", 0, 1, 'C');
+        $this->Cell(0, 0, $this->removeAccents($this->tickets_quantity['ticket']->getEvent()->getArtist()->getStageName()), 0, 1, 'C');
         // Mettre un trait horizontal noir de 1mm 
         $this->SetDrawColor(156, 146, 146);
         $this->SetLineWidth(1);
@@ -80,7 +85,7 @@ class PDFGenerator extends FPDF {
         $this->Rect($initialX - 5, 170, 90, 50, 10, 'DF');
         // Remplir le carré avec une image
         $this->SetX($initialX);
-        $this->Image(PATH_IMAGES . "events/wayark.jpg", $initialX - 5, 170, 90, 50);
+        $this->Image($this->tickets_quantity['ticket']->getEvent()->getEventInfo()->getPicture()->getPicturePath(), $initialX - 5, 170, 90, 50);
 
         $this->SetY(232);
         $this->SetFont('Arial', 'BU', 13);
@@ -100,17 +105,24 @@ class PDFGenerator extends FPDF {
         // Image waticket 
         $this->Image(PATH_IMAGES . "/logos/logoWatiGold.png", 17, 32, 80, 30);
 
+        $quantity = $this->tickets_quantity['quantity'];
+        $ticket = $this->tickets_quantity['ticket'];
+        $user = $this->tickets_quantity['ticket']->getOwner();
+        $event = $this->tickets_quantity['ticket']->getEvent();
+        $date = DateDisplayService::formatDatetime($event->getEventInfo()->getEventDate());
+        $date = explode("à", $date);
+
         $informations = [
-            [["1", 0], ["place pour ", 5], ["- Damso - Concert", 0]],
-            [["Nom : ", 0], ["Dupont", 15]],
-            [["Prenom : ", 0], ["Jean", 21]],
-            [["Lieu : ", 0], ["Transbordeur", 14]],
-            [["Ville : ", 0], ["Lyon", 14]],
-            [["Adresse : ", 0], ["6 rue de la Republique", 22]],
-            [["Date : ", 0], ["12/12/2019", 14]],
-            [["Heure : ", 0], ["21h30", 18]],
-            [["Prix unite :", 0], ["20 euros", 26]],
-            [["Vous avez choisi :"], ["- Fosse"]]
+            [[$quantity, 0], ["place pour ", 5], ["- " . $this->removeAccents($event->getEventInfo()->getEventName()), 0]],
+            [["Nom : ", 0], [$this->removeAccents($user->getLastName()), 15]],
+            [["Prenom : ", 0], [$this->removeAccents($user->getFirstName()), 21]],
+            [["Lieu : ", 0], [$this->removeAccents($event->getEventPlace()->getPlaceName()), 14]],
+            [["Ville : ", 0], [$this->removeAccents($event->getEventPlace()->getCity()), 14]],
+            [["Adresse : ", 0], [$this->removeAccents($event->getEventPlace()->getStreet()), 22]],
+            [["Date : ", 0], [$date[0], 14]],
+            [["Heure : ", 0], [$date[1], 18]],
+            [["Prix unite :", 0], [$ticket->getTicketPricing()->getPrice() . ' euros', 26]],
+            [["Vous avez choisi :"], [$this->removeAccents($ticket->getTicketPricing()->getName())]]
         ];
 
         $initialY = 67;
@@ -207,5 +219,9 @@ class PDFGenerator extends FPDF {
 
     function removeQRCode() {
         unlink($this->qrcodefilepath);
+    }
+
+    private function removeAccents(string $str) {
+        return iconv('UTF-8', 'ASCII//TRANSLIT', $str);
     }
 }
