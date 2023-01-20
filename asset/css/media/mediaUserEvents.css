@@ -1,0 +1,57 @@
+@media screen and (max-width: 767px) {
+    .colored-part-events {
+        width: 95vw;
+    }
+
+    .username-container p {
+        font-size: 4.3vw;
+    }
+
+    .info-share {
+        column-gap: 2vw;
+        margin-bottom: 2vw;
+    }
+
+    .info-share img {
+        width: 3.5vw;
+        height: 3.5vw;
+    }
+
+    .info-share p {
+        font-size: 2.8vw;
+    }
+
+    .events-title-section-container > h1:first-child {
+        font-size: 7vw;
+    }
+
+    .events-title-section-container > h1:last-child {
+        font-size: 3.9vw;
+    }
+
+    .separator-bar {
+        height: 0.6vw;
+    }
+
+    .event {
+        height: fit-content;
+    }
+
+    .event img {
+        height: 20vw;
+    }
+
+    .event-title {
+        font-size: 3.5vw;
+    }
+
+    .event-desc {
+        font-size: 2.4vw;
+    }
+
+    .border-event > p{
+        font-size: 2.4vw;
+    }
+    @media screen and (max-width: 480px) { 
+    }
+}
