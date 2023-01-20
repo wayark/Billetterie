@@ -62,9 +62,6 @@
             </div>
             <div id="coteD">
                 <form action="./index.php?page=accountManagement" method="POST" enctype="multipart/form-data">
-                    <div class="container-left">
-                        
-                    </div>
                     <label for="prenomE">Prénom</label>
                     <div>
                         <p id="prenomA"><?= $display['user']['firstName'] ?></p>
