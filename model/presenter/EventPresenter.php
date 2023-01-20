@@ -38,7 +38,8 @@ class EventPresenter extends Presenter
             'eventPlaceName' => $this->eventToDisplay->getEventPlace()->getPlaceName(),
             'eventPlaceStreet' => $this->eventToDisplay->getEventPlace()->getStreet(),
             'eventPlaceCity' => $this->eventToDisplay->getEventPlace()->getCity(),
-            'eventPlaceCountry' => $this->eventToDisplay->getEventPlace()->getCountry()
+            'eventPlaceCountry' => $this->eventToDisplay->getEventPlace()->getCountry(),
+            'eventId' => $this->eventToDisplay->getIdEvent(),
         );
 
         $this->display['pricings'] = $this->formatTicketDisplay($this->eventToDisplay);
@@ -95,7 +96,7 @@ class EventPresenter extends Presenter
         foreach ($pricings->getPricingList() as $pricing) {
             $displayString .= "<p>" . $pricing->getName() . " : " . $pricing->getPrice() . "€ - " .
                 NumberOfTicketsService::getNumberOfRemainingTicketsForPricing($pricing) .
-                " / " . $pricing->getMaxQuantity() . " places restantes</p>";
+                " / " . NumberOfTicketsService::getNumberOfRemainingTicketsForPricing($pricing) . " places restantes</p>";
         }
         return $displayString;
     }

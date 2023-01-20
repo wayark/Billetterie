@@ -6,7 +6,7 @@ class ChangeTypeAccountManagementStrategy implements AccountManagementStrategy
     public function handle(User $user, array $post, array $files): ?array
     {
         $roleDAO = new RoleDAO();
-        $role = $roleDAO->getById(2);
+        $role = $roleDAO->getById(1);
         $user->setRole($role);
 
         $userDTO = new UserDTO();

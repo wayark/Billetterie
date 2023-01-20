@@ -1,0 +1,59 @@
+.menu ul {
+    margin-top: 2vw;
+    width: 100%;
+    height: 3vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    list-style-type: none;
+}
+
+.menu-account ul {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.menu ul li a{
+    width: fit-content;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.5vw;
+    font-weight: bold;
+    letter-spacing: 0.15vw;
+}
+
+.menu ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.8vw;
+}
+
+.menu-bar{
+    align-self: start;
+    margin-left: 3vw;
+    height: 0.4vw;
+    width: 20%;
+    background-color: #FFFFFF;
+    border-radius: 1vw;
+    transition: width 0.5s, background-color 0.3s;
+}
+
+.actual-page .menu-bar {
+    width: 50%;
+    align-self: center;
+    margin-left: 0;
+} 
+
+.menu-text {
+    transition: color 0.3s;
+    align-self: center;
+}
+
+.menu-text:hover{
+    color: #dbd0c7;
+    transition: color 0.3s;
+}

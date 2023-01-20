@@ -199,3 +199,6 @@ alter table USER
 alter table USER
     add constraint FK_USER_ROLE foreign key (ID_ROLE_TYPE)
         references ROLE_TYPE (ID_ROLE_TYPE) on delete restrict on update restrict;
+
+alter table USER
+    alter column PICTURE_PATH set default 'users/unnamed.jpg';

@@ -8,16 +8,26 @@ class TicketDAO extends DAO implements IObjectDAO {
         return array();
     }
 
-    public function getById($id): Ticket
+    public function getById($id): ?Ticket
     {
-        // TODO: Implement getById() method for TicketDAO.
-        return new Ticket();
+        $result = $this->queryRow("SELECT * FROM ticket WHERE id_ticket = ?", array($id));
+        if ($result) {
+            $eventDAO = new EventDAO();
+            $paymentMethodDAO = new PaymentMethodDAO();
+            $ticketPricingDAO = new TicketPricingDAO();
+            $userDAO = new UserDAO();
+            return new Ticket($result['ID_TICKET'], $eventDAO->getById($result['ID_EVENT']),
+                $paymentMethodDAO->getById($result['ID_PAYMENT_METHOD']),
+                $ticketPricingDAO->getById($result['ID_TICKET_PRICING']),
+                $userDAO->getUserById($result['ID_USER']),
+                $result['TICKET_NUMBER']);
+        }
+        return null;
     }
 
     function getLastId(): int
     {   
-        // TODO: Implement getLastId() method for TicketDAO.
-        return 0;
+        return $this->getTableLastId("TICKET", "ID_TICKET");
     }
 
     function getNumberOfTicketsBought(Event $evt, TicketPricing $pricing = null): int

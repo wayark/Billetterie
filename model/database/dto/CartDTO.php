@@ -1,47 +1,61 @@
 <?php
 
-class CartDTO extends DTO implements IObjectDTO{
+class CartDTO extends DTO {
 
-    function add($event): void
+    function add(User $user, TicketPricing $ticketPricing, int $quantity): void
     {
         $fields = [
-            "ID_EVENT",
             "ID_USER",
-            "IS_PIT",
+            "ID_TICKET_PRICING",
             "QUANTITY"
         ];
-
+    
         $values = [
-            $event->getIdEvent(),
-            $event->getUser()->getIdUser(),
-            $event->getEvent()->getIdEvent(),
-            $event->getQuantity()
+            $user->getId(),
+            $ticketPricing->getIdTicketPricing(),
+            $quantity
         ];
-
+    
         $this->insertQuery("cart", $fields, $values);
     }
-
-    function update($object): void
+    
+    /**
+     * @throws NoDatabaseException
+     */
+    function update(User $user, TicketPricing $ticketPricing, int $quantity): void
     {
+        echo "UPDATE CART SET QUANTITY = $quantity WHERE ID_USER = ? AND ID_TICKET_PRICING = ?";
+    
+        $this->_sendQuery("UPDATE CART SET QUANTITY = $quantity WHERE ID_USER = ? AND ID_TICKET_PRICING = ?",
+            [$user->getId(), $ticketPricing->getIdTicketPricing()]);
+    
     }
 
-    function delete($object): void
-    {
+    function addOne(User $user, $ticketId){
+        $userId = $user->getId();
+        $this->sendTextQuery("UPDATE cart set QUANTITY = QUANTITY + 1 WHERE ID_USER = $userId AND ID_TICKET_PRICING = $ticketId");
     }
 
+    function removeOne(User $user,$ticketId){
+        $userId = $user->getId();
+        $this->sendTextQuery("UPDATE cart set QUANTITY = QUANTITY - 1 WHERE ID_USER = $userId AND ID_TICKET_PRICING = $ticketId");  
+    }
+
+    function setQuantity(User $user, $ticketId, int $quantity){
+        $userId = $user->getId();
+        $this->sendTextQuery("UPDATE cart set QUANTITY = $quantity WHERE ID_USER = $userId AND ID_TICKET_PRICING = $ticketId");
+    }
+
+    /**
+     * @param TicketPricing $object
+     * @return void
+     */
+    function delete(TicketPricing $object): void
+    {
+        $this->deleteQuery("CART", "ID_TICKET_PRICING", $object->getIdTicketPricing());
+    }
+    
     function getById(int $id)
-    {
-    }
-
-    function getAll(): array
-    {
-    }
-
-    function getLastId(): int
-    {
-    }
-
-    private function createObject($row): Cart
     {
     }
 }

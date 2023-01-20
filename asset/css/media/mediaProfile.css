@@ -1,0 +1,72 @@
+@media screen and (max-width: 767px) {
+    #main-container .colored-part-profile {
+        width: 95vw;
+    }
+
+    .username-text {
+        font-size: 3.4vw;
+    }
+
+    .username-text-container>p {
+        font-size: 5vw;
+    }
+
+    .user-desc {
+        font-size: 2.5vw;
+    }
+
+    #see-more-description {
+        font-size: 2.8vw;
+    }
+
+    .register-date-container {
+        margin-right: 4vw;
+        font-size: 3.3vw;
+    }
+
+    .personal-informations-user > p {
+        font-size: 3.3vw;
+    }
+
+    .nb-friends {
+        font-size: 3.8vw;
+    }
+
+    .is-your-friend, .is-not-your-friend {
+        font-size: 3.3vw;
+    }
+    @media screen and (max-width: 480px) {
+        .username-text {
+            font-size: 4.2vw;
+        }   
+
+        .grid-section {
+            display: flex;
+            flex-direction: column-reverse;
+            row-gap: 1vw;
+        }
+
+        .informations-container {
+            margin-top: 2vh;
+            flex-direction: row;
+        }
+
+        .img-user-container>.profile-picture {
+            width: 30vw;
+            height: 30vw;
+
+        }
+
+        .user-desc {
+            font-size: 3.5vw;
+        }
+
+        .is-your-friend, .is-not-your-friend {
+            font-size: 3.8vw;
+        }
+
+        #see-more-description {
+            font-size: 3.8vw;
+        }
+    }
+}

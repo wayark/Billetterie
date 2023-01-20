@@ -1,0 +1,24 @@
+@media screen and (max-width: 767px) {
+    .menu-bar {
+        height: 1vw;
+    }
+
+    .menu ul li a {
+        font-size: 3.4vw;
+    }
+
+    .menu {
+        margin-bottom: 5vw;
+    }
+    @media screen and (max-width: 480px) {
+        .menu ul li a {
+            font-size: 3.7vw;
+        }   
+
+        .menu {
+            margin-bottom: 7vw;
+            margin-left: 3vw;
+            margin-right: 3vw;
+        }
+    }
+}

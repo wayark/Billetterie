@@ -6,7 +6,10 @@ require_once(PATH_VIEWS . "header.php");
  * } $display
  */
 ?>
-<link href="<?= PATH_CSS ?>eventList.css" rel="stylesheet">
+<head>
+    <link href="<?= PATH_CSS ?>eventList.css" rel="stylesheet">
+    <link href="<?= PATH_MEDIA ?>EventList.css" rel="stylesheet">
+</head>
 
 
 <section class="eventList">

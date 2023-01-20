@@ -33,6 +33,11 @@ abstract class DTO
         return $pdo;
     }
 
+    public function sendTextQuery(string $sql): PDOStatement
+    {
+        return $this->_sendQuery($sql, []);
+    }
+
     /**
      * @param string $table The table to insert the data into.
      * @param array $fields The fields to insert the data into.

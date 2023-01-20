@@ -25,7 +25,7 @@ class RoleDAO extends DAO implements IObjectDAO
      */
     public function getRoleByName(string $name) : ?Role
     {
-        $sql = 'SELECT * FROM role_type WHERE ID_ROLE_TYPE = ?';
+        $sql = 'SELECT * FROM role_type WHERE ROLE_NAME = ?';
         $role = $this->queryRow($sql, [$name]);
         if ($role) {
             return new Role($role[0], $role[1]);

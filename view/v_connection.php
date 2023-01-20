@@ -8,7 +8,11 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
  * } $result contains the result of the presenter
  */
 ?>
+<head>
     <link rel="stylesheet" href=<?= PATH_CSS . "connection.css" ?>>
+    <link rel="stylesheet" href=<?= PATH_MEDIA . "Connection.css" ?>>
+    <title>Connexion</title>
+</head>    
 
     <section class="connectionPage">
         <div class="connection-register-frame">
@@ -24,9 +28,8 @@ require_once(PATH_VIEWS . 'header.php'); //header of the page
             </div>
 
             <div class="line"></div>
-
             <div>
-                <form method="post" action="./index.php?page=connection" class="connectionForm">
+                <form method="post" action="./?page=connection" class="connectionForm">
                     <p>Inscription</p>
                     <div>
                         <input name="firstnameR" type="text" class="surname" placeholder="Prénom...">

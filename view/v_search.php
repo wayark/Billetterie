@@ -6,13 +6,15 @@
 <html lang="fr">
 <head>
     <title>Recherche</title>
-    <link rel="stylesheet" href="<?= PATH_CSS . 'search.css' ?>"
+    <link rel="stylesheet" href="<?= PATH_CSS ?>reception.css">
+    <link rel="stylesheet" href="<?= PATH_CSS . 'search.css' ?>">
+    <link rel="stylesheet" href="<?= PATH_MEDIA . 'Search.css' ?>">
 </head>
 <body>
 <?php require_once PATH_VIEWS . 'header.php' ?>
 
 <main>
-    <form id="form-search" method="get" action="./index.php">
+    <form id="form-search" method="get" action="./">
         <input type="hidden" name="page" value="search">
         <input type="hidden" name="reset" value="" id="resetSubmit">
         <div id="point" onclick="{
